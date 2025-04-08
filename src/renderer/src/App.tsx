@@ -1,4 +1,3 @@
-//import rarrLogo from './assets/RarrLogo.svg'
 import SiteRoutes from './components/Routes'
 
 function App(): JSX.Element {

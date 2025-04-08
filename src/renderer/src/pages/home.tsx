@@ -21,6 +21,7 @@ function HomePage(): JSX.Element {
                 position={'relative'}
                 left="50px"
                 top="100px"
+                fontSize={['lg', 'xl']}
               >
                 <Text>Tired of the angry crowds with pitchforks and torches?</Text>
                 <Text>Do mothers clutch their children when you walk by?</Text>

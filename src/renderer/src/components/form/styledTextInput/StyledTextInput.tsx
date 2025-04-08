@@ -1,6 +1,6 @@
 import { Box } from '@chakra-ui/react'
 import ReactQuill from 'react-quill'
-import { modules } from '@renderer/components/form/quillbits.ts'
+import { modules } from '@renderer/components/form/quillbits.mjs'
 import './StyledTextInput.css'
 
 interface StyledTextInputProps {
@@ -8,7 +8,7 @@ interface StyledTextInputProps {
   setter: (value: string) => void
 }
 
-const StyledTextInput = ({ value, setter }: StyledTextInputProps) => {
+const StyledTextInput = ({ value, setter }: StyledTextInputProps): JSX.Element => {
   return (
     <Box
       flexGrow={3}

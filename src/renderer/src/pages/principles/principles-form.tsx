@@ -17,9 +17,9 @@ import {
   CardFooter,
   SliderMark
 } from '@chakra-ui/react'
-import { copyContents } from '@renderer/pages/resentments/copyContents'
-import { OneStep, StepCheckList } from './principles-constants'
-import { steps } from '../steps/steps-constants'
+import { copyContents } from '@renderer/pages/resentments/copyContents.mjs'
+import { OneStep, StepCheckList } from './principles-constants.d'
+import { steps } from '../steps/steps-constants.d'
 import useProgramDropDown from '@renderer/components/form/useProgramDropDown'
 
 interface stepValue {

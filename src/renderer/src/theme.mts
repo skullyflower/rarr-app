@@ -122,7 +122,7 @@ const theme = extendTheme(
     },
     fonts: {
       heading: `'Creepster', sans-serif`,
-      body: `'Voltaire', sans-serif`
+      body: `'Underdog', sans-serif`
     },
     styles: {
       global: {
@@ -138,7 +138,8 @@ const theme = extendTheme(
     components: {
       Heading: {
         baseStyle: {
-          color: 'purple.300'
+          color: 'purple.300',
+          fontWeight: 'normal'
         }
       },
       Button: {

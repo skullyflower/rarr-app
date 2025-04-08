@@ -1,31 +1,29 @@
-import { Box, HStack, LinkBox } from '@chakra-ui/react'
-import { Link, useMatch } from 'react-router-dom'
+import { Box, HStack } from '@chakra-ui/react'
 
-const NavItem = ({ text, to }: { text: string; to: string }): JSX.Element => {
+const NavItem = ({ text, onClick }: { text: string; onClick: () => void }): JSX.Element => {
   return (
-    <LinkBox
-      as={Link}
+    <Box
       marginTop={2}
       paddingBlock={1}
       paddingInline={4}
       borderRadius={5}
       border="2px solid"
-      backgroundColor={useMatch(to) ? 'purple.800' : ''}
       textTransform="uppercase"
-      to={to}
+      onClick={onClick}
+      _hover={{ cursor: 'pointer', backgroundColor: 'blackAlpha.200' }}
     >
       {text}
-    </LinkBox>
+    </Box>
   )
 }
 
-const NavBar = (): JSX.Element => {
+const NavBar = ({ setActivePath }: { setActivePath: (value: string) => void }): JSX.Element => {
   return (
     <Box p={4}>
       <HStack wrap="wrap" gap={4} justifyContent={'center'}>
-        <NavItem to="steps" text="The Steps" />
-        <NavItem to="/inventory" text="resentments" />
-        <NavItem to="/aca-tenth-step" text="ACA 10th Step" />
+        <NavItem onClick={() => setActivePath('steps')} text="The Steps" />
+        <NavItem onClick={() => setActivePath('resent')} text="resentments" />
+        <NavItem onClick={() => setActivePath('aca10')} text="ACA 10th Step" />
         {/* <NavItem to="literature" text="literature" /> */}
       </HStack>
     </Box>

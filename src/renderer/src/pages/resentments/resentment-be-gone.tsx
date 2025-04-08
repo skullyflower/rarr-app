@@ -1,4 +1,4 @@
-import { copyContents } from '@renderer/pages/resentments/copyContents'
+import { copyContents } from '@renderer/pages/resentments/copyContents.mjs'
 import ReadyToLetGo from '@renderer/components/form/ready-to-let-go'
 import SemiSafeContent from '@renderer/components/SemiSafeContent'
 import {

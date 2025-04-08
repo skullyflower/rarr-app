@@ -1,6 +1,7 @@
-import { Box, Card, Heading, HStack, ListItem, OrderedList, Stack } from '@chakra-ui/react'
-import { steps } from './steps-constants'
+import { Box, Heading, HStack, ListItem, OrderedList, Stack } from '@chakra-ui/react'
+import { steps } from './steps-constants.d'
 import useProgramDropDown from '@renderer/components/form/useProgramDropDown'
+import PageCard from '@renderer/components/layout/page-card'
 
 const programOptions = Object.keys(steps)
 
@@ -15,12 +16,7 @@ function TheStepsPage(): JSX.Element {
         </Heading>
         <ProgramDropDown />
       </HStack>
-      <Card
-        bg="whiteAlpha.300"
-        //color="purple.200"
-        border={['none', '1px solid']}
-        p={8}
-      >
+      <PageCard>
         <Box border={['none', '1px solid']} p={6} borderRadius={6} bg={'pink.900'}>
           <OrderedList p={4}>
             <Stack>
@@ -32,7 +28,7 @@ function TheStepsPage(): JSX.Element {
             </Stack>
           </OrderedList>
         </Box>
-      </Card>
+      </PageCard>
     </Stack>
   )
 }

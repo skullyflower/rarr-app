@@ -401,7 +401,6 @@
   border: none;
   cursor: pointer;
   display: inline-block;
-  float: left;
   height: 24px;
   padding: 3px 5px;
   width: 28px;
@@ -638,7 +637,6 @@
 .ql-snow .ql-picker {
   color: #444;
   display: inline-block;
-  float: left;
   font-size: 14px;
   font-weight: 500;
   height: 24px;

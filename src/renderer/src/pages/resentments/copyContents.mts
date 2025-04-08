@@ -1,4 +1,4 @@
-import copyText from '@renderer/components/copyText'
+import copyText from '@renderer/components/copyText.mjs'
 
 export function copyContents(): () => boolean {
   return () => {

@@ -1,4 +1,4 @@
-import { Box, Image, HStack, VStack } from '@chakra-ui/react'
+import { Box, Image, VStack, Stack } from '@chakra-ui/react'
 import NavBar from '../NavBar'
 import rarrLogo from '@renderer/assets/RarrLogo.svg'
 import { ReactElement } from 'react'
@@ -11,11 +11,16 @@ interface LayoutProps {
 function Layout({ children, setActivePath }: LayoutProps): JSX.Element {
   return (
     <VStack justifyContent="center" alignItems={'center'}>
-      <Box w={['100%', '95%']} maxW={'900px'}>
+      <Box w={{ base: '100%', md: '95%' }} maxW={'900px'}>
         <header>
-          <HStack w="90%" justifyContent="space-between">
+          <Stack
+            direction={['column', 'row']}
+            paddingInline={4}
+            justifyContent="space-between"
+            alignItems={['center', 'flex-start']}
+          >
             <Box
-              width="100px"
+              width="120px"
               onClick={() => setActivePath('home')}
               _hover={{ cursor: 'pointer' }}
               p={2}
@@ -23,7 +28,7 @@ function Layout({ children, setActivePath }: LayoutProps): JSX.Element {
               <Image src={rarrLogo} alt="Ragers and Rampagers, Recovering" />
             </Box>
             <NavBar setActivePath={setActivePath} />
-          </HStack>
+          </Stack>
         </header>
         <Box>{children}</Box>
         <footer id="pagefoot"></footer>

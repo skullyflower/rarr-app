@@ -24,7 +24,6 @@ const NavBar = ({ setActivePath }: { setActivePath: (value: string) => void }): 
         <NavItem onClick={() => setActivePath('steps')} text="The Steps" />
         <NavItem onClick={() => setActivePath('resent')} text="resentments" />
         <NavItem onClick={() => setActivePath('aca10')} text="ACA 10th Step" />
-        {/* <NavItem to="literature" text="literature" /> */}
       </HStack>
     </Box>
   )

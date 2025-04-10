@@ -27,12 +27,14 @@ const ChoiceSection = (): JSX.Element => {
   return (
     <Stack gap={4}>
       <HStack justifyContent={'space-between'}>
-        <Text>
-          Where are you on the scale today, control wise? <b>{freedomText}</b>
-        </Text>
+        <Text>Where are you on the scale today, control wise?</Text>
         <CopyButton text={toCopy} disabled={!freedomText} />
       </HStack>
-      <Box bgColor={'blackAlpha.100'} borderRadius={6} padding={4}>
+      <Text fontWeight={'bold'} textAlign={'center'}>
+        {freedomText}
+      </Text>
+
+      <Box bgColor={'blackAlpha.100'} borderRadius={6} padding={8}>
         <Stack gap={4}>
           <Slider
             aria-label="slider-ex-5"
@@ -40,18 +42,30 @@ const ChoiceSection = (): JSX.Element => {
             value={freedomValue}
             onChange={(val) => handleSelected(val)}
           >
-            <SliderMark value={0} mt="3" fontSize="sm">
+            <SliderMark value={0} mt="3" ml="-1em" fontSize="sm">
               Denial
             </SliderMark>
-            <SliderMark value={33} mt="3" ml="-1em" fontSize="sm">
+            <SliderMark
+              display={{ base: 'none', md: 'block' }}
+              value={33}
+              mt="3"
+              ml="-1.8em"
+              fontSize="sm"
+            >
               Some Choice
             </SliderMark>
-            <SliderMark value={66} mt="3" ml="-1.5em" fontSize="sm">
+            <SliderMark
+              display={{ base: 'none', md: 'block' }}
+              value={66}
+              mt="3"
+              ml="-2.5em"
+              fontSize="sm"
+            >
               Greater Choice
             </SliderMark>
             <SliderMark value={100} mt="3" ml="-3em" fontSize="sm">
               Discernment
-            </SliderMark>{' '}
+            </SliderMark>
             <SliderTrack backgroundColor="red.400" w={3}>
               <SliderFilledTrack backgroundColor="green.400" />
             </SliderTrack>

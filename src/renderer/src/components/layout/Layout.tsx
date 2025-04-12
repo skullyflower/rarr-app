@@ -12,7 +12,7 @@ function Layout({ children, setActivePath }: LayoutProps): JSX.Element {
   return (
     <VStack
       justifyContent="center"
-      alignItems={'center'}
+      alignItems={'stretch'}
       w={{ base: '100%', md: '95%' }}
       marginInline={['0', 'auto']}
       maxW={'900px'}
@@ -20,6 +20,7 @@ function Layout({ children, setActivePath }: LayoutProps): JSX.Element {
       <header>
         <Stack
           direction={['column', 'row']}
+          width={'100%'}
           paddingInline={4}
           justifyContent="space-between"
           alignItems={['center', 'flex-start']}
@@ -29,6 +30,7 @@ function Layout({ children, setActivePath }: LayoutProps): JSX.Element {
             onClick={() => setActivePath('home')}
             _hover={{ cursor: 'pointer' }}
             p={2}
+            title="Ragers and Rampagers, Recovering"
           >
             <Image src={rarrLogo} alt="Ragers and Rampagers, Recovering" />
           </Box>

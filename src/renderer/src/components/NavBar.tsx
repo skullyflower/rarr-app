@@ -4,8 +4,11 @@ const NavItem = ({ text, onClick }: { text: string; onClick: () => void }): JSX.
   return (
     <Box
       width={['100%', 'auto']}
+      fontSize={'sm'}
+      fontWeight={'bold'}
+      lineHeight={1}
       paddingBlock={1}
-      paddingInline={4}
+      paddingInline={2}
       borderRadius={5}
       border="2px solid"
       textTransform="uppercase"
@@ -24,6 +27,7 @@ const NavBar = ({ setActivePath }: { setActivePath: (value: string) => void }): 
         <NavItem onClick={() => setActivePath('steps')} text="The Steps" />
         <NavItem onClick={() => setActivePath('resent')} text="resentments" />
         <NavItem onClick={() => setActivePath('aca10')} text="ACA 10th Step" />
+        <NavItem onClick={() => setActivePath('serenity')} text="Serenity Check-In" />
       </HStack>
     </Box>
   )

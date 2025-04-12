@@ -3,6 +3,7 @@ import HomePage from '@renderer/pages/home'
 import ResentmentsForm from '@renderer/pages/resentments/resentmentForm'
 import TheSteps from '@renderer/pages/steps/the-steps'
 import AcaTenthStep from '@renderer/pages/acaTenthStep/aca-tenth-step-page'
+import SerenityCheckIn from '@renderer/pages/serenityCheckIn/serenityCheckInPage'
 import { useState } from 'react'
 
 export default function SiteRoutes(): JSX.Element {
@@ -15,6 +16,7 @@ export default function SiteRoutes(): JSX.Element {
         {activePath === 'resent' && <ResentmentsForm />}
         {activePath === 'aca10' && <AcaTenthStep />}
         {activePath === 'steps' && <TheSteps />}
+        {activePath === 'serenity' && <SerenityCheckIn />}
       </>
     </Layout>
   )

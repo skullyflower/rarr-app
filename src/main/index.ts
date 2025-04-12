@@ -6,8 +6,8 @@ import icon from '../../resources/rarrIcon.png?asset'
 function createWindow(): void {
   // Create the browser window.
   const mainWindow = new BrowserWindow({
-    width: 900,
-    height: 785,
+    width: 785,
+    height: 775,
     show: false,
     autoHideMenuBar: true,
     ...(process.platform === 'linux' ? { icon } : {}),

@@ -4,7 +4,7 @@ import RARR_Splash_BG from '@renderer/assets/RARR_Splash_BG.gif'
 
 const config: ThemeConfig = {
   initialColorMode: 'dark',
-  useSystemColorMode: false
+  useSystemColorMode: true
 }
 
 const theme = extendTheme(
@@ -160,6 +160,61 @@ const theme = extendTheme(
         defaultProps: {
           size: 'md', // default is md
           colorScheme: 'purple' // default is gray
+        }
+      },
+      InputGroup: {
+        defaultProps: {
+          colorScheme: 'purple', // default is gray
+          _focus: {
+            outline: 'none',
+            boxShadow: 'none',
+            borderColor: 'purple.300'
+          },
+          _focusVisible: {
+            outline: 'none',
+            boxShadow: 'none',
+            borderColor: 'purple.300'
+          }
+        },
+        baseStyle: {
+          field: {
+            color: 'purple.200'
+          }
+        }
+      },
+      Input: {
+        baseStyle: {
+          field: {
+            color: 'purple.200',
+            _placeholder: {
+              color: 'pink.700'
+            },
+            _focus: {
+              outline: 'none',
+              borderColor: 'purple.200',
+              backgroundColor: 'pink.800'
+            },
+            _focusVisible: {
+              outline: 'none',
+              borderColor: 'purple.200',
+              boxShadow: 'none',
+              backgroundColor: 'pink.800'
+            }
+          },
+          defaultProps: {
+            colorScheme: 'purple',
+            _focus: {
+              outline: 'none',
+              borderColor: 'purple.200',
+              backgroundColor: 'pink.800'
+            },
+            _forcusVisible: {
+              backgroundColor: 'pink.800',
+              borderColor: 'purple.200',
+              outline: 'none',
+              boxShadow: 'none'
+            }
+          }
         }
       }
     }

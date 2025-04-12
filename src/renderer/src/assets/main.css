@@ -16,3 +16,10 @@
 .ql-editor.ql-blank::before{
   color: rgba(255,215,255,.5)
 }
+.ql-snow .ql-stroke{
+  stroke: #868;
+}
+input:focus-visible{
+  box-shadow: none !important;
+  border-color: initial;
+}

@@ -2,6 +2,7 @@ import { HStack, Input, Select, Stack, Text } from '@chakra-ui/react'
 import { useState } from 'react'
 import { feelings } from './aca-tenth-constants.d'
 import CopyButton from '@renderer/components/form/copy-button'
+import SaveButton from '@renderer/components/form/save-button'
 
 const FeelingsStatement = (): JSX.Element => {
   const [when, setWhen] = useState<string>()
@@ -12,7 +13,10 @@ const FeelingsStatement = (): JSX.Element => {
     <Stack gap={4}>
       <HStack justifyContent={'space-between'}>
         <Text>Practice a feeling statement.</Text>
-        <CopyButton text={toCopy} disabled={!feeling || !when || !because} />
+        <HStack gap={2}>
+          <CopyButton text={toCopy} disabled={!feeling || !when || !because} />
+          <SaveButton text={toCopy} disabled={!feeling || !when || !because} />
+        </HStack>
       </HStack>
 
       <Stack gap={4}>

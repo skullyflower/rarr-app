@@ -4,18 +4,25 @@ import { electronApp, optimizer, is } from '@electron-toolkit/utils'
 import icon from '../../resources/icon.png?asset'
 import fs from 'node:fs'
 
-function writeToLog(message: string): void {
+function writeToLog(message: string): boolean {
   const now = new Date()
   const stringToWrite = `${now.toLocaleDateString()} ${now.toLocaleTimeString()}\n${message}\n\n`
-  const logFile = join(app.getPath('desktop'), 'logs.txt')
-  if (fs.existsSync(logFile)) {
-    fs.appendFileSync(logFile, stringToWrite)
-  } else {
-    fs.writeFileSync(logFile, stringToWrite, { encoding: 'utf8', flag: 'w' })
+  const logDir = join(app.getPath('appData'), 'Ragers and Rampagers Recovering')
+  const logFile = join(logDir, `${now.getFullYear()}${now.getMonth() + 1}${now.getDate()}.txt`)
+  try {
+    if (fs.existsSync(logFile)) {
+      fs.appendFileSync(logFile, stringToWrite)
+    } else {
+      fs.writeFileSync(logFile, stringToWrite, { encoding: 'utf8', flag: 'w' })
+    }
+    return true
+  } catch (error) {
+    console.error(error)
+    return false
   }
 }
-function readFromLog(): string {
-  const logFile = join(app.getPath('desktop'), 'logs.txt')
+function readFromLog(fileName: string): string {
+  const logFile = join(app.getPath('appData'), 'Ragers and Rampagers Recovering', fileName)
   if (fs.existsSync(logFile)) {
     return fs.readFileSync(logFile, { encoding: 'utf8' })
   } else {
@@ -69,13 +76,12 @@ app.whenReady().then(() => {
     optimizer.watchWindowShortcuts(window)
   })
 
-  ipcMain.handle('write-log', (_event, message) => {
-    writeToLog(message)
-    return message
+  ipcMain.handle('write-log', (_event, message): boolean => {
+    return writeToLog(message)
   })
 
-  ipcMain.handle('read-log', () => {
-    return readFromLog()
+  ipcMain.handle('read-log', (_event, fileName): string => {
+    return readFromLog(fileName)
   })
 
   ipcMain.handle('dark-mode:toggle', () => {

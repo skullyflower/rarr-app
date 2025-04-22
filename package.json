@@ -1,7 +1,8 @@
 {
   "name": "rarr-app",
+  "productName": "Ragers and Rampagers Recovering",
   "version": "1.0.0",
-  "description": "An Electron application with React and TypeScript",
+  "description": "Real 10th step tools for ficticious creatures.",
   "main": "./out/main/index.js",
   "author": "skullyflower.com",
   "homepage": "https://rarr-recovery.skullyflower.com",

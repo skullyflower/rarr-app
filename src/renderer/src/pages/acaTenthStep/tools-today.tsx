@@ -2,6 +2,7 @@ import CopyButton from '@renderer/components/form/copy-button'
 import { HStack, Stack, Text } from '@chakra-ui/react'
 import { useState } from 'react'
 import ListerInput from '@renderer/components/form/ListerInput'
+import SaveButton from '@renderer/components/form/save-button'
 
 const ToolsUsedToday = (): JSX.Element => {
   const [listOfTools, setListOfTools] = useState<string[]>([])
@@ -13,7 +14,10 @@ const ToolsUsedToday = (): JSX.Element => {
         <Text>
           What are the tools of recovery you are using to help you live life in the moment?
         </Text>
-        <CopyButton text={tocopy} disabled={listOfTools.length === 0} />
+        <HStack gap={2}>
+          <CopyButton text={tocopy} disabled={listOfTools.length === 0} />
+          <SaveButton text={tocopy} disabled={listOfTools.length === 0} />
+        </HStack>
       </HStack>
       <ListerInput
         list={listOfTools}

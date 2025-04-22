@@ -4,6 +4,7 @@ import { useState } from 'react'
 import PageCard from '@renderer/components/layout/page-card'
 import AccordionSection from '@renderer/components/layout/accordion-section'
 import ListerInput from '@renderer/components/form/ListerInput'
+import SaveButton from '@renderer/components/form/save-button'
 
 function SerenityCheckIn(): JSX.Element {
   const [canNotControl, setCanNotControl] = useState<string[]>([])
@@ -11,7 +12,7 @@ function SerenityCheckIn(): JSX.Element {
 
   const tocopy = `Today I am trying to control that I cannot control:
   \t- ${canNotControl.join(', \n\t- ')}
-  While I could and probably should be: 
+  I could and probably should: 
   \t- ${canControl.join(', \n\t- ')}`
 
   return (
@@ -27,7 +28,10 @@ function SerenityCheckIn(): JSX.Element {
               <Text> Courage to change the things I can.</Text>
               <Text> And wisdom to know the difference.</Text>
             </Box>
-            <CopyButton text={tocopy} disabled={!canControl.length || !canNotControl.length} />
+            <HStack align="start">
+              <CopyButton text={tocopy} disabled={!canControl.length || !canNotControl.length} />
+              <SaveButton text={tocopy} disabled={!canControl.length || !canNotControl.length} />
+            </HStack>
           </HStack>
           <Accordion allowToggle={true} allowMultiple={true}>
             <Stack gap={2}>

@@ -1,4 +1,4 @@
-import { copyContents } from '@renderer/pages/resentments/copyContents.mjs'
+import { copyContents, getContents } from '@renderer/pages/resentments/copyContents.mjs'
 import ReadyToLetGo from '@renderer/components/form/ready-to-let-go'
 import SemiSafeContent from '@renderer/components/SemiSafeContent'
 import {
@@ -39,6 +39,8 @@ function ResentBeGone({
   onCloseLetGo
 }: ResentBeGoneProps): JSX.Element {
   const [copied, setCopied] = useState(false)
+  const [saved, setSaved] = useState(false)
+  const stringToWrite = getContents()
   return (
     <Card bg="whiteAlpha.300" border={['none', '1px solid']}>
       <CardBody>
@@ -53,9 +55,20 @@ function ResentBeGone({
           <CardHeader>
             <HStack justifyContent="space-between">
               <Text>Here is what you wrote.</Text>
-              <Button onClick={() => setCopied(copyContents())}>
-                {copied ? 'copied' : 'copy'}
-              </Button>
+              <HStack gap={4}>
+                <Button
+                  onClick={() =>
+                    window.api.writeLog(stringToWrite).then((result) => {
+                      setSaved(result)
+                    })
+                  }
+                >
+                  {saved ? 'Saved' : 'Save'}
+                </Button>
+                <Button onClick={() => setCopied(copyContents())}>
+                  {copied ? 'copied' : 'copy'}
+                </Button>
+              </HStack>
             </HStack>
           </CardHeader>
           <CardBody border="1px solid">

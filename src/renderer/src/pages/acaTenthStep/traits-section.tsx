@@ -3,6 +3,7 @@ import { HStack, Stack, Text } from '@chakra-ui/react'
 import { useMemo, useState } from 'react'
 import { traitList } from './aca-tenth-constants.d'
 import CopyButton from '@renderer/components/form/copy-button'
+import SaveButton from '@renderer/components/form/save-button'
 
 const TraitsSection = (): JSX.Element => {
   const [traitQs, setTraitQs] = useState<string[]>([])
@@ -23,7 +24,10 @@ const TraitsSection = (): JSX.Element => {
     <Stack gap={4}>
       <HStack justifyContent={'space-between'}>
         <Text>Select the ones that apply today.</Text>
-        <CopyButton text={tocopy} disabled={traitQs.length === 0} />
+        <HStack gap={2}>
+          <CopyButton text={tocopy} disabled={traitQs.length === 0} />
+          <SaveButton text={tocopy} disabled={traitQs.length === 0} />
+        </HStack>
       </HStack>
       <CheckboxGroupBox
         columns={1}

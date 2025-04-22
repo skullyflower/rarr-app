@@ -12,6 +12,7 @@ import {
 import { useState } from 'react'
 import { choiceLevels } from './aca-tenth-constants.d'
 import CopyButton from '@renderer/components/form/copy-button'
+import SaveButton from '@renderer/components/form/save-button'
 
 const ChoiceSection = (): JSX.Element => {
   const [freedomValue, setFreedomValue] = useState<number>(50)
@@ -29,6 +30,10 @@ const ChoiceSection = (): JSX.Element => {
       <HStack justifyContent={'space-between'}>
         <Text>Where are you on the discernment scale, today?</Text>
         <CopyButton text={toCopy} disabled={!freedomText} />
+        <HStack gap={2}>
+          <CopyButton text={toCopy} disabled={!freedomText} />
+          <SaveButton text={toCopy} disabled={!freedomText} />
+        </HStack>
       </HStack>
       <Text fontWeight={'bold'} textAlign={'center'}>
         {freedomText}

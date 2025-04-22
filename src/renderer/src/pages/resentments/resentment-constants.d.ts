@@ -1,10 +1,11 @@
 export enum affectsAA {
-  SECURITY_EMOTIONALLY = "It's making me feel unsafe emotionally.",
-  SECURITY_PHYSICALLY = "It's making me feel unsafe emotionally physically.",
-  SECURITY_FINANCIALLY = "It's making me feel unsafe financially.",
+  EMOTIONAL_SECURITY = "It's making me feel unsafe emotionally.",
+  PHYSICAL_SECURITY = "It's making me feel unsafe emotionally physically.",
+  FINANCIAL_SECURITY = "It's making me feel unsafe financially.",
   SELF_ESTEEM = "It's making me feel bad about myself.",
   GUILTY = "It's making me feel guilty.",
-  PERSONAL_RELATIONSHIPS = "It's damaging my relationships, with friends, family, or coworkers.",
+  PROFESSIONAL_RELATIONSHIPS = "It's damaging my relationships, with my boss, coworkers, or customers.",
+  PERSONAL_RELATIONSHIPS = "It's damaging my relationships, with friends, family.",
   SEXUAL_RELATIONSHIP = "It's threatening my romantic or sexual relationships.",
   EGO = "It's threatening my ego, my sense of myself.",
   AMBITION = "It's threatening my getting what I want, big like a career, or small like the last chocolate doughnut"
@@ -23,24 +24,25 @@ export enum myPartsAA {
   TIRED = "I didn't sleep enough and wasn't able to cope with the situation."
 }
 
-export enum sucessesAA {
+export enum successesAA {
   CONNECTED = 'I reached out to a trusted friend or mentor for support.',
-  MEETING = 'I went to a meeting and shared about it.',
-  WRITING = 'I took some time to journal about it.',
+  WENT_TO_MEETING = 'I went to a meeting and shared about it.',
+  WROTE = 'I took some time to journal about it.',
   PAUSED = 'I realized I was too upset to respond without sabotaging myself and/or being overly cruel to the other person, so I waiting until I could think more rationally.',
   PRAYED = 'I prayed to my Higher Power for help in dealing with the situation.',
   SET_BOUNDARY = 'I spoke up and set limits or walked away from the bad situation.',
-  AMENDS = "I realized I'd make a mistake and admitted it",
+  MADE_AMENDS = "I realized I'd make a mistake and admitted it",
   SERVICE = 'I sought out someone else who needed help, or did service for my group.'
 }
 
 enum affectsACA {
-  SECURITY_EMOTIONALLY = "It's making me feel unsafe emotionally.",
-  SECURITY_PHYSICALLY = "It's making me feel unsafe emotionally physically.",
-  SECURITY_FINANCIALLY = "It's making me feel unsafe financially.",
+  EMOTIONAL_SECURITY = "It's making me feel unsafe emotionally.",
+  PHYSICAL_SECURITY = "It's making me feel unsafe emotionally physically.",
+  FINANCIAL_SECURITY = "It's making me feel unsafe financially.",
   SELF_ESTEEM = "It's making me feel bad about myself.",
   EGO = "It's threatening my ego, my sense of self.",
-  PERSONAL_RELATIONSHIPS = "It's damaging my relationships, with friends, family, or coworkers.",
+  PROFESSIONAL_RELATIONSHIPS = "It's damaging my relationships, with my boss, coworkers, or customers.",
+  PERSONAL_RELATIONSHIPS = "It's damaging my relationships, with friends, family.",
   SEXUAL_RELATIONSHIP = "It's threatening my romantic or sexual relationships.",
   AMBITION = "It's threatening my getting what I want, big like a career, or small like the last chocolate doughnut"
 }
@@ -58,19 +60,19 @@ enum myPartsACA {
   FIX = "I tried to fix the situation. I took on more responsibility than was truly mine, or I tried to rescue someone else who didn't ask for my help.",
   SELF_DEFEATING = 'I did ask for help, but from the wrong person: someone who was sure to let me down or betray me.',
   SELF_RELIANCE = "I didn't reach out to friends or my higher power for support.",
-  CRITICAL_SELF = 'I was overly critical of myself.',
-  CRITICAL_OTHERS = 'I was overly critical of someone else.',
-  CONTROL_SELF = 'I was trying to control the person or situation.',
-  CONTROL_OTHERS = 'I was trying to control my feelings or reactions.',
+  SELF_CRITICAL = 'I was overly critical of myself.',
+  CRITICAL_OF_OTHERS = 'I was overly critical of someone else.',
+  CONTROLLING_OTHERS = 'I was trying to control the person or situation.',
+  CONTROLLING_SELF = 'I was trying to control my feelings or reactions.',
   SOUGHT_APPROVAL = 'I over explained. I sought approval or validation from someone else, instead of approving of or believing myself.',
   PERFECTIONISM = 'I forgot that mistakes are just part of living and learning.',
   ALL_OR_NOTHING = 'I saw the situation from a rigid good/bad, pass/fail, right/wrong perspective, with no room for nuance.',
   GUILT = 'I let guilt feelings stop me from taking the action necessary to take care and be responsible for myslef.'
 }
-enum sucessesACA {
+enum successesACA {
   CONNECTED = 'I reached out to a trusted friend or mentor for support.',
-  MEETING = 'I went to a meeting and shared about it.',
-  WRITING = 'I took some time to journal about it.',
+  WENT_TO_MEETING = 'I went to a meeting and shared about it.',
+  WROTE = 'I took some time to journal about it.',
   PAUSED = 'I realized I was too upset to respond without sabotaging myself and/or being overly cruel to the other person, so I waiting until I could think more rationally.',
   PRAYED = 'I prayed to my Higher Power for help in dealing with the situation.',
   SET_BOUNDARY = 'I spoke up and set limits or walked away from the bad situation.',
@@ -79,6 +81,25 @@ enum sucessesACA {
   SELF_CARE = 'I took care of myself instead of trying to make someone else do it.'
 }
 
-export const affects = { AA: affectsAA, ACA: affectsACA }
-export const myParts = { AA: myPartsAA, ACA: myPartsACA }
-export const sucesses = { AA: sucessesAA, ACA: sucessesACA }
+export const affects = { Angry: affectsAA, Hurt: affectsACA }
+export const myParts = { Angry: myPartsAA, Hurt: myPartsACA }
+export const successes = { Angry: successesAA, Hurt: successesACA }
+
+export const strings = {
+  Angry: {
+    title: 'Anger is a weird thing.',
+    intro: [
+      'We feel that someone or something has wronged us. We feel they should be punished or stopped.',
+      'And yet, most of the time, we do nothing but punish ourselves with our angry thoughts.',
+      'It is we who suffer, not the wrong doer, from our anger.'
+    ]
+  },
+  Hurt: {
+    title: 'Feeling down?',
+    intro: [
+      'People can be hurtful wheather they mean to be or not.',
+      "You try and try, but they just won't listen to us, or treat us well.",
+      "Or perhaps it's themselve they abuse. Either way, you suffer."
+    ]
+  }
+}

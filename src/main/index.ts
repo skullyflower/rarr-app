@@ -1,7 +1,27 @@
-import { app, shell, BrowserWindow, ipcMain } from 'electron'
+import { app, shell, BrowserWindow, ipcMain, nativeTheme } from 'electron'
 import { join } from 'path'
 import { electronApp, optimizer, is } from '@electron-toolkit/utils'
-import icon from '../../resources/rarrIcon.png?asset'
+import icon from '../../resources/icon.png?asset'
+import fs from 'node:fs'
+
+function writeToLog(message: string): void {
+  const now = new Date()
+  const stringToWrite = `${now.toLocaleDateString()} ${now.toLocaleTimeString()}\n${message}\n\n`
+  const logFile = join(app.getPath('desktop'), 'logs.txt')
+  if (fs.existsSync(logFile)) {
+    fs.appendFileSync(logFile, stringToWrite)
+  } else {
+    fs.writeFileSync(logFile, stringToWrite, { encoding: 'utf8', flag: 'w' })
+  }
+}
+function readFromLog(): string {
+  const logFile = join(app.getPath('desktop'), 'logs.txt')
+  if (fs.existsSync(logFile)) {
+    return fs.readFileSync(logFile, { encoding: 'utf8' })
+  } else {
+    return ''
+  }
+}
 
 function createWindow(): void {
   // Create the browser window.
@@ -49,8 +69,27 @@ app.whenReady().then(() => {
     optimizer.watchWindowShortcuts(window)
   })
 
-  // IPC test
-  ipcMain.on('ping', () => console.log('pong'))
+  ipcMain.handle('write-log', (_event, message) => {
+    writeToLog(message)
+    return message
+  })
+
+  ipcMain.handle('read-log', () => {
+    return readFromLog()
+  })
+
+  ipcMain.handle('dark-mode:toggle', () => {
+    if (nativeTheme.shouldUseDarkColors) {
+      nativeTheme.themeSource = 'light'
+    } else {
+      nativeTheme.themeSource = 'dark'
+    }
+    return nativeTheme.shouldUseDarkColors
+  })
+
+  ipcMain.handle('dark-mode:system', () => {
+    nativeTheme.themeSource = 'system'
+  })
 
   createWindow()
 

@@ -1,31 +1,11 @@
 import CopyButton from '@renderer/components/form/copy-button'
-import { DeleteIcon } from '@chakra-ui/icons'
-import {
-  Box,
-  Button,
-  HStack,
-  Input,
-  InputGroup,
-  InputRightElement,
-  Stack,
-  Text
-} from '@chakra-ui/react'
-import { useCallback, useState } from 'react'
-import useKeyCapture from '@renderer/components/hooks/useKeyCapture'
+import { HStack, Stack, Text } from '@chakra-ui/react'
+import { useState } from 'react'
+import ListerInput from '@renderer/components/form/ListerInput'
 
 const ToolsUsedToday = (): JSX.Element => {
   const [listOfTools, setListOfTools] = useState<string[]>([])
-  const [oneTool, setOneTool] = useState<string>()
   const tocopy = `Recovery Tools just for today:\n- ${listOfTools.join(', \n- ')}`
-
-  const addTool = useCallback(() => {
-    if (oneTool) {
-      setListOfTools([...listOfTools, oneTool])
-      setOneTool('')
-    }
-  }, [oneTool, listOfTools])
-
-  useKeyCapture('Enter', addTool)
 
   return (
     <Stack gap={4}>
@@ -35,43 +15,11 @@ const ToolsUsedToday = (): JSX.Element => {
         </Text>
         <CopyButton text={tocopy} disabled={listOfTools.length === 0} />
       </HStack>
-      <Box borderRadius={6} p={4}>
-        <Stack gap={2}>
-          {listOfTools.map((value, index) => (
-            <HStack
-              key={index}
-              padding={2}
-              border={'1px solid'}
-              borderColor="purple.700"
-              borderRadius={6}
-              justifyContent={'space-between'}
-              _hover={{ backgroundColor: 'pink.800', borderColor: 'purple.300' }}
-            >
-              <Text key={index}>{value}</Text>
-              <Button
-                size="xs"
-                onClick={() => setListOfTools(listOfTools.filter((_, i) => i !== index))}
-              >
-                <DeleteIcon />
-              </Button>
-            </HStack>
-          ))}
-        </Stack>
-      </Box>
-      <InputGroup size="md">
-        <Input
-          pr="4.5rem"
-          type="text"
-          placeholder="Describe a tool you used today"
-          onChange={(e) => setOneTool(e.target.value)}
-          value={oneTool}
-        />
-        <InputRightElement width="4.5rem">
-          <Button h="1.75rem" size="sm" onClick={addTool}>
-            Add
-          </Button>
-        </InputRightElement>
-      </InputGroup>
+      <ListerInput
+        list={listOfTools}
+        setList={setListOfTools}
+        placeholder="Describe a tool you used today..."
+      />
     </Stack>
   )
 }

@@ -164,21 +164,23 @@ const theme = extendTheme(
       },
       InputGroup: {
         defaultProps: {
-          colorScheme: 'purple', // default is gray
-          _focus: {
-            outline: 'none',
-            boxShadow: 'none',
-            borderColor: 'purple.300'
-          },
-          _focusVisible: {
-            outline: 'none',
-            boxShadow: 'none',
-            borderColor: 'purple.300'
-          }
+          colorScheme: 'purple' // default is gray
         },
         baseStyle: {
           field: {
             color: 'purple.200'
+          },
+          _hover: {
+            boxShadow: 'none',
+            borderColor: 'purple.200'
+          },
+          _focus: {
+            boxShadow: 'none',
+            borderColor: 'purple.200'
+          },
+          _focusWithin: {
+            boxShadow: 'none',
+            borderColor: 'purple.200'
           }
         }
       },
@@ -203,6 +205,26 @@ const theme = extendTheme(
           },
           defaultProps: {
             colorScheme: 'purple',
+            _focus: {
+              outline: 'none',
+              borderColor: 'purple.200',
+              backgroundColor: 'pink.800'
+            },
+            _forcusVisible: {
+              backgroundColor: 'pink.800',
+              borderColor: 'purple.200',
+              outline: 'none',
+              boxShadow: 'none'
+            }
+          }
+        }
+      },
+      Select: {
+        defaultProps: {
+          colorScheme: 'purple'
+        },
+        baseStyle: {
+          field: {
             _focus: {
               outline: 'none',
               borderColor: 'purple.200',

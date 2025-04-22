@@ -27,7 +27,7 @@ const ChoiceSection = (): JSX.Element => {
   return (
     <Stack gap={4}>
       <HStack justifyContent={'space-between'}>
-        <Text>Where are you on the scale today, control wise?</Text>
+        <Text>Where are you on the discernment scale, today?</Text>
         <CopyButton text={toCopy} disabled={!freedomText} />
       </HStack>
       <Text fontWeight={'bold'} textAlign={'center'}>

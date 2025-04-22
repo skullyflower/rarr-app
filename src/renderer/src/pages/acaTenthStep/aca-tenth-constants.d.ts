@@ -14,7 +14,7 @@ export const traitList = [
   { Q: 'Did I keep secrets and feel unique?', A: 'I kept secrets and felt unique.' },
   { Q: 'Did I talk about my feelings? ', A: 'I talked about my feelings.' },
   { Q: 'Was I honest in my relationships?', A: 'I was honest in my relationships.' },
-  { Q: 'did I seek approval over honesty?', A: 'I sought approval over honesty.' },
+  { Q: 'Did I seek approval over honesty?', A: 'I sought approval over honesty.' },
   {
     Q: 'Did I act "perfect" and obsess over making mistakes?',
     A: 'I acted "perfect" or obsessed over making mistakes.'
@@ -24,8 +24,8 @@ export const traitList = [
     A: 'I overreacted or isolated from others when I perceived that I was criticized.'
   },
   {
-    Q: 'Am I attending ACA meetings to nurture myself and to give back what was given to me?',
-    A: 'I attended ACA meetings to nurture myself and to give back what was given to me.'
+    Q: 'Did I attend a meetings to nurture myself and to give back what was given to me?',
+    A: 'I attended a meetings to nurture myself and to give back what was given to me.'
   },
   {
     Q: 'Have I acted "helpful" recently to manipulate others?',
@@ -110,7 +110,6 @@ export const feelings = [
 export const assets = [
   'A Friend',
   'A Listener',
-  'An ACA Member',
   'Accepting',
   'Compassionate',
   'Courteous',

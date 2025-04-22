@@ -17,9 +17,9 @@
   color: rgba(255,215,255,.5)
 }
 .ql-snow .ql-stroke{
-  stroke: #868;
+  stroke: #868 !important;
 }
-input:focus-visible{
+input:focus-visible, select:focus-visible, textarea:focus-visible {
   box-shadow: none !important;
-  border-color: initial;
+  border-color: rgb(165, 151, 196) !important;
 }

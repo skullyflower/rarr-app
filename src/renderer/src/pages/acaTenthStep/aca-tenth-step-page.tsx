@@ -39,7 +39,7 @@ function AcaTenthStep(): JSX.Element {
               <AccordionSection title="Exercise 4: Feelings">
                 <FeelingsStatement />
               </AccordionSection>
-              <AccordionSection title="Exercise 5: Praise">
+              <AccordionSection title="Exercise 5: Affirmation">
                 <AssetsSection />
               </AccordionSection>
               <AccordionSection title="Exercise 6: Gratitude">

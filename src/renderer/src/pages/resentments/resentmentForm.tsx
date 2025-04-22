@@ -14,7 +14,12 @@ import StyledTextInput from '@renderer/components/form/styledTextInput/StyledTex
 import CheckboxGroupBox from '@renderer/components/form/CheckBoxGroupBox'
 import { useState } from 'react'
 import NeverLetGo from '@renderer/components/form/never-let-go'
-import { affects, myParts, sucesses } from '@renderer/pages/resentments/resentment-constants.d'
+import {
+  affects,
+  myParts,
+  successes,
+  strings
+} from '@renderer/pages/resentments/resentment-constants.d'
 import useProgramDropDown from '@renderer/components/form/useProgramDropDown'
 import ResentBeGone from './resentment-be-gone'
 import PageCard from '@renderer/components/layout/page-card'
@@ -68,25 +73,19 @@ function ResentmentsForm(): JSX.Element {
     <Stack gap={4}>
       <HStack align="center" justify={'center'} gap={4}>
         <Heading as="h2" size="lg">
-          Anger is a wierd thing.
+          {strings[selectedProgram as keyof typeof strings].title}
         </Heading>
         <ProgramDropDown />
       </HStack>
       <PageCard>
-        <Text textAlign={'center'} fontWeight={'bold'} fontSize="lg" marginBlock={4}>
-          {`So, why don't you write about it?`}
-        </Text>
-
-        <Text>
-          We feel that someone or something has wronged us. We feel they should be punished or
-          stopped.
-        </Text>
-        <Text>
-          And yet, most of the time, we do nothing but punish ourselves with our angry thoughts.
-        </Text>
-        <Text mb={4}>
-          It is <i>we</i> who suffer, not the wrong doer, from our anger.
-        </Text>
+        <Box padding={4}>
+          {strings[selectedProgram as keyof typeof strings].intro.map((line, index) => (
+            <Text key={index}>{line}</Text>
+          ))}
+          <Text textAlign={'center'} fontWeight={'bold'} fontSize="lg" marginBlock={4}>
+            {`So, why don't you write about it?`}
+          </Text>
+        </Box>
         <Accordion allowToggle={true}>
           <Stack gap={2}>
             <AccordionSection title="Who or what is bothering you?">
@@ -131,7 +130,7 @@ function ResentmentsForm(): JSX.Element {
               <FormControl isRequired>
                 <CheckboxGroupBox
                   valuesList={didWell}
-                  options={sucesses[selectedProgram as keyof typeof sucesses]}
+                  options={successes[selectedProgram as keyof typeof successes]}
                   setter={setDidWell}
                 />
               </FormControl>

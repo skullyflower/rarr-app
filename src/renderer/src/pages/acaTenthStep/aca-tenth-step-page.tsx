@@ -12,7 +12,7 @@ function AcaTenthStep(): JSX.Element {
   return (
     <Stack gap={4} width="100%">
       <Heading textAlign="center" as="h1" size="xl">
-        ACA Step 10
+        ACA Style Step 10
       </Heading>
       <PageCard>
         <Stack gap={4}>

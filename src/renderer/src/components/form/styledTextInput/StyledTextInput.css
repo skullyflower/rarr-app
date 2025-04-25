@@ -936,3 +936,6 @@ box-sizing: border-box;
 /* .ql-container.ql-snow {
   border: 1px solid #ccc;
 } */
+.mdxeditor [contenteditable=true] {
+  color:whitesmoke;
+}

@@ -140,6 +140,7 @@ function ResentmentsForm(): JSX.Element {
                 <StyledTextInput value={learned} setter={setLearned} />
               </FormControl>
             </AccordionSection>
+            <Text textAlign={'center'}>Are you ready to let it go?</Text>
             <Stack width="100%" direction="row" gap={4} justifyContent="center">
               <Button isDisabled={incomplete} colorScheme="purple" name="letGo" onClick={letItGo}>
                 Be Free!

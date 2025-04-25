@@ -1,4 +1,4 @@
-import { copyContents, getContents } from '@renderer/pages/resentments/copyContents.mjs'
+import { getContents } from '@renderer/pages/resentments/copyContents.mjs'
 import ReadyToLetGo from '@renderer/components/form/ready-to-let-go'
 import SemiSafeContent from '@renderer/components/SemiSafeContent'
 import {
@@ -14,7 +14,8 @@ import {
   Text,
   UnorderedList
 } from '@chakra-ui/react'
-import { useState } from 'react'
+import SaveButton from '@renderer/components/form/save-button'
+import CopyButton from '@renderer/components/form/copy-button'
 
 interface ResentBeGoneProps {
   Iresent: string
@@ -38,8 +39,6 @@ function ResentBeGone({
   isLettingGo,
   onCloseLetGo
 }: ResentBeGoneProps): JSX.Element {
-  const [copied, setCopied] = useState(false)
-  const [saved, setSaved] = useState(false)
   const stringToWrite = getContents()
   return (
     <Card bg="whiteAlpha.300" border={['none', '1px solid']}>
@@ -56,18 +55,8 @@ function ResentBeGone({
             <HStack justifyContent="space-between">
               <Text>Here is what you wrote.</Text>
               <HStack gap={4}>
-                <Button
-                  onClick={() =>
-                    window.api.writeLog(stringToWrite).then((result) => {
-                      setSaved(result)
-                    })
-                  }
-                >
-                  {saved ? 'Saved' : 'Save'}
-                </Button>
-                <Button onClick={() => setCopied(copyContents())}>
-                  {copied ? 'copied' : 'copy'}
-                </Button>
+                <CopyButton text={stringToWrite} />
+                <SaveButton text={stringToWrite} />
               </HStack>
             </HStack>
           </CardHeader>

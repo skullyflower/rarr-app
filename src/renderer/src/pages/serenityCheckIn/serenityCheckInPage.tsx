@@ -11,9 +11,9 @@ function SerenityCheckIn(): JSX.Element {
   const [canControl, setCanControl] = useState<string[]>([])
 
   const tocopy = `Today I am trying to control that I cannot control:
-  \t- ${canNotControl.join(', \n\t- ')}
+  \t• ${canNotControl.join(', \n\t• ')}
   I could and probably should: 
-  \t- ${canControl.join(', \n\t- ')}`
+  \t• ${canControl.join(', \n\t• ')}`
 
   return (
     <Stack gap={4}>

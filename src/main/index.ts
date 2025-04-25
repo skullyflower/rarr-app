@@ -4,10 +4,14 @@ import { electronApp, optimizer, is } from '@electron-toolkit/utils'
 import icon from '../../resources/icon.png?asset'
 import fs from 'node:fs'
 
+const logDir = join(app.getPath('home'), 'Library', 'RARRLog')
+
 function writeToLog(message: string): boolean {
   const now = new Date()
   const stringToWrite = `${now.toLocaleDateString()} ${now.toLocaleTimeString()}\n${message}\n\n`
-  const logDir = join(app.getPath('appData'), 'Ragers and Rampagers Recovering')
+  if (!fs.existsSync(logDir)) {
+    fs.mkdirSync(logDir)
+  }
   const logFile = join(logDir, `${now.getFullYear()}${now.getMonth() + 1}${now.getDate()}.txt`)
   try {
     if (fs.existsSync(logFile)) {
@@ -21,8 +25,24 @@ function writeToLog(message: string): boolean {
     return false
   }
 }
+
+function getLogList(): string[] {
+  if (fs.existsSync(logDir)) {
+    const files = fs.readdirSync(logDir)
+    return files
+      .filter((file) => file.endsWith('.txt'))
+      .map((file) => file.replace('.txt', ''))
+      .sort((a, b) => {
+        const dateA = new Date(a)
+        const dateB = new Date(b)
+        return dateB.getTime() - dateA.getTime()
+      })
+  }
+  return []
+}
+
 function readFromLog(fileName: string): string {
-  const logFile = join(app.getPath('appData'), 'Ragers and Rampagers Recovering', fileName)
+  const logFile = join(logDir, fileName)
   if (fs.existsSync(logFile)) {
     return fs.readFileSync(logFile, { encoding: 'utf8' })
   } else {
@@ -82,6 +102,10 @@ app.whenReady().then(() => {
 
   ipcMain.handle('read-log', (_event, fileName): string => {
     return readFromLog(fileName)
+  })
+
+  ipcMain.handle('get-log-list', (): string[] => {
+    return getLogList()
   })
 
   ipcMain.handle('dark-mode:toggle', () => {

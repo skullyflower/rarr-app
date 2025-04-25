@@ -1,4 +1,4 @@
-import { Button, Tooltip } from '@chakra-ui/react'
+import { IconButton, Tooltip } from '@chakra-ui/react'
 import { AddIcon, CheckIcon } from '@chakra-ui/icons'
 import { useState } from 'react'
 
@@ -10,13 +10,13 @@ const SaveButton = ({ text, disabled }: CopyButtonProps): JSX.Element => {
   const [saved, setSaved] = useState(false)
   return (
     <Tooltip hasArrow label="Save to Today's Log">
-      <Button
+      <IconButton
+        aria-label="Save to Today's Log"
+        icon={saved ? <CheckIcon /> : <AddIcon />}
         disabled={disabled}
         size={'xs'}
         onClick={() => window.api.writeLog(text).then((res) => setSaved(res))}
-      >
-        {saved ? <CheckIcon /> : <AddIcon />}
-      </Button>
+      />
     </Tooltip>
   )
 }

@@ -6,6 +6,9 @@ const api = {
   writeLog: (message: string): Promise<boolean> => {
     return ipcRenderer.invoke('write-log', message)
   },
+  getLogList: (): Promise<string[]> => {
+    return ipcRenderer.invoke('get-log-list')
+  },
   readLog: (fileName: string): Promise<string> => {
     return ipcRenderer.invoke('read-log', fileName)
   },

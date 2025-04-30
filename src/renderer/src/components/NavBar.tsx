@@ -66,6 +66,7 @@ const NavBar = ({ setActivePath }: { setActivePath: (value: string) => void }): 
       <HStack wrap="wrap" gap={2} justifyContent={'center'}>
         <MenuDDropDown setActivePath={setActivePath} />
         <NavItem onClick={() => setActivePath('steps')} text="The Steps" />
+        <NavItem onClick={() => setActivePath('log')} text="My Log" />
       </HStack>
     </Box>
   )

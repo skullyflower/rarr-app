@@ -3,14 +3,17 @@ import { electronAPI } from '@electron-toolkit/preload'
 
 // Custom APIs for renderer
 const api = {
-  writeLog: (message: string): Promise<boolean> => {
-    return ipcRenderer.invoke('write-log', message)
+  writeLog: (message: string, fileName?: string): Promise<boolean> => {
+    return ipcRenderer.invoke('write-log', message, fileName)
   },
   getLogList: (): Promise<string[]> => {
     return ipcRenderer.invoke('get-log-list')
   },
   readLog: (fileName: string): Promise<string> => {
     return ipcRenderer.invoke('read-log', fileName)
+  },
+  deleteLog: (fileName: string): Promise<boolean> => {
+    return ipcRenderer.invoke('delete-log', fileName)
   },
   toggleDarkMode: (): Promise<boolean> => {
     return ipcRenderer.invoke('dark-mode:toggle')

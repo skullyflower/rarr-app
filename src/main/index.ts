@@ -6,17 +6,30 @@ import fs from 'node:fs'
 
 const logDir = join(app.getPath('home'), 'Library', 'RARRLog')
 
-function writeToLog(message: string): boolean {
-  const now = new Date()
-  const stringToWrite = `${now.toLocaleDateString()} ${now.toLocaleTimeString()}\n${message}\n\n`
+function writeToLog(message: string, fileName?: string): boolean {
+  console.log('writeToLog', message, fileName)
+  const date = new Date()
+
+  const fileNameString =
+    fileName !== undefined
+      ? fileName
+      : `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`
+
+  const stringToWrite = `${date.toLocaleDateString()} ${date.toLocaleTimeString()}\n__________________________________\n${message}\n\n`
+
   if (!fs.existsSync(logDir)) {
     fs.mkdirSync(logDir)
   }
-  const logFile = join(logDir, `${now.getFullYear()}${now.getMonth() + 1}${now.getDate()}.txt`)
+  const logFile = join(logDir, `${fileNameString}.txt`)
   try {
-    if (fs.existsSync(logFile)) {
+    if (fs.existsSync(logFile) && fileName === undefined) {
+      console.log(`Appending to file ${fileNameString}`)
       fs.appendFileSync(logFile, stringToWrite)
     } else {
+      if (fileName) {
+        deletLogFile(fileName)
+        console.log(`File ${fileName} deleted`)
+      }
       fs.writeFileSync(logFile, stringToWrite, { encoding: 'utf8', flag: 'w' })
     }
     return true
@@ -42,11 +55,26 @@ function getLogList(): string[] {
 }
 
 function readFromLog(fileName: string): string {
-  const logFile = join(logDir, fileName)
+  const logFile = join(logDir, `${fileName}.txt`)
   if (fs.existsSync(logFile)) {
     return fs.readFileSync(logFile, { encoding: 'utf8' })
   } else {
     return ''
+  }
+}
+
+function deletLogFile(fileName: string): boolean {
+  const logFile = join(logDir, `${fileName}.txt`)
+  if (fs.existsSync(logFile)) {
+    try {
+      fs.unlinkSync(logFile)
+      return true
+    } catch (error) {
+      console.error(error)
+      return false
+    }
+  } else {
+    return false
   }
 }
 
@@ -96,8 +124,8 @@ app.whenReady().then(() => {
     optimizer.watchWindowShortcuts(window)
   })
 
-  ipcMain.handle('write-log', (_event, message): boolean => {
-    return writeToLog(message)
+  ipcMain.handle('write-log', (_event, message, fileName): boolean => {
+    return writeToLog(message, fileName)
   })
 
   ipcMain.handle('read-log', (_event, fileName): string => {
@@ -106,6 +134,10 @@ app.whenReady().then(() => {
 
   ipcMain.handle('get-log-list', (): string[] => {
     return getLogList()
+  })
+
+  ipcMain.handle('delete-log', (_event, fileName): boolean => {
+    return deletLogFile(fileName)
   })
 
   ipcMain.handle('dark-mode:toggle', () => {

@@ -1,6 +1,5 @@
 import { getContents } from '@renderer/pages/resentments/copyContents.mjs'
 import ReadyToLetGo from '@renderer/components/form/ready-to-let-go'
-import SemiSafeContent from '@renderer/components/SemiSafeContent'
 import {
   Box,
   Button,
@@ -62,35 +61,35 @@ function ResentBeGone({
           </CardHeader>
           <CardBody border="1px solid">
             <Stack gap={4} id="ToCopy">
-              <Text fontWeight={700}>I resent:</Text>
-              <Box paddingInline={4}>
-                <Text> {Iresent}</Text>
+              <Text fontWeight={700}>I resent: </Text>
+              <Box paddingInlineStart={4}>
+                <Text>{Iresent}</Text>
               </Box>
               <Text fontWeight={700}>Because:</Text>
-              <Box paddingInline={4}>
-                <SemiSafeContent rawContent={because} />
+              <Box paddingInlineStart={4}>
+                <Text style={{ whiteSpace: 'pre-wrap' }}>{because}</Text>
               </Box>
               <Text fontWeight={700}>It affects my:</Text>
-              <UnorderedList>
+              <UnorderedList paddingInlineStart={4}>
                 {affectsMy.map((effect, indx) => (
                   <ListItem key={`affects${indx}`}>{effect.replace('_', ' ')}</ListItem>
                 ))}
               </UnorderedList>
               <Text fontWeight={700}>I contributed to the problem in these ways:</Text>
-              <UnorderedList>
+              <UnorderedList paddingInlineStart={4}>
                 {myPart.map((part, indx) => (
                   <ListItem key={`part${indx}`}>{part.replace('_', ' ')}</ListItem>
                 ))}
               </UnorderedList>
               <Text fontWeight={700}>I did these things well:</Text>
-              <UnorderedList>
+              <UnorderedList paddingInlineStart={4}>
                 {didWell.map((part, indx) => (
                   <ListItem key={`part${indx}`}>{part.replace('_', ' ')}</ListItem>
                 ))}
               </UnorderedList>
               <Text fontWeight={700}>And after looking at it this way, I now see ...</Text>
-              <Box paddingInline={4}>
-                <SemiSafeContent rawContent={learned} />
+              <Box paddingInlineStart={4}>
+                <Text>{learned}</Text>
               </Box>
             </Stack>
           </CardBody>

@@ -8,7 +8,7 @@ import ListerInput from '@renderer/components/form/ListerInput'
 function GratitudeList(): JSX.Element {
   const [listOfGrats, setListOfGrats] = useState<string[]>([])
   const [oneGrat, setOneGrat] = useState<string>()
-  const tocopy = `Today I am grateful for:\n- ${listOfGrats.join(', \n- ')}`
+  const tocopy = `Today I am grateful for:\n\t• ${listOfGrats.join(', \n\t• ')}`
 
   const addGrat = useCallback(() => {
     if (oneGrat) {

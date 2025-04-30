@@ -6,7 +6,7 @@ import SaveButton from '@renderer/components/form/save-button'
 
 const ToolsUsedToday = (): JSX.Element => {
   const [listOfTools, setListOfTools] = useState<string[]>([])
-  const tocopy = `Recovery Tools just for today:\n- ${listOfTools.join(', \n- ')}`
+  const tocopy = `Recovery Tools just for today:\n\t• ${listOfTools.join(', \n\t• ')}`
 
   return (
     <Stack gap={4}>

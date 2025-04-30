@@ -15,10 +15,10 @@ const TraitsSection = (): JSX.Element => {
       const answer = trait ? trait.A : ''
       TraitAs.push(answer)
     })
-    return TraitAs.join('\n- ')
+    return TraitAs.join('\n\t• ')
   }
 
-  const tocopy = `Traits I had today:\n - ${setAfromQ(traitQs)}`
+  const tocopy = `Traits I had today:\n\t• ${setAfromQ(traitQs)}`
 
   return (
     <Stack gap={4}>

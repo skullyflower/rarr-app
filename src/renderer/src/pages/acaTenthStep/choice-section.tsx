@@ -17,7 +17,7 @@ import SaveButton from '@renderer/components/form/save-button'
 const ChoiceSection = (): JSX.Element => {
   const [freedomValue, setFreedomValue] = useState<number>(50)
   const [freedomText, setFreedomText] = useState<string>('')
-  const toCopy = `Choice:\nToday I was capable of: ${freedomText}`
+  const toCopy = `Choice Level:\nToday I was capable of: ${freedomText}`
 
   const handleSelected = (value: number): void => {
     setFreedomValue(value)
@@ -29,7 +29,6 @@ const ChoiceSection = (): JSX.Element => {
     <Stack gap={4}>
       <HStack justifyContent={'space-between'}>
         <Text>Where are you on the discernment scale, today?</Text>
-        <CopyButton text={toCopy} disabled={!freedomText} />
         <HStack gap={2}>
           <CopyButton text={toCopy} disabled={!freedomText} />
           <SaveButton text={toCopy} disabled={!freedomText} />

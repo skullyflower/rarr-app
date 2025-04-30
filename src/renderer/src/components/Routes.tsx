@@ -5,6 +5,7 @@ import TheSteps from '@renderer/pages/steps/the-steps'
 import AcaTenthStep from '@renderer/pages/acaTenthStep/aca-tenth-step-page'
 import SerenityCheckIn from '@renderer/pages/serenityCheckIn/serenityCheckInPage'
 import { useState } from 'react'
+import InventoryJoural from '@renderer/pages/journal'
 
 export default function SiteRoutes(): JSX.Element {
   const [activePath, setActivePath] = useState<string>('home')
@@ -17,6 +18,7 @@ export default function SiteRoutes(): JSX.Element {
         {activePath === 'aca10' && <AcaTenthStep />}
         {activePath === 'steps' && <TheSteps />}
         {activePath === 'serenity' && <SerenityCheckIn />}
+        {activePath === 'log' && <InventoryJoural />}
       </>
     </Layout>
   )

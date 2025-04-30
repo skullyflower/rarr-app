@@ -7,7 +7,7 @@ import SaveButton from '@renderer/components/form/save-button'
 
 const AssetsSection = (): JSX.Element => {
   const [praise, setSetPraise] = useState<string[]>([])
-  const toCopy = `Praise Today: \n I am ${praise.join(',\n I am ')}`
+  const toCopy = `Praise Today: \n\t• I am ${praise.join(',\n\t• I am ')}`
 
   return (
     <Stack gap={4}>

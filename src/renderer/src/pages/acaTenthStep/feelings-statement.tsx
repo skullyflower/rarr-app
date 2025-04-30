@@ -8,7 +8,7 @@ const FeelingsStatement = (): JSX.Element => {
   const [when, setWhen] = useState<string>()
   const [feeling, setFeeling] = useState<string>('')
   const [because, setBecause] = useState<string>('')
-  const toCopy = `Today's Feeling Statement:\nI feel ${feeling} when ${when} because ${because}`
+  const toCopy = `Today's Feeling Statement:\n\t I feel ${feeling} when ${when} because ${because}`
   return (
     <Stack gap={4}>
       <HStack justifyContent={'space-between'}>

@@ -1,6 +1,6 @@
 import { IconButton, Tooltip } from '@chakra-ui/react'
 import { AddIcon, CheckIcon } from '@chakra-ui/icons'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 interface SaveButtonProps {
   text: string
@@ -9,6 +9,11 @@ interface SaveButtonProps {
 }
 const SaveButton = ({ text, fileName, disabled }: SaveButtonProps): JSX.Element => {
   const [saved, setSaved] = useState(false)
+
+  useEffect(() => {
+    setSaved(false)
+  }, [text])
+
   return (
     <Tooltip hasArrow label={`Save to ${fileName ? fileName : "Today's Log"}`}>
       <IconButton

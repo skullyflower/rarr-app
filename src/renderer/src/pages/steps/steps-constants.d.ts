@@ -57,7 +57,7 @@ export const stepsTonyA = [
 
 export const steps: Record<string, string[]> = {
   RARR: stepsRarr,
-  AA: stepsAA,
-  ACA: stepsACA,
+  Alcoholism: stepsAA,
+  ParaAlcoholism: stepsACA,
   TonyACA: stepsTonyA
 }

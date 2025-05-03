@@ -5,6 +5,7 @@ import {
   EditableTextarea,
   HStack,
   IconButton,
+  Tooltip,
   useEditableControls
 } from '@chakra-ui/react'
 import { useState } from 'react'
@@ -21,14 +22,18 @@ function SemiSafeContent({ rawContent, fileName }: SemiSafeContentProps): JSX.El
     const { isEditing, getCancelButtonProps, getEditButtonProps } = useEditableControls()
 
     return isEditing ? (
-      <IconButton
-        aria-label="Cancel"
-        size={'xs'}
-        icon={<CloseIcon />}
-        {...getCancelButtonProps()}
-      />
+      <Tooltip hasArrow label={`Cancel`}>
+        <IconButton
+          aria-label="Cancel"
+          size={'xs'}
+          icon={<CloseIcon />}
+          {...getCancelButtonProps()}
+        />
+      </Tooltip>
     ) : (
-      <IconButton aria-label="Edit" size={'xs'} icon={<EditIcon />} {...getEditButtonProps()} />
+      <Tooltip hasArrow label={`Edit`}>
+        <IconButton aria-label="Edit" size={'xs'} icon={<EditIcon />} {...getEditButtonProps()} />
+      </Tooltip>
     )
   }
 

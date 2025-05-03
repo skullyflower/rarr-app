@@ -44,7 +44,12 @@ const InventoryJoural = (): JSX.Element => {
           />
         </HStack>
         <Stack>
-          <Card bg="whiteAlpha.300" border={['none', '1px solid']}>
+          <Card
+            bg="whiteAlpha.300"
+            border={['none', '1px solid']}
+            maxHeight={'75vh'}
+            overflowY={'auto'}
+          >
             <CardBody>
               <Stack gap={4}>
                 <SemiSafeContent

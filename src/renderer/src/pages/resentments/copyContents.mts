@@ -11,9 +11,9 @@ export function getContents(): string {
           if (n.childNodes.length) {
             n.childNodes.forEach(
               (n2) =>
-                (stringtocopy = `${stringtocopy} ${n2.nodeName === 'LI' ? '\t• ' : '\t'}  ${
+                (stringtocopy = `${stringtocopy} ${n2.parentNode?.nodeName === 'LI' ? '\t• ' : ''}  ${
                   n2.textContent
-                } ${n2.nodeName === 'LI' ? '\n' : '\n\n'}`)
+                } \n`)
             )
           } else {
             stringtocopy = `${stringtocopy} ${n.textContent} \n`

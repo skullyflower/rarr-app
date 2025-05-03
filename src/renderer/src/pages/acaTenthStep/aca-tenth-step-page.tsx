@@ -4,7 +4,6 @@ import ChoiceSection from './choice-section'
 import ToolsUsedToday from './tools-today'
 import FeelingsStatement from './feelings-statement'
 import AssetsSection from './assets-section'
-import GratitudeList from './gratitude-list'
 import AccordionSection from '@renderer/components/layout/accordion-section'
 import PageCard from '@renderer/components/layout/page-card'
 
@@ -41,9 +40,6 @@ function AcaTenthStep(): JSX.Element {
               </AccordionSection>
               <AccordionSection title="Exercise 5: Affirmation">
                 <AssetsSection />
-              </AccordionSection>
-              <AccordionSection title="Exercise 6: Gratitude">
-                <GratitudeList />
               </AccordionSection>
             </Stack>
           </Accordion>

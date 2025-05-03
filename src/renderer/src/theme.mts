@@ -189,7 +189,7 @@ const theme = extendTheme(
           field: {
             color: 'purple.200',
             _placeholder: {
-              color: 'pink.700'
+              color: 'pink.500'
             },
             _focus: {
               outline: 'none',
@@ -223,7 +223,7 @@ const theme = extendTheme(
         baseStyle: {
           color: 'purple.200',
           _placeholder: {
-            color: 'pink.700'
+            color: 'pink.500'
           },
           _focus: {
             outline: 'none',

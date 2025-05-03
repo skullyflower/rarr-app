@@ -97,7 +97,7 @@ export const strings = {
   Hurt: {
     title: 'Feeling down?',
     intro: [
-      'People can be hurtful wheather they mean to be or not.',
+      'People can be hurtful whether they mean to be or not.',
       "You try and try, but they just won't listen to us, or treat us well.",
       "Or perhaps it's themselve they abuse. Either way, you suffer."
     ]

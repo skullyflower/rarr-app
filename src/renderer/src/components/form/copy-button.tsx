@@ -1,7 +1,7 @@
 import { IconButton, Tooltip } from '@chakra-ui/react'
 import copyText from '../copyText.mjs'
 import { CopyIcon, CheckIcon } from '@chakra-ui/icons'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 interface CopyButtonProps {
   text: string
@@ -9,6 +9,10 @@ interface CopyButtonProps {
 }
 const CopyButton = ({ text, disabled }: CopyButtonProps): JSX.Element => {
   const [copied, setCopied] = useState(false)
+
+  useEffect(() => {
+    setCopied(false)
+  }, [text])
 
   return (
     <Tooltip hasArrow label="Copy and send to your fellow traveller">

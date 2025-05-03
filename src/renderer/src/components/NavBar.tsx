@@ -52,6 +52,7 @@ const MenuDDropDown = ({
               <NavItem onClick={() => setActivePath('resent')} text="Troubles" />
               <NavItem onClick={() => setActivePath('aca10')} text="Self Care" />
               <NavItem onClick={() => setActivePath('serenity')} text="Serenity" />
+              <NavItem onClick={() => setActivePath('fear')} text="Fears" />
             </Stack>
           </MenuList>
         </>

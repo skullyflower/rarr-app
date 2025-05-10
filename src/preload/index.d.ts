@@ -10,6 +10,10 @@ declare global {
       getLogList: () => Promise<string[]>
       toggleDarkMode: () => Promise<boolean>
       setSystemTheme: () => Promise<void>
+      lockLog: () => Promise<boolean>
+      unlockLog: (user: string, password: string) => Promise<boolean>
+      isLocked: () => Promise<boolean>
+      reset: () => Promise<boolean>
     }
   }
 }

@@ -1,7 +1,16 @@
 import { ChevronDownIcon } from '@chakra-ui/icons'
 import { Box, Button, HStack, Menu, MenuButton, MenuList, Stack } from '@chakra-ui/react'
+import { ReactNode } from 'react'
 
-const NavItem = ({ text, onClick }: { text: string; onClick: () => void }): JSX.Element => {
+const NavItem = ({
+  text,
+  onClick,
+  icon
+}: {
+  text: string
+  onClick: () => void
+  icon?: ReactNode
+}): JSX.Element => {
   return (
     <Box
       width={['100%', 'auto']}
@@ -16,7 +25,7 @@ const NavItem = ({ text, onClick }: { text: string; onClick: () => void }): JSX.
       onClick={onClick}
       _hover={{ cursor: 'pointer', backgroundColor: 'whiteAlpha.400' }}
     >
-      {text}
+      {text} {icon}
     </Box>
   )
 }

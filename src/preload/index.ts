@@ -20,6 +20,18 @@ const api = {
   },
   setSystemTheme: (): Promise<void> => {
     return ipcRenderer.invoke('dark-mode:system')
+  },
+  lockLog: (): Promise<boolean> => {
+    return ipcRenderer.invoke('lock')
+  },
+  unlockLog: (user: string, password: string): Promise<boolean> => {
+    return ipcRenderer.invoke('unlock', user, password)
+  },
+  isLocked: (): Promise<boolean> => {
+    return ipcRenderer.invoke('is-locked')
+  },
+  reset: (): Promise<boolean> => {
+    return ipcRenderer.invoke('reset-log')
   }
 }
 

@@ -3,8 +3,31 @@ import { join } from 'path'
 import { electronApp, optimizer, is } from '@electron-toolkit/utils'
 import icon from '../../resources/icon.png?asset'
 import fs from 'node:fs'
+import { createHash } from 'node:crypto'
 
 const logDir = join(app.getPath('home'), 'Library', 'RARRLog')
+const logFilePattern = new RegExp(/^\d{4}-\d{1,2}-\d{1,2}\.txt$/)
+
+const hashfile = join(logDir, 'lock.txt')
+const savedHash = fs.existsSync(hashfile) && fs.readFileSync(hashfile, 'utf8')
+
+function lock(): boolean {
+  return fs.existsSync(hashfile) // returns locked if there is a hash file
+}
+
+function unlock(user: string, password: string): boolean {
+  const hash = createHash('sha256')
+  hash.update(`${user}${password}`)
+  if (fs.existsSync(hashfile) && hash.digest('hex') === savedHash) {
+    return false // unlocked
+  } else if (!fs.existsSync(hashfile)) {
+    fs.writeFileSync(hashfile, hash.digest('hex'), 'utf8') //registered
+    return false // and unlocked
+  } else {
+    console.error('Invalid password')
+    return true // still locked
+  }
+}
 
 function writeToLog(message: string, fileName?: string): boolean {
   console.log('writeToLog', message, fileName)
@@ -15,7 +38,7 @@ function writeToLog(message: string, fileName?: string): boolean {
       ? fileName
       : `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`
 
-  const stringToWrite = `${date.toLocaleDateString()} ${date.toLocaleTimeString()}\n__________________________________\n${message}\n\n`
+  const stringToWrite = `${message}\n\n`
 
   if (!fs.existsSync(logDir)) {
     fs.mkdirSync(logDir)
@@ -23,13 +46,11 @@ function writeToLog(message: string, fileName?: string): boolean {
   const logFile = join(logDir, `${fileNameString}.txt`)
   try {
     if (fs.existsSync(logFile) && fileName === undefined) {
-      console.log(`Appending to file ${fileNameString}`)
-      fs.appendFileSync(logFile, stringToWrite)
+      fs.appendFileSync(logFile, `__________________________________\n${stringToWrite}`)
     } else {
-      if (fileName) {
-        deletLogFile(fileName)
-        console.log(`File ${fileName} deleted`)
-      }
+      // if (fileName) {
+      //   deletLogFile(fileName)
+      // }
       fs.writeFileSync(logFile, stringToWrite, { encoding: 'utf8', flag: 'w' })
     }
     return true
@@ -43,7 +64,7 @@ function getLogList(): string[] {
   if (fs.existsSync(logDir)) {
     const files = fs.readdirSync(logDir)
     return files
-      .filter((file) => file.endsWith('.txt'))
+      .filter((file) => logFilePattern.test(file))
       .map((file) => file.replace('.txt', ''))
       .sort((a, b) => {
         const dateA = new Date(a)
@@ -78,6 +99,25 @@ function deletLogFile(fileName: string): boolean {
   }
 }
 
+function resetLog(): boolean {
+  const files = fs.readdirSync(logDir)
+  try {
+    files.forEach((file) => {
+      if (file.endsWith('.txt')) {
+        try {
+          fs.unlinkSync(join(logDir, file))
+        } catch (error) {
+          console.error(error)
+        }
+      }
+    })
+    return false // === unlocked
+  } catch (error) {
+    console.error(error)
+    return true // still locked
+  }
+}
+//
 function createWindow(): void {
   // Create the browser window.
   const mainWindow = new BrowserWindow({
@@ -124,6 +164,18 @@ app.whenReady().then(() => {
     optimizer.watchWindowShortcuts(window)
   })
 
+  ipcMain.handle('is-locked', (): boolean => {
+    return fs.existsSync(hashfile)
+  })
+
+  ipcMain.handle('lock', (): boolean => {
+    return lock()
+  })
+
+  ipcMain.handle('unlock', (_event, user, password): boolean => {
+    return unlock(user, password)
+  })
+
   ipcMain.handle('write-log', (_event, message, fileName): boolean => {
     return writeToLog(message, fileName)
   })
@@ -138,6 +190,10 @@ app.whenReady().then(() => {
 
   ipcMain.handle('delete-log', (_event, fileName): boolean => {
     return deletLogFile(fileName)
+  })
+
+  ipcMain.handle('reset-log', (): boolean => {
+    return resetLog()
   })
 
   ipcMain.handle('dark-mode:toggle', () => {

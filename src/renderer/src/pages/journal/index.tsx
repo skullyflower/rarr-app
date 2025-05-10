@@ -12,8 +12,8 @@ const InventoryJoural = (): JSX.Element => {
   const [selectedEntry, setSelectedEntry] = useState<oneEntry | null>(null)
 
   useEffect(() => {
-    window.api.getLogList().then((logs) => {
-      setEntries(logs)
+    window.api.getLogList().then((res) => {
+      setEntries(res)
     })
   }, [])
 
@@ -30,20 +30,29 @@ const InventoryJoural = (): JSX.Element => {
     return title
   }
 
+  const LogHeader = (): JSX.Element => {
+    return (
+      <HStack width={'100%'} justifyContent="start">
+        <Text>Inventory Journal</Text>
+      </HStack>
+    )
+  }
+
   if (selectedEntry) {
     return (
       <Box>
-        <HStack justifyContent="space-between">
-          <Text>{formatTitle(selectedEntry.filename)}</Text>
-          <IconButton
-            variant={'ghost'}
-            size={'sm'}
-            aria-label="Go Back"
-            icon={<CloseIcon />}
-            onClick={() => setSelectedEntry(null)}
-          />
-        </HStack>
         <Stack>
+          <LogHeader />
+          <HStack justifyContent="space-between">
+            <Text>{formatTitle(selectedEntry.filename)}</Text>
+            <IconButton
+              variant={'ghost'}
+              size={'sm'}
+              aria-label="Go Back"
+              icon={<CloseIcon />}
+              onClick={() => setSelectedEntry(null)}
+            />
+          </HStack>
           <Card
             bg="whiteAlpha.300"
             border={['none', '1px solid']}
@@ -63,10 +72,11 @@ const InventoryJoural = (): JSX.Element => {
       </Box>
     )
   }
+
   return (
     <Box>
-      <Text>Inventory Journal</Text>
       <Stack>
+        <LogHeader />{' '}
         <Card bg="whiteAlpha.300" border={['none', '1px solid']}>
           <CardBody>
             <Stack gap={1}>

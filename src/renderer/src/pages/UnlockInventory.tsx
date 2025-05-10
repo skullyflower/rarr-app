@@ -8,7 +8,15 @@ import {
   FormControl,
   FormLabel,
   HStack,
+  Icon,
   Input,
+  Popover,
+  PopoverArrow,
+  PopoverBody,
+  PopoverCloseButton,
+  PopoverContent,
+  PopoverHeader,
+  PopoverTrigger,
   Stack,
   Text,
   useDisclosure
@@ -27,7 +35,7 @@ const UnlockInventory = ({
   const [user, setUser] = useState<string>('')
   const [password, setPassword] = useState<string>('')
   const { isOpen, onOpen, onClose } = useDisclosure()
-  const [success, setSuccess] = useState<boolean>(false)
+  const [success, setSuccess] = useState<string | null>(null)
 
   const [error, setError] = useState<string | null>(null)
 
@@ -36,9 +44,10 @@ const UnlockInventory = ({
       window.api.unlockLog(user, password).then((res) => {
         setIsLocked(res)
         if (!res) {
-          setSuccess(true)
+          setSuccess('Your inventories were unlocked successfully!')
           setError(null)
         } else {
+          setSuccess(null)
           setError('Invalid username or password')
         }
       })
@@ -49,6 +58,8 @@ const UnlockInventory = ({
       .reset()
       .then((res) => {
         setIsLocked(res)
+        setSuccess('Your inventories were reset successfully!')
+        setError(null)
       })
       .then(() => {
         onClose()
@@ -66,7 +77,7 @@ const UnlockInventory = ({
         <Alert status="success" colorScheme="purple">
           <AlertIcon />
           <AlertTitle>Success</AlertTitle>
-          <AlertDescription>Your inventories unlocked successfully!</AlertDescription>
+          <AlertDescription>{success}</AlertDescription>
         </Alert>
       </Box>
     )
@@ -84,9 +95,43 @@ const UnlockInventory = ({
         )}
 
         {!isLocked ? (
-          <Text fontSize={'lg'} fontWeight="bold">
-            Set up a lock for your inventory log.
-          </Text>
+          <Stack gap={3}>
+            <Text fontSize={'lg'} fontWeight="bold">
+              Set up locking for your inventories.{' '}
+              <Popover colorScheme="purple" size={'lg'} trigger="hover">
+                <PopoverTrigger>
+                  <Icon color={'purple.200'} />
+                </PopoverTrigger>
+                <PopoverContent>
+                  <PopoverArrow />
+                  <PopoverCloseButton />
+                  <PopoverHeader>Note!</PopoverHeader>
+                  <PopoverBody>
+                    <Stack gap={3}>
+                      <Text>
+                        This is an optional, &quot;diary strength&quot;, lock for privacy. It is not
+                        very secure, but will keep out casual snoops.
+                      </Text>
+                      <Text>
+                        When set, only you will be able to fill out, view or save your inventories.
+                      </Text>
+                      <Text>
+                        If you set up locking and forget your password or change your mind about
+                        keeping it locked, you can reset the app, and set up a new password or use
+                        it unlocked, but{' '}
+                        <i>everything you saved before you reset will be deleted</i>.
+                      </Text>
+                      <Text>
+                        If you set up locking after you&apos;ve saved entries, your entries will
+                        persist and be protected.
+                      </Text>
+                    </Stack>
+                  </PopoverBody>
+                </PopoverContent>
+              </Popover>
+            </Text>
+            <Text>Set a name and password below:</Text>
+          </Stack>
         ) : (
           <Text fontSize={'lg'} fontWeight="bold">
             Unlock your inventories.
@@ -119,16 +164,18 @@ const UnlockInventory = ({
           />
         </FormControl>
         <HStack gap={2} justifyContent="end">
-          <Button size={'sm'} variant={'ghost'} aria-label="Lock" onClick={onOpen}>
-            Reset and delete log
-          </Button>
+          {isLocked && (
+            <Button size={'sm'} variant={'ghost'} aria-label="Lock" onClick={onOpen}>
+              Reset and delete log
+            </Button>
+          )}
           <Button
             size={'sm'}
             aria-label="Unlock"
             disabled={user.length < 1 || password.length < 1}
             onClick={handleUnlock}
           >
-            Unlock
+            {isLocked ? 'Unlock' : 'Set Up Lock'}
           </Button>
         </HStack>
       </Stack>

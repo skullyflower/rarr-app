@@ -8,7 +8,7 @@ import { createHash } from 'node:crypto'
 const logDir = join(app.getPath('home'), 'Library', 'RARRLog')
 const logFilePattern = new RegExp(/^\d{4}-\d{1,2}-\d{1,2}\.txt$/)
 
-const hashfile = join(logDir, 'lock.txt')
+const hashfile = join(logDir, '.lock.txt')
 const savedHash = fs.existsSync(hashfile) && fs.readFileSync(hashfile, 'utf8')
 
 function lock(): boolean {

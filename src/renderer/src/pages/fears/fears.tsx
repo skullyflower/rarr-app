@@ -22,7 +22,7 @@ function Fears(): JSX.Element {
           <HStack align="start" justifyContent={'space-between'}>
             <Box padding={2}>
               <Text>
-                Fear was &apos;and evil and corrosive thread&apos; weaving through our lives.
+                Fear was &apos;an evil and corrosive thread&apos; weaving through our lives.
               </Text>
             </Box>
             <HStack align="start">

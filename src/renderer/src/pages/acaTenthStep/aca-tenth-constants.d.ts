@@ -24,8 +24,8 @@ export const traitList = [
     A: 'I overreacted or isolated from others when I perceived that I was criticized.'
   },
   {
-    Q: 'Did I attend a meetings to nurture myself and to give back what was given to me?',
-    A: 'I attended a meetings to nurture myself and to give back what was given to me.'
+    Q: 'Did I attend a meeting to nurture myself and to give back what was given to me?',
+    A: 'I attended a meeting to nurture myself and to give back what was given to me.'
   },
   {
     Q: 'Have I acted "helpful" recently to manipulate others?',
@@ -36,20 +36,20 @@ export const traitList = [
     A: 'I was secretly angry at someone, but avoided talking about it.'
   },
   {
-    Q: 'Have I listened to my Inner Child or True self today?',
-    A: 'I listened to my Inner Child or True self.'
+    Q: 'Have I listened to my Inner Child or True Self today?',
+    A: 'I listened to my Inner Child or True Self.'
   },
   {
-    Q: 'Did I judge myself or someone else without mercy, today?',
+    Q: 'Did I judge myself or someone else without mercy today?',
     A: 'I judged myself or someone else without mercy.'
   },
   {
-    Q: 'Am I listening to my inner Critical Parent, today?',
-    A: 'I listened to my inner Critical Parent, today.'
+    Q: 'Am I listening to my inner Critical Parent today?',
+    A: 'I listened to my inner Critical Parent today.'
   },
   {
-    Q: 'Am I listening to my inner Loving Parent, today?',
-    A: 'I listened to my inner Loving Parent, today.'
+    Q: 'Am I listening to my inner Loving Parent today?',
+    A: 'I listened to my inner Loving Parent today.'
   },
   {
     Q: 'Did I remember that I can ask for help today and that I can call someone?',

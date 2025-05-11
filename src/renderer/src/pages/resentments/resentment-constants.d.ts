@@ -14,10 +14,10 @@ export enum affectsAA {
 export enum myPartsAA {
   SELFISH = 'Well, I was being a bit SELFISH. Thinking only about myself.',
   SELF_SEEKING = 'I was SELF SEEKING. I tried to manipulate the situation to make it come out the way I wanted.',
-  DENIAL = "I wasn't being totally honest, with myself.",
+  DENIAL = "I wasn't being totally honest with myself.",
   DISHONEST_OTHERS = 'I lied to get my way.',
   DISHONEST_WITHHOLDING = 'I lied by omission, withholding the truth.',
-  FRIEGHTENED = 'I reacted badly because I was afraid, or triggered. \nMaybe you yelled something like, "I hate you!!"',
+  FRIEGHTENED = 'I reacted badly because I was afraid, or triggered. \nMaybe you yelled something did not really mean like, "I hate you!!"',
   HUNGRY = "I didn't eat when I should have and it made me cranky.",
   ANGRY = "I was already angry about something else, and wasn't able to be patient.",
   LONELY = 'I was isolating, and by the time I realized I was lonely, it was too late.',
@@ -53,7 +53,7 @@ enum myPartsACA {
   DONT_TALK = "I didn't say what I needed to say. I didn't set a boundary, or I didn't ask for something I needed.",
   DONT_FEEL = 'I stuffed or denied my feelings.',
   FINE = "I denied (or didn't notice) I was having a problem.",
-  FIGHT = 'I was argumentitive. I tried to force my point of view on others, or tried to control them.',
+  FIGHT = 'I was argumentative. I tried to force my point of view on others, or tried to control them.',
   FLIGHT = 'I withdrew, isolated or evaded to avoided conflict.',
   FREEZE = 'I got scared or overwhelmed, froze or put off dealing with it.',
   FAWN = 'I tried to win them over with charm, humor or by being who I think they want me to be.',
@@ -76,8 +76,8 @@ enum successesACA {
   PAUSED = 'I realized I was too upset to respond without sabotaging myself and/or being overly cruel to the other person, so I waiting until I could think more rationally.',
   PRAYED = 'I prayed to my Higher Power for help in dealing with the situation.',
   SET_BOUNDARY = 'I spoke up and set limits or walked away from the bad situation.',
-  SELF_VALIDATION = 'I listed to and validated my own needs feelings and thoughts.',
-  AMENDS = "I realized I'd make a mistake, forgave myself,  and admitted it",
+  SELF_VALIDATION = 'I listened to and validated my own needs feelings and thoughts.',
+  AMENDS = "I realized I'd make a mistake, forgave myself, and admitted it",
   SELF_CARE = 'I took care of myself instead of trying to make someone else do it.'
 }
 

@@ -1,14 +1,14 @@
-import { Textarea } from '@chakra-ui/react'
+import { Textarea, TextareaProps } from '@chakra-ui/react'
 // import ReactQuill from 'react-quill'
 // import { modules } from '@renderer/components/form/quillbits.mjs'
 import './StyledTextInput.css'
 
-interface StyledTextInputProps {
+interface StyledTextInputProps extends TextareaProps {
   value: string
   setter: (value: string) => void
 }
 
-const StyledTextInput = ({ value, setter }: StyledTextInputProps): JSX.Element => {
-  return <Textarea value={value} onChange={(ev) => setter(ev.target.value)} />
+const StyledTextInput = ({ value, setter, ...rest }: StyledTextInputProps): JSX.Element => {
+  return <Textarea value={value} onChange={(ev) => setter(ev.target.value)} {...rest} />
 }
 export default StyledTextInput

@@ -96,19 +96,23 @@ function ResentmentsForm(): JSX.Element {
                     name="Iresent"
                     type="text"
                     value={Iresent}
-                    placeholder="I resent..."
+                    placeholder="Person, institution, concept, or situation"
                     onChange={(e) => setIresent(e.target.value)}
                     maxLength={30}
                   />
                 </FormControl>
               </Stack>
             </AccordionSection>
-            <AccordionSection title="And why? What did they do? Not do?">
+            <AccordionSection title="And why?">
               <FormControl isRequired>
-                <StyledTextInput value={because} setter={setBecause} />
+                <StyledTextInput
+                  value={because}
+                  setter={setBecause}
+                  placeholder="Let it all out..."
+                />
               </FormControl>
             </AccordionSection>
-            <AccordionSection title="How did it affect you? What did it threaten?">
+            <AccordionSection title="How does it affect you? What does it threaten?">
               <FormControl isRequired>
                 <CheckboxGroupBox
                   valuesList={affectsMy}
@@ -135,7 +139,7 @@ function ResentmentsForm(): JSX.Element {
                 />
               </FormControl>
             </AccordionSection>
-            <AccordionSection title="Do you see the situation differently now?">
+            <AccordionSection title="Do you see the situation any differently now?">
               <FormControl isRequired>
                 <StyledTextInput value={learned} setter={setLearned} />
               </FormControl>
@@ -157,6 +161,9 @@ function ResentmentsForm(): JSX.Element {
           <b>Your answers can NOT be viewed by anyone but you</b>. When you hit submit, your answers
           will be formatted so that you can copy or print them if you like, and share them with
           whomever you choose.
+        </Text>
+        <Text>
+          You can also save then to your inventory log, but they will not leave your computer.
         </Text>
       </Box>
       <NeverLetGo isOpen={isNever} onClose={onNeverMind} />

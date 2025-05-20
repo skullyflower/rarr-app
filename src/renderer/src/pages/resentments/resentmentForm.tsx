@@ -39,6 +39,15 @@ function ResentmentsForm(): JSX.Element {
     !Iresent || !because || !affectsMy.length || !myPart.length || !didWell.length || !learned
   const [letGo, setLetGo] = useState(false)
 
+  const reset = (): void => {
+    setLetGo(false)
+    setIresent('')
+    setBecause('')
+    setAffectsMy([])
+    setMyPart([])
+    setDidWell([])
+    setLearned('')
+  }
   const { isOpen: isLettingGo, onOpen: onLettingGo, onClose: onCloseLetGo } = useDisclosure()
   const { isOpen: isNever, onOpen: onNever, onClose: onNeverMind } = useDisclosure()
 
@@ -65,6 +74,7 @@ function ResentmentsForm(): JSX.Element {
         isLettingGo={isLettingGo}
         onLettingGo={onLettingGo}
         onCloseLetGo={onCloseLetGo}
+        reset={reset}
       />
     )
   }

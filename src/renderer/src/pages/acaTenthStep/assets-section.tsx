@@ -1,12 +1,16 @@
 import CheckboxGroupBox from '@renderer/components/form/CheckBoxGroupBox'
 import { HStack, Stack, Text } from '@chakra-ui/react'
 import { assets } from './aca-tenth-constants.d'
-import { useState } from 'react'
 import CopyButton from '@renderer/components/form/copy-button'
 import SaveButton from '@renderer/components/form/save-button'
 
-const AssetsSection = (): JSX.Element => {
-  const [praise, setSetPraise] = useState<string[]>([])
+const AssetsSection = ({
+  praise,
+  setSetPraise
+}: {
+  praise: string[]
+  setSetPraise: (value: string[]) => void
+}): JSX.Element => {
   const toCopy = `Praise Today: \n\t• I am ${praise.join(',\n\t• I am ')}`
 
   return (

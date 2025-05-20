@@ -26,6 +26,7 @@ interface ResentBeGoneProps {
   isLettingGo: boolean
   onLettingGo: () => void
   onCloseLetGo: () => void
+  reset: () => void
 }
 
 function ResentBeGone({
@@ -36,7 +37,8 @@ function ResentBeGone({
   didWell,
   learned,
   isLettingGo,
-  onCloseLetGo
+  onCloseLetGo,
+  reset
 }: ResentBeGoneProps): JSX.Element {
   const stringToWrite = getContents()
   return (
@@ -55,7 +57,7 @@ function ResentBeGone({
               <Text>Here is what you wrote.</Text>
               <HStack gap={4}>
                 <CopyButton text={stringToWrite} />
-                <SaveButton text={stringToWrite} />
+                <SaveButton text={stringToWrite} bigbutton />
               </HStack>
             </HStack>
           </CardHeader>
@@ -94,7 +96,7 @@ function ResentBeGone({
             </Stack>
           </CardBody>
           <CardFooter textAlign="center">
-            <Button onClick={() => window.location.reload()}>Start Over</Button>
+            <Button onClick={reset}>Start Over</Button>
           </CardFooter>
           <ReadyToLetGo isOpen={isLettingGo} onClose={onCloseLetGo} />
         </Card>

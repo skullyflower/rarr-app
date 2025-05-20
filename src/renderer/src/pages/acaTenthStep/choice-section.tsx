@@ -14,9 +14,14 @@ import { choiceLevels } from './aca-tenth-constants.d'
 import CopyButton from '@renderer/components/form/copy-button'
 import SaveButton from '@renderer/components/form/save-button'
 
-const ChoiceSection = (): JSX.Element => {
+const ChoiceSection = ({
+  freedomText,
+  setFreedomText
+}: {
+  freedomText: string
+  setFreedomText: (value: string) => void
+}): JSX.Element => {
   const [freedomValue, setFreedomValue] = useState<number>(50)
-  const [freedomText, setFreedomText] = useState<string>('')
   const toCopy = `Choice Level:\nToday I was capable of: ${freedomText}`
 
   const handleSelected = (value: number): void => {

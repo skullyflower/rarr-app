@@ -1,11 +1,15 @@
 import CopyButton from '@renderer/components/form/copy-button'
 import { HStack, Stack, Text } from '@chakra-ui/react'
-import { useState } from 'react'
 import ListerInput from '@renderer/components/form/ListerInput'
 import SaveButton from '@renderer/components/form/save-button'
 
-const ToolsUsedToday = (): JSX.Element => {
-  const [listOfTools, setListOfTools] = useState<string[]>([])
+const ToolsUsedToday = ({
+  listOfTools,
+  setListOfTools
+}: {
+  listOfTools: string[]
+  setListOfTools: (value: string[]) => void
+}): JSX.Element => {
   const tocopy = `Recovery Tools just for today:\n\t• ${listOfTools.join(', \n\t• ')}`
 
   return (

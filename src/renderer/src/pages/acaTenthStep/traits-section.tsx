@@ -1,12 +1,17 @@
 import CheckboxGroupBox from '@renderer/components/form/CheckBoxGroupBox'
 import { HStack, Stack, Text } from '@chakra-ui/react'
-import { useMemo, useState } from 'react'
+import { useMemo } from 'react'
 import { traitList } from './aca-tenth-constants.d'
 import CopyButton from '@renderer/components/form/copy-button'
 import SaveButton from '@renderer/components/form/save-button'
 
-const TraitsSection = (): JSX.Element => {
-  const [traitQs, setTraitQs] = useState<string[]>([])
+const TraitsSection = ({
+  traitQs,
+  setTraitQs
+}: {
+  traitQs: string[]
+  setTraitQs: (value: string[]) => void
+}): JSX.Element => {
   const allquestions = useMemo(() => traitList.map((trait) => trait.Q), [])
   const setAfromQ = (Qs: string[]): string => {
     const TraitAs: string[] = []

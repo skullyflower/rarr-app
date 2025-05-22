@@ -37,7 +37,7 @@ const AccordionSection: React.FC<AccordionSectionProps> = ({ title, children }) 
             color="inherit"
             as="h3"
             fontWeight={'normal'}
-            size="md"
+            size="lg"
             textShadow={'1px 1px 2px rgba(0, 0, 0, 0.3)'}
           >
             {title}

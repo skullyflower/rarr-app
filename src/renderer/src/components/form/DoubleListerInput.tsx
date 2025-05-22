@@ -1,6 +1,6 @@
 import { DeleteIcon } from '@chakra-ui/icons'
 import { Button, Card, HStack, Input, InputGroup, Stack, Text } from '@chakra-ui/react'
-import { useCallback, useState } from 'react'
+import { useCallback, useRef, useState } from 'react'
 import useKeyCapture from '../hooks/useKeyCapture'
 
 export type doubleListItem = [string, string]
@@ -14,12 +14,15 @@ interface DoubleListerInputProps {
 const DoubleListerInput = ({ list, setList, labels }: DoubleListerInputProps): JSX.Element => {
   const [oneItem, setOneItem] = useState<string>('')
   const [twoItem, setTwoItem] = useState<string>('')
-
+  const inputRef = useRef<HTMLInputElement>(null)
   const addItem = useCallback(() => {
     if (oneItem && twoItem) {
       setList([...list, [oneItem, twoItem]])
       setOneItem('')
       setTwoItem('')
+      if (inputRef?.current) {
+        inputRef.current.focus()
+      }
     }
   }, [oneItem, twoItem, list])
 
@@ -31,6 +34,7 @@ const DoubleListerInput = ({ list, setList, labels }: DoubleListerInputProps): J
         <InputGroup size="md">
           <HStack gap={2} wrap={'wrap'}>
             <Input
+              ref={inputRef}
               pr="4.5rem"
               type="text"
               placeholder={labels ? `Add a ${labels[0]}...` : 'Add a item...'}

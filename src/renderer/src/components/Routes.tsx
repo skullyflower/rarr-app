@@ -33,7 +33,12 @@ export default function SiteRoutes(): JSX.Element {
   }
 
   return (
-    <Layout setActivePath={setActivePath} isLocked={isLocked} toggleLock={toggleLock}>
+    <Layout
+      activePath={activePath}
+      setActivePath={setActivePath}
+      isLocked={isLocked}
+      toggleLock={toggleLock}
+    >
       <>
         {activePath === 'home' && <HomePage />}
         {activePath === 'steps' && <TheSteps />}

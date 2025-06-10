@@ -12,31 +12,15 @@ const ListerInput = ({ list, setList, placeholder }: ListerInputProps): JSX.Elem
   const [oneItem, setOneItem] = useState<string>('')
   const addItem = useCallback(() => {
     if (oneItem) {
-      setList([...list, oneItem])
+      setList([oneItem, ...list])
       setOneItem('')
     }
-  }, [oneItem, list])
+  }, [oneItem, list, setList])
 
   useKeyCapture('Enter', addItem)
 
   return (
     <Stack gap={2}>
-      {list.map((value, index) => (
-        <HStack
-          key={index}
-          padding={2}
-          border={'1px solid'}
-          borderColor="purple.700"
-          borderRadius={6}
-          justifyContent={'space-between'}
-          _hover={{ backgroundColor: 'pink.800', borderColor: 'purple.300' }}
-        >
-          <Text key={index}>{value}</Text>
-          <Button size="xs" onClick={() => setList(list.filter((_, i) => i !== index))}>
-            <DeleteIcon />
-          </Button>
-        </HStack>
-      ))}
       <InputGroup size="md">
         <Input
           pr="4.5rem"
@@ -51,6 +35,24 @@ const ListerInput = ({ list, setList, placeholder }: ListerInputProps): JSX.Elem
           </Button>
         </InputRightElement>
       </InputGroup>
+      {list.map((value, index) => (
+        <HStack
+          key={index}
+          padding={2}
+          border={'1px solid'}
+          borderColor="purple.700"
+          borderRadius={6}
+          justifyContent={'space-between'}
+          _hover={{ backgroundColor: 'pink.800', borderColor: 'purple.300' }}
+        >
+          <Text key={index} overflowX={'auto'}>
+            {value}
+          </Text>
+          <Button size="xs" onClick={() => setList(list.filter((_, i) => i !== index))}>
+            <DeleteIcon />
+          </Button>
+        </HStack>
+      ))}
     </Stack>
   )
 }

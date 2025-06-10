@@ -1,5 +1,5 @@
 import { DeleteIcon } from '@chakra-ui/icons'
-import { Button, Card, HStack, Input, InputGroup, Stack, Text } from '@chakra-ui/react'
+import { Button, Card, HStack, Input, Stack, Text } from '@chakra-ui/react'
 import { useCallback, useRef, useState } from 'react'
 import useKeyCapture from '../hooks/useKeyCapture'
 
@@ -17,42 +17,40 @@ const DoubleListerInput = ({ list, setList, labels }: DoubleListerInputProps): J
   const inputRef = useRef<HTMLInputElement>(null)
   const addItem = useCallback(() => {
     if (oneItem && twoItem) {
-      setList([...list, [oneItem, twoItem]])
+      setList([[oneItem, twoItem], ...list])
       setOneItem('')
       setTwoItem('')
       if (inputRef?.current) {
         inputRef.current.focus()
       }
     }
-  }, [oneItem, twoItem, list])
+  }, [oneItem, twoItem, list, setList])
 
   useKeyCapture('Enter', addItem)
 
   return (
     <Stack gap={2}>
       <Card variant={'outline'} padding={2} backgroundColor={'transparent'}>
-        <InputGroup size="md">
-          <HStack gap={2} wrap={'wrap'}>
+        <HStack gap={2} width={'100%'} align={'center'}>
+          <Stack gap={2} flexGrow={2}>
             <Input
               ref={inputRef}
-              pr="4.5rem"
               type="text"
               placeholder={labels ? `Add a ${labels[0]}...` : 'Add a item...'}
               onChange={(e) => setOneItem(e.target.value)}
               value={oneItem}
             />
             <Input
-              pr="4.5rem"
               type="text"
               placeholder={labels ? `Add a ${labels[1]}...` : 'Add a item...'}
               onChange={(e) => setTwoItem(e.target.value)}
               value={twoItem}
             />
-            <Button h="1.75rem" size="sm" onClick={addItem}>
-              Add
-            </Button>
-          </HStack>
-        </InputGroup>{' '}
+          </Stack>
+          <Button h="1.75rem" size="sm" onClick={addItem}>
+            Add
+          </Button>
+        </HStack>
       </Card>
       {list.map((value, index) => (
         <HStack
@@ -67,10 +65,10 @@ const DoubleListerInput = ({ list, setList, labels }: DoubleListerInputProps): J
           _hover={{ backgroundColor: 'pink.800', borderColor: 'purple.300' }}
         >
           <Text>
-            {labels && labels[0].toLocaleUpperCase()}: {value[0]}
+            <b>{labels && labels[0]}:</b> {value[0]}
           </Text>
           <Text>
-            {labels && labels[1].toUpperCase()}: {value[1]}
+            <b>{labels && labels[1]}:</b> {value[1]}
           </Text>
           <Button size="xs" onClick={() => setList(list.filter((_, i) => i !== index))}>
             <DeleteIcon />

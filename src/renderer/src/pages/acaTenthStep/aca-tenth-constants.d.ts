@@ -132,3 +132,29 @@ export const assets = [
   'Trustworthy',
   'Willing'
 ]
+
+export const laundryLists = [
+  ['I isolated and was afraid of people.', 'I exploited my authority to frightens others.'],
+  ['I saught approval, at the expense of my identity.', 'I was rigidly self-sufficient.'],
+  [
+    'I was frightened by an angry person or personal criticism',
+    'I frightened people with anger or threat of belittling criticism.'
+  ],
+  ['I chose someone unavailable.', 'I was an abandoner / isolator.'],
+  ['I was victim minded.', 'I was victimizing.'],
+  ['I felt overly responsible for others.', 'I was irresponsible and self-centered.'],
+  ['I felt guilty standing up for myself.', 'I encouraged guilt in others to get my way.'],
+  ['I was addicted to excitement.', 'I was emotionally deadened and numb.'],
+  ['I pitty-loved someone.', 'I hated an needy person.'],
+  ['I stuffed or stiffled feelings. [denial]', 'I dramaticly over expressed feelings. [denial]'],
+  ['I judged myself harshly.', 'I judged someone else harshly.'],
+  [
+    'I was dependent or clingy in a relationship.',
+    'I was overly independent, and avoided intimacy.'
+  ],
+  [
+    'I expressed alcoholic/addictive tendencies, with or without alcohol or drugs.',
+    'I refused to accept being affected by growing up around addiction, dysfunction or trama.'
+  ],
+  ['I was reactive, letting others direct my day.', 'I was nothing like my dysfunctional family.']
+]

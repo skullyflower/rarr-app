@@ -18,19 +18,21 @@ function lock(): boolean {
 function unlock(user: string, password: string): boolean {
   const hash = createHash('sha256')
   hash.update(`${user}${password}`)
-  if (fs.existsSync(hashfile) && hash.digest('hex') === savedHash) {
-    return false // unlocked
-  } else if (!fs.existsSync(hashfile)) {
+  if (fs.existsSync(hashfile)) {
+    if (hash.digest('hex') === savedHash) {
+      return false // unlocked
+    } else {
+      console.error('Invalid password')
+      return true // still locked
+    }
+  } else {
     fs.writeFileSync(hashfile, hash.digest('hex'), 'utf8') //registered
     return false // and unlocked
-  } else {
-    console.error('Invalid password')
-    return true // still locked
   }
 }
 
 function writeToLog(message: string, fileName?: string): boolean {
-  console.log('writeToLog', message, fileName)
+  //console.log('writeToLog', message, fileName)
   const date = new Date()
 
   const fileNameString =

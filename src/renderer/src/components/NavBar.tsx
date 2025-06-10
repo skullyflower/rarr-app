@@ -3,10 +3,12 @@ import { Box, Button, HStack, Menu, MenuButton, MenuList, Stack } from '@chakra-
 import { ReactNode } from 'react'
 
 const NavItem = ({
+  isActive,
   text,
   onClick,
   icon
 }: {
+  isActive: boolean
   text: string
   onClick: () => void
   icon?: ReactNode
@@ -19,11 +21,12 @@ const NavItem = ({
       lineHeight={1}
       paddingBlock={1}
       paddingInline={2}
+      backgroundColor={isActive ? 'whiteAlpha.400' : undefined}
       borderRadius={5}
       border="2px solid"
       textTransform="uppercase"
       onClick={onClick}
-      _hover={{ cursor: 'pointer', backgroundColor: 'whiteAlpha.400' }}
+      _hover={{ cursor: 'pointer', backgroundColor: 'whiteAlpha.100' }}
     >
       {text} {icon}
     </Box>
@@ -31,12 +34,14 @@ const NavItem = ({
 }
 
 const MenuDDropDown = ({
+  activePath,
   setActivePath
 }: {
+  activePath: string
   setActivePath: (value: string) => void
 }): JSX.Element => {
   return (
-    <Menu>
+    <Menu defaultIsOpen>
       {({ isOpen }) => (
         <>
           <MenuButton
@@ -58,10 +63,26 @@ const MenuDDropDown = ({
           </MenuButton>
           <MenuList background={'gray.900'} padding={2} border={0}>
             <Stack direction={['column', 'row']} gap={2} justifyContent={'center'}>
-              <NavItem onClick={() => setActivePath('resent')} text="Troubles" />
-              <NavItem onClick={() => setActivePath('aca10')} text="Self Care" />
-              <NavItem onClick={() => setActivePath('serenity')} text="Serenity" />
-              <NavItem onClick={() => setActivePath('fear')} text="Fears" />
+              <NavItem
+                isActive={activePath === 'resent'}
+                onClick={() => setActivePath('resent')}
+                text="Troubles"
+              />
+              <NavItem
+                isActive={activePath === 'aca10'}
+                onClick={() => setActivePath('aca10')}
+                text="Emotional Sobriety"
+              />
+              <NavItem
+                isActive={activePath === 'serenity'}
+                onClick={() => setActivePath('serenity')}
+                text="Serenity"
+              />
+              <NavItem
+                isActive={activePath === 'fear'}
+                onClick={() => setActivePath('fear')}
+                text="Fears"
+              />
             </Stack>
           </MenuList>
         </>
@@ -70,13 +91,27 @@ const MenuDDropDown = ({
   )
 }
 
-const NavBar = ({ setActivePath }: { setActivePath: (value: string) => void }): JSX.Element => {
+const NavBar = ({
+  activePath,
+  setActivePath
+}: {
+  activePath: string
+  setActivePath: (value: string) => void
+}): JSX.Element => {
   return (
     <Box p={4}>
       <HStack wrap="wrap" gap={2} justifyContent={'center'}>
-        <MenuDDropDown setActivePath={setActivePath} />
-        <NavItem onClick={() => setActivePath('steps')} text="The Steps" />
-        <NavItem onClick={() => setActivePath('log')} text="My Log" />
+        <MenuDDropDown activePath={activePath} setActivePath={setActivePath} />
+        <NavItem
+          isActive={activePath === 'steps'}
+          onClick={() => setActivePath('steps')}
+          text="The Steps"
+        />
+        <NavItem
+          isActive={activePath === 'log'}
+          onClick={() => setActivePath('log')}
+          text="My Log"
+        />
       </HStack>
     </Box>
   )

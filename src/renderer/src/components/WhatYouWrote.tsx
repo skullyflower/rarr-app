@@ -25,6 +25,7 @@ interface WhatYouWroteProps {
   traitQs?: string[]
   canCannotControl?: doubleListItem[]
   fearsList?: doubleListItem[]
+  llTraits?: string[]
 }
 
 function WhatYouWrote({
@@ -35,7 +36,8 @@ function WhatYouWrote({
   listOfTools,
   traitQs,
   canCannotControl,
-  fearsList
+  fearsList,
+  llTraits
 }: WhatYouWroteProps): JSX.Element {
   const setAfromQ = (Qs: string[]): string => {
     const TraitAs: string[] = []
@@ -51,6 +53,9 @@ function WhatYouWrote({
     const toCopyStrings: string[] = []
     if (traitQs && traitQs.length > 0) {
       toCopyStrings.push(`Traits I had today:\n\t• ${setAfromQ(traitQs)}`)
+    }
+    if (llTraits && llTraits.length > 0) {
+      toCopyStrings.push(`Laundry List / Other Laundry List:\n\t• ${llTraits.join(',\n\t• ')}`)
     }
     if (freedomText) {
       toCopyStrings.push(`Choice Level:\nToday I was capable of: ${freedomText}`)

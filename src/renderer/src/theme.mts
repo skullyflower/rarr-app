@@ -147,6 +147,11 @@ const theme = extendTheme(
           fontWeight: 'normal'
         }
       },
+      Link: {
+        baseStyle: {
+          color: 'purple.200'
+        }
+      },
       Button: {
         baseStyle: {
           color: 'purple.100'

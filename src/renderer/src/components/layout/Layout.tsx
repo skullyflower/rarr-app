@@ -6,12 +6,19 @@ import { LockIcon } from '@chakra-ui/icons'
 
 interface LayoutProps {
   children: ReactElement
+  activePath: string
   setActivePath: (value: string) => void
   isLocked: boolean
   toggleLock: () => void
 }
 
-function Layout({ children, setActivePath, isLocked, toggleLock }: LayoutProps): JSX.Element {
+function Layout({
+  children,
+  activePath,
+  setActivePath,
+  isLocked,
+  toggleLock
+}: LayoutProps): JSX.Element {
   return (
     <VStack
       justifyContent="center"
@@ -38,7 +45,7 @@ function Layout({ children, setActivePath, isLocked, toggleLock }: LayoutProps):
             <Image src={rarrLogo} alt="Ragers and Rampagers, Recovering" />
           </Box>
           <HStack wrap="wrap" gap={2} justifyContent={'center'}>
-            <NavBar setActivePath={setActivePath} />
+            <NavBar activePath={activePath} setActivePath={setActivePath} />
             <FormControl width={'auto'} display="flex" alignItems="center">
               <FormLabel htmlFor="lock" mb="0">
                 <LockIcon aria-label="Lock your log" />

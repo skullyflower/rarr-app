@@ -5,18 +5,12 @@ import {
   AlertTitle,
   Box,
   Button,
+  Card,
+  CardBody,
   FormControl,
   FormLabel,
   HStack,
-  Icon,
   Input,
-  Popover,
-  PopoverArrow,
-  PopoverBody,
-  PopoverCloseButton,
-  PopoverContent,
-  PopoverHeader,
-  PopoverTrigger,
   Stack,
   Text,
   useDisclosure
@@ -24,6 +18,7 @@ import {
 import Confirm from '../components/Confirm'
 import { useState } from 'react'
 import useKeyCapture from '@renderer/components/hooks/useKeyCapture'
+import CollapsingText from '@renderer/components/layout/CollapsingText'
 
 const UnlockInventory = ({
   isLocked = true,
@@ -85,100 +80,100 @@ const UnlockInventory = ({
 
   return (
     <Box width={'80%'} padding={2} marginInline={'auto'} borderRadius={4}>
-      <Stack gap={4}>
-        {error && (
-          <Alert status="error" colorScheme="red" textAlign="center">
-            <AlertIcon />
-            <AlertTitle>Oops</AlertTitle>
-            <AlertDescription>{error}</AlertDescription>
-          </Alert>
-        )}
+      <Card bg="whiteAlpha.300" border={['none', '1px solid']}>
+        <CardBody>
+          <Stack gap={4}>
+            {error && (
+              <Alert status="error" colorScheme="red" textAlign="center">
+                <AlertIcon />
+                <AlertTitle>Oops</AlertTitle>
+                <AlertDescription>{error}</AlertDescription>
+              </Alert>
+            )}
 
-        {!isLocked ? (
-          <Stack gap={3}>
-            <Text fontSize={'lg'} fontWeight="bold">
-              Set up locking for your inventories.{' '}
-              <Popover colorScheme="purple" size={'lg'} trigger="hover">
-                <PopoverTrigger>
-                  <Icon color={'purple.200'} />
-                </PopoverTrigger>
-                <PopoverContent>
-                  <PopoverArrow />
-                  <PopoverCloseButton />
-                  <PopoverHeader>Note!</PopoverHeader>
-                  <PopoverBody>
-                    <Stack gap={3}>
-                      <Text>
-                        This is an optional, &quot;diary strength&quot;, lock for privacy. It is not
-                        very secure, but will keep out casual snoops.
-                      </Text>
-                      <Text>
-                        When set, only you will be able to fill out, view or save your inventories.
-                      </Text>
-                      <Text>
-                        If you set up locking and forget your password or change your mind about
-                        keeping it locked, you can reset the app, and set up a new password or use
-                        it unlocked, but{' '}
-                        <i>everything you saved before you reset will be deleted</i>.
-                      </Text>
-                      <Text>
-                        If you set up locking after you&apos;ve saved entries, your entries will
-                        persist and be protected.
-                      </Text>
-                    </Stack>
-                  </PopoverBody>
-                </PopoverContent>
-              </Popover>
-            </Text>
-            <Text>Set a name and password below:</Text>
+            {!isLocked ? (
+              <Stack gap={3}>
+                <Text fontSize={'lg'} fontWeight="bold">
+                  Set up locking for your inventories.
+                </Text>
+                <CollapsingText>
+                  <Stack gap={3}>
+                    <Text>
+                      This is an optional, &quot;diary strength&quot;, lock for privacy. It is not
+                      very secure, but will keep out casual snoops.
+                    </Text>
+                    <Text>
+                      When set, only you will be able to fill out, view or save your inventories.
+                    </Text>
+                    <Text>
+                      If you set up locking and forget your password or change your mind about
+                      keeping it locked, you can reset the app, and set up a new password or use it
+                      unlocked, but <i>everything you saved before you reset will be deleted</i>.
+                    </Text>
+                    <Text>
+                      If you set up locking after you&apos;ve saved entries, your entries will
+                      persist and be protected.
+                    </Text>
+                  </Stack>
+                </CollapsingText>
+
+                <Text>Set a name and password below:</Text>
+              </Stack>
+            ) : (
+              <Text fontSize={'lg'} fontWeight="bold">
+                Unlock your inventories.
+              </Text>
+            )}
+            <Card bg="pink.900" borderStyle={'solid'} borderWidth={1} borderColor="purple.300">
+              <CardBody>
+                <Stack gap={3}>
+                  <FormControl width={'auto'} display="flex" alignItems="center">
+                    <FormLabel htmlFor="user" mb="0" width={'150px'}>
+                      Name
+                    </FormLabel>
+                    <Input
+                      value={user}
+                      type="text"
+                      placeholder="Name"
+                      onChange={(e) => {
+                        setUser(e.target.value)
+                      }}
+                    />
+                  </FormControl>
+                  <FormControl width={'auto'} display="flex" alignItems="center">
+                    <FormLabel htmlFor="password" mb="0" width={'150px'}>
+                      Password
+                    </FormLabel>
+                    <Input
+                      value={password}
+                      type="password"
+                      placeholder="Password"
+                      onChange={(e) => {
+                        setPassword(e.target.value)
+                      }}
+                    />
+                  </FormControl>
+                  <HStack gap={2} justifyContent="end">
+                    {isLocked && (
+                      <Button size={'sm'} variant={'ghost'} aria-label="Lock" onClick={onOpen}>
+                        Reset and delete log
+                      </Button>
+                    )}
+                    <Button
+                      size={'sm'}
+                      aria-label="Unlock"
+                      disabled={user.length < 1 || password.length < 1}
+                      onClick={handleUnlock}
+                    >
+                      {isLocked ? 'Unlock' : 'Set Up Lock'}
+                    </Button>
+                  </HStack>
+                </Stack>
+              </CardBody>
+            </Card>
           </Stack>
-        ) : (
-          <Text fontSize={'lg'} fontWeight="bold">
-            Unlock your inventories.
-          </Text>
-        )}
-        <FormControl width={'auto'} display="flex" alignItems="center">
-          <FormLabel htmlFor="user" mb="0" width={'150px'}>
-            Name
-          </FormLabel>
-          <Input
-            value={user}
-            type="text"
-            placeholder="Name"
-            onChange={(e) => {
-              setUser(e.target.value)
-            }}
-          />
-        </FormControl>
-        <FormControl width={'auto'} display="flex" alignItems="center">
-          <FormLabel htmlFor="password" mb="0" width={'150px'}>
-            Password
-          </FormLabel>
-          <Input
-            value={password}
-            type="password"
-            placeholder="Password"
-            onChange={(e) => {
-              setPassword(e.target.value)
-            }}
-          />
-        </FormControl>
-        <HStack gap={2} justifyContent="end">
-          {isLocked && (
-            <Button size={'sm'} variant={'ghost'} aria-label="Lock" onClick={onOpen}>
-              Reset and delete log
-            </Button>
-          )}
-          <Button
-            size={'sm'}
-            aria-label="Unlock"
-            disabled={user.length < 1 || password.length < 1}
-            onClick={handleUnlock}
-          >
-            {isLocked ? 'Unlock' : 'Set Up Lock'}
-          </Button>
-        </HStack>
-      </Stack>
+        </CardBody>
+      </Card>
       <Confirm
         isOpen={isOpen}
         onClose={onClose}

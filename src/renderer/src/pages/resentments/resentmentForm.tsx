@@ -24,6 +24,7 @@ import useProgramDropDown from '@renderer/components/form/useProgramDropDown'
 import ResentBeGone from './resentment-be-gone'
 import PageCard from '@renderer/components/layout/page-card'
 import AccordionSection from '@renderer/components/layout/accordion-section'
+import CollapsingText from '@renderer/components/layout/CollapsingText'
 
 const programOptions = Object.keys(affects)
 
@@ -82,16 +83,20 @@ function ResentmentsForm(): JSX.Element {
   return (
     <Stack gap={4}>
       <HStack align="center" justify={'center'} gap={4}>
-        <Heading as="h2" size="lg">
+        <Heading as="h1" size="lg">
           {strings[selectedProgram as keyof typeof strings].title}
         </Heading>
         <ProgramDropDown />
       </HStack>
       <PageCard>
         <Box padding={4}>
-          {strings[selectedProgram as keyof typeof strings].intro.map((line, index) => (
-            <Text key={index}>{line}</Text>
-          ))}
+          <CollapsingText>
+            <Stack gap={4}>
+              {strings[selectedProgram as keyof typeof strings].intro.map((line, index) => (
+                <Text key={index}>{line}</Text>
+              ))}
+            </Stack>
+          </CollapsingText>
           <Text textAlign={'center'} fontWeight={'bold'} fontSize="lg" marginBlock={4}>
             {`So, why don't you write about it?`}
           </Text>
@@ -108,7 +113,7 @@ function ResentmentsForm(): JSX.Element {
                     value={Iresent}
                     placeholder="Person, institution, concept, or situation"
                     onChange={(e) => setIresent(e.target.value)}
-                    maxLength={30}
+                    maxLength={100}
                   />
                 </FormControl>
               </Stack>

@@ -131,7 +131,7 @@ const InventoryJoural = (): JSX.Element => {
   return (
     <Box>
       <Stack>
-        <LogHeader />{' '}
+        <LogHeader />
         <Card bg="whiteAlpha.300" border={['none', '1px solid']}>
           <CardBody>
             <Stack gap={1}>

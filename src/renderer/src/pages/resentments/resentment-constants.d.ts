@@ -17,7 +17,7 @@ export enum myPartsAA {
   DENIAL = "I wasn't being totally honest with myself.",
   DISHONEST_OTHERS = 'I lied to get my way.',
   DISHONEST_WITHHOLDING = 'I lied by omission -- withholding the truth.',
-  FRIEGHTENED = 'I reacted badly because I was afraid, or triggered, perhaps yelling something I did not really mean like, "I hate you!!"',
+  FRIGHTENED = 'I reacted badly because I was afraid, or triggered, perhaps yelling something I did not really mean like, "I hate you!!"',
   HUNGRY = "I didn't eat when I should have, and it made me cranky.",
   ANGRY = "I was already angry about something else, and I wasn't able to be patient.",
   LONELY = 'I was isolating, and by the time I realized I was lonely it was too late.',
@@ -49,7 +49,7 @@ enum affectsACA {
 
 enum myPartsACA {
   DENIAL = "I wasn't being totally honest, with myself.",
-  DONT_TRUST = "I didn't trust myself or that my Hight Power would take care of me. Maybe I expected to be hurt, diregarded or betrayed by the other person.",
+  DONT_TRUST = "I didn't trust myself or that my Higher Power would take care of me. Maybe I expected to be hurt, disregarded or betrayed by the other person.",
   DONT_TALK = "I didn't say what I needed to say, I didn't set a boundary, or I didn't ask for something I needed.",
   DONT_FEEL = 'I stuffed or denied my feelings.',
   FINE = "I denied (or didn't notice) I was having a problem.",
@@ -67,7 +67,7 @@ enum myPartsACA {
   SOUGHT_APPROVAL = 'I over explained, or sought approval or validation from someone else, instead of approving of or believing myself.',
   PERFECTIONISM = 'I forgot that mistakes are just part of living and learning.',
   ALL_OR_NOTHING = 'I saw the situation from a rigid good/bad, pass/fail, right/wrong perspective with no room for nuance.',
-  GUILT = 'I let guilt feelings stop me from taking the action necessary to take care and be responsible for myslef.'
+  GUILT = 'I let guilt feelings stop me from taking the action necessary to take care and be responsible for myself.'
 }
 enum successesACA {
   CONNECTED = 'I reached out to a trusted friend or mentor for support.',

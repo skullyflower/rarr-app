@@ -6,7 +6,8 @@ import {
   Card,
   CardBody,
   Heading,
-  HStack
+  HStack,
+  useColorMode
 } from '@chakra-ui/react'
 import React from 'react'
 
@@ -15,18 +16,19 @@ interface AccordionSectionProps {
   children: React.ReactNode
 }
 const AccordionSection: React.FC<AccordionSectionProps> = ({ title, children }) => {
+  const { colorMode } = useColorMode()
+
   return (
     <AccordionItem>
       <AccordionButton
-        color={'purple.300'}
-        backgroundColor={'pink.900'}
+        color={colorMode === 'dark' ? 'purple.300' : 'purple:700'}
+        backgroundColor={colorMode === 'dark' ? 'pink.900' : 'gray.300'}
         _expanded={{
-          //filter: 'grayscale(40%)',
-          backgroundColor: 'pink.800',
+          backgroundColor: colorMode === 'dark' ? 'pink.800' : 'gray.300',
           borderColor: 'purple.300'
         }}
         _hover={{
-          backgroundColor: 'pink.800',
+          backgroundColor: colorMode === 'dark' ? 'pink.800' : 'gray.50',
           borderColor: 'purple.300'
         }}
         borderRadius={6}
@@ -46,7 +48,13 @@ const AccordionSection: React.FC<AccordionSectionProps> = ({ title, children }) 
         </HStack>
       </AccordionButton>
       <AccordionPanel>
-        <Card bg="pink.900" borderStyle={'solid'} borderWidth={1} borderColor="purple.300">
+        <Card
+          color={colorMode === 'dark' ? 'purple.300' : 'purple:700'}
+          bg={colorMode === 'dark' ? 'pink.900' : 'gray.200'}
+          borderStyle={'solid'}
+          borderWidth={1}
+          borderColor="purple.300"
+        >
           <CardBody>{children}</CardBody>
         </Card>
       </AccordionPanel>

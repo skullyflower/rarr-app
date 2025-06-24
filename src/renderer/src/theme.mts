@@ -2,6 +2,13 @@ import { extendTheme, type ThemeConfig } from '@chakra-ui/react'
 import type { StyleFunctionProps } from '@chakra-ui/styled-system'
 import RARR_Splash_BG from '@renderer/assets/RARR_Splash_BG.gif'
 
+const inputColorLight = 'purple.900'
+const inputColorDark = 'gray.50'
+const inputBGLight = 'gray.50'
+const inputBGDark = 'pink.800'
+const borderColorDark = 'purple.500'
+const borderColorLight = 'purple.700'
+
 const config: ThemeConfig = {
   initialColorMode: 'dark',
   useSystemColorMode: true
@@ -130,32 +137,33 @@ const theme = extendTheme(
       body: `'Underdog', sans-serif`
     },
     styles: {
-      global: {
+      global: (props: StyleFunctionProps) => ({
         // styles for the `body`
         body: {
           bgImage: RARR_Splash_BG,
-          bg: 'gray.900',
-          color: 'gray.100',
+          bg: props.colorMode === 'dark' ? 'gray.900' : 'gray.400',
+          color: props.colorMode === 'dark' ? inputColorDark : inputColorLight,
           bgSize: '100%'
         }
-      }
+      })
     },
     components: {
       Heading: {
-        baseStyle: {
-          color: 'purple.300',
-          fontWeight: 'normal'
-        }
+        baseStyle: (props: StyleFunctionProps) => ({
+          color: props.colorMode === 'dark' ? 'purple.300' : 'purple.700',
+          weight: 'normal'
+        })
       },
-      Link: {
-        baseStyle: {
-          color: 'purple.200'
-        }
+      Badge: {
+        baseStyle: (props: StyleFunctionProps) => ({
+          color: props.colorMode === 'dark' ? 'purple.100' : 'purple.900',
+          bg: props.colorMode === 'dark' ? 'purple.600' : 'whiteAlpha.500'
+        })
       },
       Button: {
-        baseStyle: {
-          color: 'purple.100'
-        },
+        baseStyle: (props: StyleFunctionProps) => ({
+          color: props.colorMode === 'dark' ? 'purple.100' : 'purple.900'
+        }),
         // 3. We can add a new visual variant
         variants: {
           'with-shadow': {
@@ -163,8 +171,11 @@ const theme = extendTheme(
             boxShadow: '0 0 2px 2px #efdfde'
           },
           solid: (props: StyleFunctionProps) => ({
-            color: props.colorMode === 'dark' ? 'purple.100' : 'purple.900',
-            bg: props.colorMode === 'dark' ? 'purple.600' : 'purple.500'
+            color: props.colorMode === 'dark' ? 'red.100' : 'red.900',
+            bg: props.colorMode === 'dark' ? 'purple.600' : 'purple.200',
+            _hover: {
+              bg: props.colorMode === 'dark' ? 'purple.700' : 'purple.100'
+            }
           })
         },
         defaultProps: {
@@ -172,105 +183,84 @@ const theme = extendTheme(
           colorScheme: 'purple' // default is gray
         }
       },
-      InputGroup: {
-        defaultProps: {
-          colorScheme: 'purple' // default is gray
-        },
-        baseStyle: {
-          field: {
-            color: 'purple.200'
-          },
-          _hover: {
-            boxShadow: 'none',
-            borderColor: 'purple.200'
-          },
-          _focus: {
-            boxShadow: 'none',
-            borderColor: 'purple.200'
-          },
-          _focusWithin: {
-            boxShadow: 'none',
-            borderColor: 'purple.200'
-          }
-        }
-      },
       Input: {
-        baseStyle: {
+        baseStyle: (props: StyleFunctionProps) => ({
           field: {
-            color: 'purple.200',
+            color: props.colorMode === 'dark' ? inputColorDark : inputColorLight,
+            borderColor: props.colorMode === 'dark' ? borderColorDark : borderColorLight,
+            boxShadow: 'none',
+            outline: 'none',
             _placeholder: {
               color: 'pink.500'
             },
             _focus: {
+              backgroundColor: props.colorMode === 'dark' ? inputBGDark : inputBGLight,
+              borderColor: 'pink.500',
               outline: 'none',
-              borderColor: 'purple.200',
-              backgroundColor: 'pink.800'
+              boxShadow: 'none'
             },
             _focusVisible: {
               outline: 'none',
-              borderColor: 'purple.200',
-              boxShadow: 'none',
-              backgroundColor: 'pink.800'
+              borderColor: 'pink.500',
+              boxShadow: 'none'
+            },
+            _hover: {
+              borderColor: 'pink.500',
+              backgroundColor: props.colorMode === 'dark' ? inputBGDark : inputBGLight
             }
           },
           defaultProps: {
-            colorScheme: 'purple',
-            _focus: {
-              outline: 'none',
-              borderColor: 'purple.200',
-              backgroundColor: 'pink.800'
-            },
-            _forcusVisible: {
-              backgroundColor: 'pink.800',
-              borderColor: 'purple.200',
-              outline: 'none',
-              boxShadow: 'none'
-            }
+            colorScheme: 'purple'
           }
-        }
+        })
       },
       Textarea: {
-        baseStyle: {
-          color: 'purple.200',
+        baseStyle: (props: StyleFunctionProps) => ({
+          color: props.colorMode === 'dark' ? inputColorDark : inputColorLight,
+          borderColor: props.colorMode === 'dark' ? borderColorDark : borderColorLight,
           _placeholder: {
-            color: 'pink.500'
+            color: 'pink.700'
           },
           _focus: {
             outline: 'none',
-            borderColor: 'purple.300',
-            backgroundColor: 'pink.800'
+            borderColor: 'pink.500',
+            backgroundColor: props.colorMode === 'dark' ? inputBGDark : inputBGLight
           },
           _focusVisible: {
             outline: 'none',
-            borderColor: 'purple.300',
+            borderColor: 'pink.500',
             boxShadow: 'none'
           },
           _hover: {
-            borderColor: 'purple.300'
+            borderColor: 'pink.500',
+            backgroundColor: props.colorMode === 'dark' ? inputBGDark : inputBGLight
           }
-        },
+        }),
         defaultProps: {
           colorScheme: 'purple'
         }
       },
       Select: {
-        defaultProps: {
-          colorScheme: 'purple'
-        },
-        baseStyle: {
+        baseStyle: (props: StyleFunctionProps) => ({
           field: {
+            borderColor: props.colorMode === 'dark' ? borderColorDark : borderColorLight,
+            boxShadow: 'none',
             _focus: {
+              borderColor: 'pink.500',
               outline: 'none',
-              borderColor: 'purple.200',
-              backgroundColor: 'pink.800'
+              boxShadow: 'none',
+              backgroundColor: props.colorMode === 'dark' ? inputBGDark : inputBGLight
             },
             _forcusVisible: {
-              backgroundColor: 'pink.800',
-              borderColor: 'purple.200',
+              backgroundColor: props.colorMode === 'dark' ? inputBGDark : inputBGLight,
+              borderColor: 'pink.500',
               outline: 'none',
               boxShadow: 'none'
             }
           }
+        }),
+        defaultProps: {
+          colorScheme: 'purple'
         }
       }
     }

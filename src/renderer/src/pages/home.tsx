@@ -1,5 +1,6 @@
-import { Box, Card, CardBody, Heading, Image, Stack, Text } from '@chakra-ui/react'
+import { Box, Heading, Image, Stack, Text } from '@chakra-ui/react'
 import RarrSplash from '@renderer/assets/RARR_Splash.png'
+import ColorBox from '@renderer/components/layout/color-box'
 
 function HomePage(): JSX.Element {
   return (
@@ -7,8 +8,8 @@ function HomePage(): JSX.Element {
       <Heading as="h2" size="lg" textAlign="center">
         Welcome to Ragers and Rampagers Recovering
       </Heading>
-      <Card bg="pink.900" color="purple.300" border="1px solid" marginInline="auto" marginBlock={4}>
-        <CardBody>
+      <ColorBox>
+        <Box position={'relative'}>
           <Stack spacing={4} align="center">
             <Stack direction={{ base: 'column', md: 'row' }} justifyContent="center" width="100%">
               <Box
@@ -30,10 +31,10 @@ function HomePage(): JSX.Element {
               </Box>
               <Image width={{ base: '100%', md: '65%' }} src={RarrSplash} alt="Welcome Home" />
             </Stack>
-            <Text>Real recovery for ficticious creatures.</Text>
+            <Text>Real recovery for fictitious creatures.</Text>
           </Stack>
-        </CardBody>
-      </Card>
+        </Box>
+      </ColorBox>
     </Stack>
   )
 }

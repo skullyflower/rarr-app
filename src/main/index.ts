@@ -9,7 +9,8 @@ const logDir = join(app.getPath('home'), 'Library', 'RARRLog')
 const logFilePattern = new RegExp(/^\d{4}-\d{1,2}-\d{1,2}\.txt$/)
 
 const hashfile = join(logDir, '.lock.txt')
-const savedHash = fs.existsSync(hashfile) && fs.readFileSync(hashfile, 'utf8')
+const getSavedHash = (): string | false =>
+  fs.existsSync(hashfile) && fs.readFileSync(hashfile, 'utf8')
 
 function lock(): boolean {
   return fs.existsSync(hashfile) // returns locked if there is a hash file
@@ -19,7 +20,7 @@ function unlock(user: string, password: string): boolean {
   const hash = createHash('sha256')
   hash.update(`${user}${password}`)
   if (fs.existsSync(hashfile)) {
-    if (hash.digest('hex') === savedHash) {
+    if (hash.digest('hex') === getSavedHash()) {
       return false // unlocked
     } else {
       console.error('Invalid password')

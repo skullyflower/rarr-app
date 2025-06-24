@@ -154,7 +154,7 @@ function ResentmentsForm(): JSX.Element {
                 />
               </FormControl>
             </AccordionSection>
-            <AccordionSection title="Do you see the situation any differently now?">
+            <AccordionSection title="Do you see the situation differently now?">
               <FormControl isRequired>
                 <StyledTextInput value={learned} setter={setLearned} />
               </FormControl>

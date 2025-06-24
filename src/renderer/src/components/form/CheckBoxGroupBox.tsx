@@ -1,4 +1,12 @@
-import { Checkbox, CheckboxGroup, Box, SimpleGrid, HStack, Badge } from '@chakra-ui/react'
+import {
+  Checkbox,
+  CheckboxGroup,
+  Box,
+  SimpleGrid,
+  HStack,
+  Badge,
+  useColorMode
+} from '@chakra-ui/react'
 import { useEffect } from 'react'
 
 interface CheckboxGroupBoxProps {
@@ -13,6 +21,8 @@ export default function CheckboxGroupBox({
   options,
   setter
 }: CheckboxGroupBoxProps): JSX.Element {
+  const { colorMode } = useColorMode()
+
   const optionsList = Array.isArray(options) ? options : Object.entries(options)
 
   const handleCBChange = (list: string[], value: string): string[] => {
@@ -46,9 +56,14 @@ export default function CheckboxGroupBox({
               //alignItems="start"
               border="1px solid"
               borderColor="purple.700"
+              color={colorMode === 'dark' ? 'gray.100' : 'purple:700'}
               gap={4}
               borderRadius={7}
-              _hover={{ backgroundColor: 'pink.800', borderColor: 'purple.300' }}
+              _checked={{ backgroundColor: colorMode === 'dark' ? 'pink.800' : 'gray.50' }}
+              _hover={{
+                backgroundColor: colorMode === 'dark' ? 'pink.800' : 'gray.50',
+                borderColor: 'purple.300'
+              }}
               p={2}
               key={typeof part === 'string' ? part : part[0]}
               value={typeof part === 'string' ? part : part[0]}

@@ -26,7 +26,7 @@ export default function Confirm({
 }: ConfirmProps): JSX.Element {
   return (
     <>
-      <Modal isOpen={isOpen} onClose={onClose}>
+      <Modal colorScheme="purple" isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent>
           <ModalHeader>{title}</ModalHeader>

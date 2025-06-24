@@ -44,17 +44,41 @@ export default function SiteRoutes(): JSX.Element {
         {activePath === 'steps' && <TheSteps />}
 
         {activePath === 'resent' &&
-          (isLocked ? <UnlockInventory setIsLocked={setIsLocked} /> : <ResentmentsForm />)}
+          (isLocked ? (
+            <UnlockInventory setIsLocked={setIsLocked} setActivePath={setActivePath} />
+          ) : (
+            <ResentmentsForm />
+          ))}
         {activePath === 'aca10' &&
-          (isLocked ? <UnlockInventory setIsLocked={setIsLocked} /> : <AcaTenthStep />)}
+          (isLocked ? (
+            <UnlockInventory setIsLocked={setIsLocked} setActivePath={setActivePath} />
+          ) : (
+            <AcaTenthStep />
+          ))}
         {activePath === 'serenity' &&
-          (isLocked ? <UnlockInventory setIsLocked={setIsLocked} /> : <SerenityCheckIn />)}
+          (isLocked ? (
+            <UnlockInventory setIsLocked={setIsLocked} setActivePath={setActivePath} />
+          ) : (
+            <SerenityCheckIn />
+          ))}
         {activePath === 'fear' &&
-          (isLocked ? <UnlockInventory setIsLocked={setIsLocked} /> : <Fears />)}
+          (isLocked ? (
+            <UnlockInventory setIsLocked={setIsLocked} setActivePath={setActivePath} />
+          ) : (
+            <Fears />
+          ))}
         {activePath === 'log' &&
-          (isLocked ? <UnlockInventory setIsLocked={setIsLocked} /> : <InventoryJoural />)}
+          (isLocked ? (
+            <UnlockInventory setIsLocked={setIsLocked} setActivePath={setActivePath} />
+          ) : (
+            <InventoryJoural />
+          ))}
         {activePath === 'unlock' && (
-          <UnlockInventory setIsLocked={setIsLocked} isLocked={isLocked} />
+          <UnlockInventory
+            setIsLocked={setIsLocked}
+            isLocked={isLocked}
+            setActivePath={setActivePath}
+          />
         )}
       </>
     </Layout>

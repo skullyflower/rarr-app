@@ -1,5 +1,5 @@
 import { DeleteIcon } from '@chakra-ui/icons'
-import { Button, Card, HStack, Input, Stack, Text } from '@chakra-ui/react'
+import { Button, Card, HStack, Input, Stack, Text, useColorMode } from '@chakra-ui/react'
 import { useCallback, useRef, useState } from 'react'
 import useKeyCapture from '../hooks/useKeyCapture'
 
@@ -12,6 +12,9 @@ interface DoubleListerInputProps {
 }
 
 const DoubleListerInput = ({ list, setList, labels }: DoubleListerInputProps): JSX.Element => {
+  const { colorMode } = useColorMode()
+  const activeBG = colorMode === 'dark' ? 'pink.800' : 'gray.50'
+
   const [oneItem, setOneItem] = useState<string>('')
   const [twoItem, setTwoItem] = useState<string>('')
   const inputRef = useRef<HTMLInputElement>(null)
@@ -62,14 +65,16 @@ const DoubleListerInput = ({ list, setList, labels }: DoubleListerInputProps): J
           justifyContent={'space-between'}
           gap={2}
           wrap={'wrap'}
-          _hover={{ backgroundColor: 'pink.800', borderColor: 'purple.300' }}
+          _hover={{ backgroundColor: activeBG, borderColor: 'purple.300' }}
         >
-          <Text>
-            <b>{labels && labels[0]}:</b> {value[0]}
-          </Text>
-          <Text>
-            <b>{labels && labels[1]}:</b> {value[1]}
-          </Text>
+          <Stack gap={2} flexGrow={2}>
+            <Text>
+              <b>{labels && labels[0]}:</b> {value[0]}
+            </Text>
+            <Text>
+              <b>{labels && labels[1]}:</b> {value[1]}
+            </Text>
+          </Stack>
           <Button size="xs" onClick={() => setList(list.filter((_, i) => i !== index))}>
             <DeleteIcon />
           </Button>

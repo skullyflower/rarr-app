@@ -1,5 +1,14 @@
-import { ChevronDownIcon } from '@chakra-ui/icons'
-import { Box, Button, HStack, Menu, MenuButton, MenuList, Stack } from '@chakra-ui/react'
+import { ChevronDownIcon, MoonIcon, SunIcon } from '@chakra-ui/icons'
+import {
+  Box,
+  Button,
+  HStack,
+  Menu,
+  MenuButton,
+  MenuList,
+  Stack,
+  useColorMode
+} from '@chakra-ui/react'
 import { ReactNode } from 'react'
 
 const NavItem = ({
@@ -13,6 +22,11 @@ const NavItem = ({
   onClick: () => void
   icon?: ReactNode
 }): JSX.Element => {
+  const { colorMode } = useColorMode()
+  const color = colorMode === 'dark' ? 'gray.100' : 'red.900'
+  const bgcolor = colorMode === 'dark' ? '' : 'gray.100'
+  const activebg = colorMode === 'dark' ? 'whiteAlpha.300' : 'purple.300'
+
   return (
     <Box
       width={['100%', 'auto']}
@@ -21,12 +35,13 @@ const NavItem = ({
       lineHeight={1}
       paddingBlock={1}
       paddingInline={2}
-      backgroundColor={isActive ? 'whiteAlpha.400' : undefined}
+      backgroundColor={isActive ? activebg : bgcolor}
+      color={color}
       borderRadius={5}
       border="2px solid"
       textTransform="uppercase"
       onClick={onClick}
-      _hover={{ cursor: 'pointer', backgroundColor: 'whiteAlpha.100' }}
+      _hover={{ cursor: 'pointer', backgroundColor: activebg }}
     >
       {text} {icon}
     </Box>
@@ -40,12 +55,18 @@ const MenuDDropDown = ({
   activePath: string
   setActivePath: (value: string) => void
 }): JSX.Element => {
+  const { colorMode } = useColorMode()
+  const color = colorMode === 'dark' ? 'gray.100' : 'red.900'
+  const bgcolor = colorMode === 'dark' ? '' : 'gray.100'
+  const activebg = colorMode === 'dark' ? 'whiteAlpha.300' : 'purple.300'
+
   return (
     <Menu defaultIsOpen>
       {({ isOpen }) => (
         <>
           <MenuButton
             as={Button}
+            color={color}
             variant={'outline'}
             width={['100%', 'auto']}
             fontSize={'sm'}
@@ -53,7 +74,8 @@ const MenuDDropDown = ({
             lineHeight={1}
             paddingBlock={1}
             paddingInline={2}
-            backgroundColor={isOpen ? 'whiteAlpha.300' : 'whiteAlpha.100'}
+            backgroundColor={isOpen ? activebg : bgcolor}
+            _active={{ activebg }}
             textTransform="uppercase"
             borderRadius={5}
             border="2px solid"
@@ -61,7 +83,11 @@ const MenuDDropDown = ({
           >
             Daily Inventories
           </MenuButton>
-          <MenuList background={'gray.900'} padding={2} border={0}>
+          <MenuList
+            background={colorMode === 'dark' ? 'gray.900' : 'gray.50'}
+            padding={2}
+            border={0}
+          >
             <Stack direction={['column', 'row']} gap={2} justifyContent={'center'}>
               <NavItem
                 isActive={activePath === 'resent'}
@@ -98,9 +124,15 @@ const NavBar = ({
   activePath: string
   setActivePath: (value: string) => void
 }): JSX.Element => {
+  const { colorMode, toggleColorMode } = useColorMode()
+
   return (
     <Box p={4}>
       <HStack wrap="wrap" gap={2} justifyContent={'center'}>
+        <Button size="sm" onClick={toggleColorMode}>
+          {colorMode === 'light' ? <MoonIcon /> : <SunIcon />}
+        </Button>
+
         <MenuDDropDown activePath={activePath} setActivePath={setActivePath} />
         <NavItem
           isActive={activePath === 'steps'}

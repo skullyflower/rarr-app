@@ -1,16 +1,16 @@
 import { CloseIcon, DeleteIcon } from '@chakra-ui/icons'
 import {
   Box,
-  Card,
-  CardBody,
   HStack,
   IconButton,
   Stack,
   Text,
   Tooltip,
+  useColorMode,
   useDisclosure
 } from '@chakra-ui/react'
 import Confirm from '@renderer/components/Confirm'
+import PageCard from '@renderer/components/layout/page-card'
 import SemiSafeContent from '@renderer/components/SemiSafeContent'
 import { useEffect, useState } from 'react'
 
@@ -19,6 +19,8 @@ interface oneEntry {
   content: string
 }
 const InventoryJoural = (): JSX.Element => {
+  const { colorMode } = useColorMode()
+
   const [entries, setEntries] = useState<string[]>([])
   const [selectedEntry, setSelectedEntry] = useState<oneEntry | null>(null)
   const [toDelete, setToDelete] = useState<string | null>(null)
@@ -103,25 +105,15 @@ const InventoryJoural = (): JSX.Element => {
               onClick={() => setSelectedEntry(null)}
             />
           </HStack>
-          <Card
-            bg="whiteAlpha.300"
-            border={['none', '1px solid']}
-            maxHeight={'75vh'}
-            overflowY={'auto'}
-          >
-            <CardBody>
-              <HStack justifyContent={'space-between'}>
-                <Text fontSize={'lg'} fontWeight="bold">
-                  {formatTitle(selectedEntry.filename)}
-                </Text>
-                <DeleteButton what={selectedEntry.filename} />
-              </HStack>
-              <SemiSafeContent
-                rawContent={selectedEntry.content}
-                fileName={selectedEntry.filename}
-              />
-            </CardBody>
-          </Card>
+          <PageCard>
+            <HStack justifyContent={'space-between'}>
+              <Text fontSize={'lg'} fontWeight="bold">
+                {formatTitle(selectedEntry.filename)}
+              </Text>
+              <DeleteButton what={selectedEntry.filename} />
+            </HStack>
+            <SemiSafeContent rawContent={selectedEntry.content} fileName={selectedEntry.filename} />
+          </PageCard>
         </Stack>
         <Confirmation />
       </Box>
@@ -132,36 +124,34 @@ const InventoryJoural = (): JSX.Element => {
     <Box>
       <Stack>
         <LogHeader />
-        <Card bg="whiteAlpha.300" border={['none', '1px solid']}>
-          <CardBody>
-            <Stack gap={1}>
-              {entries.length < 1 && (
-                <Text>
-                  No entries found. Use the inventory forms under &quot;Daily Inventories&quot; to
-                  add entries to your log.
-                </Text>
-              )}
-              {entries.map((entry, index) => (
-                <HStack
-                  key={index}
-                  padding={2}
-                  borderRadius={4}
-                  justifyContent="space-between"
-                  _hover={{ backgroundColor: 'whiteAlpha.400' }}
+        <PageCard>
+          <Stack gap={1}>
+            {entries.length < 1 && (
+              <Text>
+                No entries found. Use the inventory forms under &quot;Daily Inventories&quot; to add
+                entries to your log.
+              </Text>
+            )}
+            {entries.map((entry, index) => (
+              <HStack
+                key={index}
+                padding={2}
+                borderRadius={4}
+                justifyContent="space-between"
+                _hover={{ backgroundColor: colorMode === 'dark' ? 'whiteAlpha.400' : 'gray.200' }}
+              >
+                <Text
+                  flexGrow={1}
+                  _hover={{ cursor: 'pointer', fontWeight: 'bold' }}
+                  onClick={() => getContents(entry)}
                 >
-                  <Text
-                    flexGrow={1}
-                    _hover={{ cursor: 'pointer', fontWeight: 'bold' }}
-                    onClick={() => getContents(entry)}
-                  >
-                    {formatTitle(entry)}
-                  </Text>
-                  <DeleteButton what={entry} />
-                </HStack>
-              ))}
-            </Stack>
-          </CardBody>
-        </Card>
+                  {formatTitle(entry)}
+                </Text>
+                <DeleteButton what={entry} />
+              </HStack>
+            ))}
+          </Stack>
+        </PageCard>
       </Stack>
       <Confirmation />
     </Box>

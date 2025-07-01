@@ -48,12 +48,11 @@ function writeToLog(message: string, fileName?: string): boolean {
   }
   const logFile = join(logDir, `${fileNameString}.txt`)
   try {
+    // append different sections to file
     if (fs.existsSync(logFile) && fileName === undefined) {
       fs.appendFileSync(logFile, `__________________________________\n${stringToWrite}`)
     } else {
-      // if (fileName) {
-      //   deletLogFile(fileName)
-      // }
+      // overwrite file with edits.
       fs.writeFileSync(logFile, stringToWrite, { encoding: 'utf8', flag: 'w' })
     }
     return true

@@ -92,17 +92,17 @@ const MenuDDropDown = ({
               <NavItem
                 isActive={activePath === 'resent'}
                 onClick={() => setActivePath('resent')}
-                text="Troubles"
+                text="Trouble"
               />
               <NavItem
                 isActive={activePath === 'aca10'}
                 onClick={() => setActivePath('aca10')}
-                text="Emotional Sobriety"
+                text="Spawn of Trouble"
               />
               <NavItem
                 isActive={activePath === 'serenity'}
                 onClick={() => setActivePath('serenity')}
-                text="Serenity"
+                text="Control"
               />
               <NavItem
                 isActive={activePath === 'fear'}

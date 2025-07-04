@@ -1,5 +1,5 @@
 import { IconButton, Tooltip } from '@chakra-ui/react'
-import copyText from '../copyText.mjs'
+import copyText from '../../scripts/copyText.mjs'
 import { CopyIcon, CheckIcon } from '@chakra-ui/icons'
 import { useEffect, useState } from 'react'
 
@@ -20,7 +20,7 @@ const CopyButton = ({ text, disabled }: CopyButtonProps): JSX.Element => {
         aria-label="Copy and send to your fellow traveller"
         icon={copied ? <CheckIcon /> : <CopyIcon />}
         disabled={disabled}
-        size={'xs'}
+        size={'sm'}
         onClick={() => {
           copyText(text)
           setCopied(true)

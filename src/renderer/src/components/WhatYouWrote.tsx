@@ -1,6 +1,6 @@
 import { Box, Button, HStack, ListItem, Stack, Text, UnorderedList } from '@chakra-ui/react'
-import SaveButton from '@renderer/components/form/save-button'
-import CopyButton from '@renderer/components/form/copy-button'
+import SaveButton from '@renderer/components/buttons/save-button'
+import CopyButton from '@renderer/components/buttons/copy-button'
 import { traitList } from '@renderer/pages/acaTenthStep/aca-tenth-constants.d'
 import { doubleListItem } from './form/DoubleListerInput'
 import PageCard from './layout/page-card'
@@ -42,7 +42,7 @@ function WhatYouWrote({
   const toCopy = (): string => {
     const toCopyStrings: string[] = []
     if (traitQs && traitQs.length > 0) {
-      toCopyStrings.push(`Traits I had today:\n\t• ${setAfromQ(traitQs)}`)
+      toCopyStrings.push(`Traits I had today:\n\t ${setAfromQ(traitQs)}`)
     }
     if (llTraits && llTraits.length > 0) {
       toCopyStrings.push(`Laundry List / Other Laundry List:\n\t• ${llTraits.join(',\n\t• ')}`)
@@ -95,6 +95,18 @@ function WhatYouWrote({
             </HStack>
           </HStack>
           <Stack gap={4} id="ToCopy">
+            {llTraits && llTraits.length > 0 && (
+              <Box>
+                <Text fontWeight={700} paddingBottom={4}>
+                  Laundry List and Other Laundry List traits I had today:
+                </Text>
+                <UnorderedList paddingInlineStart={4}>
+                  {llTraits.map((one, indx) => (
+                    <ListItem key={`lltraits${indx}`}>{one.replace('_', ' ')}</ListItem>
+                  ))}
+                </UnorderedList>
+              </Box>
+            )}
             {traitQs && traitQs.length > 0 && (
               <Box>
                 <Text fontWeight={700} paddingBottom={4}>

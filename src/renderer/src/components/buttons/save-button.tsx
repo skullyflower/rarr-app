@@ -32,7 +32,7 @@ const SaveButton = ({ text, fileName, disabled, bigbutton }: SaveButtonProps): J
           aria-label="Save to Today's Log"
           icon={saved ? <CheckIcon /> : <SaveIcon />}
           disabled={disabled}
-          size={'xs'}
+          size={'sm'}
           onClick={() => window.api.writeLog(text, fileName).then((res) => setSaved(res))}
         />
       )}

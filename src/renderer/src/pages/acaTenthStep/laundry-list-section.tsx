@@ -1,8 +1,8 @@
 import CheckboxGroupBox from '@renderer/components/form/CheckBoxGroupBox'
 import { HStack, Link, Stack, Text } from '@chakra-ui/react'
 import { laundryLists } from '@renderer/pages/acaTenthStep/aca-tenth-constants.d'
-import CopyButton from '@renderer/components/form/copy-button'
-import SaveButton from '@renderer/components/form/save-button'
+import CopyButton from '@renderer/components/buttons/copy-button'
+import SaveButton from '@renderer/components/buttons/save-button'
 const bothLaundryLists = laundryLists.flat()
 const LaundryListSection = ({
   llTraits,

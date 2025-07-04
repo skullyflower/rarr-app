@@ -1,8 +1,8 @@
-import CopyButton from '@renderer/components/form/copy-button'
+import CopyButton from '@renderer/components/buttons/copy-button'
 import { HStack, Stack, Text } from '@chakra-ui/react'
 import { useCallback, useState } from 'react'
 import useKeyCapture from '@renderer/components/hooks/useKeyCapture'
-import SaveButton from '@renderer/components/form/save-button'
+import SaveButton from '@renderer/components/buttons/save-button'
 import ListerInput from '@renderer/components/form/ListerInput'
 
 function GratitudeList(): JSX.Element {

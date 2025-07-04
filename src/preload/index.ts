@@ -32,6 +32,9 @@ const api = {
   },
   reset: (): Promise<boolean> => {
     return ipcRenderer.invoke('reset-log')
+  },
+  print: (fileName: string | undefined): Promise<boolean> => {
+    return ipcRenderer.invoke('print-page', fileName)
   }
 }
 

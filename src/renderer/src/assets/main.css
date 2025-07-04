@@ -12,16 +12,23 @@
 body{
   font-size: 20px;
 }
-.ql-editor{
-  font-size: 16px;
-}
-.ql-editor.ql-blank::before{
-  color: rgba(255,215,255,.5)
-}
-.ql-snow .ql-stroke{
-  stroke: #868 !important;
-}
 input:focus-visible, select:focus-visible, textarea:focus-visible {
   box-shadow: none !important;
   border-color: rgb(165, 151, 196) !important;
+}
+@media print {
+  /* All your print styles go here */
+  body{ position: relative; }
+    * {
+    height: auto !important;
+    font-size: 10pt;
+    max-height: 100% !important;
+    overflow: visible !important;
+    page-break-before: always;
+  }
+  header,
+  footer, 
+  button,[role='tooltip'] {
+    display: none !important;
+  }
 }

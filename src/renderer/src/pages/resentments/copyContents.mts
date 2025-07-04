@@ -1,4 +1,4 @@
-import copyText from '@renderer/components/copyText.mjs'
+import copyText from '@renderer/scripts/copyText.mjs'
 
 export function getContents(): string {
   const contentsDiv = document.getElementById('ToCopy')

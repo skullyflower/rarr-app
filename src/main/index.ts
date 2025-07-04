@@ -32,21 +32,24 @@ function unlock(user: string, password: string): boolean {
   }
 }
 
-function writeToLog(message: string, fileName?: string): boolean {
-  //console.log('writeToLog', message, fileName)
+function getLogFilePath(fileName: string | undefined): string {
   const date = new Date()
 
   const fileNameString =
     fileName !== undefined
       ? fileName
       : `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`
-
-  const stringToWrite = `${message}\n\n`
-
   if (!fs.existsSync(logDir)) {
     fs.mkdirSync(logDir)
   }
-  const logFile = join(logDir, `${fileNameString}.txt`)
+  return join(logDir, `${fileNameString}.txt`)
+}
+
+function writeToLog(message: string, fileName?: string): boolean {
+  //console.log('writeToLog', message, fileName)
+
+  const stringToWrite = `${message}\n\n`
+  const logFile = getLogFilePath(fileName)
   try {
     // append different sections to file
     if (fs.existsSync(logFile) && fileName === undefined) {
@@ -152,6 +155,22 @@ function createWindow(): void {
   }
 }
 
+function createPrintWindow(logFile: string): void {
+  let child: BrowserWindow | undefined = new BrowserWindow({ show: false, autoHideMenuBar: true })
+  child.loadFile(logFile)
+  const titleDate = logFile.match(/\d{4}-\d{1,2}-\d{1,2}/)
+  child.once('ready-to-show', () => {
+    child?.show()
+    child?.setTitle(`RARR-${titleDate}`)
+    child?.webContents.print({}, (success) => {
+      child?.close()
+      return success
+    })
+  })
+  child.on('closed', () => {
+    child = undefined // Remove the reference
+  })
+}
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
@@ -209,6 +228,13 @@ app.whenReady().then(() => {
 
   ipcMain.handle('dark-mode:system', () => {
     nativeTheme.themeSource = 'system'
+  })
+
+  ipcMain.handle('print-page', (_event, fileName) => {
+    if (fileName) {
+      const logFile = getLogFilePath(fileName)
+      createPrintWindow(logFile)
+    }
   })
 
   createWindow()

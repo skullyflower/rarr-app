@@ -1,7 +1,7 @@
-import CopyButton from '@renderer/components/form/copy-button'
+import CopyButton from '@renderer/components/buttons/copy-button'
 import { HStack, Stack, Text } from '@chakra-ui/react'
 import ListerInput from '@renderer/components/form/ListerInput'
-import SaveButton from '@renderer/components/form/save-button'
+import SaveButton from '@renderer/components/buttons/save-button'
 
 const ToolsUsedToday = ({
   listOfTools,

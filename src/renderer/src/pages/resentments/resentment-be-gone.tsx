@@ -1,8 +1,8 @@
 import { getContents } from '@renderer/pages/resentments/copyContents.mjs'
 import ReadyToLetGo from '@renderer/components/form/ready-to-let-go'
 import { Box, Button, HStack, ListItem, Stack, Text, UnorderedList } from '@chakra-ui/react'
-import SaveButton from '@renderer/components/form/save-button'
-import CopyButton from '@renderer/components/form/copy-button'
+import SaveButton from '@renderer/components/buttons/save-button'
+import CopyButton from '@renderer/components/buttons/copy-button'
 import PageCard from '@renderer/components/layout/page-card'
 import ColorBox from '@renderer/components/layout/color-box'
 

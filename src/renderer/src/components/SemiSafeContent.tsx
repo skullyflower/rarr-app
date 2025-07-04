@@ -9,14 +9,20 @@ import {
   useEditableControls
 } from '@chakra-ui/react'
 import { useState } from 'react'
-import SaveButton from './form/save-button'
+import SaveButton from './buttons/save-button'
 import { EditIcon, CloseIcon } from '@chakra-ui/icons'
+import PrintButton from './buttons/print-button'
+import CopyButton from './buttons/copy-button'
+import DeleteButton from './buttons/delete-button'
+import { oneEntry } from '@renderer/pages/journal'
 
 interface SemiSafeContentProps {
-  rawContent: string | TrustedHTML
-  fileName?: string
+  entry: oneEntry
+  afterdelete?: () => void
 }
-function SemiSafeContent({ rawContent, fileName }: SemiSafeContentProps): JSX.Element {
+function SemiSafeContent({ entry, afterdelete }: SemiSafeContentProps): JSX.Element {
+  const { content: rawContent, filename: fileName } = entry
+
   const [text, setText] = useState<string>(rawContent as string)
   function EditableControls(): JSX.Element {
     const { isEditing, getCancelButtonProps, getEditButtonProps } = useEditableControls()
@@ -25,14 +31,14 @@ function SemiSafeContent({ rawContent, fileName }: SemiSafeContentProps): JSX.El
       <Tooltip hasArrow label={`Cancel`}>
         <IconButton
           aria-label="Cancel"
-          size={'xs'}
+          size={'sm'}
           icon={<CloseIcon />}
           {...getCancelButtonProps()}
         />
       </Tooltip>
     ) : (
       <Tooltip hasArrow label={`Edit`}>
-        <IconButton aria-label="Edit" size={'xs'} icon={<EditIcon />} {...getEditButtonProps()} />
+        <IconButton aria-label="Edit" size={'sm'} icon={<EditIcon />} {...getEditButtonProps()} />
       </Tooltip>
     )
   }
@@ -48,10 +54,13 @@ function SemiSafeContent({ rawContent, fileName }: SemiSafeContentProps): JSX.El
         <HStack gap={2} justifyContent={'end'}>
           <EditableControls />
           <SaveButton text={text} fileName={fileName} disabled={rawContent === text} />
+          <CopyButton text={text} />
+          <PrintButton fileName={fileName} />
+          {fileName && afterdelete && <DeleteButton what={fileName} callback={afterdelete} />}
         </HStack>
       </Box>
       <EditablePreview />
-      <EditableTextarea minHeight={'65vh'} />
+      <EditableTextarea h={'65vh'} borderWidth={2} borderColor={'pink.400'} borderStyle={'solid'} />
     </Editable>
   )
 }

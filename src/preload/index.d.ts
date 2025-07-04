@@ -14,6 +14,7 @@ declare global {
       unlockLog: (user: string, password: string) => Promise<boolean>
       isLocked: () => Promise<boolean>
       reset: () => Promise<boolean>
+      print: (fileName?: string) => Promise<boolean>
     }
   }
 }

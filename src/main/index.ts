@@ -47,16 +47,23 @@ function getLogFilePath(fileName: string | undefined): string {
 
 function writeToLog(message: string, fileName?: string): boolean {
   //console.log('writeToLog', message, fileName)
+  const date = new Date()
 
   const stringToWrite = `${message}\n\n`
   const logFile = getLogFilePath(fileName)
   try {
     // append different sections to file
     if (fs.existsSync(logFile) && fileName === undefined) {
-      fs.appendFileSync(logFile, `__________________________________\n${stringToWrite}`)
+      fs.appendFileSync(logFile, `\n__________________________________\n${stringToWrite}`)
     } else {
       // overwrite file with edits.
-      fs.writeFileSync(logFile, stringToWrite, { encoding: 'utf8', flag: 'w' })
+      fs.writeFileSync(
+        logFile,
+        !fileName // new entry
+          ? `${date.toLocaleDateString()} \n__________________________________\n${stringToWrite}`
+          : stringToWrite, // save edits
+        { encoding: 'utf8', flag: 'w' }
+      )
     }
     return true
   } catch (error) {

@@ -11,7 +11,7 @@ const LaundryListSection = ({
   llTraits: string[]
   setLLTraits: (value: string[]) => void
 }): JSX.Element => {
-  const toCopy = `Today I: \n\t• ${llTraits.join(',\n\t• I ')}`
+  const toCopy = `Today I: \n\t• ${llTraits.join(',\n\t• ')}`
 
   return (
     <Stack gap={4}>

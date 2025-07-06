@@ -1,7 +1,4 @@
 import { Textarea, TextareaProps } from '@chakra-ui/react'
-// import ReactQuill from 'react-quill'
-// import { modules } from '@renderer/components/form/quillbits.mjs'
-import './StyledTextInput.css'
 
 interface StyledTextInputProps extends TextareaProps {
   value: string

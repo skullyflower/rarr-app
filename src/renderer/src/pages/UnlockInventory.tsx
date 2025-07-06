@@ -19,6 +19,7 @@ import useKeyCapture from '@renderer/components/hooks/useKeyCapture'
 import CollapsingText from '@renderer/components/layout/CollapsingText'
 import PageCard from '@renderer/components/layout/page-card'
 import ColorBox from '@renderer/components/layout/color-box'
+import { resetLogs, unlockLog } from '@renderer/scripts/logsAPI.mjs'
 
 const UnlockInventory = ({
   isLocked = true,
@@ -38,7 +39,7 @@ const UnlockInventory = ({
 
   const handleUnlock = (): void => {
     if (user.length > 0 && password.length > 0) {
-      window.api.unlockLog(user, password).then((res) => {
+      unlockLog(user, password).then((res) => {
         setIsLocked(res)
         if (!res) {
           setSuccess('Your inventories were unlocked successfully!')
@@ -52,8 +53,7 @@ const UnlockInventory = ({
   }
   const handleReset = (): void => {
     if (isLocked) {
-      window.api
-        .reset()
+      resetLogs()
         .then((res) => {
           setIsLocked(res)
           setSuccess('Your inventories were reset successfully!')

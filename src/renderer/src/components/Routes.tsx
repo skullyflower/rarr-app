@@ -8,20 +8,21 @@ import { useEffect, useState } from 'react'
 import InventoryJoural from '@renderer/pages/journal'
 import Fears from '@renderer/pages/fears/fears'
 import UnlockInventory from '@renderer/pages/UnlockInventory'
+import { getIsLocked, lockLog } from '@renderer/scripts/logsAPI.mjs'
 
 export default function SiteRoutes(): JSX.Element {
   const [activePath, setActivePath] = useState<string>('home')
   const [isLocked, setIsLocked] = useState<boolean>(true)
 
   useEffect(() => {
-    window.api.isLocked().then((res) => {
+    getIsLocked().then((res) => {
       setIsLocked(res)
     })
   }, [])
 
   const toggleLock = (): void => {
     if (!isLocked) {
-      window.api.lockLog().then((res) => {
+      lockLog().then((res) => {
         if (!res) {
           setActivePath('unlock')
         }

@@ -5,6 +5,7 @@ import SemiSafeContent from '@renderer/components/SemiSafeContent'
 import { useEffect, useState } from 'react'
 import { formatTitle } from '@renderer/scripts/copyText.mjs'
 import DeleteButton from '@renderer/components/buttons/delete-button'
+import { getLogList, readLog } from '@renderer/scripts/logsAPI.mjs'
 
 export interface oneEntry {
   filename: string
@@ -24,13 +25,13 @@ const InventoryJoural = (): JSX.Element => {
     }
 
   useEffect(() => {
-    window.api.getLogList().then((res) => {
+    getLogList().then((res) => {
       setEntries(res)
     })
   }, [])
 
   const getContents = (filename): void => {
-    window.api.readLog(filename).then((res) => {
+    readLog(filename).then((res) => {
       setSelectedEntry({ filename: filename, content: res })
     })
   }

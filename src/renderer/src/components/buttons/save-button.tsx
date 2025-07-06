@@ -2,6 +2,7 @@ import { Button, IconButton, Tooltip } from '@chakra-ui/react'
 import { CheckIcon } from '@chakra-ui/icons'
 import { useEffect, useState } from 'react'
 import SaveIcon from '../Icons/SaveIcon'
+import { writeLog } from '@renderer/scripts/logsAPI.mjs'
 
 interface SaveButtonProps {
   text: string
@@ -23,7 +24,7 @@ const SaveButton = ({ text, fileName, disabled, bigbutton }: SaveButtonProps): J
           leftIcon={saved ? <CheckIcon /> : <SaveIcon />}
           disabled={disabled}
           size={'sm'}
-          onClick={() => window.api.writeLog(text, fileName).then((res) => setSaved(res))}
+          onClick={() => writeLog(text, fileName).then((res) => setSaved(res))}
         >
           Save
         </Button>
@@ -33,7 +34,7 @@ const SaveButton = ({ text, fileName, disabled, bigbutton }: SaveButtonProps): J
           icon={saved ? <CheckIcon /> : <SaveIcon />}
           disabled={disabled}
           size={'sm'}
-          onClick={() => window.api.writeLog(text, fileName).then((res) => setSaved(res))}
+          onClick={() => writeLog(text, fileName).then((res) => setSaved(res))}
         />
       )}
     </Tooltip>

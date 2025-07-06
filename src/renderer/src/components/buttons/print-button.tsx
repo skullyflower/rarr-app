@@ -2,6 +2,7 @@ import { Button, IconButton, Tooltip } from '@chakra-ui/react'
 import { CheckIcon } from '@chakra-ui/icons'
 import { useState } from 'react'
 import PrintIcon from '../Icons/PrintIcon'
+import { printLog } from '@renderer/scripts/logsAPI.mjs'
 
 interface PrintButtonProps {
   fileName?: string
@@ -18,7 +19,7 @@ const PrintButton = ({ fileName, disabled, bigbutton }: PrintButtonProps): JSX.E
           leftIcon={printed ? <CheckIcon /> : <PrintIcon />}
           disabled={disabled}
           size={'sm'}
-          onClick={() => window.api.print(fileName).then((res) => setPrinted(res))}
+          onClick={() => printLog(fileName).then((res) => setPrinted(res))}
         >
           Print
         </Button>
@@ -28,7 +29,7 @@ const PrintButton = ({ fileName, disabled, bigbutton }: PrintButtonProps): JSX.E
           icon={printed ? <CheckIcon /> : <PrintIcon />}
           disabled={disabled}
           size={'sm'}
-          onClick={() => window.api.print(fileName).then((res) => setPrinted(res))}
+          onClick={() => printLog(fileName).then((res) => setPrinted(res))}
         />
       )}
     </Tooltip>

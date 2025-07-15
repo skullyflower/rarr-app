@@ -1,6 +1,6 @@
-import { Icon } from '@chakra-ui/react'
+import { Icon, IconProps } from '@chakra-ui/react'
 
-const PrintIcon = (props): JSX.Element => (
+const PrintIcon = (props: IconProps): JSX.Element => (
   <Icon viewBox="0 0 256 256" {...props}>
     <rect width="256" height="256" fill="none" />
     <polyline

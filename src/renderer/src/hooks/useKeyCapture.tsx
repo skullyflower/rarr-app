@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 
-function useKeyCapture(key: string, callback: () => void): void {
+function useKeyCapture({ key, callback }: { key: string; callback: () => void }): void {
   function handleKeyDown(event: KeyboardEvent): void {
     if (event.key === key) {
       callback()

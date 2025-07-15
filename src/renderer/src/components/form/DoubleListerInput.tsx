@@ -1,7 +1,7 @@
 import { DeleteIcon } from '@chakra-ui/icons'
 import { Button, Card, HStack, Input, Stack, Text, useColorMode } from '@chakra-ui/react'
 import { useCallback, useRef, useState } from 'react'
-import useKeyCapture from '../hooks/useKeyCapture'
+import useKeyCapture from '../../hooks/useKeyCapture'
 
 export type doubleListItem = [string, string]
 
@@ -29,7 +29,7 @@ const DoubleListerInput = ({ list, setList, labels }: DoubleListerInputProps): J
     }
   }, [oneItem, twoItem, list, setList])
 
-  useKeyCapture('Enter', addItem)
+  useKeyCapture({ key: 'Enter', callback: addItem })
 
   return (
     <Stack gap={2}>

@@ -15,27 +15,20 @@ import {
 } from '@chakra-ui/react'
 import Confirm from '../components/Confirm'
 import { useState } from 'react'
-import useKeyCapture from '@renderer/components/hooks/useKeyCapture'
+import useKeyCapture from '@renderer/hooks/useKeyCapture'
 import CollapsingText from '@renderer/components/layout/CollapsingText'
 import PageCard from '@renderer/components/layout/page-card'
 import ColorBox from '@renderer/components/layout/color-box'
 import { resetLogs, unlockLog } from '@renderer/scripts/logsAPI.mjs'
+import useToggleLock from '@renderer/hooks/useToggleLock'
 
-const UnlockInventory = ({
-  isLocked = true,
-  setIsLocked,
-  setActivePath
-}: {
-  isLocked?: boolean
-  setIsLocked: (locked: boolean) => void
-  setActivePath: (path: string) => void
-}): JSX.Element => {
+const UnlockInventory = (): JSX.Element => {
   const [user, setUser] = useState<string>('')
   const [password, setPassword] = useState<string>('')
   const { isOpen, onOpen, onClose } = useDisclosure()
   const [success, setSuccess] = useState<string | null>(null)
-
   const [error, setError] = useState<string | null>(null)
+  const { isLocked, setIsLocked } = useToggleLock()
 
   const handleUnlock = (): void => {
     if (user.length > 0 && password.length > 0) {
@@ -65,12 +58,13 @@ const UnlockInventory = ({
         .catch((err) => {
           setError(`Error resetting log: ${err}`)
         })
-    } else {
-      setActivePath('home')
     }
   }
-  useKeyCapture('Enter', () => {
-    handleUnlock()
+  useKeyCapture({
+    key: 'Enter',
+    callback: () => {
+      handleUnlock()
+    }
   })
   if (!isLocked && success) {
     return (

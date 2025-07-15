@@ -11,18 +11,23 @@ function HomePage(): JSX.Element {
       <ColorBox>
         <Box position={'relative'}>
           <Stack spacing={4} align="center">
-            <Stack direction={{ base: 'column', md: 'row' }} justifyContent="center" width="100%">
+            <Stack
+              position={'relative'}
+              direction={{ base: 'column', md: 'row' }}
+              justifyContent="end"
+              width="100%"
+            >
               <Box
                 backgroundColor="purple.300"
                 color={'pink.900'}
                 borderRadius="md"
                 padding={8}
-                width={{ base: '100%', md: '400px' }}
+                width={{ base: '100%', md: '43%' }}
                 maxH="fit-content"
                 textAlign="left"
-                position={{ base: 'static', md: 'relative' }}
+                position={{ base: 'static', md: 'absolute' }}
                 left="50px"
-                top="100px"
+                bottom="30px"
                 fontSize={['lg', 'xl']}
               >
                 <Text>Tired of the angry crowds with pitchforks and torches?</Text>

@@ -1,9 +1,11 @@
 import { app, shell, BrowserWindow, ipcMain, nativeTheme } from 'electron'
 import { join } from 'path'
-import { electronApp, optimizer, is } from '@electron-toolkit/utils'
+import { electronApp, optimizer } from '@electron-toolkit/utils'
 import icon from '../../resources/icon.png?asset'
 import fs from 'node:fs'
 import { createHash } from 'node:crypto'
+import { registerRoute } from '../lib/electron-router-dom'
+import path from 'node:path'
 
 const logDir = join(app.getPath('home'), 'Library', 'RARRLog')
 const logFilePattern = new RegExp(/^\d{4}-\d{1,2}-\d{1,2}\.txt$/)
@@ -155,11 +157,16 @@ function createWindow(): void {
 
   // HMR for renderer base on electron-vite cli.
   // Load the remote URL for development or the local html file for production.
-  if (is.dev && process.env['ELECTRON_RENDERER_URL']) {
-    mainWindow.loadURL(process.env['ELECTRON_RENDERER_URL'])
-  } else {
-    mainWindow.loadFile(join(__dirname, '../renderer/index.html'))
-  }
+  // if (is.dev && process.env['ELECTRON_RENDERER_URL']) {
+  //   mainWindow.loadURL(process.env['ELECTRON_RENDERER_URL'])
+  // } else {
+  //   mainWindow.loadFile(join(__dirname, '../renderer/index.html'))
+  // }
+  registerRoute({
+    id: 'main',
+    browserWindow: mainWindow,
+    htmlFile: path.join(__dirname, '../renderer/index.html')
+  })
 }
 
 function createPrintWindow(logFile: string): void {

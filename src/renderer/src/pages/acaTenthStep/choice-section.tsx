@@ -1,6 +1,5 @@
 import {
   Box,
-  HStack,
   Slider,
   SliderFilledTrack,
   SliderMark,
@@ -11,8 +10,6 @@ import {
 } from '@chakra-ui/react'
 import { useState } from 'react'
 import { choiceLevels } from './aca-tenth-constants.d'
-import CopyButton from '@renderer/components/buttons/copy-button'
-import SaveButton from '@renderer/components/buttons/save-button'
 
 const ChoiceSection = ({
   freedomText,
@@ -22,7 +19,6 @@ const ChoiceSection = ({
   setFreedomText: (value: string) => void
 }): JSX.Element => {
   const [freedomValue, setFreedomValue] = useState<number>(50)
-  const toCopy = `Choice Level:\nToday I was capable of: ${freedomText}`
 
   const handleSelected = (value: number): void => {
     setFreedomValue(value)
@@ -32,13 +28,7 @@ const ChoiceSection = ({
   }
   return (
     <Stack gap={4}>
-      <HStack justifyContent={'space-between'}>
-        <Text>Where are you on the discernment scale, today?</Text>
-        <HStack gap={2}>
-          <CopyButton text={toCopy} disabled={!freedomText} />
-          <SaveButton text={toCopy} disabled={!freedomText} />
-        </HStack>
-      </HStack>
+      <Text>Where are you on the discernment scale, today?</Text>
       <Text fontWeight={'bold'} textAlign={'center'}>
         {freedomText}
       </Text>

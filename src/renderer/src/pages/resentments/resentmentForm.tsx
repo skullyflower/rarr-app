@@ -19,7 +19,7 @@ import {
   myParts,
   successes,
   strings
-} from '@renderer/pages/resentments/resentment-constants.d'
+} from '@renderer/pages/resentments/resentment-constants.mjs'
 import useProgramDropDown from '@renderer/components/form/useProgramDropDown'
 import ResentBeGone from './resentment-be-gone'
 import PageCard from '@renderer/components/layout/page-card'
@@ -49,6 +49,7 @@ function ResentmentsForm(): JSX.Element {
     setDidWell([])
     setLearned('')
   }
+
   const { isOpen: isLettingGo, onOpen: onLettingGo, onClose: onCloseLetGo } = useDisclosure()
   const { isOpen: isNever, onOpen: onNever, onClose: onNeverMind } = useDisclosure()
 
@@ -83,10 +84,13 @@ function ResentmentsForm(): JSX.Element {
   return (
     <Stack gap={4}>
       <HStack align="center" justify={'center'} gap={4}>
-        <Heading as="h1" size="lg">
+        <Heading as="h2" size="lg">
+          Trouble:
+        </Heading>{' '}
+        <ProgramDropDown />
+        <Heading as="h2" size="lg">
           {strings[selectedProgram as keyof typeof strings].title}
         </Heading>
-        <ProgramDropDown />
       </HStack>
       <PageCard>
         <Box padding={4}>
@@ -102,12 +106,11 @@ function ResentmentsForm(): JSX.Element {
           </Text>
         </Box>
         <Accordion allowToggle={true}>
-          <Stack gap={2}>
+          <Stack gap={2} padding={4}>
             <AccordionSection title="Who or what is bothering you?">
               <Stack gap={4}>
                 <FormControl isRequired>
                   <Input
-                    _focus={{ borderColor: 'purple.200' }}
                     name="Iresent"
                     type="text"
                     value={Iresent}
@@ -177,9 +180,11 @@ function ResentmentsForm(): JSX.Element {
           will be formatted so that you can copy or print them if you like, and share them with
           whomever you choose.
         </Text>
-        <Text>
-          You can also save then to your inventory log, but they will not leave your computer.
-        </Text>
+        {Boolean(window.api) && (
+          <Text>
+            You can also save then to your inventory log, but they will not leave your computer.
+          </Text>
+        )}
       </Box>
       <NeverLetGo isOpen={isNever} onClose={onNeverMind} />
     </Stack>

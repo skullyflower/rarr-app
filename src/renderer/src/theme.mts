@@ -2,6 +2,7 @@ import { extendTheme, type ThemeConfig } from '@chakra-ui/react'
 import type { StyleFunctionProps } from '@chakra-ui/styled-system'
 import RARR_Splash_BG from '@renderer/assets/RARR_Splash_BG.gif'
 
+const fontmode = JSON.parse(window.localStorage.getItem('UseRegFonts') || 'false')
 const inputColorLight = 'purple.900'
 const inputColorDark = 'gray.50'
 const inputBGLight = 'gray.50'
@@ -14,7 +15,7 @@ const config: ThemeConfig = {
   useSystemColorMode: true
 }
 
-const theme = extendTheme(
+const defaultTheme = extendTheme(
   { config },
   {
     fontSizes: {
@@ -267,4 +268,12 @@ const theme = extendTheme(
   }
 )
 
+export const cleanTheme = {
+  ...defaultTheme,
+  fonts: {
+    heading: `'Arial Black', sans-serif`,
+    body: `'Arial', sans-serif`
+  }
+}
+const theme = fontmode ? cleanTheme : defaultTheme
 export default theme

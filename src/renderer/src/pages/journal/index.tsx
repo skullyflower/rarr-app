@@ -30,7 +30,7 @@ const InventoryJoural = (): JSX.Element => {
     })
   }, [])
 
-  const getContents = (filename): void => {
+  const getContents = (filename: string): void => {
     readLog(filename).then((res) => {
       setSelectedEntry({ filename: filename, content: res })
     })

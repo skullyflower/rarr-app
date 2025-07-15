@@ -1,4 +1,13 @@
-import { Box, Button, HStack, ListItem, Stack, Text, UnorderedList } from '@chakra-ui/react'
+import {
+  Box,
+  Button,
+  Heading,
+  HStack,
+  ListItem,
+  Stack,
+  Text,
+  UnorderedList
+} from '@chakra-ui/react'
 import SaveButton from '@renderer/components/buttons/save-button'
 import CopyButton from '@renderer/components/buttons/copy-button'
 import { traitList } from '@renderer/pages/acaTenthStep/aca-tenth-constants.d'
@@ -88,7 +97,9 @@ function WhatYouWrote({
       <ColorBox>
         <Stack gap={4}>
           <HStack justifyContent="space-between">
-            <Text>Here is what you wrote.</Text>
+            <Heading fontSize={'h3'} fontWeight={700}>
+              Here is what you wrote.
+            </Heading>
             <HStack gap={4}>
               <CopyButton text={stringToWrite} />
               <SaveButton text={stringToWrite} bigbutton={true} />

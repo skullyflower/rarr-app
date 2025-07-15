@@ -10,7 +10,7 @@ import {
   useColorMode
 } from '@chakra-ui/react'
 import { useCallback, useState } from 'react'
-import useKeyCapture from '../hooks/useKeyCapture'
+import useKeyCapture from '../../hooks/useKeyCapture'
 
 interface ListerInputProps {
   list: string[]
@@ -29,7 +29,7 @@ const ListerInput = ({ list, setList, placeholder }: ListerInputProps): JSX.Elem
     }
   }, [oneItem, list, setList])
 
-  useKeyCapture('Enter', addItem)
+  useKeyCapture({ key: 'Enter', callback: addItem })
 
   return (
     <Stack gap={2}>

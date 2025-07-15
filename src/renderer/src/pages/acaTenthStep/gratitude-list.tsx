@@ -1,14 +1,11 @@
-import CopyButton from '@renderer/components/buttons/copy-button'
-import { HStack, Stack, Text } from '@chakra-ui/react'
+import { Stack, Text } from '@chakra-ui/react'
 import { useCallback, useState } from 'react'
-import useKeyCapture from '@renderer/components/hooks/useKeyCapture'
-import SaveButton from '@renderer/components/buttons/save-button'
+import useKeyCapture from '@renderer/hooks/useKeyCapture'
 import ListerInput from '@renderer/components/form/ListerInput'
 
 function GratitudeList(): JSX.Element {
   const [listOfGrats, setListOfGrats] = useState<string[]>([])
   const [oneGrat, setOneGrat] = useState<string>()
-  const tocopy = `Today I am grateful for:\n\t• ${listOfGrats.join(', \n\t• ')}`
 
   const addGrat = useCallback(() => {
     if (oneGrat) {
@@ -17,17 +14,11 @@ function GratitudeList(): JSX.Element {
     }
   }, [oneGrat, listOfGrats])
 
-  useKeyCapture('Enter', addGrat)
+  useKeyCapture({ key: 'Enter', callback: addGrat })
 
   return (
     <Stack gap={4}>
-      <HStack justifyContent={'space-between'}>
-        <Text>What are you feeling grateful for today?</Text>
-        <HStack gap={2}>
-          <CopyButton text={tocopy} disabled={listOfGrats.length === 0} />
-          <SaveButton text={tocopy} disabled={listOfGrats.length === 0} />
-        </HStack>
-      </HStack>
+      <Text>What are you feeling grateful for today?</Text>
       <ListerInput list={listOfGrats} setList={setListOfGrats} placeholder="Add a gratitude..." />
     </Stack>
   )

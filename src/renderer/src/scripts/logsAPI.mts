@@ -1,4 +1,3 @@
-/// Allows code to be shared between web and app versions.
 declare global {
   interface Window {
     api:
@@ -112,4 +111,10 @@ export const unlockLog = (user: string, password: string): Promise<boolean> => {
 export const resetLogs = (): Promise<boolean> => {
   if (window.api) return window.api.reset()
   return Promise.resolve(false)
+}
+
+export const toggleFontMode = (): void => {
+  const usePlainFonts = JSON.parse(window.localStorage.getItem('UseRegFonts') || 'false')
+  window.localStorage.setItem('UseRegFonts', JSON.stringify(!usePlainFonts))
+  window.location.reload()
 }

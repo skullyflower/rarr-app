@@ -55,7 +55,7 @@ function AcaTenthStep(): JSX.Element {
   return (
     <Stack gap={4} width="100%">
       <Heading textAlign="center" as="h1" size="lg">
-        Emotional Sobriety Step 10
+        Spawn of Trouble: ACA style Step 10
       </Heading>
       <PageCard>
         <Stack gap={4} width={'100%'}>

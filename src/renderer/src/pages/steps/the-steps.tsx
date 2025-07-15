@@ -1,5 +1,5 @@
 import { Heading, HStack, ListItem, OrderedList, Stack } from '@chakra-ui/react'
-import { steps } from './steps-constants.d'
+import { steps } from './steps-constants.mjs'
 import useProgramDropDown from '@renderer/components/form/useProgramDropDown'
 import PageCard from '@renderer/components/layout/page-card'
 import ColorBox from '@renderer/components/layout/color-box'

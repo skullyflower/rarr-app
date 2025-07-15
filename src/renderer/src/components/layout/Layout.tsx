@@ -1,34 +1,13 @@
-import {
-  Box,
-  Image,
-  VStack,
-  Stack,
-  HStack,
-  FormControl,
-  FormLabel,
-  Switch,
-  useColorMode
-} from '@chakra-ui/react'
+import { Box, Image, Stack, useColorMode, LinkBox } from '@chakra-ui/react'
 import NavBar from '../NavBar'
 import rarrLogo from '@renderer/assets/RarrLogo.svg'
-import { ReactElement } from 'react'
-import { LockIcon } from '@chakra-ui/icons'
+import { Link as ReactRouterLink, Outlet } from 'react-router-dom'
+import useToggleLock from '@renderer/hooks/useToggleLock'
+import UnlockInventory from '@renderer/pages/UnlockInventory'
 
-interface LayoutProps {
-  children: ReactElement
-  activePath: string
-  setActivePath: (value: string) => void
-  isLocked: boolean
-  toggleLock: () => void
-}
+function Layout(): JSX.Element {
+  const { isLocked } = useToggleLock()
 
-function Layout({
-  children,
-  activePath,
-  setActivePath,
-  isLocked,
-  toggleLock
-}: LayoutProps): JSX.Element {
   const { colorMode } = useColorMode()
   return (
     <Box
@@ -38,7 +17,7 @@ function Layout({
       position={'fixed'}
       overflow={'auto'}
     >
-      <VStack
+      <Stack
         justifyContent="center"
         alignItems={'stretch'}
         w={{ base: '100%', md: '95%' }}
@@ -53,29 +32,22 @@ function Layout({
             justifyContent="space-between"
             alignItems={['center', 'flex-start']}
           >
-            <Box
+            <LinkBox
+              as={ReactRouterLink}
               width="120px"
-              onClick={() => setActivePath('home')}
+              to={'/'}
               _hover={{ cursor: 'pointer' }}
               p={2}
               title="Ragers and Rampagers, Recovering"
             >
               <Image src={rarrLogo} alt="Ragers and Rampagers, Recovering" />
-            </Box>
-            <HStack wrap="wrap" gap={2} justifyContent={'center'}>
-              <NavBar activePath={activePath} setActivePath={setActivePath} />
-              <FormControl width={'auto'} display="flex" alignItems="center">
-                <FormLabel htmlFor="lock" mb="0">
-                  <LockIcon aria-label="Lock your log" />
-                </FormLabel>
-                <Switch isChecked={isLocked} id="lock" onChange={toggleLock} />
-              </FormControl>
-            </HStack>
+            </LinkBox>
+            <NavBar />
           </Stack>
         </header>
-        <Box>{children}</Box>
+        <Box>{isLocked ? <UnlockInventory /> : <Outlet />}</Box>
         <footer id="pagefoot"></footer>
-      </VStack>
+      </Stack>
     </Box>
   )
 }

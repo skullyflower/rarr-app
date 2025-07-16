@@ -102,7 +102,7 @@ function WhatYouWrote({
             </Heading>
             <HStack gap={4}>
               <CopyButton text={stringToWrite} />
-              <SaveButton text={stringToWrite} bigbutton={true} />
+              {Boolean(window.api) && <SaveButton text={stringToWrite} bigbutton={true} />}
             </HStack>
           </HStack>
           <Stack gap={4} id="ToCopy">

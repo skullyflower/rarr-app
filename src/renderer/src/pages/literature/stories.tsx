@@ -24,7 +24,7 @@ const Stories = (): JSX.Element => {
 
                 <Image
                   width={story.wide ? '1000px' : '500px'}
-                  src={`@renderer/assets/comics/${story.imgfile}`}
+                  src={`/comics/${story.imgfile}`}
                   alt={story.imgtitle}
                   fallbackSrc="/images/rain.svg"
                 />

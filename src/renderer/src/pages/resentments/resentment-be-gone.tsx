@@ -39,7 +39,7 @@ function ResentBeGone({
             <Text>Here is what you wrote.</Text>
             <HStack gap={4}>
               <CopyButton text={stringToWrite} />
-              <SaveButton text={stringToWrite} bigbutton />
+              {Boolean(window.api) && <SaveButton text={stringToWrite} bigbutton />}
             </HStack>
           </HStack>
           <Stack gap={4} id="ToCopy">

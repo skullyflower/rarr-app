@@ -169,7 +169,7 @@ function WhatYouWrote({
                 </Text>
                 <UnorderedList paddingInlineStart={4}>
                   {praise.map((one, indx) => (
-                    <ListItem key={`praise${indx}`}>{one.replace('_', ' ')}</ListItem>
+                    <ListItem key={`praise${indx}`}>{`I am ${one.replace('_', ' ')}`}</ListItem>
                   ))}
                 </UnorderedList>
               </Box>

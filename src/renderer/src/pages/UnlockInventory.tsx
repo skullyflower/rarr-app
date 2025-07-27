@@ -28,7 +28,7 @@ const UnlockInventory = (): JSX.Element => {
   const { isOpen, onOpen, onClose } = useDisclosure()
   const [success, setSuccess] = useState<string | null>(null)
   const [error, setError] = useState<string | null>(null)
-  const { isLocked, setIsLocked } = useToggleLock()
+  const { isLocked, hasLock, setIsLocked } = useToggleLock()
 
   const handleUnlock = (): void => {
     if (user.length > 0 && password.length > 0) {
@@ -90,7 +90,7 @@ const UnlockInventory = (): JSX.Element => {
             </Alert>
           )}
 
-          {!isLocked ? (
+          {!hasLock ? (
             <Stack gap={3}>
               <Text fontSize={'lg'} fontWeight="bold">
                 Set up locking for your inventories.
@@ -130,6 +130,7 @@ const UnlockInventory = (): JSX.Element => {
                   Name
                 </FormLabel>
                 <Input
+                  autoComplete="username"
                   value={user}
                   type="text"
                   placeholder="Name"
@@ -143,6 +144,7 @@ const UnlockInventory = (): JSX.Element => {
                   Password
                 </FormLabel>
                 <Input
+                  autoComplete="current-password"
                   value={password}
                   type="password"
                   placeholder="Password"

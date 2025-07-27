@@ -27,6 +27,9 @@ const api = {
   unlockLog: (user: string, password: string): Promise<boolean> => {
     return ipcRenderer.invoke('unlock', user, password)
   },
+  hasLock: (): Promise<boolean> => {
+    return ipcRenderer.invoke('has-lock')
+  },
   isLocked: (): Promise<boolean> => {
     return ipcRenderer.invoke('is-locked')
   },

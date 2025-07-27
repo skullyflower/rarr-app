@@ -8,6 +8,7 @@ declare global {
           print: (fileName?: string) => Promise<boolean>
           deleteLog: (toDelete: string) => Promise<boolean>
           isLocked: () => Promise<boolean>
+          hasLock: () => Promise<boolean>
           lockLog: () => Promise<boolean>
           unlockLog: (user: string, password: string) => Promise<boolean>
           reset: () => Promise<boolean>
@@ -95,6 +96,11 @@ export const deleteLog = (toDelete: string): Promise<boolean> => {
 
 export const getIsLocked = (): Promise<boolean> => {
   if (window.api) return window.api?.isLocked()
+  return Promise.resolve(false)
+}
+
+export const getHasLock = (): Promise<boolean> => {
+  if (window.api) return window.api?.hasLock()
   return Promise.resolve(false)
 }
 

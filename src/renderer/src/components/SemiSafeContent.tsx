@@ -60,7 +60,13 @@ function SemiSafeContent({ entry, afterdelete }: SemiSafeContentProps): JSX.Elem
         </HStack>
       </Box>
       <EditablePreview />
-      <EditableTextarea h={'65vh'} borderWidth={2} borderColor={'pink.400'} borderStyle={'solid'} />
+      <EditableTextarea
+        p={4}
+        h={'65vh'}
+        borderWidth={2}
+        borderColor={'pink.400'}
+        borderStyle={'solid'}
+      />
     </Editable>
   )
 }

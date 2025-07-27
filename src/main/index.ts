@@ -1,4 +1,4 @@
-import { app, shell, BrowserWindow, ipcMain, nativeTheme } from 'electron'
+import { app, shell, BrowserWindow, ipcMain, nativeTheme, safeStorage } from 'electron'
 import { join } from 'path'
 import { electronApp, optimizer } from '@electron-toolkit/utils'
 import icon from '../../resources/icon.png?asset'
@@ -7,31 +7,48 @@ import { createHash } from 'node:crypto'
 import { registerRoute } from '../lib/electron-router-dom'
 import path from 'node:path'
 
-const logDir = join(app.getPath('home'), 'Library', 'RARRLog')
+let locked = true
+const canSafeStore = safeStorage.isEncryptionAvailable()
+
+const logDir = join(app.getPath('home'), '.RARRLog')
+if (!fs.existsSync(logDir)) {
+  fs.mkdirSync(logDir)
+}
 const logFilePattern = new RegExp(/^\d{4}-\d{1,2}-\d{1,2}\.txt$/)
 
 const hashfile = join(logDir, '.lock.txt')
+
 const getSavedHash = (): string | false =>
   fs.existsSync(hashfile) && fs.readFileSync(hashfile, 'utf8')
 
+function isLocked(): boolean {
+  return fs.existsSync(hashfile) && locked // returns locked if there is a hash file
+}
+
 function lock(): boolean {
-  return fs.existsSync(hashfile) // returns locked if there is a hash file
+  locked = fs.existsSync(hashfile)
+  return locked
 }
 
 function unlock(user: string, password: string): boolean {
   const hash = createHash('sha256')
   hash.update(`${user}${password}`)
+  const encoded = canSafeStore
+    ? safeStorage.encryptString(`${user}${password}`).toString('base64')
+    : hash.digest('hex')
+
   if (fs.existsSync(hashfile)) {
-    if (hash.digest('hex') === getSavedHash()) {
-      return false // unlocked
+    if (encoded === getSavedHash()) {
+      locked = false
     } else {
       console.error('Invalid password')
-      return true // still locked
+      locked = true
     }
   } else {
-    fs.writeFileSync(hashfile, hash.digest('hex'), 'utf8') //registered
-    return false // and unlocked
+    fs.writeFileSync(hashfile, encoded, 'utf8') //created
+    locked = false
   }
+  return locked
 }
 
 function getLogFilePath(fileName: string | undefined): string {
@@ -41,29 +58,40 @@ function getLogFilePath(fileName: string | undefined): string {
     fileName !== undefined
       ? fileName
       : `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`
-  if (!fs.existsSync(logDir)) {
-    fs.mkdirSync(logDir)
-  }
   return join(logDir, `${fileNameString}.txt`)
 }
 
 function writeToLog(message: string, fileName?: string): boolean {
   //console.log('writeToLog', message, fileName)
   const date = new Date()
-
+  const divider = '\n__________________________________\n'
   const stringToWrite = `${message}\n\n`
   const logFile = getLogFilePath(fileName)
   try {
     // append different sections to file
+    const appendStyleString = `${divider}${stringToWrite}`
     if (fs.existsSync(logFile) && fileName === undefined) {
-      fs.appendFileSync(logFile, `\n__________________________________\n${stringToWrite}`)
+      if (canSafeStore) {
+        const oldString = fs.readFileSync(logFile, { encoding: 'utf8' })
+        const rewriteString = safeStorage.decryptString(Buffer.from(oldString, 'base64'))
+        fs.writeFileSync(
+          logFile,
+          safeStorage.encryptString(`${rewriteString}${appendStyleString}`).toString('base64'),
+          { encoding: 'utf8', flag: 'w' }
+        )
+      } else {
+        fs.appendFileSync(logFile, appendStyleString)
+      }
     } else {
+      const overWriteStyleString = !fileName // new entry
+        ? `${date.toLocaleDateString()}${divider}${stringToWrite}`
+        : stringToWrite
       // overwrite file with edits.
       fs.writeFileSync(
         logFile,
-        !fileName // new entry
-          ? `${date.toLocaleDateString()} \n__________________________________\n${stringToWrite}`
-          : stringToWrite, // save edits
+        canSafeStore
+          ? safeStorage.encryptString(overWriteStyleString).toString('base64')
+          : overWriteStyleString, // save edits
         { encoding: 'utf8', flag: 'w' }
       )
     }
@@ -92,7 +120,10 @@ function getLogList(): string[] {
 function readFromLog(fileName: string): string {
   const logFile = join(logDir, `${fileName}.txt`)
   if (fs.existsSync(logFile)) {
-    return fs.readFileSync(logFile, { encoding: 'utf8' })
+    const storedValue = fs.readFileSync(logFile, { encoding: 'utf8' })
+    return canSafeStore
+      ? safeStorage.decryptString(Buffer.from(storedValue, 'base64'))
+      : fs.readFileSync(logFile, { encoding: 'utf8' })
   } else {
     return ''
   }
@@ -199,8 +230,12 @@ app.whenReady().then(() => {
     optimizer.watchWindowShortcuts(window)
   })
 
-  ipcMain.handle('is-locked', (): boolean => {
+  ipcMain.handle('has-lock', (): boolean => {
     return fs.existsSync(hashfile)
+  })
+
+  ipcMain.handle('is-locked', (): boolean => {
+    return isLocked()
   })
 
   ipcMain.handle('lock', (): boolean => {

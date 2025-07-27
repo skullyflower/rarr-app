@@ -51,7 +51,7 @@ function WhatYouWrote({
   const toCopy = (): string => {
     const toCopyStrings: string[] = []
     if (traitQs && traitQs.length > 0) {
-      toCopyStrings.push(`Traits I had today:\n\t ${setAfromQ(traitQs)}`)
+      toCopyStrings.push(`Traits I had today:\n\t• ${setAfromQ(traitQs)}`)
     }
     if (llTraits && llTraits.length > 0) {
       toCopyStrings.push(`Laundry List / Other Laundry List:\n\t• ${llTraits.join(',\n\t• ')}`)

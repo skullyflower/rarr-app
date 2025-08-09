@@ -273,7 +273,12 @@ export const cleanTheme = {
   fonts: {
     heading: `'Arial Black', sans-serif`,
     body: `'Arial', sans-serif`
-  }
+  }, fontSizes: {
+    sm: '16px',
+    md: '18px',
+    lg: '20px'
+  },
+
 }
 const theme = fontmode ? cleanTheme : defaultTheme
 export default theme

@@ -134,7 +134,7 @@ export const assets = [
 ]
 
 export const laundryLists = [
-  ['I isolated and was afraid of people.', 'I exploited my authority to frightens others.'],
+  ['I isolated and was afraid of people.', 'I exploited my authority to frighten others.'],
   ['I sought approval, at the expense of my identity.', 'I was rigidly self-sufficient.'],
   [
     'I was frightened by an angry person or personal criticism',
@@ -145,7 +145,7 @@ export const laundryLists = [
   ['I felt overly responsible for others.', 'I was irresponsible and self-centered.'],
   ['I felt guilty standing up for myself.', 'I encouraged guilt in others to get my way.'],
   ['I was addicted to excitement.', 'I was emotionally deadened and numb.'],
-  ['I pity-loved someone.', 'I hated an needy person.'],
+  ['I confused pity with love.', 'I hated an needy person.'],
   ['I stuffed or stifled feelings. [denial]', 'I dramatically over expressed feelings. [denial]'],
   ['I judged myself harshly.', 'I judged someone else harshly.'],
   [
@@ -156,5 +156,8 @@ export const laundryLists = [
     'I expressed alcoholic/addictive tendencies, with or without alcohol or drugs.',
     'I refused to accept being affected by growing up around addiction, dysfunction or trauma.'
   ],
-  ['I was reactive, letting others direct my day.', 'I was nothing like my dysfunctional family.']
+  [
+    'I was reactive, letting others direct my decisions.',
+    'I was nothing like my dysfunctional family.'
+  ]
 ]

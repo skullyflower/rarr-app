@@ -10,6 +10,7 @@ import Fears from '@renderer/pages/fears/fears'
 import InventoryJoural from '@renderer/pages/journal'
 import { Router } from '@renderer/../../lib/electron-router-dom'
 import UnlockInventory from '@renderer/pages/UnlockInventory'
+import AboutRarr from '@renderer/pages/about/about-rarr'
 
 export default function SiteRoutes(): JSX.Element {
   return (
@@ -25,6 +26,7 @@ export default function SiteRoutes(): JSX.Element {
           <Route path="/steps" element={<TheSteps />} />
           <Route path="/log" element={<InventoryJoural />} />
           <Route path="/unlock" element={<UnlockInventory />} />
+          <Route path="/about" element={<AboutRarr />} />
         </Route>
       }
     />

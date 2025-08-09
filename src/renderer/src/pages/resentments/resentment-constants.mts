@@ -5,7 +5,7 @@ export enum affectsAA {
   SELF_ESTEEM = "It's making me feel bad about myself. I feel weak, ashamed, or unworthy.",
   GUILTY = "It's making me feel guilty.",
   PROFESSIONAL_RELATIONSHIPS = "It's damaging my relationships with my boss, coworkers, or customers.",
-  PERSONAL_RELATIONSHIPS = "It's damaging my relationships with friends, family.",
+  PERSONAL_RELATIONSHIPS = "It's damaging my relationships with friends and or family.",
   SEXUAL_RELATIONSHIP = "It's threatening my romantic or sexual relationships, imagined or real.",
   EGO = "It's threatening my sense of myself.",
   AMBITION = "It's threatening my getting what I want: big like a career, or small like the last chocolate doughnut."
@@ -48,8 +48,8 @@ enum affectsACA {
 }
 
 enum myPartsACA {
-  DENIAL = "I wasn't being totally honest, with myself.",
-  DONT_TRUST = "I didn't trust myself or that my Higher Power would take care of me. Maybe I expected to be hurt, disregarded or betrayed by the other person.",
+  DENIAL = "I wasn't being totally honest with myself.",
+  DONT_TRUST = "I didn't trust myself or that my Higher Power would take care of me. Maybe I expected to be hurt, disregarded, or betrayed by the other person.",
   DONT_TALK = "I didn't say what I needed to say, I didn't set a boundary, or I didn't ask for something I needed.",
   DONT_FEEL = 'I stuffed or denied my feelings.',
   FINE = "I denied (or didn't notice) I was having a problem.",

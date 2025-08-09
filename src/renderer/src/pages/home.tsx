@@ -36,7 +36,11 @@ function HomePage(): JSX.Element {
               </Box>
               <Image width={{ base: '100%', md: '65%' }} src={RarrSplash} alt="Welcome Home" />
             </Stack>
-            <Text>Real recovery for fictitious creatures.</Text>
+            <Text fontWeight={'bold'}>Real recovery for fictitious creatures.</Text>
+            <Text>
+              If you are struggling with monstrous behaviors or feelings, RARR has the tenth step
+              tools to help you shift your perspective and get back in balance.
+            </Text>
           </Stack>
         </Box>
       </ColorBox>

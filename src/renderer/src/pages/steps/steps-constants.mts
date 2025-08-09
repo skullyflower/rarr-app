@@ -1,6 +1,6 @@
 export const stepsRarr = [
   'We admitted that we were monsters living in a human world.',
-  'Came to believe that the Elder Gods, as we understood them, could help up to pass unnoticed.',
+  'Came to believe that the Elder Gods, as we understood them, could help us to pass unnoticed.',
   'Made a decision to submit to the will of The Great Old Ones.',
   'Made a thorough inventory of all of the humans we had mauled, eaten or murdered.',
   'Admitted to ourselves, the Elder Gods, and another monster, the entire list of humans we have eaten, mauled, or murdered.',

@@ -106,8 +106,8 @@ const NavBar = (): JSX.Element => {
             {colorMode === 'light' ? <MoonIcon /> : <SunIcon />}
           </Button>
           {isApp && (
-            <FormControl width={'auto'} display="flex" alignItems="center">
-              <FormLabel htmlFor="lock" mb="0">
+            <FormControl width={'auto'} display="flex" alignItems="center" gap={1}>
+              <FormLabel htmlFor="lock" m="0">
                 <LockIcon aria-label="Lock your log" />
               </FormLabel>
               <Switch isChecked={isLocked} id="lock" onChange={toggleLock} />

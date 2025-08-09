@@ -182,7 +182,7 @@ function ResentmentsForm(): JSX.Element {
         </Text>
         {Boolean(window.api) && (
           <Text>
-            You can also save then to your inventory log, but they will not leave your computer.
+            You can also save them to your inventory log, but they will not leave your computer.
           </Text>
         )}
       </Box>

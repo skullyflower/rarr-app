@@ -41,6 +41,7 @@ const AccordionSection: React.FC<AccordionSectionProps> = ({ title, children }) 
             fontWeight={'normal'}
             size="lg"
             textShadow={'1px 1px 2px rgba(0, 0, 0, 0.3)'}
+            textAlign={'left'}
           >
             {title}
           </Heading>

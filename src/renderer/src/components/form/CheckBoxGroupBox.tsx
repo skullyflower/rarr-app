@@ -45,7 +45,7 @@ export default function CheckboxGroupBox({
       <HStack gap={2} padding={2} wrap={'wrap'}>
         {valuesList.map((value) => (
           <Badge variant="outline" borderRadius={2} key={value}>
-            {value.replace('_', ' ')}
+            {value.replaceAll('_', ' ')}
           </Badge>
         ))}
       </HStack>
@@ -73,7 +73,7 @@ export default function CheckboxGroupBox({
                 part
               ) : (
                 <>
-                  <b>( {part[0].replace('_', ' ')} )</b> {part[1]}
+                  <b>( {part[0].replaceAll('_', ' ')} )</b> {part[1]}
                 </>
               )}
             </Checkbox>

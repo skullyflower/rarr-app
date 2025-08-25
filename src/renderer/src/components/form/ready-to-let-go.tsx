@@ -9,6 +9,7 @@ import {
   Text,
   useColorMode
 } from '@chakra-ui/react'
+// import GetImage from '../GetImage'
 
 const ReadyToLetGo = ({
   isOpen,
@@ -31,9 +32,10 @@ const ReadyToLetGo = ({
             Congratulations! Nice work.
           </ModalHeader>
           <ModalBody>
+            {/* <GetImage imgPath={'/RARR_Splash.png'} altText="Good Work" /> */}
             <Text>
-              Now you might want to talk what you&apos;ve discovered over with a trusted friend. It
-              might help you find a way to improve the situation.
+              Now you might want to talk about what you&apos;ve discovered with a trusted friend or
+              mentor.
             </Text>
           </ModalBody>
           <ModalFooter>

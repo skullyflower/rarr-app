@@ -54,19 +54,19 @@ function ResentBeGone({
             <Text fontWeight={700}>It affects my:</Text>
             <UnorderedList paddingInlineStart={4}>
               {affectsMy.map((effect, indx) => (
-                <ListItem key={`affects${indx}`}>{effect.replace('_', ' ')}</ListItem>
+                <ListItem key={`affects${indx}`}>{effect.replaceAll('_', ' ')}</ListItem>
               ))}
             </UnorderedList>
             <Text fontWeight={700}>I contributed to the problem in these ways:</Text>
             <UnorderedList paddingInlineStart={4}>
               {myPart.map((part, indx) => (
-                <ListItem key={`part${indx}`}>{part.replace('_', ' ')}</ListItem>
+                <ListItem key={`part${indx}`}>{part.replaceAll('_', ' ')}</ListItem>
               ))}
             </UnorderedList>
             <Text fontWeight={700}>I did these things well:</Text>
             <UnorderedList paddingInlineStart={4}>
               {didWell.map((part, indx) => (
-                <ListItem key={`part${indx}`}>{part.replace('_', ' ')}</ListItem>
+                <ListItem key={`part${indx}`}>{part.replaceAll('_', ' ')}</ListItem>
               ))}
             </UnorderedList>
             <Text fontWeight={700}>And after looking at it this way, I now see ...</Text>

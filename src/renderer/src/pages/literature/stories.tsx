@@ -1,7 +1,8 @@
-import { Heading, Image, Stack } from '@chakra-ui/react'
+import { Heading, Stack } from '@chakra-ui/react'
 import images from './list_file.json'
 import PageCard from '@renderer/components/layout/page-card'
 import ColorBox from '@renderer/components/layout/color-box'
+import GetImage from '@renderer/components/GetImage'
 
 const Stories = (): JSX.Element => {
   const stories = Object.entries(images)
@@ -21,12 +22,10 @@ const Stories = (): JSX.Element => {
                     {story.imgtitle}
                   </Heading>
                 )}
-
-                <Image
-                  width={story.wide ? '1000px' : '500px'}
-                  src={`/comics/${story.imgfile}`}
-                  alt={story.imgtitle}
-                  fallbackSrc="/images/rain.svg"
+                <GetImage
+                  wide={story.wide}
+                  imgPath={`/comics/${story.imgfile}`}
+                  altText={story.imgtitle}
                 />
               </ColorBox>
             )

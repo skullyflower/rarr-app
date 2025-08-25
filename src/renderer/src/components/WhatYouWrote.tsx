@@ -113,7 +113,7 @@ function WhatYouWrote({
                 </Text>
                 <UnorderedList paddingInlineStart={4}>
                   {llTraits.map((one, indx) => (
-                    <ListItem key={`lltraits${indx}`}>{one.replace('_', ' ')}</ListItem>
+                    <ListItem key={`lltraits${indx}`}>{one.replaceAll('_', ' ')}</ListItem>
                   ))}
                 </UnorderedList>
               </Box>
@@ -125,7 +125,7 @@ function WhatYouWrote({
                 </Text>
                 <UnorderedList paddingInlineStart={4}>
                   {traitQs.map((one, indx) => (
-                    <ListItem key={`traits${indx}`}>{one.replace('_', ' ')}</ListItem>
+                    <ListItem key={`traits${indx}`}>{one.replaceAll('_', ' ')}</ListItem>
                   ))}
                 </UnorderedList>
               </Box>
@@ -157,7 +157,7 @@ function WhatYouWrote({
                 </Text>
                 <UnorderedList paddingInlineStart={4}>
                   {listOfTools.map((one, indx) => (
-                    <ListItem key={`tool${indx}`}>{one.replace('_', ' ')}</ListItem>
+                    <ListItem key={`tool${indx}`}>{one.replaceAll('_', ' ')}</ListItem>
                   ))}
                 </UnorderedList>
               </Box>
@@ -169,7 +169,7 @@ function WhatYouWrote({
                 </Text>
                 <UnorderedList paddingInlineStart={4}>
                   {praise.map((one, indx) => (
-                    <ListItem key={`praise${indx}`}>{`I am ${one.replace('_', ' ')}`}</ListItem>
+                    <ListItem key={`praise${indx}`}>{`I am ${one.replaceAll('_', ' ')}`}</ListItem>
                   ))}
                 </UnorderedList>
               </Box>

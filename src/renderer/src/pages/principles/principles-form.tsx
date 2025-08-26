@@ -20,7 +20,7 @@ import {
 import { copyContents } from '@renderer/pages/resentments/copyContents.mjs'
 import { OneStep, StepCheckList } from './principles-constants'
 import { steps } from '@renderer/pages/steps/steps-constants.mjs'
-import useProgramDropDown from '@renderer/components/form/useProgramDropDown'
+import useProgramDropDown from '@renderer/hooks/useProgramDropDown'
 
 interface stepValue {
   percent: number

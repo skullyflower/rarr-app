@@ -47,6 +47,7 @@ const useProgramDropDown = (
                   bg: colorMode === 'dark' ? 'purple.700' : 'purple.100'
                 }}
                 onClick={() => setSelectedProgram(program)}
+                fontSize={'md'}
               >
                 {program}
               </MenuItem>

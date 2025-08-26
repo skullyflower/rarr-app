@@ -6,16 +6,16 @@ const CollapsingText = ({ children }: { children: ReactElement }): JSX.Element =
   const handleToggle = (): void => setShow(!show)
 
   return (
-    <>
+    <Box>
+      <Box textAlign={'center'}>
+        <Button variant={'link'} size="sm" onClick={handleToggle}>
+          {show ? 'Show Less' : 'More Info'}
+        </Button>
+      </Box>
       <Collapse startingHeight={0} in={show}>
         {children}
       </Collapse>
-      <Box textAlign={'right'}>
-        <Button variant={'link'} size="sm" onClick={handleToggle}>
-          {show ? 'Show Less' : '... Show More'}
-        </Button>
-      </Box>
-    </>
+    </Box>
   )
 }
 export default CollapsingText

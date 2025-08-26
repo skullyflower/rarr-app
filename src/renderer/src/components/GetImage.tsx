@@ -11,6 +11,7 @@ const GetImage = ({
   wide?: boolean
 }): JSX.Element => {
   const [imageSrc, setImageSrc] = useState('')
+
   if (!window.api) {
     return (
       <Image
@@ -25,6 +26,7 @@ const GetImage = ({
       .then((data) => setImageSrc(data))
       .catch(() => setImageSrc(imgPath))
   }
+
   return (
     <Image
       width={wide ? '1000px' : '500px'}
@@ -34,4 +36,5 @@ const GetImage = ({
     />
   )
 }
+
 export default GetImage

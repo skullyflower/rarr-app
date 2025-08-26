@@ -10,6 +10,7 @@ import { useState } from 'react'
 import WhatYouWrote from '@renderer/components/WhatYouWrote'
 import LaundryListSection from '@renderer/pages/acaTenthStep/laundry-list-section'
 import CollapsingText from '@renderer/components/layout/CollapsingText'
+import Privacy from '@renderer/components/Privacy'
 
 function AcaTenthStep(): JSX.Element {
   const [letGo, setLetGo] = useState(false)
@@ -126,6 +127,7 @@ function AcaTenthStep(): JSX.Element {
           </Stack>
         </Stack>
       </PageCard>
+      <Privacy />
     </Stack>
   )
 }

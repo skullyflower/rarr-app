@@ -20,11 +20,12 @@ import {
   successes,
   strings
 } from '@renderer/pages/resentments/resentment-constants.mjs'
-import useProgramDropDown from '@renderer/components/form/useProgramDropDown'
+import useProgramDropDown from '@renderer/hooks/useProgramDropDown'
 import ResentBeGone from './resentment-be-gone'
 import PageCard from '@renderer/components/layout/page-card'
 import AccordionSection from '@renderer/components/layout/accordion-section'
 import CollapsingText from '@renderer/components/layout/CollapsingText'
+import Privacy from '@renderer/components/Privacy'
 
 const programOptions = Object.keys(affects)
 
@@ -174,18 +175,7 @@ function ResentmentsForm(): JSX.Element {
           </Stack>
         </Accordion>
       </PageCard>
-      <Box p={4}>
-        <Text>
-          <b>Your answers can NOT be viewed by anyone but you</b>. When you hit submit, your answers
-          will be formatted so that you can copy or print them if you like, and share them with
-          whomever you choose.
-        </Text>
-        {Boolean(window.api) && (
-          <Text>
-            You can also save them to your inventory log, but they will not leave your computer.
-          </Text>
-        )}
-      </Box>
+      <Privacy />
       <NeverLetGo isOpen={isNever} onClose={onNeverMind} />
     </Stack>
   )

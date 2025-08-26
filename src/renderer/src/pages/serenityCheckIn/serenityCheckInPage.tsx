@@ -5,6 +5,7 @@ import AccordionSection from '@renderer/components/layout/accordion-section'
 import DoubleListerInput, { doubleListItem } from '@renderer/components/form/DoubleListerInput'
 import WhatYouWrote from '@renderer/components/WhatYouWrote'
 import CollapsingText from '@renderer/components/layout/CollapsingText'
+import Privacy from '@renderer/components/Privacy'
 
 function SerenityCheckIn(): JSX.Element {
   const [letGo, setLetGo] = useState(false)
@@ -86,6 +87,7 @@ function SerenityCheckIn(): JSX.Element {
           </Stack>
         </Stack>
       </PageCard>
+      <Privacy />
     </Stack>
   )
 }

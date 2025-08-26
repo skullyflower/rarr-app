@@ -6,6 +6,7 @@ import DoubleListerInput, { doubleListItem } from '@renderer/components/form/Dou
 import WhatYouWrote from '@renderer/components/WhatYouWrote'
 import CollapsingText from '@renderer/components/layout/CollapsingText'
 import ListerInput from '@renderer/components/form/ListerInput'
+import Privacy from '@renderer/components/Privacy'
 
 function Fears(): JSX.Element {
   const [letGo, setLetGo] = useState(false)
@@ -87,6 +88,7 @@ function Fears(): JSX.Element {
           </Stack>
         </Stack>
       </PageCard>
+      <Privacy />
     </Stack>
   )
 }

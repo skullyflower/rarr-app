@@ -11,9 +11,20 @@ const GetImage = ({
   wide?: boolean
 }): JSX.Element => {
   const [imageSrc, setImageSrc] = useState('')
-  import(`@renderer/src/assets${imgPath}`)
-    .then((data) => setImageSrc(data))
-    .catch(() => setImageSrc(imgPath))
+  if (!window.api) {
+    return (
+      <Image
+        width={wide ? '1000px' : '500px'}
+        src={imgPath}
+        alt={altText}
+        fallbackSrc="/images/rain.svg"
+      />
+    )
+  } else {
+    import(/* @vite-ignore */ `@renderer/src/assets${imgPath}`)
+      .then((data) => setImageSrc(data))
+      .catch(() => setImageSrc(imgPath))
+  }
   return (
     <Image
       width={wide ? '1000px' : '500px'}

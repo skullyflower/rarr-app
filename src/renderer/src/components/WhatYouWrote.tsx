@@ -24,6 +24,7 @@ interface WhatYouWroteProps {
   traitQs?: string[]
   canCannotControl?: doubleListItem[]
   fearsList?: doubleListItem[]
+  gradteful?: string[]
   llTraits?: string[]
 }
 
@@ -36,6 +37,7 @@ function WhatYouWrote({
   traitQs,
   canCannotControl,
   fearsList,
+  gradteful,
   llTraits
 }: WhatYouWroteProps): JSX.Element {
   const setAfromQ = (Qs: string[]): string => {
@@ -79,11 +81,20 @@ function WhatYouWrote({
     }
     if (fearsList && fearsList.length > 0) {
       toCopyStrings.push(
-        `Today I fear, and am grateful for:\n\t ${fearsList
+        `Today I fear:\n ${fearsList
           .map((pair) => {
-            return `• Today I fear:\n\t ${pair[0]}\n   But am grateful that: \n\t ${pair[1]}`
+            return `\t• Fear: ${pair[0]}\n\t\tBut grateful: ${pair[1]}`
           })
           .join('\n\n')}`
+      )
+    }
+    if (gradteful && gradteful.length > 0) {
+      toCopyStrings.push(
+        `...and grateful:\n ${gradteful
+          .map((grat) => {
+            return `\t• ${grat}`
+          })
+          .join('\n')}`
       )
     }
 
@@ -190,15 +201,26 @@ function WhatYouWrote({
               </Box>
             )}
             {fearsList && fearsList.length > 0 && (
-              <Box>
+              <Stack gap={2}>
                 <Text fontWeight={700} paddingBottom={4}>
                   Today&apos;s fears:
                 </Text>
                 {fearsList.map(
                   (value, index): JSX.Element => (
-                    <HStack key={index} justifyContent={'space-between'} gap={2} wrap={'wrap'}>
+                    <Stack key={`fear-${index}`} gap={2}>
                       <Text>I fear: {value[0]}</Text>
                       <Text>but am grateful: {value[1]}</Text>
+                    </Stack>
+                  )
+                )}
+              </Stack>
+            )}
+            {gradteful && gradteful.length > 0 && (
+              <Box>
+                {gradteful.map(
+                  (value, index): JSX.Element => (
+                    <HStack key={index} justifyContent={'space-between'} gap={2} wrap={'wrap'}>
+                      <Text>and grateful: {value}</Text>
                     </HStack>
                   )
                 )}

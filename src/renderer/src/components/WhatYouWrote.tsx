@@ -10,10 +10,10 @@ import {
 } from '@chakra-ui/react'
 import SaveButton from '@renderer/components/buttons/save-button'
 import CopyButton from '@renderer/components/buttons/copy-button'
-import { traitList } from '@renderer/pages/acaTenthStep/aca-tenth-constants.d'
 import { doubleListItem } from './form/DoubleListerInput'
 import PageCard from './layout/page-card'
 import ColorBox from './layout/color-box'
+import strings from '@renderer/data/aca-tenth.json'
 
 interface WhatYouWroteProps {
   reset: () => void
@@ -40,6 +40,8 @@ function WhatYouWrote({
   gradteful,
   llTraits
 }: WhatYouWroteProps): JSX.Element {
+  const traitList = strings.traitList
+
   const setAfromQ = (Qs: string[]): string => {
     const TraitAs: string[] = []
     Qs.forEach((Q) => {

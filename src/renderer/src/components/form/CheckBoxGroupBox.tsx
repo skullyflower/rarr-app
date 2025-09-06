@@ -73,7 +73,7 @@ export default function CheckboxGroupBox({
                 part
               ) : (
                 <>
-                  <b>( {part[0].replaceAll('_', ' ')} )</b> {part[1]}
+                  <b>( {part[0].replaceAll('_', ' ')} )</b> <p>{part[1]}</p>
                 </>
               )}
             </Checkbox>

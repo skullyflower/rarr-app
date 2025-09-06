@@ -14,12 +14,7 @@ import StyledTextInput from '@renderer/components/form/styledTextInput/StyledTex
 import CheckboxGroupBox from '@renderer/components/form/CheckBoxGroupBox'
 import { useState } from 'react'
 import NeverLetGo from '@renderer/components/form/never-let-go'
-import {
-  affects,
-  myParts,
-  successes,
-  strings
-} from '@renderer/pages/resentments/resentment-constants.mjs'
+import { affects, myParts, successes, strings } from '@renderer/data/resentments.json'
 import useProgramDropDown from '@renderer/hooks/useProgramDropDown'
 import ResentBeGone from './resentment-be-gone'
 import PageCard from '@renderer/components/layout/page-card'

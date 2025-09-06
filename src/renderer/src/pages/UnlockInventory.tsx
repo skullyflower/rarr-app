@@ -21,6 +21,7 @@ import PageCard from '@renderer/components/layout/page-card'
 import ColorBox from '@renderer/components/layout/color-box'
 import { resetLogs, unlockLog } from '@renderer/scripts/logsAPI.mjs'
 import useToggleLock from '@renderer/hooks/useToggleLock'
+import strings from '@renderer/data/unlock.json'
 
 const UnlockInventory = (): JSX.Element => {
   const [user, setUser] = useState<string>('')
@@ -35,11 +36,11 @@ const UnlockInventory = (): JSX.Element => {
       unlockLog(user, password).then((res) => {
         setIsLocked(res)
         if (!res) {
-          setSuccess('Your inventories were unlocked successfully!')
+          setSuccess(strings.unlock.success)
           setError(null)
         } else {
           setSuccess(null)
-          setError('Invalid username or password')
+          setError(strings.unlock.fail)
         }
       })
     }
@@ -49,14 +50,14 @@ const UnlockInventory = (): JSX.Element => {
       resetLogs()
         .then((res) => {
           setIsLocked(res)
-          setSuccess('Your inventories were reset successfully!')
+          setSuccess(strings.reset.success)
           setError(null)
         })
         .then(() => {
           onClose()
         })
         .catch((err) => {
-          setError(`Error resetting log: ${err}`)
+          setError(`${strings.reset.fail}: ${err}`)
         })
     }
   }
@@ -93,34 +94,21 @@ const UnlockInventory = (): JSX.Element => {
           {!hasLock ? (
             <Stack gap={3}>
               <Text fontSize={'lg'} fontWeight="bold">
-                Set up locking for your inventories.
+                {strings.setup.title}
               </Text>
               <CollapsingText>
                 <Stack gap={3}>
-                  <Text>
-                    This is an optional, &quot;diary strength&quot;, lock for privacy. It is not
-                    very secure, but will keep out casual snoops.
-                  </Text>
-                  <Text>
-                    When set, only you will be able to fill out, view or save your inventories.
-                  </Text>
-                  <Text>
-                    If you set up locking and forget your password or change your mind about keeping
-                    it locked, you can reset the app, and set up a new password or use it unlocked,
-                    but <i>everything you saved before you reset will be deleted</i>.
-                  </Text>
-                  <Text>
-                    If you set up locking after you&apos;ve saved entries, your entries will persist
-                    and be protected.
-                  </Text>
+                  {strings.setup.collapsedText.map((line, i) => (
+                    <Text key={`c-${i}`}>{line}</Text>
+                  ))}
                 </Stack>
               </CollapsingText>
 
-              <Text>Set a name and password below:</Text>
+              <Text fontWeight={'bold'}>{strings.setup.text}</Text>
             </Stack>
           ) : (
             <Text fontSize={'lg'} fontWeight="bold">
-              Unlock your inventories.
+              {strings.unlock.title}
             </Text>
           )}
           <ColorBox>
@@ -180,7 +168,7 @@ const UnlockInventory = (): JSX.Element => {
         isOpen={isOpen}
         onClose={onClose}
         title="Reset Log"
-        message="Are you sure you want to reset your diary? All of your past entries will be deleted."
+        message={strings.reset.confirm}
         onConfirm={handleReset}
       />
     </Box>

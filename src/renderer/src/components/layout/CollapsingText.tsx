@@ -1,4 +1,4 @@
-import { Box, Button, Collapse } from '@chakra-ui/react'
+import { Box, Button, Collapse, HStack } from '@chakra-ui/react'
 import { useState, ReactElement } from 'react'
 
 const CollapsingText = ({ children }: { children: ReactElement }): JSX.Element => {
@@ -6,16 +6,16 @@ const CollapsingText = ({ children }: { children: ReactElement }): JSX.Element =
   const handleToggle = (): void => setShow(!show)
 
   return (
-    <Box>
-      <Box textAlign={'center'}>
+    <HStack gap={4} alignItems={'flex-end'}>
+      <Collapse startingHeight={0} in={show}>
+        {children}
+      </Collapse>
+      <Box textAlign={'right'} flexGrow={2}>
         <Button variant={'link'} size="sm" onClick={handleToggle}>
           {show ? 'Show Less' : 'More Info'}
         </Button>
       </Box>
-      <Collapse startingHeight={0} in={show}>
-        {children}
-      </Collapse>
-    </Box>
+    </HStack>
   )
 }
 export default CollapsingText

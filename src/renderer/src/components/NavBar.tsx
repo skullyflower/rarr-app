@@ -142,6 +142,7 @@ const NavBar = (): JSX.Element => {
             <NavItem to="steps" text="The Steps" />
             <NavItem to="literature" text="Stories" />
           </MenuDDropDown>
+          <NavItem to="about" text="About" />
           {isApp && <NavItem to="log" text="My Log" />}
         </HStack>
       </Stack>

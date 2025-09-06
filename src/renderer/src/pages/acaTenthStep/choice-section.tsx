@@ -9,7 +9,7 @@ import {
   Text
 } from '@chakra-ui/react'
 import { useState } from 'react'
-import { choiceLevels } from './aca-tenth-constants.d'
+import strings from '@renderer/data/aca-tenth.json'
 
 const ChoiceSection = ({
   freedomText,
@@ -19,6 +19,7 @@ const ChoiceSection = ({
   setFreedomText: (value: string) => void
 }): JSX.Element => {
   const [freedomValue, setFreedomValue] = useState<number>(50)
+  const choiceLevels = strings.choiceLevels
 
   const handleSelected = (value: number): void => {
     setFreedomValue(value)

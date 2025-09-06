@@ -22,11 +22,7 @@ const Stories = (): JSX.Element => {
                     {story.imgtitle}
                   </Heading>
                 )}
-                <GetImage
-                  wide={story.wide}
-                  imgPath={`/comics/${story.imgfile}`}
-                  altText={story.imgtitle}
-                />
+                <GetImage wide={story.wide} imgPath={`${story.imgfile}`} altText={story.imgtitle} />
               </ColorBox>
             )
           })}

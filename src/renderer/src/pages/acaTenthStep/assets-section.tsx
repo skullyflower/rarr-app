@@ -1,6 +1,6 @@
 import CheckboxGroupBox from '@renderer/components/form/CheckBoxGroupBox'
 import { Stack, Text } from '@chakra-ui/react'
-import { assets } from './aca-tenth-constants.d'
+import strings from '@renderer/data/aca-tenth.json'
 
 const AssetsSection = ({
   praise,
@@ -9,6 +9,8 @@ const AssetsSection = ({
   praise: string[]
   setSetPraise: (value: string[]) => void
 }): JSX.Element => {
+  const assets = strings.assets
+
   return (
     <Stack gap={4}>
       <Text>Select Your Assets, include those you are not sure about or would like to have.</Text>

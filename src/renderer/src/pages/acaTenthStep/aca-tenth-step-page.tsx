@@ -11,6 +11,7 @@ import WhatYouWrote from '@renderer/components/WhatYouWrote'
 import LaundryListSection from '@renderer/pages/acaTenthStep/laundry-list-section'
 import CollapsingText from '@renderer/components/layout/CollapsingText'
 import Privacy from '@renderer/components/Privacy'
+import strings from '@renderer/data/aca-tenth.json'
 
 function AcaTenthStep(): JSX.Element {
   const [letGo, setLetGo] = useState(false)
@@ -56,24 +57,17 @@ function AcaTenthStep(): JSX.Element {
   return (
     <Stack gap={4} width="100%">
       <Heading textAlign="center" as="h1" size="lg">
-        Spawn of Trouble: ACA style Step 10
+        {strings.pageText.title}
       </Heading>
       <PageCard>
         <Stack gap={4} width={'100%'}>
           <Text textAlign={'center'} fontWeight={'bold'}>
-            Spiritual Principles: Honesty and Discernment
+            {strings.pageText.subTitle}
           </Text>
           <CollapsingText>
             <Stack gap={4}>
-              <Text fontSize={'lg'}>
-                &quot;Many of us found that we had several characteristics in common as a result of
-                being brought up in an alcoholic or dysfunctional household. &quot;
-              </Text>
-              <Text>
-                This is a tool for doing daily inventory to keep current with our recovery from the
-                affects of growing up with disfunction or trauma. You can fill out all the sections,
-                or just the ones that speak to you.
-              </Text>
+              <Text fontSize={'lg'}>{strings.pageText.collapsedText[0]}</Text>
+              <Text>{strings.pageText.collapsedText[1]}</Text>
               <Text>
                 For more information visit:{' '}
                 <Link

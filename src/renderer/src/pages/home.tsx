@@ -1,12 +1,13 @@
 import { Box, Heading, Image, Stack, Text } from '@chakra-ui/react'
 import RarrSplash from '@renderer/assets/RARR_Splash.png'
 import ColorBox from '@renderer/components/layout/color-box'
+import strings from '@renderer/data/home.json'
 
 function HomePage(): JSX.Element {
   return (
     <Stack gap={2}>
       <Heading as="h2" size="lg" textAlign="center">
-        Welcome to Ragers and Rampagers Recovering
+        {strings.title}
       </Heading>
       <ColorBox>
         <Box position={'relative'}>
@@ -30,17 +31,14 @@ function HomePage(): JSX.Element {
                 bottom="30px"
                 fontSize={['lg', 'xl']}
               >
-                <Text>Tired of the angry crowds with pitchforks and torches?</Text>
-                <Text>Do mothers clutch their children when you walk by?</Text>
-                <Text>WE KNOW HOW YOU FEEL!</Text>
+                {strings.boxText.map((line, i) => (
+                  <Text key={`line-${i}`}>{line}</Text>
+                ))}
               </Box>
               <Image width={{ base: '100%', md: '65%' }} src={RarrSplash} alt="Welcome Home" />
             </Stack>
-            <Text fontWeight={'bold'}>Real recovery for fictitious creatures.</Text>
-            <Text>
-              If you are struggling with monstrous behaviors or feelings, RARR has the tenth step
-              tools to help you shift your perspective and get back in balance.
-            </Text>
+            <Text fontWeight={'bold'}>{strings.footHeader}</Text>
+            <Text>{strings.footerText}</Text>
           </Stack>
         </Box>
       </ColorBox>

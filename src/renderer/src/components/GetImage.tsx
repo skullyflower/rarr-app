@@ -1,5 +1,5 @@
 import { Image } from '@chakra-ui/react'
-import { useState } from 'react'
+import theComics from '@renderer/scripts/comics.mjs'
 
 const GetImage = ({
   imgPath,
@@ -10,29 +10,12 @@ const GetImage = ({
   altText: string
   wide?: boolean
 }): JSX.Element => {
-  const [imageSrc, setImageSrc] = useState('')
-
-  if (!window.api) {
-    return (
-      <Image
-        width={wide ? '1000px' : '500px'}
-        src={imgPath}
-        alt={altText}
-        fallbackSrc="/images/rain.svg"
-      />
-    )
-  } else {
-    import(/* @vite-ignore */ `@renderer/src/assets${imgPath}`)
-      .then((data) => setImageSrc(data))
-      .catch(() => setImageSrc(imgPath))
-  }
-
   return (
     <Image
       width={wide ? '1000px' : '500px'}
-      src={imageSrc}
+      src={theComics ? theComics[imgPath] : `/comics/${imgPath}`}
       alt={altText}
-      fallbackSrc="/images/rain.svg"
+      //fallbackSrc="/images/rain.svg"
     />
   )
 }

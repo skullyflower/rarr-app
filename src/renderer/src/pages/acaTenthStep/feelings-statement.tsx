@@ -1,6 +1,6 @@
 import { HStack, Input, Select, Stack, Text } from '@chakra-ui/react'
 import { useEffect, useState } from 'react'
-import { feelings } from './aca-tenth-constants.d'
+import strings from '@renderer/data/aca-tenth.json'
 
 const FeelingsStatement = ({
   setFeelingSentence
@@ -10,7 +10,7 @@ const FeelingsStatement = ({
   const [when, setWhen] = useState<string>()
   const [feeling, setFeeling] = useState<string>('')
   const [because, setBecause] = useState<string>('')
-
+  const feelings = strings.feelings
   useEffect(() => {
     if (feeling && when && because) {
       setFeelingSentence(`I feel ${feeling} when ${when} because ${because}.`)

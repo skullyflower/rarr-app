@@ -1,19 +1,24 @@
-import { Box, Text } from '@chakra-ui/react'
+import { Stack, Text } from '@chakra-ui/react'
+import strings from '@renderer/data/privacy.json'
 
 const Privacy = (): JSX.Element => {
   return (
-    <Box p={4}>
-      <Text>
-        <b>Your answers can NOT be viewed by anyone but you</b>. When you hit submit, your answers
-        will be formatted so that you can copy or print them, but they never leave your computer. If
-        you like, and share them with whomever you choose.
-      </Text>
-      {Boolean(window.api) && (
-        <Text>
-          You can also save them to your inventory log, but they will not leave your computer.
+    <Stack p={4} gap={4}>
+      {strings.text.map((line, i) => (
+        <Text fontSize={'15px'} key={`priv-${i}`} fontWeight={i === 0 ? 'bold' : 'normal'}>
+          {line}
         </Text>
+      ))}
+      {Boolean(window.api) && (
+        <>
+          {strings.appOnlyText.map((line, i) => (
+            <Text fontSize={'15px'} key={`app-${i}`}>
+              {line}
+            </Text>
+          ))}
+        </>
       )}
-    </Box>
+    </Stack>
   )
 }
 export default Privacy

@@ -1,7 +1,7 @@
 import CheckboxGroupBox from '@renderer/components/form/CheckBoxGroupBox'
 import { Stack, Text } from '@chakra-ui/react'
 import { useMemo } from 'react'
-import { traitList } from './aca-tenth-constants.d'
+import strings from '@renderer/data/aca-tenth.json'
 
 const TraitsSection = ({
   traitQs,
@@ -10,7 +10,8 @@ const TraitsSection = ({
   traitQs: string[]
   setTraitQs: (value: string[]) => void
 }): JSX.Element => {
-  const allquestions = useMemo(() => traitList.map((trait) => trait.Q), [])
+  const traitList = strings.traitList
+  const allquestions = useMemo(() => traitList.map((trait) => trait.Q), [traitList])
 
   return (
     <Stack gap={4}>

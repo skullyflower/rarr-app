@@ -1,8 +1,8 @@
 import CheckboxGroupBox from '@renderer/components/form/CheckBoxGroupBox'
 import { Link, Stack, Text } from '@chakra-ui/react'
-import { laundryLists } from '@renderer/pages/acaTenthStep/aca-tenth-constants.d'
+import strings from '@renderer/data/aca-tenth.json'
 
-const bothLaundryLists = laundryLists.flat()
+const bothLaundryLists = strings.laundryLists.flat()
 
 const LaundryListSection = ({
   llTraits,
@@ -14,7 +14,7 @@ const LaundryListSection = ({
   return (
     <Stack gap={4}>
       <Text>
-        Select the Laundry List and Other Laundry List traits that you experienced today.{' '}
+        Select the Laundry List and Other Laundry List traits that you experienced today.
         <Link href="https://adultchildren.org/literature/laundry-list/" target="literature">
           Go to adultchildren.org more information.
         </Link>

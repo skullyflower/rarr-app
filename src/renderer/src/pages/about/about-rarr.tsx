@@ -17,9 +17,9 @@ function AboutRarr(): JSX.Element {
             <Text fontSize={'lg'} fontWeight={'bold'}>
               {about.pageText.subTitle}
             </Text>
-            {about.aboutText.map((p, i) => (
+            {about.aboutText.map((line, i) => (
               <Text key={`about-p-${i}`} marginBlock={'15px'}>
-                {p}
+                {line}
               </Text>
             ))}
           </ColorBox>
@@ -32,7 +32,9 @@ function AboutRarr(): JSX.Element {
                 <AccordionSection key={`faq-${i}`} title={faq.Q}>
                   <Stack gap={2} alignItems={'center'}>
                     {i === 0 && <GetImage imgPath="WDYT.gif" altText="What do you think?" />}
-                    <Text>{faq.A}</Text>
+                    <Text>
+                      <div dangerouslySetInnerHTML={{ __html: faq.A }} />
+                    </Text>
                     {i === 0 && (
                       <GetImage wide imgPath="fittingIn.jpg" altText="Can never fit in." />
                     )}

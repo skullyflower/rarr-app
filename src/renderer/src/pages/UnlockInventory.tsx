@@ -99,7 +99,9 @@ const UnlockInventory = (): JSX.Element => {
               <CollapsingText>
                 <Stack gap={3}>
                   {strings.setup.collapsedText.map((line, i) => (
-                    <Text key={`c-${i}`}>{line}</Text>
+                    <Text key={`c-${i}`}>
+                      <div dangerouslySetInnerHTML={{ __html: line }} />
+                    </Text>
                   ))}
                 </Stack>
               </CollapsingText>

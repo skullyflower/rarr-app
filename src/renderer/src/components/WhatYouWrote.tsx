@@ -14,6 +14,8 @@ import { doubleListItem } from './form/DoubleListerInput'
 import PageCard from './layout/page-card'
 import ColorBox from './layout/color-box'
 import strings from '@renderer/data/aca-tenth.json'
+import ReadyToLetGo from './form/ready-to-let-go'
+import { useState } from 'react'
 
 interface WhatYouWroteProps {
   reset: () => void
@@ -40,6 +42,7 @@ function WhatYouWrote({
   gradteful,
   llTraits
 }: WhatYouWroteProps): JSX.Element {
+  const [isLettingGo, setIsLettingGo] = useState(true)
   const traitList = strings.traitList
 
   const setAfromQ = (Qs: string[]): string => {
@@ -234,6 +237,7 @@ function WhatYouWrote({
           </Box>
         </Stack>
       </ColorBox>
+      <ReadyToLetGo isOpen={isLettingGo} onClose={() => setIsLettingGo(false)} />
     </PageCard>
   )
 }

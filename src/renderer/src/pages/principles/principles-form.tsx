@@ -19,7 +19,7 @@ import {
 } from '@chakra-ui/react'
 import { copyContents } from '@renderer/pages/resentments/copyContents.mjs'
 import { OneStep, StepCheckList } from './principles-constants'
-import { steps } from '@renderer/pages/steps/steps-constants.mjs'
+import steps from '@renderer/data/steps.json'
 import useProgramDropDown from '@renderer/hooks/useProgramDropDown'
 
 interface stepValue {
@@ -33,6 +33,7 @@ interface StepBoxProps extends OneStep {
   value: stepValue
 }
 
+type StepKey = keyof typeof steps
 const programOptions = Object.keys(StepCheckList)
 
 const initialState: Record<string, stepValue> = {
@@ -148,7 +149,7 @@ const SpotCheckForm = (): JSX.Element => {
   const [done, setDone] = useState(false)
   const [copied, setCopied] = useState(false)
   const { ProgramDropDown, selectedProgram } = useProgramDropDown(programOptions)
-  const stepText = steps[selectedProgram]
+  const stepText = steps[selectedProgram as StepKey]
   const updateOneStep =
     (step: number) => (newValue: { percent: number; more: string }) => (): void => {
       setValues({ ...values, [`${step}`]: newValue })

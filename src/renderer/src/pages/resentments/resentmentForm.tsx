@@ -22,6 +22,8 @@ import AccordionSection from '@renderer/components/layout/accordion-section'
 import CollapsingText from '@renderer/components/layout/CollapsingText'
 import Privacy from '@renderer/components/Privacy'
 
+type ProgKey = keyof typeof affects
+
 const programOptions = Object.keys(affects)
 
 function ResentmentsForm(): JSX.Element {
@@ -85,14 +87,14 @@ function ResentmentsForm(): JSX.Element {
         </Heading>{' '}
         <ProgramDropDown />
         <Heading as="h2" size="lg">
-          {strings[selectedProgram as keyof typeof strings].title}
+          {strings[selectedProgram as ProgKey].title}
         </Heading>
       </HStack>
       <PageCard>
         <Box padding={4}>
           <CollapsingText>
             <Stack gap={4}>
-              {strings[selectedProgram as keyof typeof strings].intro.map((line, index) => (
+              {strings[selectedProgram as ProgKey].intro.map((line, index) => (
                 <Text key={index}>{line}</Text>
               ))}
             </Stack>
@@ -130,7 +132,7 @@ function ResentmentsForm(): JSX.Element {
               <FormControl isRequired>
                 <CheckboxGroupBox
                   valuesList={affectsMy}
-                  options={affects[selectedProgram as keyof typeof affects]}
+                  options={affects[selectedProgram as ProgKey]}
                   setter={setAffectsMy}
                 />
               </FormControl>
@@ -139,7 +141,7 @@ function ResentmentsForm(): JSX.Element {
               <FormControl isRequired>
                 <CheckboxGroupBox
                   valuesList={myPart}
-                  options={myParts[selectedProgram as keyof typeof myParts]}
+                  options={myParts[selectedProgram as ProgKey]}
                   setter={setMyPart}
                 />
               </FormControl>
@@ -148,7 +150,7 @@ function ResentmentsForm(): JSX.Element {
               <FormControl isRequired>
                 <CheckboxGroupBox
                   valuesList={didWell}
-                  options={successes[selectedProgram as keyof typeof successes]}
+                  options={successes[selectedProgram as ProgKey]}
                   setter={setDidWell}
                 />
               </FormControl>

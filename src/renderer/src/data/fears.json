@@ -1,12 +1,1 @@
-{
-  "title": "Fear : What Frightens You Today?",
-  "collapsedText": [
-    "Fears can grow in the dark corners of our minds, coloring our lives and limiting our options.",
-    "It can help to put things into perspective and get you back in the present if admit your fears out and pair them with a related gratitude.",
-    "Example: I'm afraid of dying alone. I'm grateful for my full healthy life."
-  ],
-  "subHeading": "Fear was \"an evil and corrosive thread\" weaving through our lives.",
-  "accordionHeading": "I'm afraid of..., but grateful that...",
-  "labelsText": ["I am afraid of", "but gradteful that"],
-  "placeholder": "...and grateful"
-}
+{"title":"Fear : What Frightens You Today?","collapsedText":["Fears can grow in the dark corners of our minds, coloring our lives and limiting our options.","It can help to put things into perspective and get you back in the present if admit your fears out and pair them with a related gratitude.","Example: I'm afraid of dying alone. I'm grateful for my full healthy life."],"subHeading":"Fear was \"an evil and corrosive thread\" weaving through our lives.","accordionHeading":"I'm afraid of..., but grateful that...","labelsText":["I am afraid of","but grateful that"],"placeholder":"...and grateful"}

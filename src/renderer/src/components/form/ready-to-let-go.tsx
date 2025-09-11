@@ -9,7 +9,20 @@ import {
   Text,
   useColorMode
 } from '@chakra-ui/react'
-// import GetImage from '../GetImage'
+import GetImage from '../GetImage'
+
+const members = [
+  'Congrats.png',
+  'NiceWork.png',
+  'WellDone.png',
+  'GoodJob.png',
+  'WayToGo.png',
+  'Congrats.png',
+  'NiceWork.png',
+  'WellDone.png',
+  'GoodJob.png',
+  'WayToGo.png'
+]
 
 const ReadyToLetGo = ({
   isOpen,
@@ -18,6 +31,7 @@ const ReadyToLetGo = ({
   isOpen: boolean
   onClose: () => void
 }): JSX.Element => {
+  const member = Number(Math.random().toFixed(1)) * 10
   const { colorMode } = useColorMode()
 
   return (
@@ -32,7 +46,7 @@ const ReadyToLetGo = ({
             Congratulations! Nice work.
           </ModalHeader>
           <ModalBody>
-            {/* <GetImage imgPath={'/RARR_Splash.png'} altText="Good Work" /> */}
+            <GetImage imgPath={members[member] ?? 'GoodJob.png'} altText="Good Work" />
             <Text>
               Now you might want to talk about what you&apos;ve discovered with a trusted friend or
               mentor.

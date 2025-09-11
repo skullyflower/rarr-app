@@ -20,6 +20,11 @@ import ItHappendToHydra3 from '../assets/20241108ItHappendToHydra.gif'
 import ItHappendToHydra4 from '../assets/20241109ItHappendToHydra.gif'
 import WDYT from '../assets/WDYT.gif'
 import FittingIn from '../assets/fittingIn.jpg'
+import GoodJob from '../assets/GoodJob.png'
+import NiceWork from '../assets/NiceWork.png'
+import WayToGo from '../assets/WayToGo.png'
+import Congrats from '../assets/Congrats.png'
+import WellDone from '../assets/WellDone.png'
 
 const theComics = {
   '20060619NotAgain.gif': NotAgain,
@@ -43,6 +48,11 @@ const theComics = {
   '20241108ItHappendToHydra.gif': ItHappendToHydra3,
   '20241109ItHappendToHydra.gif': ItHappendToHydra4,
   'WDYT.gif': WDYT,
-  'fittingIn.jpg': FittingIn
+  'fittingIn.jpg': FittingIn,
+  'GoodJob.png': GoodJob,
+  'NiceWork.png': NiceWork,
+  'WayToGo.png': WayToGo,
+  'Congrats.png': Congrats,
+  'WellDone.png': WellDone
 }
 export default theComics

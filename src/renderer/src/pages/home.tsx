@@ -2,6 +2,7 @@ import { Box, Heading, Image, Stack, Text } from '@chakra-ui/react'
 import RarrSplash from '@renderer/assets/RARR_Splash.png'
 import ColorBox from '@renderer/components/layout/color-box'
 import strings from '@renderer/data/home.json'
+import theComics from '@renderer/scripts/comics.mjs'
 
 function HomePage(): JSX.Element {
   return (
@@ -35,7 +36,12 @@ function HomePage(): JSX.Element {
                   <Text key={`line-${i}`}>{line}</Text>
                 ))}
               </Box>
-              <Image width={{ base: '100%', md: '65%' }} src={RarrSplash} alt="Welcome Home" />
+              <Image
+                width={{ base: '100%', md: '65%' }}
+                src={RarrSplash}
+                fallbackSrc={theComics ? theComics['Fallback'] : '/images/rain.svg'}
+                alt="Welcome Home"
+              />
             </Stack>
             <Text fontWeight={'bold'}>{strings.footHeader}</Text>
             <Text>{strings.footerText}</Text>

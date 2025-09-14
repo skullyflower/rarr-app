@@ -25,6 +25,7 @@ import NiceWork from '../assets/NiceWork.png'
 import WayToGo from '../assets/WayToGo.png'
 import Congrats from '../assets/Congrats.png'
 import WellDone from '../assets/WellDone.png'
+import FallBack from '../assets/rain.svg'
 
 const theComics = {
   '20060619NotAgain.gif': NotAgain,
@@ -53,6 +54,7 @@ const theComics = {
   'NiceWork.png': NiceWork,
   'WayToGo.png': WayToGo,
   'Congrats.png': Congrats,
-  'WellDone.png': WellDone
+  'WellDone.png': WellDone,
+  Fallback: FallBack
 }
 export default theComics

@@ -10,13 +10,10 @@ const GetImage = ({
   altText: string
   wide?: boolean
 }): JSX.Element => {
+  const source = theComics ? theComics[imgPath] : `/comics/${imgPath}`
+  const fallback = theComics ? theComics['Fallback'] : '/images/rain.svg'
   return (
-    <Image
-      width={wide ? '1000px' : '500px'}
-      src={theComics ? theComics[imgPath] : `/comics/${imgPath}`}
-      alt={altText}
-      //fallbackSrc="/images/rain.svg"
-    />
+    <Image width={wide ? '1000px' : '500px'} src={source} alt={altText} fallbackSrc={fallback} />
   )
 }
 

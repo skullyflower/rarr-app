@@ -24,6 +24,7 @@ interface WhatYouWroteProps {
   feelingsSentence?: string
   listOfTools?: string[]
   traitQs?: string[]
+  selectedTraits?: Record<string, string | undefined>
   canCannotControl?: doubleListItem[]
   fearsList?: doubleListItem[]
   gradteful?: string[]
@@ -37,6 +38,7 @@ function WhatYouWrote({
   feelingsSentence,
   listOfTools,
   traitQs,
+  selectedTraits,
   canCannotControl,
   fearsList,
   gradteful,
@@ -44,7 +46,9 @@ function WhatYouWrote({
 }: WhatYouWroteProps): JSX.Element {
   const [isLettingGo, setIsLettingGo] = useState(true)
   const traitList = strings.traitList
-
+  const traitAnswers = selectedTraits
+    ? Object.entries(selectedTraits).filter((e) => e[1] !== undefined)
+    : []
   const setAfromQ = (Qs: string[]): string => {
     const TraitAs: string[] = []
     Qs.forEach((Q) => {
@@ -59,6 +63,13 @@ function WhatYouWrote({
     const toCopyStrings: string[] = []
     if (traitQs && traitQs.length > 0) {
       toCopyStrings.push(`Traits I had today:\n\t• ${setAfromQ(traitQs)}`)
+    }
+    if (traitAnswers && traitAnswers.length > 0) {
+      toCopyStrings.push(
+        `Traits I had today:\n ${traitAnswers
+          .map((trait) => `\t• ${trait[0]}\n\t ${trait[1]}`)
+          .join('\n\n')}\n`
+      )
     }
     if (llTraits && llTraits.length > 0) {
       toCopyStrings.push(`Laundry List / Other Laundry List:\n\t• ${llTraits.join(',\n\t• ')}`)
@@ -142,6 +153,21 @@ function WhatYouWrote({
                 <UnorderedList paddingInlineStart={4}>
                   {traitQs.map((one, indx) => (
                     <ListItem key={`traits${indx}`}>{one.replaceAll('_', ' ')}</ListItem>
+                  ))}
+                </UnorderedList>
+              </Box>
+            )}
+            {traitAnswers && traitAnswers.length && (
+              <Box>
+                <Text fontWeight={700} paddingBottom={4}>
+                  Traits I had today:
+                </Text>
+                <UnorderedList paddingInlineStart={4}>
+                  {traitAnswers.map((one, indx) => (
+                    <ListItem key={`traits${indx}`}>
+                      <Text>{one[0]}</Text>
+                      <Text>{one[1]}</Text>
+                    </ListItem>
                   ))}
                 </UnorderedList>
               </Box>

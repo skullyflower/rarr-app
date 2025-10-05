@@ -82,11 +82,11 @@ function AcaTenthStep(): JSX.Element {
           </CollapsingText>
           <Accordion allowToggle={true}>
             <Stack gap={2}>
-              <AccordionSection title="Exercise 1: Laundry List / Other Laundry List">
-                <LaundryListSection llTraits={llTraits} setLLTraits={setLLTraits} />
-              </AccordionSection>
-              <AccordionSection title="Exercise 1.5: Traits">
+              <AccordionSection title="Exercise 1: Traits ">
                 <TraitsSection traitQs={traitQs} setTraitQs={setTraitQs} />
+              </AccordionSection>
+              <AccordionSection title="Exercise 1.5: The Laundry Lists ">
+                <LaundryListSection llTraits={llTraits} setLLTraits={setLLTraits} />
               </AccordionSection>
               <AccordionSection title="Exercise 2: Choice Continuum">
                 <ChoiceSection freedomText={freedomText} setFreedomText={setFreedomText} />

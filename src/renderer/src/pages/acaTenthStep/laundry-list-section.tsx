@@ -1,8 +1,8 @@
 import CheckboxGroupBox from '@renderer/components/form/CheckBoxGroupBox'
-import { Link, Stack, Text } from '@chakra-ui/react'
+import { Box, Link, Stack, Text } from '@chakra-ui/react'
 import strings from '@renderer/data/aca-tenth.json'
 
-const bothLaundryLists = strings.laundryLists.flat()
+const bothLaundryLists = strings.laundryLists
 
 const LaundryListSection = ({
   llTraits,
@@ -19,12 +19,17 @@ const LaundryListSection = ({
           Go to adultchildren.org more information.
         </Link>
       </Text>
-      <CheckboxGroupBox
-        columns={2}
-        valuesList={llTraits}
-        options={bothLaundryLists}
-        setter={setLLTraits}
-      />
+      {bothLaundryLists.map((traitOptions, i) => (
+        <Box key={`trait${i}`}>
+          <Text>Traits {i + 1}</Text>
+          <CheckboxGroupBox
+            columns={2}
+            valuesList={llTraits}
+            options={traitOptions}
+            setter={setLLTraits}
+          />
+        </Box>
+      ))}
     </Stack>
   )
 }

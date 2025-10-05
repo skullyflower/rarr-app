@@ -43,11 +43,13 @@ export default function CheckboxGroupBox({
   return (
     <Box borderWidth={1} borderStyle="solid" borderRadius={5} p={15} gap={2} className="content">
       <HStack gap={2} padding={2} wrap={'wrap'}>
-        {valuesList.map((value) => (
-          <Badge variant="outline" borderRadius={2} key={value}>
-            {value.replaceAll('_', ' ')}
-          </Badge>
-        ))}
+        {valuesList
+          .filter((value) => !Array.isArray(options) || options.includes(value))
+          .map((value) => (
+            <Badge variant="outline" borderRadius={2} key={value}>
+              {value.replaceAll('_', ' ')}
+            </Badge>
+          ))}
       </HStack>
       <CheckboxGroup colorScheme="pink" value={valuesList}>
         <SimpleGrid columns={{ sm: 1, md: columns ?? 2 }} gap={4}>

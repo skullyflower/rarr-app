@@ -128,7 +128,7 @@ function WhatYouWrote({
                   Laundry List and Other Laundry List traits I had today:
                 </Text>
                 <UnorderedList paddingInlineStart={4}>
-                  {llTraits.map((one, indx) => (
+                  {llTraits.flat().map((one, indx) => (
                     <ListItem key={`lltraits${indx}`}>{one.replaceAll('_', ' ')}</ListItem>
                   ))}
                 </UnorderedList>

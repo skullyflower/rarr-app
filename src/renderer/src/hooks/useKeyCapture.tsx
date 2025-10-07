@@ -1,8 +1,17 @@
 import { useEffect } from 'react'
 
-function useKeyCapture({ key, callback }: { key: string; callback: () => void }): void {
+interface keyCapureProps {
+  key: string
+  combo?: boolean
+  callback: () => void
+}
+
+function useKeyCapture({ key, combo, callback }: keyCapureProps): void {
   function handleKeyDown(event: KeyboardEvent): void {
-    if (event.key === key) {
+    if (
+      (combo && (event.ctrlKey || event.metaKey) && event.key === key) ||
+      (!combo && event.key === key)
+    ) {
       callback()
     }
   }

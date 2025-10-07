@@ -3,6 +3,7 @@ import { CheckIcon } from '@chakra-ui/icons'
 import { useEffect, useState } from 'react'
 import SaveIcon from '../Icons/SaveIcon'
 import { writeLog } from '@renderer/scripts/logsAPI.mjs'
+import useKeyCapture from '@renderer/hooks/useKeyCapture'
 
 interface SaveButtonProps {
   text: string
@@ -12,6 +13,9 @@ interface SaveButtonProps {
 }
 const SaveButton = ({ text, fileName, disabled, bigbutton }: SaveButtonProps): JSX.Element => {
   const [saved, setSaved] = useState(false)
+  const saveLog = (): Promise<void> => writeLog(text, fileName).then((res) => setSaved(res))
+
+  useKeyCapture({ key: 's', combo: true, callback: () => saveLog() })
 
   useEffect(() => {
     setSaved(false)
@@ -24,7 +28,7 @@ const SaveButton = ({ text, fileName, disabled, bigbutton }: SaveButtonProps): J
           leftIcon={saved ? <CheckIcon /> : <SaveIcon />}
           disabled={disabled}
           size={'sm'}
-          onClick={() => writeLog(text, fileName).then((res) => setSaved(res))}
+          onClick={saveLog}
         >
           Save
         </Button>
@@ -34,7 +38,7 @@ const SaveButton = ({ text, fileName, disabled, bigbutton }: SaveButtonProps): J
           icon={saved ? <CheckIcon /> : <SaveIcon />}
           disabled={disabled}
           size={'sm'}
-          onClick={() => writeLog(text, fileName).then((res) => setSaved(res))}
+          onClick={saveLog}
         />
       )}
     </Tooltip>

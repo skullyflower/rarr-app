@@ -24,6 +24,7 @@ function SemiSafeContent({ entry, afterdelete }: SemiSafeContentProps): JSX.Elem
   const { content: rawContent, filename: fileName } = entry
 
   const [text, setText] = useState<string>(rawContent as string)
+
   function EditableControls(): JSX.Element {
     const { isEditing, getCancelButtonProps, getEditButtonProps } = useEditableControls()
 

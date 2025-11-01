@@ -1,6 +1,7 @@
 import {
   Box,
   Button,
+  CloseButton,
   Heading,
   HStack,
   ListItem,
@@ -130,6 +131,7 @@ function WhatYouWrote({
             <HStack gap={4}>
               <CopyButton text={stringToWrite} />
               {Boolean(window.api) && <SaveButton text={stringToWrite} bigbutton={true} />}
+              <CloseButton onClick={reset} />
             </HStack>
           </HStack>
           <Stack gap={4} id="ToCopy">

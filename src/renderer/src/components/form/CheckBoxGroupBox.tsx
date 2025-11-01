@@ -52,7 +52,7 @@ export default function CheckboxGroupBox({
           ))}
       </HStack>
       <CheckboxGroup colorScheme="pink" value={valuesList}>
-        <SimpleGrid columns={{ sm: 1, md: columns ?? 2 }} gap={4}>
+        <SimpleGrid columns={{ sm: 1, md: columns ?? 2 }} gap={2}>
           {optionsList.map((part) => (
             <Checkbox
               //alignItems="start"

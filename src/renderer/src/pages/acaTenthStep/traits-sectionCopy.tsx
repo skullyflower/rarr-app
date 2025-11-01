@@ -1,7 +1,6 @@
-import { Checkbox, Stack, Text, useColorMode } from '@chakra-ui/react'
+import { Box, Checkbox, Stack, Text, useColorMode } from '@chakra-ui/react'
 import { useMemo } from 'react'
 import strings from '@renderer/data/aca-tenth.json'
-import ColorBox from '@renderer/components/layout/color-box'
 import StyledTextInput from '@renderer/components/form/styledTextInput/StyledTextInput'
 
 const TraitsSection = ({
@@ -17,14 +16,12 @@ const TraitsSection = ({
   const allquestions = useMemo(() => traitList.map((trait) => trait.Q), [traitList])
 
   return (
-    <Stack gap={4}>
+    <Stack gap={2}>
       <Text>Select the ones that apply today.</Text>
-
       {allquestions.map((q, i) => (
-        <ColorBox key={`q-${i}`}>
+        <Box key={`q-${i}`} paddingBlock={1}>
           <Stack gap={2}>
             <Checkbox
-              //alignItems="start"
               border="1px solid"
               borderColor="purple.700"
               color={colorMode === 'dark' ? 'gray.100' : 'purple:700'}
@@ -55,7 +52,7 @@ const TraitsSection = ({
               />
             )}
           </Stack>
-        </ColorBox>
+        </Box>
       ))}
     </Stack>
   )

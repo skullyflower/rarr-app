@@ -135,6 +135,7 @@ const defaultTheme = extendTheme(
     },
     fonts: {
       heading: `'Creepster', sans-serif`,
+      otherHeading: `'Arial Rounded MT Bold',Helvetica,'Arial Black', sans-serif`,
       body: `'Underdog', sans-serif`
     },
     styles: {
@@ -272,6 +273,7 @@ export const cleanTheme = {
   ...defaultTheme,
   fonts: {
     heading: `'Arial Rounded MT Bold',Helvetica,'Arial Black', sans-serif`,
+    otherHeading: `'Creepster', sans-serif`,
     body: `'Arial', sans-serif`
   },
   fontSizes: {

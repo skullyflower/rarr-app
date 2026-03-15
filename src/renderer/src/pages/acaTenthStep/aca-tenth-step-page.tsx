@@ -1,5 +1,5 @@
 import { Accordion, Button, Heading, Link, Stack, Text } from '@chakra-ui/react'
-import TraitsSection from './traits-sectionCopy'
+import TraitsSection from './traits-section'
 import ChoiceSection from './choice-section'
 import ToolsUsedToday from './tools-today'
 import FeelingsStatement from './feelings-statement'

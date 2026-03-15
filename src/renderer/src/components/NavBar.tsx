@@ -2,6 +2,7 @@ import { ChevronDownIcon, LockIcon, MoonIcon, SunIcon } from '@chakra-ui/icons'
 import {
   Box,
   Button,
+  Collapse,
   FormControl,
   FormLabel,
   HStack,
@@ -10,15 +11,18 @@ import {
   MenuButton,
   MenuList,
   ResponsiveValue,
+  Show,
   Stack,
   Switch,
   Tooltip,
-  useColorMode
+  useColorMode,
+  useDisclosure,
+  useMediaQuery
 } from '@chakra-ui/react'
 import useToggleLock from '@renderer/hooks/useToggleLock'
 import { toggleFontMode } from '@renderer/scripts/logsAPI.mjs'
 import { Link, useMatch } from 'react-router-dom'
-import { ReactNode } from 'react'
+import { ReactNode, useEffect } from 'react'
 
 const NavItem = ({ text, to }: { text: string; to: string }): JSX.Element => {
   const { colorMode } = useColorMode()
@@ -103,48 +107,68 @@ const MenuDDropDown = ({
 const NavBar = (): JSX.Element => {
   const { colorMode, toggleColorMode } = useColorMode()
   const { toggleLock, isLocked } = useToggleLock()
+  const { isOpen, onOpen, onToggle } = useDisclosure()
+  const [isLargerThan450] = useMediaQuery('(min-width: 450px)')
+
   const isApp = Boolean(window.api)
 
-  return (
-    <Box p={4} minW={'65%'}>
-      <Stack gap={2}>
-        <HStack wrap="wrap" gap={2} justifyContent={'flex-end'}>
-          <Tooltip hasArrow label={`Switch Font Mode`}>
-            <Button size={'sm'} onClick={toggleFontMode}>
-              Az
-            </Button>
-          </Tooltip>
-          <Tooltip hasArrow label={`Switch Color Mode`}>
-            <Button size="sm" onClick={toggleColorMode}>
-              {colorMode === 'light' ? <MoonIcon /> : <SunIcon />}
-            </Button>
-          </Tooltip>
-          {isApp && (
-            <Tooltip hasArrow label={`Lock your log`}>
-              <FormControl width={'auto'} display="flex" alignItems="center" gap={1}>
-                <FormLabel htmlFor="lock" m="0">
-                  <LockIcon aria-label="Lock your log" />
-                </FormLabel>
-                <Switch isChecked={isLocked} id="lock" onChange={toggleLock} />
-              </FormControl>
-            </Tooltip>
-          )}
-        </HStack>
+  useEffect(() => {
+    if (isLargerThan450) onOpen()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isLargerThan450])
 
-        <HStack wrap="wrap" gap={2} justifyContent={'flex-start'}>
-          <MenuDDropDown buttonText="Daily Inventories" size={'md'}>
-            <NavItem to="inventory" text="Trouble" />
-            <NavItem to="aca-tenth-step" text="Spawn of Trouble" />
-            <NavItem to="serenity" text="Control" />
-            <NavItem to="fears" text="Fear" />
-          </MenuDDropDown>
-          <MenuDDropDown buttonText="Literature">
-            <NavItem to="steps" text="The Steps" />
-            <NavItem to="literature" text="Stories" />
-          </MenuDDropDown>
-          <NavItem to="about" text="About" />
-          {isApp && <NavItem to="log" text="My Log" />}
+  return (
+    <Box p={4} w={'100%'}>
+      <Stack alignItems={'stretch'} gap={2} width={'100%'}>
+        <HStack width={'inherit'} justifyContent={'space-between'}>
+          <Show breakpoint="(max-width: 450px)">
+            <Button size={'sm'} onClick={onToggle}>
+              menu
+            </Button>
+          </Show>
+          <HStack wrap="wrap" gap={2} justifyContent={'flex-end'}>
+            <Tooltip hasArrow label={`Switch Font Mode`}>
+              <Button size={'sm'} onClick={toggleFontMode}>
+                <span
+                  style={{ fontFamily: 'var(--chakra-fonts-otherHeading)', fontWeight: 'normal' }}
+                >
+                  Az
+                </span>
+              </Button>
+            </Tooltip>
+            <Tooltip hasArrow label={`Switch Color Mode`}>
+              <Button size="sm" onClick={toggleColorMode}>
+                {colorMode === 'light' ? <MoonIcon /> : <SunIcon />}
+              </Button>
+            </Tooltip>
+            {isApp && (
+              <Tooltip hasArrow label={`Lock your log`}>
+                <FormControl width={'auto'} display="flex" alignItems="center" gap={1}>
+                  <FormLabel htmlFor="lock" m="0">
+                    <LockIcon aria-label="Lock your log" />
+                  </FormLabel>
+                  <Switch isChecked={isLocked} id="lock" onChange={toggleLock} />
+                </FormControl>
+              </Tooltip>
+            )}
+          </HStack>
         </HStack>
+        <Collapse startingHeight={isLargerThan450 ? 'auto' : 0} in={isOpen}>
+          <HStack wrap="wrap" gap={2} justifyContent={'flex-start'}>
+            <MenuDDropDown buttonText="Daily Inventories" size={'md'}>
+              <NavItem to="inventory" text="Trouble" />
+              <NavItem to="aca-tenth-step" text="Spawn of Trouble" />
+              <NavItem to="serenity" text="Control" />
+              <NavItem to="fears" text="Fear" />
+            </MenuDDropDown>
+            <MenuDDropDown buttonText="Literature">
+              <NavItem to="steps" text="The Steps" />
+              <NavItem to="literature" text="Stories" />
+            </MenuDDropDown>
+            <NavItem to="about" text="About" />
+            {isApp && <NavItem to="log" text="My Log" />}
+          </HStack>
+        </Collapse>
       </Stack>
     </Box>
   )

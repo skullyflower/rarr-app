@@ -21,7 +21,7 @@ function HomePage(): JSX.Element {
             >
               <Box
                 backgroundColor="purple.300"
-                color={'pink.900'}
+                color={'purple.900'}
                 borderRadius="md"
                 padding={8}
                 width={{ base: '100%', md: '43%' }}

@@ -8,7 +8,7 @@ import about from '@renderer/data/about.json'
 function AboutRarr(): JSX.Element {
   return (
     <Stack gap={2}>
-      <Heading as="h2" size="lg" textAlign="center">
+      <Heading as="h2" size="lg" textAlign="center" paddingInline={4}>
         {about.pageText.title}
       </Heading>
       <PageCard>

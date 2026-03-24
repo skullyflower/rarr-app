@@ -11,6 +11,7 @@ import InventoryJoural from '@renderer/pages/journal'
 import { Router } from '@renderer/../../lib/electron-router-dom'
 import UnlockInventory from '@renderer/pages/UnlockInventory'
 import AboutRarr from '@renderer/pages/about/about-rarr'
+import AlanonTenthStep from '@renderer/pages/alanonTenthStep/alanon-tenth-step-page'
 
 export default function SiteRoutes(): JSX.Element {
   return (
@@ -19,6 +20,7 @@ export default function SiteRoutes(): JSX.Element {
         <Route path="/" element={<Layout />}>
           <Route index element={<HomePage />} />
           <Route path="/inventory" element={<ResentmentsForm />} />
+          <Route path="/alanon-tenth-step" element={<AlanonTenthStep />} />
           <Route path="/aca-tenth-step" element={<AcaTenthStep />} />
           <Route path="/serenity" element={<SerenityCheckIn />} />
           <Route path="/fears" element={<Fears />} />

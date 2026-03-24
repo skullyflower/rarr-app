@@ -1,6 +1,6 @@
 import { Box, Image, Stack, useColorMode, LinkBox } from '@chakra-ui/react'
 import NavBar from '../NavBar'
-import rarrLogo from '@renderer/assets/RarrLogo.svg'
+import rarrLogo from '@renderer/assets/RarrLogo.png'
 import { Link as ReactRouterLink, Outlet } from 'react-router-dom'
 import useToggleLock from '@renderer/hooks/useToggleLock'
 import UnlockInventory from '@renderer/pages/UnlockInventory'

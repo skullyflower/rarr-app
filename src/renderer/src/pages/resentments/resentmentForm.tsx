@@ -103,7 +103,7 @@ function ResentmentsForm(): JSX.Element {
             {`So, why don't you write about it?`}
           </Text>
         </Box>
-        <Accordion allowToggle={true}>
+        <Accordion allowToggle={true} defaultIndex={[0]}>
           <Stack gap={2} padding={4}>
             <AccordionSection title="Who or what is bothering you?">
               <Stack gap={4}>

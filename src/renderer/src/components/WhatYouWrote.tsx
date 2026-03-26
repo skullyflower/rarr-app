@@ -30,6 +30,9 @@ interface WhatYouWroteProps {
   fearsList?: doubleListItem[]
   gradteful?: string[]
   llTraits?: string[]
+  selectedQuestions?: Record<string, string | undefined>
+  characterAssets?: string[]
+  characterDefects?: string[]
 }
 
 function WhatYouWrote({
@@ -43,12 +46,18 @@ function WhatYouWrote({
   canCannotControl,
   fearsList,
   gradteful,
-  llTraits
+  llTraits,
+  selectedQuestions,
+  characterAssets,
+  characterDefects
 }: WhatYouWroteProps): JSX.Element {
   const [isLettingGo, setIsLettingGo] = useState(true)
   const traitList = strings.traitList
   const traitAnswers = selectedTraits
     ? Object.entries(selectedTraits).filter((e) => e[1] !== undefined)
+    : []
+  const questionAnswers = selectedQuestions
+    ? Object.entries(selectedQuestions).filter((e) => e[1] !== undefined)
     : []
   const setAfromQ = (Qs: string[]): string => {
     const TraitAs: string[] = []
@@ -63,7 +72,7 @@ function WhatYouWrote({
   const toCopy = (): string => {
     const toCopyStrings: string[] = []
     if (traitQs && traitQs.length > 0) {
-      toCopyStrings.push(`Traits I had today:\n\t• ${setAfromQ(traitQs)}`)
+      toCopyStrings.push(`ACAD Traits I had today:\n\t• ${setAfromQ(traitQs)}`)
     }
     if (traitAnswers && traitAnswers.length > 0) {
       toCopyStrings.push(
@@ -114,7 +123,17 @@ function WhatYouWrote({
           .join('\n')}`
       )
     }
-
+    if (questionAnswers && questionAnswers.length > 0) {
+      toCopyStrings.push(
+        `Alanon Spot Check for today:\n ${questionAnswers.map((q) => `\t• ${q[0]}\n\t ${q[1]}`).join('\n\n ')}\n`
+      )
+    }
+    if (characterDefects && characterDefects.length > 0) {
+      toCopyStrings.push(`Character Defects for today:\n ${characterDefects.join('\n\t• ')}\n`)
+    }
+    if (characterAssets && characterAssets.length > 0) {
+      toCopyStrings.push(`Character Assets for today:\n ${characterAssets.join('\n\t• ')}\n`)
+    }
     return toCopyStrings.join('\n\n')
   }
 
@@ -170,6 +189,45 @@ function WhatYouWrote({
                       <Text>{one[0]}</Text>
                       <Text>{one[1]}</Text>
                     </ListItem>
+                  ))}
+                </UnorderedList>
+              </Box>
+            )}
+            {questionAnswers && questionAnswers.length > 0 && (
+              <Box>
+                <Text fontWeight={700} paddingBottom={4}>
+                  Alanon Spot Check for today:
+                </Text>
+                <UnorderedList paddingInlineStart={4}>
+                  {questionAnswers.map((one, indx) => (
+                    <ListItem key={`question${indx}`}>
+                      <Text>{one[0]}</Text>
+                      <Text>{one[1]}</Text>
+                    </ListItem>
+                  ))}
+                </UnorderedList>
+              </Box>
+            )}
+            {characterAssets && characterAssets.length > 0 && (
+              <Box>
+                <Text fontWeight={700} paddingBottom={4}>
+                  Character Assets for today:
+                </Text>
+                <UnorderedList paddingInlineStart={4}>
+                  {characterAssets.map((one, indx) => (
+                    <ListItem key={`characterAsset${indx}`}>{one}</ListItem>
+                  ))}
+                </UnorderedList>
+              </Box>
+            )}
+            {characterDefects && characterDefects.length > 0 && (
+              <Box>
+                <Text fontWeight={700} paddingBottom={4}>
+                  Character Defects for today:
+                </Text>
+                <UnorderedList paddingInlineStart={4}>
+                  {characterDefects.map((one, indx) => (
+                    <ListItem key={`characterDefect${indx}`}>{one}</ListItem>
                   ))}
                 </UnorderedList>
               </Box>

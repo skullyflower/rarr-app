@@ -1,4 +1,5 @@
 import {
+  HStack,
   Modal,
   ModalBody,
   ModalCloseButton,
@@ -46,11 +47,13 @@ const ReadyToLetGo = ({
             Congratulations! Nice work.
           </ModalHeader>
           <ModalBody>
-            <GetImage imgPath={members[member] ?? 'GoodJob.png'} altText="Good Work" />
-            <Text>
-              Now you might want to talk about what you&apos;ve discovered with a trusted friend or
-              mentor.
-            </Text>
+            <HStack justifyContent="center" gap={4}>
+              <GetImage imgPath={members[member] ?? 'GoodJob.png'} altText="Good Work" />
+              <Text>
+                Now you might want to talk about what you&apos;ve discovered with a trusted friend
+                or mentor.
+              </Text>
+            </HStack>
           </ModalBody>
           <ModalFooter>
             <ModalCloseButton>Close</ModalCloseButton>

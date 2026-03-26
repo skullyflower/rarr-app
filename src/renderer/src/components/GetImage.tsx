@@ -13,7 +13,7 @@ const GetImage = ({
   const source = theComics ? theComics[imgPath] : `/comics/${imgPath}`
   const fallback = theComics ? theComics['Fallback'] : '/images/rain.svg'
   return (
-    <Image width={wide ? '1000px' : '500px'} src={source} alt={altText} fallbackSrc={fallback} />
+    <Image width={wide ? '300px' : '200px'} src={source} alt={altText} fallbackSrc={fallback} />
   )
 }
 

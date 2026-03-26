@@ -94,7 +94,13 @@ const MenuDDropDown = ({
             padding={2}
             border={0}
           >
-            <Stack direction={['column', 'row']} gap={2} justifyContent={'center'}>
+            <Stack
+              direction={['column', 'row']}
+              gap={2}
+              justifyContent={'center'}
+              wrap="wrap"
+              maxWidth={'80vw'}
+            >
               {children}
             </Stack>
           </MenuList>

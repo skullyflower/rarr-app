@@ -1,59 +1,39 @@
 import { Accordion, Button, Heading, Link, Stack, Text } from '@chakra-ui/react'
-// import TraitsSection from './traits-section'
-// import ChoiceSection from './choice-section'
-// import ToolsUsedToday from './tools-today'
-// import FeelingsStatement from './feelings-statement'
-// import AssetsSection from './assets-section'
 import AccordionSection from '@renderer/components/layout/accordion-section'
 import PageCard from '@renderer/components/layout/page-card'
 import { useState } from 'react'
 import WhatYouWrote from '@renderer/components/WhatYouWrote'
-import LaundryListSection from '@renderer/pages/acaTenthStep/laundry-list-section'
 import CollapsingText from '@renderer/components/layout/CollapsingText'
 import Privacy from '@renderer/components/Privacy'
 import strings from '@renderer/data/alanon-tenth.json'
+import QuestionsSection from './QuestionsSection'
+import CharacterAssetsSection from '@renderer/pages/alanonTenthStep/CharacterAssetsSection'
+import CharacterDefectsSection from '@renderer/pages/alanonTenthStep/CharacterDefectsSection'
 
 function AlanonTenthStep(): JSX.Element {
   const [letGo, setLetGo] = useState(false)
-  const [praise, setPraise] = useState<string[]>([])
-  const [freedomText, setFreedomText] = useState<string>('')
-  const [feelingsSentence, setFeelingSentence] = useState<string>('')
-  const [listOfTools, setListOfTools] = useState<string[]>([])
-  const [traitQs, setTraitQs] = useState<string[]>([])
-  const [llTraits, setLLTraits] = useState<string[]>([])
-  const [selectedTraits, setSelectedTraits] = useState<Record<string, string | undefined>>({})
-
+  const [selectedQuestions, setSelectedQuestions] = useState<Record<string, string | undefined>>({})
+  const [characterAssets, setCharacterAssets] = useState<string[]>([])
+  const [characterDefects, setCharacterDefects] = useState<string[]>([])
   const incomplete =
-    !praise.length &&
-    !freedomText &&
-    !feelingsSentence &&
-    !listOfTools.length &&
-    !Object.values(selectedTraits).filter((v) => v !== undefined).length &&
-    !traitQs.length &&
-    !llTraits.length
+    !Object.values(selectedQuestions).filter((v) => v !== undefined).length &&
+    !characterAssets.length &&
+    !characterDefects.length
 
   const reset = (): void => {
     setLetGo(false)
-    setPraise([])
-    setFreedomText('')
-    setFeelingSentence('')
-    setListOfTools([])
-    setTraitQs([])
-    setSelectedTraits({})
-    setLLTraits([])
+    setSelectedQuestions({})
+    setCharacterAssets([])
+    setCharacterDefects([])
   }
 
   if (letGo) {
     return (
       <WhatYouWrote
         reset={reset}
-        praise={praise}
-        freedomText={freedomText}
-        feelingsSentence={feelingsSentence}
-        listOfTools={listOfTools}
-        traitQs={traitQs}
-        selectedTraits={selectedTraits}
-        llTraits={llTraits}
+        selectedQuestions={selectedQuestions}
+        characterAssets={characterAssets}
+        characterDefects={characterDefects}
       />
     )
   }
@@ -74,39 +54,32 @@ function AlanonTenthStep(): JSX.Element {
               <Text>{strings.pageText.collapsedText[1]}</Text>
               <Text>
                 For more information visit:{' '}
-                <Link
-                  href="https://adultchildren.org/comline/tips-for-step-10/"
-                  rel="no-follow"
-                  target="literature"
-                >
-                  Adult Children.org
+                <Link href="https://al-anon.org" rel="no-follow" target="literature">
+                  al-anon.org
                 </Link>
               </Text>
             </Stack>
           </CollapsingText>
           <Accordion allowToggle={true}>
             <Stack gap={2}>
-              {/* <AccordionSection title="Exercise 1: Traits ">
-                <TraitsSection
-                  selectedTraits={selectedTraits}
-                  setSelectedTraits={setSelectedTraits}
+              <AccordionSection title="Exercise 1: Questions ">
+                <QuestionsSection
+                  selectedQuestions={selectedQuestions}
+                  setSelectedQuestions={setSelectedQuestions}
                 />
-              </AccordionSection> */}
-              <AccordionSection title="Exercise 1.5: The Laundry Lists ">
-                <LaundryListSection llTraits={llTraits} setLLTraits={setLLTraits} />
               </AccordionSection>
-              {/* <AccordionSection title="Exercise 2: Choice Continuum">
-                <ChoiceSection freedomText={freedomText} setFreedomText={setFreedomText} />
+              <AccordionSection title="Exercise 2: Character Defects ">
+                <CharacterDefectsSection
+                  characterDefects={characterDefects}
+                  setCharacterDefects={setCharacterDefects}
+                />
               </AccordionSection>
-              <AccordionSection title="Exercise 3: Tools">
-                <ToolsUsedToday listOfTools={listOfTools} setListOfTools={setListOfTools} />
+              <AccordionSection title="Exercise 3: Character Assets ">
+                <CharacterAssetsSection
+                  characterAssets={characterAssets}
+                  setCharacterAssets={setCharacterAssets}
+                />
               </AccordionSection>
-              <AccordionSection title="Exercise 4: Feelings">
-                <FeelingsStatement setFeelingSentence={setFeelingSentence} />
-              </AccordionSection>
-              <AccordionSection title="Exercise 5: Affirmation">
-                <AssetsSection praise={praise} setSetPraise={setPraise} />
-              </AccordionSection> */}
             </Stack>
           </Accordion>
           <Stack

@@ -1,4 +1,4 @@
-import { Accordion, Box, Button, Heading, Stack, Text } from '@chakra-ui/react'
+import { Accordion, Box, Button, Stack, Text } from '@chakra-ui/react'
 import { useState } from 'react'
 import PageCard from '@renderer/components/layout/page-card'
 import AccordionSection from '@renderer/components/layout/accordion-section'
@@ -26,10 +26,7 @@ function Fears(): JSX.Element {
 
   return (
     <Stack width={'100%'} gap={4}>
-      <Heading as="h2" size="lg" textAlign={'center'} paddingInline={4}>
-        {fearText.title}
-      </Heading>
-      <PageCard>
+      <PageCard header={fearText.title}>
         <Stack gap={4}>
           <Box padding={4}>
             <Stack gap={4}>

@@ -81,7 +81,7 @@ const UnlockInventory = (): JSX.Element => {
 
   return (
     <Box width={'80%'} padding={2} marginInline={'auto'} borderRadius={4}>
-      <PageCard>
+      <PageCard header={hasLock ? strings.unlock.title : strings.setup.title}>
         <Stack gap={4}>
           {error && (
             <Alert status="error" colorScheme="red" textAlign="center">
@@ -93,9 +93,6 @@ const UnlockInventory = (): JSX.Element => {
 
           {!hasLock ? (
             <Stack gap={3}>
-              <Text fontSize={'lg'} fontWeight="bold">
-                {strings.setup.title}
-              </Text>
               <CollapsingText>
                 <Stack gap={3}>
                   {strings.setup.collapsedText.map((line, i) => (
@@ -108,11 +105,7 @@ const UnlockInventory = (): JSX.Element => {
 
               <Text fontWeight={'bold'}>{strings.setup.text}</Text>
             </Stack>
-          ) : (
-            <Text fontSize={'lg'} fontWeight="bold">
-              {strings.unlock.title}
-            </Text>
-          )}
+          ) : null}
           <ColorBox>
             <Stack gap={3}>
               <FormControl width={'auto'} display="flex" alignItems="center">

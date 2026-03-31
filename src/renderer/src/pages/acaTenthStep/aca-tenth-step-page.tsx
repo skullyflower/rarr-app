@@ -1,4 +1,4 @@
-import { Accordion, Button, Heading, Link, Stack, Text } from '@chakra-ui/react'
+import { Accordion, Button, Link, Stack, Text } from '@chakra-ui/react'
 import TraitsSection from './traits-section'
 import ChoiceSection from './choice-section'
 import ToolsUsedToday from './tools-today'
@@ -60,10 +60,7 @@ function AcaTenthStep(): JSX.Element {
 
   return (
     <Stack gap={4} width="100%">
-      <Heading textAlign="center" as="h1" size="lg">
-        {strings.pageText.title}
-      </Heading>
-      <PageCard>
+      <PageCard header={strings.pageText.title}>
         <Stack gap={4} width={'100%'}>
           <Text textAlign={'center'} fontWeight={'bold'}>
             {strings.pageText.subTitle}

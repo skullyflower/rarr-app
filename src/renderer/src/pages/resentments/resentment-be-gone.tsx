@@ -1,6 +1,15 @@
 import { getContents } from '@renderer/pages/resentments/copyContents.mjs'
 import ReadyToLetGo from '@renderer/components/form/ready-to-let-go'
-import { Box, Button, HStack, ListItem, Stack, Text, UnorderedList } from '@chakra-ui/react'
+import {
+  Box,
+  Button,
+  Heading,
+  HStack,
+  ListItem,
+  Stack,
+  Text,
+  UnorderedList
+} from '@chakra-ui/react'
 import SaveButton from '@renderer/components/buttons/save-button'
 import CopyButton from '@renderer/components/buttons/copy-button'
 import PageCard from '@renderer/components/layout/page-card'
@@ -32,16 +41,21 @@ function ResentBeGone({
 }: ResentBeGoneProps): JSX.Element {
   const stringToWrite = getContents()
   return (
-    <PageCard>
+    <PageCard
+      header={
+        <HStack justifyContent="space-between" align="center" width="100%">
+          <Heading fontSize="h3" fontWeight={700}>
+            Here is what you wrote.
+          </Heading>
+          <HStack gap={4}>
+            <CopyButton text={stringToWrite} />
+            {Boolean(window.api) && <SaveButton text={stringToWrite} bigbutton />}
+          </HStack>
+        </HStack>
+      }
+    >
       <ColorBox>
         <Stack gap={4}>
-          <HStack justifyContent="space-between">
-            <Text>Here is what you wrote.</Text>
-            <HStack gap={4}>
-              <CopyButton text={stringToWrite} />
-              {Boolean(window.api) && <SaveButton text={stringToWrite} bigbutton />}
-            </HStack>
-          </HStack>
           <Stack gap={4} id="ToCopy">
             <Text fontWeight={700}>I resent: </Text>
             <Box paddingInlineStart={4}>

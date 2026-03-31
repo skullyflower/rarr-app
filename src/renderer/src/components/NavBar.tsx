@@ -6,9 +6,9 @@ import {
   FormControl,
   FormLabel,
   HStack,
-  LinkBox,
   Menu,
   MenuButton,
+  MenuItem,
   MenuList,
   ResponsiveValue,
   Show,
@@ -21,7 +21,7 @@ import {
 } from '@chakra-ui/react'
 import useToggleLock from '@renderer/hooks/useToggleLock'
 import { toggleFontMode } from '@renderer/scripts/logsAPI.mjs'
-import { Link, useMatch } from 'react-router-dom'
+import { useMatch, useNavigate } from 'react-router-dom'
 import { ReactNode, useEffect } from 'react'
 
 const NavItem = ({ text, to }: { text: string; to: string }): JSX.Element => {
@@ -29,10 +29,14 @@ const NavItem = ({ text, to }: { text: string; to: string }): JSX.Element => {
   const color = colorMode === 'dark' ? 'gray.100' : 'red.900'
   const bgcolor = colorMode === 'dark' ? '' : 'gray.100'
   const activebg = colorMode === 'dark' ? 'whiteAlpha.300' : 'purple.300'
+  const navigate = useNavigate()
+  const onClick = (): void => {
+    navigate(`/${to}`)
+  }
+
   return (
-    <LinkBox
-      as={Link}
-      width={['100%', 'auto']}
+    <Box
+      display={'block'}
       fontSize={'sm'}
       fontWeight={'bold'}
       lineHeight={1}
@@ -44,10 +48,10 @@ const NavItem = ({ text, to }: { text: string; to: string }): JSX.Element => {
       color={color}
       textTransform="uppercase"
       _hover={{ cursor: 'pointer', backgroundColor: activebg }}
-      to={to}
+      onClick={onClick}
     >
       {text}
-    </LinkBox>
+    </Box>
   )
 }
 
@@ -73,7 +77,6 @@ const MenuDDropDown = ({
             size={size}
             color={color}
             variant={'outline'}
-            width={['100%', 'auto']}
             fontSize={'sm'}
             fontWeight={'bold'}
             lineHeight={1}
@@ -94,15 +97,11 @@ const MenuDDropDown = ({
             padding={2}
             border={0}
           >
-            <Stack
-              direction={['column', 'row']}
-              gap={2}
-              justifyContent={'center'}
-              wrap="wrap"
-              maxWidth={'80vw'}
-            >
-              {children}
-            </Stack>
+            {children.map((child, index) => (
+              <MenuItem key={index} background={'transparent'} display={'block'}>
+                {child}
+              </MenuItem>
+            ))}
           </MenuList>
         </>
       )}
@@ -160,7 +159,7 @@ const NavBar = (): JSX.Element => {
           </HStack>
         </HStack>
         <Collapse startingHeight={isLargerThan450 ? 'auto' : 0} in={isOpen}>
-          <HStack wrap="wrap" gap={2} justifyContent={'flex-start'}>
+          <HStack wrap="wrap" justifyContent={'flex-start'} columnGap={2}>
             <MenuDDropDown buttonText="Daily Inventories" size={'md'}>
               <NavItem to="inventory" text="Trouble" />
               <NavItem to="alanon-tenth-step" text="Bride of Trouble" />

@@ -1,4 +1,4 @@
-import { Accordion, Heading, Stack, Text } from '@chakra-ui/react'
+import { Accordion, Heading, HStack, Stack, Text } from '@chakra-ui/react'
 import GetImage from '@renderer/components/GetImage'
 import AccordionSection from '@renderer/components/layout/accordion-section'
 import ColorBox from '@renderer/components/layout/color-box'
@@ -8,10 +8,7 @@ import about from '@renderer/data/about.json'
 function AboutRarr(): JSX.Element {
   return (
     <Stack gap={2}>
-      <Heading as="h2" size="lg" textAlign="center" paddingInline={4}>
-        {about.pageText.title}
-      </Heading>
-      <PageCard>
+      <PageCard header={about.pageText.title}>
         <Stack gap={4}>
           <ColorBox>
             <Text fontSize={'lg'} fontWeight={'bold'}>
@@ -31,10 +28,18 @@ function AboutRarr(): JSX.Element {
               {about.faqs.map((faq, i) => (
                 <AccordionSection key={`faq-${i}`} title={faq.Q}>
                   <Stack gap={2} alignItems={'center'}>
-                    {i === 0 && <GetImage imgPath="WDYT.gif" altText="What do you think?" />}
-                    <Text>
-                      <div dangerouslySetInnerHTML={{ __html: faq.A }} />
-                    </Text>
+                    {i === 0 ? (
+                      <HStack gap={4} alignItems={'start'}>
+                        <GetImage maxWidth="40%" imgPath="WDYT.gif" altText="What do you think?" />
+                        <Text>
+                          <div dangerouslySetInnerHTML={{ __html: faq.A }} />
+                        </Text>
+                      </HStack>
+                    ) : (
+                      <Text>
+                        <div dangerouslySetInnerHTML={{ __html: faq.A }} />
+                      </Text>
+                    )}
                     {i === 0 && (
                       <GetImage wide imgPath="fittingIn.jpg" altText="Can never fit in." />
                     )}

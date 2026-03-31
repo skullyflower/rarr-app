@@ -140,19 +140,22 @@ function WhatYouWrote({
   const stringToWrite = toCopy()
 
   return (
-    <PageCard>
+    <PageCard
+      header={
+        <HStack justifyContent="space-between" align="center" width="100%">
+          <Heading fontSize={'h3'} fontWeight={700}>
+            Here is what you wrote.
+          </Heading>
+          <HStack gap={4}>
+            <CopyButton text={stringToWrite} />
+            {Boolean(window.api) && <SaveButton text={stringToWrite} bigbutton={true} />}
+            <CloseButton onClick={reset} />
+          </HStack>
+        </HStack>
+      }
+    >
       <ColorBox>
         <Stack gap={4}>
-          <HStack justifyContent="space-between">
-            <Heading fontSize={'h3'} fontWeight={700}>
-              Here is what you wrote.
-            </Heading>
-            <HStack gap={4}>
-              <CopyButton text={stringToWrite} />
-              {Boolean(window.api) && <SaveButton text={stringToWrite} bigbutton={true} />}
-              <CloseButton onClick={reset} />
-            </HStack>
-          </HStack>
           <Stack gap={4} id="ToCopy">
             {llTraits && llTraits.length > 0 && (
               <Box>

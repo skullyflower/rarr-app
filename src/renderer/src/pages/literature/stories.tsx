@@ -9,10 +9,7 @@ const Stories = (): JSX.Element => {
   const seenTitles: string[] = []
   return (
     <Stack gap={4}>
-      <Heading textAlign="center" as="h1" size="xl">
-        RARR Stories
-      </Heading>
-      <PageCard>
+      <PageCard header="RARR Stories">
         <Stack gap={4} align={'center'} p={4}>
           {stories.map(([key, story]) => {
             return (

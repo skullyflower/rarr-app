@@ -81,16 +81,19 @@ function ResentmentsForm(): JSX.Element {
 
   return (
     <Stack gap={4}>
-      <HStack align="center" justify={'center'} gap={4}>
-        <Heading as="h2" size="lg">
-          Trouble:
-        </Heading>{' '}
-        <ProgramDropDown />
-        <Heading as="h2" size="lg">
-          {strings[selectedProgram as ProgKey].title}
-        </Heading>
-      </HStack>
-      <PageCard>
+      <PageCard
+        header={
+          <HStack align="center" justify="center" gap={4} flexWrap="wrap">
+            <Heading as="h2" size="lg">
+              Trouble:
+            </Heading>
+            <ProgramDropDown />
+            <Heading as="h2" size="lg">
+              {strings[selectedProgram as ProgKey].title}
+            </Heading>
+          </HStack>
+        }
+      >
         <Box padding={4}>
           <CollapsingText>
             <Stack gap={4}>
@@ -103,7 +106,7 @@ function ResentmentsForm(): JSX.Element {
             {`So, why don't you write about it?`}
           </Text>
         </Box>
-        <Accordion allowToggle={true} defaultIndex={[0]}>
+        <Accordion allowToggle={true}>
           <Stack gap={2} padding={4}>
             <AccordionSection title="Who or what is bothering you?">
               <Stack gap={4}>

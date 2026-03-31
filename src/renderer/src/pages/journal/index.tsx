@@ -1,5 +1,5 @@
 import { CloseIcon } from '@chakra-ui/icons'
-import { Box, Heading, HStack, IconButton, Stack, Text, useColorMode } from '@chakra-ui/react'
+import { Box, HStack, IconButton, Stack, Text, useColorMode } from '@chakra-ui/react'
 import PageCard from '@renderer/components/layout/page-card'
 import SemiSafeContent from '@renderer/components/SemiSafeContent'
 import { useEffect, useState } from 'react'
@@ -38,14 +38,6 @@ const InventoryJoural = (): JSX.Element => {
     })
   }
 
-  const LogHeader = (): JSX.Element => {
-    return (
-      <Heading textAlign="center" as="h1" size="xl">
-        {strings.title}
-      </Heading>
-    )
-  }
-
   if (selectedEntry) {
     return (
       <Box>
@@ -59,12 +51,7 @@ const InventoryJoural = (): JSX.Element => {
               onClick={() => setSelectedEntry(null)}
             />
           </HStack>
-          <PageCard>
-            <HStack justifyContent={'space-between'}>
-              <Text fontSize={'lg'} fontWeight="bold">
-                {formatTitle(selectedEntry.filename)}
-              </Text>
-            </HStack>
+          <PageCard header={formatTitle(selectedEntry.filename)}>
             <ColorBox>
               <SemiSafeContent
                 entry={selectedEntry}
@@ -80,8 +67,7 @@ const InventoryJoural = (): JSX.Element => {
   return (
     <Box>
       <Stack>
-        <LogHeader />
-        <PageCard>
+        <PageCard header={strings.title}>
           <Stack gap={1}>
             {entries.length < 1 && <Text>{strings.emptyListText}</Text>}
             {entries.map((entry, index) => (

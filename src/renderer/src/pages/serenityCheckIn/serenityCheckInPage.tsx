@@ -1,4 +1,4 @@
-import { Accordion, Box, Button, Heading, HStack, Stack, Text } from '@chakra-ui/react'
+import { Accordion, Box, Button, HStack, Stack, Text } from '@chakra-ui/react'
 import { useState } from 'react'
 import PageCard from '@renderer/components/layout/page-card'
 import AccordionSection from '@renderer/components/layout/accordion-section'
@@ -23,10 +23,7 @@ function SerenityCheckIn(): JSX.Element {
 
   return (
     <Stack gap={4} width="100%">
-      <Heading as="h2" size="lg" textAlign={'center'} paddingInline={4}>
-        {strings.title}
-      </Heading>
-      <PageCard>
+      <PageCard header={strings.title}>
         <Stack gap={4}>
           <HStack align="start" justifyContent={'space-between'}>
             <Stack gap={4} padding={4} width={'100%'}>

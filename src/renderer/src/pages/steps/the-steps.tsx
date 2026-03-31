@@ -12,13 +12,16 @@ function TheStepsPage(): JSX.Element {
 
   return (
     <Stack gap={4} width="100%">
-      <HStack align={'center'} justify={'center'} gap={4}>
-        <Heading textAlign="center" as="h1" size="xl">
-          The 12 Steps of
-        </Heading>
-        <ProgramDropDown />
-      </HStack>
-      <PageCard>
+      <PageCard
+        header={
+          <HStack align="center" justify="center" gap={4} flexWrap="wrap">
+            <Heading textAlign="center" as="h2" size="xl">
+              The 12 Steps of
+            </Heading>
+            <ProgramDropDown />
+          </HStack>
+        }
+      >
         <ColorBox>
           <OrderedList p={4}>
             <Stack>

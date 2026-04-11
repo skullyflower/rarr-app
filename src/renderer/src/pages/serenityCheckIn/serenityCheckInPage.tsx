@@ -61,7 +61,7 @@ function SerenityCheckIn(): JSX.Element {
             gap={4}
             justifyContent="center"
             position={'sticky'}
-            bottom={2}
+            bottom={-2}
           >
             <Button
               isDisabled={canCannotControl.length === 0}

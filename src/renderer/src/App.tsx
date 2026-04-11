@@ -1,4 +1,4 @@
-import SiteRoutes from './components/Routes'
+import SiteRoutes from './components/routes/Routes'
 
 function App(): JSX.Element {
   return <SiteRoutes />

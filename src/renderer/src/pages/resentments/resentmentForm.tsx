@@ -72,7 +72,6 @@ function ResentmentsForm(): JSX.Element {
         didWell={didWell}
         learned={learned}
         isLettingGo={isLettingGo}
-        onLettingGo={onLettingGo}
         onCloseLetGo={onCloseLetGo}
         reset={reset}
       />

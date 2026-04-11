@@ -17,6 +17,8 @@ const PageCard = ({
       color={colorMode === 'dark' ? 'gray.100' : 'gray.900'}
       background={colorMode === 'dark' ? 'whiteAlpha.300' : 'whiteAlpha.800'}
       maxH={'74vh'}
+      backdropFilter={'blur(3px)'}
+      borderRadius={10}
     >
       {showHeader && (
         <CardHeader paddingBottom={2}>

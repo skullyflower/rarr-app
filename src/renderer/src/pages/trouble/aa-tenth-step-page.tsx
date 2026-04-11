@@ -5,12 +5,11 @@ import { useState } from 'react'
 import WhatYouWrote from '@renderer/components/WhatYouWrote'
 import CollapsingText from '@renderer/components/layout/CollapsingText'
 import Privacy from '@renderer/components/Privacy'
-import strings from '@renderer/data/alanon-tenth.json'
-import QuestionsSection from './QuestionsSection'
-import CharacterAssetsSection from '@renderer/pages/alanonTenthStep/CharacterAssetsSection'
-import CharacterDefectsSection from '@renderer/pages/alanonTenthStep/CharacterDefectsSection'
+import strings from '@renderer/data/aa-tenth.json'
+import CheckBoxAndText from '@renderer/components/form/CheckBoxAndText'
+import CheckboxGroupBox from '@renderer/components/form/CheckBoxGroupBox'
 
-function AlanonTenthStep(): JSX.Element {
+function AaTenthStep(): JSX.Element {
   const [letGo, setLetGo] = useState(false)
   const [selectedQuestions, setSelectedQuestions] = useState<Record<string, string | undefined>>({})
   const [characterAssets, setCharacterAssets] = useState<string[]>([])
@@ -48,11 +47,10 @@ function AlanonTenthStep(): JSX.Element {
           <CollapsingText>
             <Stack gap={4}>
               <Text fontSize={'lg'}>{strings.pageText.collapsedText[0]}</Text>
-              <Text>{strings.pageText.collapsedText[1]}</Text>
               <Text>
                 For more information visit:{' '}
-                <Link href="https://al-anon.org" rel="no-follow" target="literature">
-                  al-anon.org
+                <Link href="https://www.aa.org" rel="no-follow" target="literature">
+                  aa.org
                 </Link>
               </Text>
             </Stack>
@@ -60,32 +58,46 @@ function AlanonTenthStep(): JSX.Element {
           <Accordion allowToggle={true}>
             <Stack gap={2}>
               <AccordionSection title="Exercise 1: Questions ">
-                <QuestionsSection
-                  selectedQuestions={selectedQuestions}
-                  setSelectedQuestions={setSelectedQuestions}
-                />
+                <Stack gap={2}>
+                  <Text>Select the ones that apply today.</Text>
+                  {strings.questions.map((q, i) => (
+                    <CheckBoxAndText
+                      key={`q-${i}`}
+                      q={q}
+                      selected={selectedQuestions}
+                      setSelected={setSelectedQuestions}
+                    />
+                  ))}
+                </Stack>
               </AccordionSection>
               <AccordionSection title="Exercise 2: Character Defects ">
-                <CharacterDefectsSection
-                  characterDefects={characterDefects}
-                  setCharacterDefects={setCharacterDefects}
-                />
+                <Stack gap={4}>
+                  <Text>What negative traits did I exhibit today?</Text>
+                  <CheckboxGroupBox
+                    valuesList={characterDefects}
+                    options={strings.characterDefects}
+                    setter={setCharacterDefects}
+                  />
+                </Stack>
               </AccordionSection>
               <AccordionSection title="Exercise 3: Character Assets ">
-                <CharacterAssetsSection
-                  characterAssets={characterAssets}
-                  setCharacterAssets={setCharacterAssets}
-                />
+                <Stack gap={4}>
+                  <Text>What positive traits did I exhibit today?</Text>
+                  <CheckboxGroupBox
+                    valuesList={characterAssets}
+                    options={strings.CharacterAssets}
+                    setter={setCharacterAssets}
+                  />
+                </Stack>
               </AccordionSection>
             </Stack>
           </Accordion>
           <Stack
             width="100%"
             direction="row"
-            gap={4}
             justifyContent="center"
             position={'sticky'}
-            bottom={2}
+            bottom={-2}
           >
             <Button
               isDisabled={incomplete}
@@ -102,4 +114,4 @@ function AlanonTenthStep(): JSX.Element {
     </Stack>
   )
 }
-export default AlanonTenthStep
+export default AaTenthStep

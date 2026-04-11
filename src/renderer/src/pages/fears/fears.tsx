@@ -61,10 +61,9 @@ function Fears(): JSX.Element {
           <Stack
             width="100%"
             direction="row"
-            gap={4}
             justifyContent="center"
             position={'sticky'}
-            bottom={2}
+            bottom={-2}
           >
             <Button
               isDisabled={fearsList.length === 0}

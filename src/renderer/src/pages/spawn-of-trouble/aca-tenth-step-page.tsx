@@ -8,7 +8,7 @@ import AccordionSection from '@renderer/components/layout/accordion-section'
 import PageCard from '@renderer/components/layout/page-card'
 import { useState } from 'react'
 import WhatYouWrote from '@renderer/components/WhatYouWrote'
-import LaundryListSection from '@renderer/pages/acaTenthStep/laundry-list-section'
+import LaundryListSection from '@renderer/pages/spawn-of-trouble/laundry-list-section'
 import CollapsingText from '@renderer/components/layout/CollapsingText'
 import Privacy from '@renderer/components/Privacy'
 import strings from '@renderer/data/aca-tenth.json'
@@ -112,7 +112,7 @@ function AcaTenthStep(): JSX.Element {
             gap={4}
             justifyContent="center"
             position={'sticky'}
-            bottom={2}
+            bottom={-2}
           >
             <Button
               isDisabled={incomplete}

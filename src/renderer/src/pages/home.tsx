@@ -7,10 +7,10 @@ import theComics from '@renderer/scripts/comics.mjs'
 function HomePage(): JSX.Element {
   return (
     <Stack gap={2}>
-      <Heading as="h2" size="lg" textAlign="center">
-        {strings.title}
-      </Heading>
       <ColorBox>
+        <Heading as="h2" size="lg" textAlign="center" marginBottom={8}>
+          {strings.title}
+        </Heading>
         <Box position={'relative'}>
           <Stack spacing={4} align="center">
             <Stack

@@ -1,15 +1,7 @@
-import { getContents } from '@renderer/pages/resentments/copyContents.mjs'
 import ReadyToLetGo from '@renderer/components/form/ready-to-let-go'
-import {
-  Box,
-  Button,
-  Heading,
-  HStack,
-  ListItem,
-  Stack,
-  Text,
-  UnorderedList
-} from '@chakra-ui/react'
+import { createWhatYouWroteFromSpecs } from '@renderer/components/what-you-wrote/typedSectionFactories'
+import { resentmentFieldsToTypedSections } from './resentmentTypedSections'
+import { Box, Button, Heading, HStack, Stack } from '@chakra-ui/react'
 import SaveButton from '@renderer/components/buttons/save-button'
 import CopyButton from '@renderer/components/buttons/copy-button'
 import PageCard from '@renderer/components/layout/page-card'
@@ -23,7 +15,6 @@ interface ResentBeGoneProps {
   didWell: string[]
   learned: string
   isLettingGo: boolean
-  onLettingGo: () => void
   onCloseLetGo: () => void
   reset: () => void
 }
@@ -39,7 +30,17 @@ function ResentBeGone({
   onCloseLetGo,
   reset
 }: ResentBeGoneProps): JSX.Element {
-  const stringToWrite = getContents()
+  const { toCopy, content } = createWhatYouWroteFromSpecs(
+    resentmentFieldsToTypedSections({
+      Iresent,
+      because,
+      affectsMy,
+      myPart,
+      didWell,
+      learned
+    })
+  )
+
   return (
     <PageCard
       header={
@@ -48,8 +49,8 @@ function ResentBeGone({
             Here is what you wrote.
           </Heading>
           <HStack gap={4}>
-            <CopyButton text={stringToWrite} />
-            {Boolean(window.api) && <SaveButton text={stringToWrite} bigbutton />}
+            <CopyButton text={toCopy} />
+            {Boolean(window.api) && <SaveButton text={toCopy} bigbutton />}
           </HStack>
         </HStack>
       }
@@ -57,36 +58,7 @@ function ResentBeGone({
       <ColorBox>
         <Stack gap={4}>
           <Stack gap={4} id="ToCopy">
-            <Text fontWeight={700}>I resent: </Text>
-            <Box paddingInlineStart={4}>
-              <Text>{Iresent}</Text>
-            </Box>
-            <Text fontWeight={700}>Because:</Text>
-            <Box paddingInlineStart={4}>
-              <Text style={{ whiteSpace: 'pre-wrap' }}>{because}</Text>
-            </Box>
-            <Text fontWeight={700}>It affects my:</Text>
-            <UnorderedList paddingInlineStart={4}>
-              {affectsMy.map((effect, indx) => (
-                <ListItem key={`affects${indx}`}>{effect.replaceAll('_', ' ')}</ListItem>
-              ))}
-            </UnorderedList>
-            <Text fontWeight={700}>I contributed to the problem in these ways:</Text>
-            <UnorderedList paddingInlineStart={4}>
-              {myPart.map((part, indx) => (
-                <ListItem key={`part${indx}`}>{part.replaceAll('_', ' ')}</ListItem>
-              ))}
-            </UnorderedList>
-            <Text fontWeight={700}>I did these things well:</Text>
-            <UnorderedList paddingInlineStart={4}>
-              {didWell.map((part, indx) => (
-                <ListItem key={`part${indx}`}>{part.replaceAll('_', ' ')}</ListItem>
-              ))}
-            </UnorderedList>
-            <Text fontWeight={700}>And after looking at it this way, I now see ...</Text>
-            <Box paddingInlineStart={4}>
-              <Text>{learned}</Text>
-            </Box>
+            {content}
           </Stack>
           <Box textAlign="center">
             <Button onClick={reset}>Start Over</Button>

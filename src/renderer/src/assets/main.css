@@ -9,17 +9,21 @@
   src: url('./UnderDog.woff2') format('woff2');
   font-weight: normal;
 }
-body{
+body {
   font-size: 20px;
 }
-input:focus-visible, select:focus-visible, textarea:focus-visible {
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
   box-shadow: none !important;
   border-color: rgb(165, 151, 196) !important;
 }
 @media print {
   /* All your print styles go here */
-  body{ position: relative; }
-    * {
+  body {
+    position: relative;
+  }
+  * {
     height: auto !important;
     font-size: 10pt;
     max-height: 100% !important;
@@ -27,8 +31,9 @@ input:focus-visible, select:focus-visible, textarea:focus-visible {
     page-break-before: always;
   }
   header,
-  footer, 
-  button,[role='tooltip'] {
+  footer,
+  button,
+  [role='tooltip'] {
     display: none !important;
   }
 }

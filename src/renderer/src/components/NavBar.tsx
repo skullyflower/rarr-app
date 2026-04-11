@@ -161,11 +161,12 @@ const NavBar = (): JSX.Element => {
         <Collapse startingHeight={isLargerThan450 ? 'auto' : 0} in={isOpen}>
           <HStack wrap="wrap" justifyContent={'flex-start'} columnGap={2}>
             <MenuDDropDown buttonText="Daily Inventories" size={'md'}>
-              <NavItem to="inventory" text="Trouble" />
-              <NavItem to="alanon-tenth-step" text="Bride of Trouble" />
-              <NavItem to="aca-tenth-step" text="Spawn of Trouble" />
-              <NavItem to="serenity" text="Control" />
-              <NavItem to="fears" text="Fear" />
+              <NavItem to="trouble" text="Trouble" />
+              <NavItem to="bride-of-trouble" text="Bride of Trouble" />
+              <NavItem to="spawn-of-trouble" text="Spawn of Trouble" />
+              <NavItem to="resentments" text="Resentments" />
+              <NavItem to="serenity" text="Control Issues" />
+              <NavItem to="fears" text="Fear and Gratitude" />
             </MenuDDropDown>
             <MenuDDropDown buttonText="Literature">
               <NavItem to="steps" text="The Steps" />

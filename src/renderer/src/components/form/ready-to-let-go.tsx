@@ -48,7 +48,11 @@ const ReadyToLetGo = ({
           </ModalHeader>
           <ModalBody>
             <HStack justifyContent="center" gap={4}>
-              <GetImage imgPath={members[member] ?? 'GoodJob.png'} altText="Good Work" />
+              <GetImage
+                imgPath={members[member] ?? 'GoodJob.png'}
+                altText="Good Work"
+                maxWidth="200px"
+              />
               <Text>
                 Now you might want to talk about what you&apos;ve discovered with a trusted friend
                 or mentor.

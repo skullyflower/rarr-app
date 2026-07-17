@@ -1,4 +1,5 @@
 import { Box, Heading, Image, Stack, Text } from '@chakra-ui/react'
+import { Link } from 'react-router-dom'
 import RarrSplash from '@renderer/assets/RARR_Splash.png'
 import ColorBox from '@renderer/components/layout/color-box'
 import strings from '@renderer/data/home.json'
@@ -33,7 +34,9 @@ function HomePage(): JSX.Element {
                 fontSize={['lg', 'xl']}
               >
                 {strings.boxText.map((line, i) => (
-                  <Text key={`line-${i}`}>{line}</Text>
+                  <Text fontWeight={'bold'} key={`line-${i}`}>
+                    {line}
+                  </Text>
                 ))}
               </Box>
               <Image
@@ -45,6 +48,9 @@ function HomePage(): JSX.Element {
             </Stack>
             <Text fontWeight={'bold'}>{strings.footHeader}</Text>
             <Text>{strings.footerText}</Text>
+            <Text textAlign={'right'}>
+              <Link to="/about">About RARR</Link>
+            </Text>
           </Stack>
         </Box>
       </ColorBox>

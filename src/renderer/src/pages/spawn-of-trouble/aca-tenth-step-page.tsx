@@ -67,8 +67,9 @@ function AcaTenthStep(): JSX.Element {
           </Text>
           <CollapsingText>
             <Stack gap={4}>
-              <Text fontSize={'lg'}>{strings.pageText.collapsedText[0]}</Text>
-              <Text>{strings.pageText.collapsedText[1]}</Text>
+              {strings.pageText.collapsedText.map((line, index) => (
+                <Text key={index}>{line}</Text>
+              ))}
               <Text>
                 For more information visit:{' '}
                 <Link
@@ -83,25 +84,25 @@ function AcaTenthStep(): JSX.Element {
           </CollapsingText>
           <Accordion allowToggle={true}>
             <Stack gap={2}>
-              <AccordionSection title="Exercise 1: Traits ">
+              <AccordionSection title="Exercise 1: Questions">
                 <TraitsSection
                   selectedTraits={selectedTraits}
                   setSelectedTraits={setSelectedTraits}
                 />
               </AccordionSection>
-              <AccordionSection title="Exercise 1.5: The Laundry Lists ">
+              <AccordionSection title="Exercise 2: The Laundry Lists Traits">
                 <LaundryListSection llTraits={llTraits} setLLTraits={setLLTraits} />
               </AccordionSection>
-              <AccordionSection title="Exercise 2: Choice Continuum">
+              <AccordionSection title="Exercise 3: Choice Continuum">
                 <ChoiceSection freedomText={freedomText} setFreedomText={setFreedomText} />
               </AccordionSection>
-              <AccordionSection title="Exercise 3: Tools">
+              <AccordionSection title="Exercise 4: Tools">
                 <ToolsUsedToday listOfTools={listOfTools} setListOfTools={setListOfTools} />
               </AccordionSection>
-              <AccordionSection title="Exercise 4: Feelings">
+              <AccordionSection title="Exercise 5: Feelings">
                 <FeelingsStatement setFeelingSentence={setFeelingSentence} />
               </AccordionSection>
-              <AccordionSection title="Exercise 5: Affirmation">
+              <AccordionSection title="Exercise 6: Affirmation">
                 <AssetsSection praise={praise} setSetPraise={setPraise} />
               </AccordionSection>
             </Stack>

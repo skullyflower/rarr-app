@@ -46,7 +46,9 @@ function AaTenthStep(): JSX.Element {
           </Text>
           <CollapsingText>
             <Stack gap={4}>
-              <Text fontSize={'lg'}>{strings.pageText.collapsedText[0]}</Text>
+              {strings.pageText.collapsedText.map((line, index) => (
+                <Text key={index}>{line}</Text>
+              ))}
               <Text>
                 For more information visit:{' '}
                 <Link href="https://www.aa.org" rel="no-follow" target="literature">

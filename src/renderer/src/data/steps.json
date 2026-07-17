@@ -13,12 +13,12 @@
     "Sought through ritual and sacrifices to maintain a portal to R'lyeh to receive instructions.",
     "Having become an effective servant of the Elder Gods, we continued to only slaughter those deserving in the many eyes Great old ones. "
   ],
-  "AA": [
-    "We admitted we were powerless over alcohol, and that our lives had become unmanageable.",
-    "Came to believe that a Power Greater than us could restore us to sanity",
+  "Trouble": [
+    "We admitted we were powerless over [incert substance, behavior, or disease here], and that our lives had become unmanageable.",
+    "Came to believe that a Power Greater than ourselves could restore us to sanity",
     "Made a decision to turn our wills and our lives over to that Power as we understand it.",
     "Made a searching and fearless moral inventory of ourselves.",
-    "Admitted to ourselves, our Higher Power, and another person the exact nature of our wrongs.",
+    "Admitted to ourselves, our Higher Power (HP), and another person the exact nature of our wrongs.",
     "Became willing to have our Higher Power remove all these defects of character.",
     "Humbly asked our Higher Power to remove our shortcomings.",
     "Made a list of all persons we had harmed and became willing to make amends to them all.",
@@ -27,18 +27,18 @@
     "Sought through prayer and meditation to improve our conscious contact with our Higher Power, praying only for knowledge of its will for us and the power to carry that out.",
     "Having had a spiritual awakening as the result of these steps, we tried to carry this message to alcoholics, and to practice these principles in all our affairs."
   ],
-  "ACA": [
-    "We admitted we were powerless over the effects of alcoholism or other family dysfunction, that our lives had become unmanageable.",
+  "Spawn of Trouble": [
+    "We admitted we were powerless over the effects of having troubled parents or other family dysfunction, that our lives had become unmanageable.",
     "Came to believe that a Power greater than ourselves could restore us to sanity.",
-    "Made a decision to turn our will and our lives over to the care of God as we understand God.",
+    "Made a decision to turn our will and our lives over to the care of Higher Power (HP) as we understand HP.",
     "Made a searching and fearless moral inventory of ourselves.",
-    "Admitted to God, to ourselves, and to another human being the exact nature of our wrongs.",
-    "Were entirely ready to have God remove all these defects of character.",
-    "Humbly asked God to remove our shortcomings.",
+    "Admitted to our Hight Power, to ourselves, and to another human being the exact nature of our wrongs.",
+    "Were entirely ready to have HP remove all these defects of character.",
+    "Humbly asked Higher Power to remove our shortcomings.",
     "Made a list of all persons we had harmed and became willing to make amends to them all.",
     "Made direct amends to such people wherever possible, except when to do so would injure them or others.",
     "Continued to take personal inventory and, when we were wrong, promptly admitted it.",
-    "Sought through prayer and meditation to improve our conscious contact with God, as we understand God, praying only for knowledge of God’s will for us and the power to carry that out.",
+    "Sought through prayer and meditation to improve our conscious contact with HP, as we understand HP, praying only for knowledge of HP's will for us and the power to carry that out.",
     "Having had a spiritual awakening as the result of these steps, we tried to carry this message to others who still suffer, and to practice these principles in all our affairs."
   ],
   "TonyA": [

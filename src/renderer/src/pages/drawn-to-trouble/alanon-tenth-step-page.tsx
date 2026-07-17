@@ -47,8 +47,9 @@ function AlanonTenthStep(): JSX.Element {
           </Text>
           <CollapsingText>
             <Stack gap={4}>
-              <Text fontSize={'lg'}>{strings.pageText.collapsedText[0]}</Text>
-              <Text>{strings.pageText.collapsedText[1]}</Text>
+              {strings.pageText.collapsedText.map((line, index) => (
+                <Text key={index}>{line}</Text>
+              ))}
               <Text>
                 For more information visit:{' '}
                 <Link href="https://al-anon.org" rel="no-follow" target="literature">

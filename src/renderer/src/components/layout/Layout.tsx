@@ -26,11 +26,11 @@ function Layout(): JSX.Element {
       >
         <header>
           <Stack
-            direction={['column', 'row']}
+            direction={'row'}
             width={'100%'}
             paddingInline={4}
             justifyContent="space-between"
-            alignItems={['center', 'flex-start']}
+            alignItems={'flex-start'}
           >
             <LinkBox
               as={ReactRouterLink}

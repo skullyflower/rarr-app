@@ -19,6 +19,7 @@ const PageCard = ({
       maxH={'74vh'}
       backdropFilter={'blur(3px)'}
       borderRadius={10}
+      paddingBottom={2}
     >
       {showHeader && (
         <CardHeader paddingBottom={2}>

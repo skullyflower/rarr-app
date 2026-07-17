@@ -1,22 +1,22 @@
 {
   "pageText": {
-    "title": "Trouble: An AA Style Step 10",
-    "subTitle": "When you literally cannot control yourself, you need help from a power greater than yourself.",
-    "collapsedText": [""]
+    "title": "Trouble",
+    "subTitle": "Daily inventory tools for those troubled with compulsive urges.",
+    "collapsedText": ["When you literally cannot control yourself, you need the help of a power greater than yourself.","This is An AA Style Step 10."]
   },
   "questions": [
     "Did I avoid anger & resentment today?",
     "Was I honest in every situation & with everyone today?",
     "Did I stay out of selfishness & self-centeredness today?",
-    "Did I make amends for any hurts I may have caused today?",
-    "Did I stay out of self-pity today?",
+    "Do I need to make amends for any hurts I may have caused today?",
+    "Did I stay out of self-pity today? Did I remember that others suffer, too?",
     "Did I try to be kind and loving with everyone today?",
-    "If my feelings were hurt today, did I forgive?",
-    "Did I stay close to my H.P, asking to do his will today?",
-    "Did I reach out to another alcoholic today?",
-    "Did I go to an A.A. meeting today?",
-    "Did I read my Big Book or the 12 & 12 today?",
-    "Did I get humble on my knees today?"
+    "If my feelings were hurt today, was I able to forgive?",
+    "Did I stay close to my HP., asking to do HP.s will today?",
+    "Did I reach out to another sufferer today?",
+    "Did I go to a meeting today? If so did I share at group level or talk to another member?",
+    "Did I read program literature today?",
+    "Did I get humble today? Was I able to pray or ask for help?"
   ],
   "characterDefects": [
     "EGOTISM",

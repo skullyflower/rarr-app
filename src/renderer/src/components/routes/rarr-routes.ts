@@ -8,14 +8,14 @@ import Fears from '@renderer/pages/fears/fears'
 import InventoryJoural from '@renderer/pages/journal'
 import AboutRarr from '@renderer/pages/about/about-rarr'
 import UnlockInventory from '@renderer/pages/UnlockInventory'
-import AlanonTenthStep from '@renderer/pages/bride-of-trouble/alanon-tenth-step-page'
+import AlanonTenthStep from '@renderer/pages/drawn-to-trouble/alanon-tenth-step-page'
 import AaTenthStep from '@renderer/pages/trouble/aa-tenth-step-page'
 
 export type RarrRoute = { path: string; element: React.ComponentType }
 
 export const rarrRouteList: RarrRoute[] = [
   { path: 'trouble', element: AaTenthStep },
-  { path: 'bride-of-trouble', element: AlanonTenthStep },
+  { path: 'drawn-to-trouble', element: AlanonTenthStep },
   { path: 'spawn-of-trouble', element: AcaTenthStep },
   { path: 'resentments', element: ResentmentsForm },
   { path: 'serenity', element: SerenityCheckIn },

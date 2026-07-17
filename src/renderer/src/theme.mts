@@ -37,28 +37,28 @@ const defaultTheme = extendTheme(
         '900': '#141B1F'
       },
       pink: {
-        '50': '#F8EDF2',
-        '100': '#EACDDC',
-        '200': '#DCACC5',
-        '300': '#CF8CAF',
-        '400': '#C26B98',
-        '500': '#B44B81',
-        '600': '#903C67',
-        '700': '#6C2D4E',
-        '800': '#481E34',
-        '900': '#240F1A'
+        '50': '#FAEBEE',
+        '100': '#F1C6CE',
+        '200': '#E8A1AF',
+        '300': '#DE7C90',
+        '400': '#D55871',
+        '500': '#CC3351',
+        '600': '#A32941',
+        '700': '#7A1F31',
+        '800': '#521420',
+        '900': '#290A10'
       },
       purple: {
-        '50': '#F1EFF6',
-        '100': '#D8D1E5',
-        '200': '#BEB4D5',
-        '300': '#A597C4',
-        '400': '#8C79B4',
-        '500': '#725CA3',
-        '600': '#5B4983',
-        '700': '#443762',
-        '800': '#2E2541',
-        '900': '#171221'
+        '50': '#F2F0F4',
+        '100': '#DAD5E1',
+        '200': '#C3BBCE',
+        '300': '#ABA0BB',
+        '400': '#9485A8',
+        '500': '#7C6A95',
+        '600': '#635577',
+        '700': '#4A4059',
+        '800': '#322B3B',
+        '900': '#19151E'
       },
       blue: {
         '50': '#EDF2F8',
@@ -193,7 +193,7 @@ const defaultTheme = extendTheme(
             boxShadow: 'none',
             outline: 'none',
             _placeholder: {
-              color: 'pink.500'
+              color: props.colorMode === 'dark' ? 'gray.600' : 'gray.50'
             },
             _focus: {
               backgroundColor: props.colorMode === 'dark' ? inputBGDark : inputBGLight,
@@ -221,7 +221,7 @@ const defaultTheme = extendTheme(
           color: props.colorMode === 'dark' ? inputColorDark : inputColorLight,
           borderColor: props.colorMode === 'dark' ? borderColorDark : borderColorLight,
           _placeholder: {
-            color: 'pink.700'
+            color: props.colorMode === 'dark' ? 'gray.600' : 'gray.50'
           },
           _focus: {
             outline: 'none',

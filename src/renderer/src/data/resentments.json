@@ -85,14 +85,16 @@
   },
   "strings": {
     "Angry": {
-      "title": "Anger is a weird thing.",
+      "title":"Angry?",
+      "subTitle": "Anger is a weird thing.",
       "intro": [
         "We feel that someone or something has wronged us or are otherwise frustrated by something in our lives. We feel they should be punished, stopped or changed.",
         "And yet, most of the time, we do nothing but punish ourselves with our angry thoughts."
       ]
     },
     "Hurt": {
-      "title": "Feeling down?",
+      "title": "Hurt?",
+      "subTitle":"Feeling down?",
       "intro": [
         "Life can be hard and people can be hurtful. We try and try, but things do not go our way, and everything we do seems to make it worse."
       ]

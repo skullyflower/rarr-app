@@ -110,7 +110,7 @@ export function legacyPropsToTypedSections(p: LegacyWhatYouWroteProps): TypedSec
       id: 'alanon-spot',
       kind: 'qaPairs',
       variant: 'alanon',
-      displayHeading: 'Alanon Spot Check for today:',
+      displayHeading: 'Spot Check Q and A for today:',
       pairs: questionAnswers
     })
   }

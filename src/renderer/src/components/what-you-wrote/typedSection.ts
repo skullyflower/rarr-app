@@ -164,12 +164,12 @@ export function buildTypedSectionCopy(s: TypedSection): string {
           .map((trait) => `\t• ${trait[0]}\n\t ${trait[1]}`)
           .join('\n\n')}\n`
       }
-      return `Alanon Spot Check for today:\n ${s.pairs
+      return `Spot Check Q and A for today:\n ${s.pairs
         .map((q) => `\t• ${q[0]}\n\t ${q[1]}`)
         .join('\n\n ')}\n`
     }
     case 'acaTraitQs':
-      return `ACAD Traits I had today:\n\t• ${answersFromTraitQs(s.traitQs)}`
+      return `Spawn of Trouble Traits I had today:\n\t• ${answersFromTraitQs(s.traitQs)}`
     case 'choiceLevel':
       return `Choice Level:\nToday I was capable of: ${s.body}`
     case 'feelingStatement':
@@ -177,14 +177,14 @@ export function buildTypedSectionCopy(s: TypedSection): string {
     case 'affirmationBullets':
       return `Praise Today: \n\t• I am ${s.items.join(',\n\t• I am ')}`
     case 'controlPairs':
-      return `Control:\n\t ${s.pairs
+      return `Control Issues Today:\n\t ${s.pairs
         .map(
           (pair) =>
             ` Today I want to control, but cannot control:\n\t ${pair[0]}\n   While I could and probably should: \n\t ${pair[1]}`
         )
         .join('\n\n')}`
     case 'fearPairs':
-      return `Today I fear:\n ${s.pairs
+      return `Fears and Gratitudes for today:\n ${s.pairs
         .map((pair) => `\t• Fear: ${pair[0]}\n\t\tBut grateful: ${pair[1]}`)
         .join('\n\n')}`
     case 'gratefulLines':

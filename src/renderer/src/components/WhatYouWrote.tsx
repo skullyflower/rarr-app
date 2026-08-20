@@ -4,48 +4,28 @@ import CopyButton from '@renderer/components/buttons/copy-button'
 import PageCard from './layout/page-card'
 import ColorBox from './layout/color-box'
 import ReadyToLetGo from './form/ready-to-let-go'
-import { useState, type ReactNode } from 'react'
-import { buildLegacyCopyText } from './what-you-wrote/legacyCopyText'
-import { LegacyWhatYouWroteDisplay } from './what-you-wrote/legacySections'
-import type { WhatYouWroteProps, WhatYouWroteSectionsProps } from './what-you-wrote/types'
+import { useState } from 'react'
+import type { WhatYouWroteProps } from './what-you-wrote/types'
 
-function isSectionsProps(props: WhatYouWroteProps): props is WhatYouWroteSectionsProps {
-  return 'sections' in props && props.sections !== undefined
-}
-
-function WhatYouWrote(props: WhatYouWroteProps): JSX.Element {
+function WhatYouWrote({
+  reset,
+  heading,
+  showReadyToLetGo = true,
+  sections
+}: WhatYouWroteProps): JSX.Element {
   const [isLettingGo, setIsLettingGo] = useState(true)
 
-  let reset: () => void
-  let heading: ReactNode | undefined
-  let showReadyToLetGo: boolean
-  let stringToWrite: string
-  let summaryBody: ReactNode
-
-  if (isSectionsProps(props)) {
-    const { reset: r, heading: h, showReadyToLetGo: srtl = true, sections } = props
-    reset = r
-    heading = h
-    showReadyToLetGo = srtl
-    stringToWrite = sections
-      .map((s) => s.toCopy)
-      .filter(Boolean)
-      .join('\n\n')
-    summaryBody = (
-      <>
-        {sections.map((s) => (
-          <Box key={s.id}>{s.content}</Box>
-        ))}
-      </>
-    )
-  } else {
-    const { reset: r, heading: h, showReadyToLetGo: srtl = true, ...legacy } = props
-    reset = r
-    heading = h
-    showReadyToLetGo = srtl
-    stringToWrite = buildLegacyCopyText(legacy)
-    summaryBody = <LegacyWhatYouWroteDisplay {...legacy} />
-  }
+  const stringToWrite = sections
+    .map((s) => s.toCopy)
+    .filter(Boolean)
+    .join('\n\n')
+  const summaryBody = (
+    <>
+      {sections.map((s) => (
+        <Box key={s.id}>{s.content}</Box>
+      ))}
+    </>
+  )
 
   return (
     <PageCard

@@ -4,6 +4,8 @@ import PageCard from '@renderer/components/layout/page-card'
 import AccordionSection from '@renderer/components/layout/accordion-section'
 import DoubleListerInput, { doubleListItem } from '@renderer/components/form/DoubleListerInput'
 import WhatYouWrote from '@renderer/components/WhatYouWrote'
+import { createWhatYouWroteSections } from '@renderer/components/what-you-wrote/typedSectionFactories'
+import { fearsFieldsToTypedSections } from './fearsTypedSections'
 import CollapsingText from '@renderer/components/layout/CollapsingText'
 import ListerInput from '@renderer/components/form/ListerInput'
 import Privacy from '@renderer/components/Privacy'
@@ -21,7 +23,12 @@ function Fears(): JSX.Element {
   }
 
   if (letGo) {
-    return <WhatYouWrote reset={reset} fearsList={fearsList} gradteful={grateful} />
+    return (
+      <WhatYouWrote
+        reset={reset}
+        sections={createWhatYouWroteSections(fearsFieldsToTypedSections({ fearsList, grateful }))}
+      />
+    )
   }
 
   return (

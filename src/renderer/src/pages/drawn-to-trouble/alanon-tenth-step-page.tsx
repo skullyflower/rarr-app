@@ -3,6 +3,8 @@ import AccordionSection from '@renderer/components/layout/accordion-section'
 import PageCard from '@renderer/components/layout/page-card'
 import { useState } from 'react'
 import WhatYouWrote from '@renderer/components/WhatYouWrote'
+import { createWhatYouWroteSections } from '@renderer/components/what-you-wrote/typedSectionFactories'
+import { tenthStepFieldsToTypedSections } from '@renderer/components/what-you-wrote/tenthStepTypedSections'
 import CollapsingText from '@renderer/components/layout/CollapsingText'
 import Privacy from '@renderer/components/Privacy'
 import strings from '@renderer/data/alanon-tenth.json'
@@ -31,9 +33,13 @@ function AlanonTenthStep(): JSX.Element {
     return (
       <WhatYouWrote
         reset={reset}
-        selectedQuestions={selectedQuestions}
-        characterAssets={characterAssets}
-        characterDefects={characterDefects}
+        sections={createWhatYouWroteSections(
+          tenthStepFieldsToTypedSections('alanon-spot', {
+            selectedQuestions,
+            characterAssets,
+            characterDefects
+          })
+        )}
       />
     )
   }

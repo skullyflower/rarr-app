@@ -4,6 +4,8 @@ import PageCard from '@renderer/components/layout/page-card'
 import AccordionSection from '@renderer/components/layout/accordion-section'
 import DoubleListerInput, { doubleListItem } from '@renderer/components/form/DoubleListerInput'
 import WhatYouWrote from '@renderer/components/WhatYouWrote'
+import { createWhatYouWroteSections } from '@renderer/components/what-you-wrote/typedSectionFactories'
+import { serenityFieldsToTypedSections } from './serenityCheckInTypedSections'
 import CollapsingText from '@renderer/components/layout/CollapsingText'
 import Privacy from '@renderer/components/Privacy'
 import strings from '@renderer/data/serenity.json'
@@ -18,7 +20,12 @@ function SerenityCheckIn(): JSX.Element {
   }
 
   if (letGo) {
-    return <WhatYouWrote reset={reset} canCannotControl={canCannotControl} />
+    return (
+      <WhatYouWrote
+        reset={reset}
+        sections={createWhatYouWroteSections(serenityFieldsToTypedSections({ canCannotControl }))}
+      />
+    )
   }
 
   return (

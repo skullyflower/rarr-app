@@ -8,6 +8,8 @@ import AccordionSection from '@renderer/components/layout/accordion-section'
 import PageCard from '@renderer/components/layout/page-card'
 import { useState } from 'react'
 import WhatYouWrote from '@renderer/components/WhatYouWrote'
+import { createWhatYouWroteSections } from '@renderer/components/what-you-wrote/typedSectionFactories'
+import { acaTenthFieldsToTypedSections } from './acaTenthTypedSections'
 import LaundryListSection from '@renderer/pages/spawn-of-trouble/laundry-list-section'
 import CollapsingText from '@renderer/components/layout/CollapsingText'
 import Privacy from '@renderer/components/Privacy'
@@ -47,13 +49,17 @@ function AcaTenthStep(): JSX.Element {
     return (
       <WhatYouWrote
         reset={reset}
-        praise={praise}
-        freedomText={freedomText}
-        feelingsSentence={feelingsSentence}
-        listOfTools={listOfTools}
-        traitQs={traitQs}
-        selectedTraits={selectedTraits}
-        llTraits={llTraits}
+        sections={createWhatYouWroteSections(
+          acaTenthFieldsToTypedSections({
+            praise,
+            freedomText,
+            feelingsSentence,
+            listOfTools,
+            traitQs,
+            selectedTraits,
+            llTraits
+          })
+        )}
       />
     )
   }

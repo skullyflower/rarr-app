@@ -31,8 +31,7 @@ const AccordionSection: React.FC<AccordionSectionProps> = ({ title, children }) 
           backgroundColor: colorMode === 'dark' ? 'pink.800' : 'gray.50',
           borderColor: 'purple.300'
         }}
-        borderRadius={6}
-        border={'1px solid'}
+        borderRadius={4}
       >
         <HStack width={'100%'} justifyContent={'space-between'}>
           <Heading
@@ -50,13 +49,7 @@ const AccordionSection: React.FC<AccordionSectionProps> = ({ title, children }) 
         </HStack>
       </AccordionButton>
       <AccordionPanel>
-        <Card
-          color={'inherit'}
-          bg={colorMode === 'dark' ? 'pink.900' : 'gray.200'}
-          borderStyle={'solid'}
-          borderWidth={1}
-          borderColor="purple.300"
-        >
+        <Card color={'inherit'} bg={colorMode === 'dark' ? 'pink.900' : 'gray.200'}>
           <CardBody>{children}</CardBody>
         </Card>
       </AccordionPanel>

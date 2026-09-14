@@ -12,7 +12,6 @@ import { createWhatYouWroteSections } from '@renderer/components/what-you-wrote/
 import { acaTenthFieldsToTypedSections } from './acaTenthTypedSections'
 import LaundryListSection from '@renderer/pages/spawn-of-trouble/laundry-list-section'
 import CollapsingText from '@renderer/components/layout/CollapsingText'
-import Privacy from '@renderer/components/Privacy'
 import strings from '@renderer/data/aca-tenth.json'
 
 function AcaTenthStep(): JSX.Element {
@@ -88,7 +87,7 @@ function AcaTenthStep(): JSX.Element {
               </Text>
             </Stack>
           </CollapsingText>
-          <Accordion allowToggle={true}>
+          <Accordion allowToggle={true} defaultIndex={0}>
             <Stack gap={2}>
               <AccordionSection title="Exercise 1: Questions">
                 <TraitsSection
@@ -132,7 +131,6 @@ function AcaTenthStep(): JSX.Element {
           </Stack>
         </Stack>
       </PageCard>
-      <Privacy />
     </Stack>
   )
 }

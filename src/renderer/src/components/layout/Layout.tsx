@@ -4,6 +4,7 @@ import rarrLogo from '@renderer/assets/RarrLogo.png'
 import { Link as ReactRouterLink, Outlet } from 'react-router-dom'
 import useToggleLock from '@renderer/hooks/useToggleLock'
 import UnlockInventory from '@renderer/pages/UnlockInventory'
+import Privacy from '@renderer/components/Privacy'
 
 function Layout(): JSX.Element {
   const { isLocked } = useToggleLock()
@@ -14,7 +15,7 @@ function Layout(): JSX.Element {
       bg={colorMode === 'light' ? 'whiteAlpha.800' : undefined}
       width="100%"
       height="100vh"
-      position={'fixed'}
+      //position={'fixed'}
       overflow={'auto'}
     >
       <Stack
@@ -22,7 +23,6 @@ function Layout(): JSX.Element {
         alignItems={'stretch'}
         w={{ base: '100%', md: '95%' }}
         marginInline={['0', 'auto']}
-        maxW={'900px'}
       >
         <header>
           <Stack
@@ -45,8 +45,12 @@ function Layout(): JSX.Element {
             <NavBar />
           </Stack>
         </header>
-        <Box>{isLocked ? <UnlockInventory /> : <Outlet />}</Box>
-        <footer id="pagefoot"></footer>
+        <Box maxW={'1500px'} width={'100%'} marginInline={'auto'}>
+          {isLocked ? <UnlockInventory /> : <Outlet />}
+        </Box>
+        <footer id="pagefoot">
+          <Privacy />
+        </footer>
       </Stack>
     </Box>
   )

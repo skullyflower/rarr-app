@@ -6,7 +6,6 @@ import WhatYouWrote from '@renderer/components/WhatYouWrote'
 import { createWhatYouWroteSections } from '@renderer/components/what-you-wrote/typedSectionFactories'
 import { tenthStepFieldsToTypedSections } from '@renderer/components/what-you-wrote/tenthStepTypedSections'
 import CollapsingText from '@renderer/components/layout/CollapsingText'
-import Privacy from '@renderer/components/Privacy'
 import strings from '@renderer/data/alanon-tenth.json'
 import QuestionsSection from '@renderer/components/shared-forms/QuestionsSection'
 import CharacterAssetsSection from '@renderer/components/shared-forms/CharacterAssetsSection'
@@ -104,7 +103,6 @@ function AlanonTenthStep(): JSX.Element {
           </Stack>
         </Stack>
       </PageCard>
-      <Privacy />
     </Stack>
   )
 }

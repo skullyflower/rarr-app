@@ -30,7 +30,7 @@ const SaveButton = ({ text, fileName, disabled, bigbutton }: SaveButtonProps): J
           size={'sm'}
           onClick={saveLog}
         >
-          Save
+          Save{saved && 'd'}
         </Button>
       ) : (
         <IconButton

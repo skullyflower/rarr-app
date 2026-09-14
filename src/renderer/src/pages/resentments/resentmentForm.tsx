@@ -20,7 +20,6 @@ import ResentBeGone from './resentment-be-gone'
 import PageCard from '@renderer/components/layout/page-card'
 import AccordionSection from '@renderer/components/layout/accordion-section'
 import CollapsingText from '@renderer/components/layout/CollapsingText'
-import Privacy from '@renderer/components/Privacy'
 
 type ProgKey = keyof typeof affects
 
@@ -105,7 +104,7 @@ function ResentmentsForm(): JSX.Element {
             {`So, why don't you write about it?`}
           </Text>
         </Box>
-        <Accordion allowToggle={true}>
+        <Accordion allowToggle={true} defaultIndex={0}>
           <Stack gap={2} padding={4}>
             <AccordionSection title="Who or what is bothering you?">
               <Stack gap={4}>
@@ -174,7 +173,6 @@ function ResentmentsForm(): JSX.Element {
           </Stack>
         </Accordion>
       </PageCard>
-      <Privacy />
       <NeverLetGo isOpen={isNever} onClose={onNeverMind} />
     </Stack>
   )

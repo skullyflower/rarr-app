@@ -21,7 +21,7 @@ const PrintButton = ({ fileName, disabled, bigbutton }: PrintButtonProps): JSX.E
           size={'sm'}
           onClick={() => printLog(fileName).then((res) => setPrinted(res))}
         >
-          Print
+          Print{printed && 'ed'}
         </Button>
       ) : (
         <IconButton

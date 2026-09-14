@@ -1,9 +1,10 @@
-import { Box, Heading, Image, Stack, Text } from '@chakra-ui/react'
+import { Box, Heading, HStack, Image, Stack, Text } from '@chakra-ui/react'
 import { Link } from 'react-router-dom'
 import RarrSplash from '@renderer/assets/RARR_Splash.png'
 import ColorBox from '@renderer/components/layout/color-box'
 import strings from '@renderer/data/home.json'
 import theComics from '@renderer/scripts/comics.mjs'
+import { NavItem } from '@renderer/components/NavBar'
 
 function HomePage(): JSX.Element {
   return (
@@ -19,6 +20,7 @@ function HomePage(): JSX.Element {
               direction={{ base: 'column', md: 'row' }}
               justifyContent="end"
               width="100%"
+              maxW={'1000px'}
             >
               <Box
                 backgroundColor="purple.300"
@@ -31,7 +33,7 @@ function HomePage(): JSX.Element {
                 position={{ base: 'static', md: 'absolute' }}
                 left="50px"
                 bottom="30px"
-                fontSize={['lg', 'xl']}
+                fontSize={'1.2em'}
               >
                 {strings.boxText.map((line, i) => (
                   <Text fontWeight={'bold'} key={`line-${i}`}>
@@ -46,9 +48,20 @@ function HomePage(): JSX.Element {
                 alt="Welcome Home"
               />
             </Stack>
+
             <Text fontWeight={'bold'}>{strings.footHeader}</Text>
+            <Heading>The Guided Inventories:</Heading>
+            <HStack gap={4} wrap="wrap" justifyContent="center">
+              <NavItem to="trouble" text="Trouble" />
+              <NavItem to="drawn-to-trouble" text="Drawn to Trouble" />
+              <NavItem to="spawn-of-trouble" text="Spawn of Trouble" />
+              <NavItem to="resentments" text="Resentments" />
+              <NavItem to="serenity" text="Control Issues" />
+              <NavItem to="fears" text="Fear and Gratitude" />
+            </HStack>
+
             <Text>{strings.footerText}</Text>
-            <Text textAlign={'right'}>
+            <Text>
               <Link to="/about">About RARR</Link>
             </Text>
           </Stack>

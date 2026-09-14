@@ -2,6 +2,8 @@ import { Stack, Text } from '@chakra-ui/react'
 import strings from '@renderer/data/privacy.json'
 
 const Privacy = (): JSX.Element => {
+  const isApp = Boolean(window.api)
+
   return (
     <Stack p={4} gap={4}>
       {strings.text.map((line, i) => (
@@ -9,7 +11,7 @@ const Privacy = (): JSX.Element => {
           {line}
         </Text>
       ))}
-      {Boolean(window.api) && (
+      {isApp && (
         <>
           {strings.appOnlyText.map((line, i) => (
             <Text fontSize={'15px'} key={`app-${i}`}>

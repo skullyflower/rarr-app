@@ -7,7 +7,6 @@ import WhatYouWrote from '@renderer/components/WhatYouWrote'
 import { createWhatYouWroteSections } from '@renderer/components/what-you-wrote/typedSectionFactories'
 import { serenityFieldsToTypedSections } from './serenityCheckInTypedSections'
 import CollapsingText from '@renderer/components/layout/CollapsingText'
-import Privacy from '@renderer/components/Privacy'
 import strings from '@renderer/data/serenity.json'
 
 function SerenityCheckIn(): JSX.Element {
@@ -46,7 +45,7 @@ function SerenityCheckIn(): JSX.Element {
               </CollapsingText>
             </Stack>
           </HStack>
-          <Accordion allowToggle={true} defaultIndex={[0]}>
+          <Accordion allowToggle={true} defaultIndex={0}>
             <Stack gap={2}>
               <AccordionSection title={strings.accordionHeading}>
                 <DoubleListerInput
@@ -81,7 +80,6 @@ function SerenityCheckIn(): JSX.Element {
           </Stack>
         </Stack>
       </PageCard>
-      <Privacy />
     </Stack>
   )
 }

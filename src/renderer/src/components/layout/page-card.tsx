@@ -14,6 +14,7 @@ const PageCard = ({
   return (
     <Card
       width={'100%'}
+      maxW={'1500'}
       color={colorMode === 'dark' ? 'gray.100' : 'gray.900'}
       background={colorMode === 'dark' ? 'whiteAlpha.300' : 'whiteAlpha.800'}
       maxH={'74vh'}

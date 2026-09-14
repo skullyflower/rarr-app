@@ -51,7 +51,7 @@ function TypedSectionDisplay({ section: s }: { section: TypedSection }): JSX.Ele
       return (
         <Box>
           <Text fontWeight={700} paddingBottom={4}>
-            Traits I had today:
+            Traits I expressed today:
           </Text>
           <UnorderedList paddingInlineStart={4}>
             {s.traitQs.map((one, indx) => (
@@ -103,8 +103,8 @@ function TypedSectionDisplay({ section: s }: { section: TypedSection }): JSX.Ele
           </Text>
           {s.pairs.map((value, index) => (
             <HStack key={`${s.id}-${index}`} justifyContent="space-between" gap={2} wrap="wrap">
-              <Text>I want to control but cannot: {value[0]}</Text>
-              <Text>What I could do: {value[1]}</Text>
+              <Text>Wanted to control: {value[0]}</Text>
+              <Text>Could do: {value[1]}</Text>
             </HStack>
           ))}
         </Box>
@@ -126,9 +126,12 @@ function TypedSectionDisplay({ section: s }: { section: TypedSection }): JSX.Ele
     case 'gratefulLines':
       return (
         <Box>
+          <Text>
+            <b>Grateful that:</b>
+          </Text>
           {s.lines.map((value, index) => (
             <HStack key={`${s.id}-${index}`} justifyContent="space-between" gap={2} wrap="wrap">
-              <Text>and grateful: {value}</Text>
+              <Text>{value}</Text>
             </HStack>
           ))}
         </Box>

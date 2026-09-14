@@ -8,7 +8,6 @@ import { createWhatYouWroteSections } from '@renderer/components/what-you-wrote/
 import { fearsFieldsToTypedSections } from './fearsTypedSections'
 import CollapsingText from '@renderer/components/layout/CollapsingText'
 import ListerInput from '@renderer/components/form/ListerInput'
-import Privacy from '@renderer/components/Privacy'
 import fearText from '@renderer/data/fears.json'
 
 function Fears(): JSX.Element {
@@ -49,7 +48,7 @@ function Fears(): JSX.Element {
               </CollapsingText>
             </Stack>
           </Box>
-          <Accordion allowToggle={true} allowMultiple={true} defaultIndex={[0]}>
+          <Accordion allowToggle={true} allowMultiple={true} defaultIndex={0}>
             <Stack gap={2}>
               <AccordionSection title={fearText.accordionHeading}>
                 <DoubleListerInput
@@ -73,7 +72,7 @@ function Fears(): JSX.Element {
             bottom={-2}
           >
             <Button
-              isDisabled={fearsList.length === 0}
+              isDisabled={fearsList.length === 0 && grateful.length === 0}
               colorScheme="purple"
               name="letGo"
               onClick={() => setLetGo(true)}
@@ -83,7 +82,6 @@ function Fears(): JSX.Element {
           </Stack>
         </Stack>
       </PageCard>
-      <Privacy />
     </Stack>
   )
 }

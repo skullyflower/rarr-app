@@ -6,7 +6,6 @@ import WhatYouWrote from '@renderer/components/WhatYouWrote'
 import { createWhatYouWroteSections } from '@renderer/components/what-you-wrote/typedSectionFactories'
 import { tenthStepFieldsToTypedSections } from '@renderer/components/what-you-wrote/tenthStepTypedSections'
 import CollapsingText from '@renderer/components/layout/CollapsingText'
-import Privacy from '@renderer/components/Privacy'
 import strings from '@renderer/data/aa-tenth.json'
 import CheckBoxAndText from '@renderer/components/form/CheckBoxAndText'
 import CheckboxGroupBox from '@renderer/components/form/CheckBoxGroupBox'
@@ -63,7 +62,7 @@ function AaTenthStep(): JSX.Element {
               </Text>
             </Stack>
           </CollapsingText>
-          <Accordion allowToggle={true}>
+          <Accordion allowToggle={true} defaultIndex={0}>
             <Stack gap={2}>
               <AccordionSection title="Exercise 1: Questions ">
                 <Stack gap={2}>
@@ -118,7 +117,6 @@ function AaTenthStep(): JSX.Element {
           </Stack>
         </Stack>
       </PageCard>
-      <Privacy />
     </Stack>
   )
 }

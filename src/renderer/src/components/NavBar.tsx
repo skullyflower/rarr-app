@@ -24,7 +24,7 @@ import { toggleFontMode } from '@renderer/scripts/logsAPI.mjs'
 import { useMatch, useNavigate } from 'react-router-dom'
 import { ReactNode, useEffect } from 'react'
 
-const NavItem = ({ text, to }: { text: string; to: string }): JSX.Element => {
+export const NavItem = ({ text, to }: { text: string; to: string }): JSX.Element => {
   const { colorMode } = useColorMode()
   const color = colorMode === 'dark' ? 'gray.100' : 'red.900'
   const bgcolor = colorMode === 'dark' ? '' : 'gray.100'

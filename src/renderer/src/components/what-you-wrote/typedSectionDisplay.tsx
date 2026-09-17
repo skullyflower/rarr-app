@@ -127,7 +127,7 @@ function TypedSectionDisplay({ section: s }: { section: TypedSection }): JSX.Ele
       return (
         <Box>
           <Text>
-            <b>Grateful that:</b>
+            <b>Grateful:</b>
           </Text>
           {s.lines.map((value, index) => (
             <HStack key={`${s.id}-${index}`} justifyContent="space-between" gap={2} wrap="wrap">

@@ -27,7 +27,7 @@ import Congrats from '../assets/Congrats.png'
 import WellDone from '../assets/WellDone.png'
 import FallBack from '../assets/rain.svg'
 
-const theComics = {
+const theComics: Record<string, string> = {
   '20060619NotAgain.gif': NotAgain,
   '20060622GoodByeFun.gif': GoodByeFun,
   '20060725GoAway.gif': GoAway,

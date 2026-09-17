@@ -104,72 +104,70 @@ function ResentmentsForm(): JSX.Element {
             {`So, why don't you write about it?`}
           </Text>
         </Box>
-        <Accordion allowToggle={true} defaultIndex={0}>
-          <Stack gap={2} padding={4}>
-            <AccordionSection title="Who or what is bothering you?">
-              <Stack gap={4}>
-                <FormControl isRequired>
-                  <Input
-                    name="Iresent"
-                    type="text"
-                    value={Iresent}
-                    placeholder="Person, institution, concept, or situation"
-                    onChange={(e) => setIresent(e.target.value)}
-                    maxLength={100}
-                  />
-                </FormControl>
-              </Stack>
-            </AccordionSection>
-            <AccordionSection title="And why?">
+        <Accordion allowToggle={true} defaultIndex={[0]}>
+          <AccordionSection title="Who or what is bothering you?">
+            <Stack gap={4}>
               <FormControl isRequired>
-                <StyledTextInput
-                  value={because}
-                  setter={setBecause}
-                  placeholder="Let it all out..."
+                <Input
+                  name="Iresent"
+                  type="text"
+                  value={Iresent}
+                  placeholder="Person, institution, concept, or situation"
+                  onChange={(e) => setIresent(e.target.value)}
+                  maxLength={100}
                 />
               </FormControl>
-            </AccordionSection>
-            <AccordionSection title="How does it affect you? What does it threaten?">
-              <FormControl isRequired>
-                <CheckboxGroupBox
-                  valuesList={affectsMy}
-                  options={affects[selectedProgram as ProgKey]}
-                  setter={setAffectsMy}
-                />
-              </FormControl>
-            </AccordionSection>
-            <AccordionSection title="What part did you play in this?">
-              <FormControl isRequired>
-                <CheckboxGroupBox
-                  valuesList={myPart}
-                  options={myParts[selectedProgram as ProgKey]}
-                  setter={setMyPart}
-                />
-              </FormControl>
-            </AccordionSection>
-            <AccordionSection title="What did you do well?">
-              <FormControl isRequired>
-                <CheckboxGroupBox
-                  valuesList={didWell}
-                  options={successes[selectedProgram as ProgKey]}
-                  setter={setDidWell}
-                />
-              </FormControl>
-            </AccordionSection>
-            <AccordionSection title="Do you see the situation differently now?">
-              <FormControl isRequired>
-                <StyledTextInput value={learned} setter={setLearned} />
-              </FormControl>
-            </AccordionSection>
-            <Text textAlign={'center'}>Are you ready to let it go?</Text>
-            <Stack width="100%" direction="row" gap={4} justifyContent="center">
-              <Button isDisabled={incomplete} colorScheme="purple" name="letGo" onClick={letItGo}>
-                Be Free!
-              </Button>{' '}
-              <Button colorScheme="purple" onClick={neverLetItGo}>
-                NEVER!!
-              </Button>
             </Stack>
+          </AccordionSection>
+          <AccordionSection title="And why?">
+            <FormControl isRequired>
+              <StyledTextInput
+                value={because}
+                setter={setBecause}
+                placeholder="Let it all out..."
+              />
+            </FormControl>
+          </AccordionSection>
+          <AccordionSection title="How does it affect you? What does it threaten?">
+            <FormControl isRequired>
+              <CheckboxGroupBox
+                valuesList={affectsMy}
+                options={affects[selectedProgram as ProgKey]}
+                setter={setAffectsMy}
+              />
+            </FormControl>
+          </AccordionSection>
+          <AccordionSection title="What part did you play in this?">
+            <FormControl isRequired>
+              <CheckboxGroupBox
+                valuesList={myPart}
+                options={myParts[selectedProgram as ProgKey]}
+                setter={setMyPart}
+              />
+            </FormControl>
+          </AccordionSection>
+          <AccordionSection title="What did you do well?">
+            <FormControl isRequired>
+              <CheckboxGroupBox
+                valuesList={didWell}
+                options={successes[selectedProgram as ProgKey]}
+                setter={setDidWell}
+              />
+            </FormControl>
+          </AccordionSection>
+          <AccordionSection title="Do you see the situation differently now?">
+            <FormControl isRequired>
+              <StyledTextInput value={learned} setter={setLearned} />
+            </FormControl>
+          </AccordionSection>
+          <Text textAlign={'center'}>Are you ready to let it go?</Text>
+          <Stack width="100%" direction="row" gap={4} justifyContent="center">
+            <Button isDisabled={incomplete} colorScheme="purple" name="letGo" onClick={letItGo}>
+              Be Free!
+            </Button>{' '}
+            <Button colorScheme="purple" onClick={neverLetItGo}>
+              NEVER!!
+            </Button>
           </Stack>
         </Accordion>
       </PageCard>

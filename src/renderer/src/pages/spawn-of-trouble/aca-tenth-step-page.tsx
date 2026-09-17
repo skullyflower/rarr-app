@@ -87,30 +87,28 @@ function AcaTenthStep(): JSX.Element {
               </Text>
             </Stack>
           </CollapsingText>
-          <Accordion allowToggle={true} defaultIndex={0}>
-            <Stack gap={2}>
-              <AccordionSection title="Exercise 1: Questions">
-                <TraitsSection
-                  selectedTraits={selectedTraits}
-                  setSelectedTraits={setSelectedTraits}
-                />
-              </AccordionSection>
-              <AccordionSection title="Exercise 2: The Laundry Lists Traits">
-                <LaundryListSection llTraits={llTraits} setLLTraits={setLLTraits} />
-              </AccordionSection>
-              <AccordionSection title="Exercise 3: Choice Continuum">
-                <ChoiceSection freedomText={freedomText} setFreedomText={setFreedomText} />
-              </AccordionSection>
-              <AccordionSection title="Exercise 4: Tools">
-                <ToolsUsedToday listOfTools={listOfTools} setListOfTools={setListOfTools} />
-              </AccordionSection>
-              <AccordionSection title="Exercise 5: Feelings">
-                <FeelingsStatement setFeelingSentence={setFeelingSentence} />
-              </AccordionSection>
-              <AccordionSection title="Exercise 6: Affirmation">
-                <AssetsSection praise={praise} setSetPraise={setPraise} />
-              </AccordionSection>
-            </Stack>
+          <Accordion allowToggle={true}>
+            <AccordionSection title="Exercise 1: Questions">
+              <TraitsSection
+                selectedTraits={selectedTraits}
+                setSelectedTraits={setSelectedTraits}
+              />
+            </AccordionSection>
+            <AccordionSection title="Exercise 2: The Laundry Lists Traits">
+              <LaundryListSection llTraits={llTraits} setLLTraits={setLLTraits} />
+            </AccordionSection>
+            <AccordionSection title="Exercise 3: Choice Continuum">
+              <ChoiceSection freedomText={freedomText} setFreedomText={setFreedomText} />
+            </AccordionSection>
+            <AccordionSection title="Exercise 4: Tools">
+              <ToolsUsedToday listOfTools={listOfTools} setListOfTools={setListOfTools} />
+            </AccordionSection>
+            <AccordionSection title="Exercise 5: Feelings">
+              <FeelingsStatement setFeelingSentence={setFeelingSentence} />
+            </AccordionSection>
+            <AccordionSection title="Exercise 6: Affirmation">
+              <AssetsSection praise={praise} setSetPraise={setPraise} />
+            </AccordionSection>
           </Accordion>
           <Stack
             width="100%"

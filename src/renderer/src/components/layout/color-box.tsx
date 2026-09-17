@@ -6,9 +6,8 @@ const ColorBox = ({ children }: { children: React.ReactNode }): JSX.Element => {
   return (
     <Box
       color={'inherit'}
-      border={['none', '1px solid']}
       p={6}
-      borderRadius={6}
+      borderRadius={4}
       bg={colorMode === 'dark' ? 'pink.900' : 'gray.100'}
     >
       {children}

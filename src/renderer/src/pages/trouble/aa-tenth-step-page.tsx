@@ -62,42 +62,40 @@ function AaTenthStep(): JSX.Element {
               </Text>
             </Stack>
           </CollapsingText>
-          <Accordion allowToggle={true} defaultIndex={0}>
-            <Stack gap={2}>
-              <AccordionSection title="Exercise 1: Questions ">
-                <Stack gap={2}>
-                  <Text>Select the ones that apply today.</Text>
-                  {strings.questions.map((q, i) => (
-                    <CheckBoxAndText
-                      key={`q-${i}`}
-                      q={q}
-                      selected={selectedQuestions}
-                      setSelected={setSelectedQuestions}
-                    />
-                  ))}
-                </Stack>
-              </AccordionSection>
-              <AccordionSection title="Exercise 2: Character Defects ">
-                <Stack gap={4}>
-                  <Text>What negative traits did I exhibit today?</Text>
-                  <CheckboxGroupBox
-                    valuesList={characterDefects}
-                    options={strings.characterDefects}
-                    setter={setCharacterDefects}
+          <Accordion allowToggle={true}>
+            <AccordionSection title="Exercise 1: Questions ">
+              <Stack gap={2}>
+                <Text>Select the ones that apply today.</Text>
+                {strings.questions.map((q, i) => (
+                  <CheckBoxAndText
+                    key={`q-${i}`}
+                    q={q}
+                    selected={selectedQuestions}
+                    setSelected={setSelectedQuestions}
                   />
-                </Stack>
-              </AccordionSection>
-              <AccordionSection title="Exercise 3: Character Assets ">
-                <Stack gap={4}>
-                  <Text>What positive traits did I exhibit today?</Text>
-                  <CheckboxGroupBox
-                    valuesList={characterAssets}
-                    options={strings.CharacterAssets}
-                    setter={setCharacterAssets}
-                  />
-                </Stack>
-              </AccordionSection>
-            </Stack>
+                ))}
+              </Stack>
+            </AccordionSection>
+            <AccordionSection title="Exercise 2: Character Defects ">
+              <Stack gap={4}>
+                <Text>What negative traits did I exhibit today?</Text>
+                <CheckboxGroupBox
+                  valuesList={characterDefects}
+                  options={strings.characterDefects}
+                  setter={setCharacterDefects}
+                />
+              </Stack>
+            </AccordionSection>
+            <AccordionSection title="Exercise 3: Character Assets ">
+              <Stack gap={4}>
+                <Text>What positive traits did I exhibit today?</Text>
+                <CheckboxGroupBox
+                  valuesList={characterAssets}
+                  options={strings.CharacterAssets}
+                  setter={setCharacterAssets}
+                />
+              </Stack>
+            </AccordionSection>
           </Accordion>
           <Stack
             width="100%"

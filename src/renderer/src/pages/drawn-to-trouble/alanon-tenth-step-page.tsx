@@ -64,26 +64,24 @@ function AlanonTenthStep(): JSX.Element {
             </Stack>
           </CollapsingText>
           <Accordion allowToggle={true}>
-            <Stack gap={2}>
-              <AccordionSection title="Exercise 1: Questions ">
-                <QuestionsSection
-                  selectedQuestions={selectedQuestions}
-                  setSelectedQuestions={setSelectedQuestions}
-                />
-              </AccordionSection>
-              <AccordionSection title="Exercise 2: Character Defects ">
-                <CharacterDefectsSection
-                  characterDefects={characterDefects}
-                  setCharacterDefects={setCharacterDefects}
-                />
-              </AccordionSection>
-              <AccordionSection title="Exercise 3: Character Assets ">
-                <CharacterAssetsSection
-                  characterAssets={characterAssets}
-                  setCharacterAssets={setCharacterAssets}
-                />
-              </AccordionSection>
-            </Stack>
+            <AccordionSection title="Exercise 1: Questions ">
+              <QuestionsSection
+                selectedQuestions={selectedQuestions}
+                setSelectedQuestions={setSelectedQuestions}
+              />
+            </AccordionSection>
+            <AccordionSection title="Exercise 2: Character Defects ">
+              <CharacterDefectsSection
+                characterDefects={characterDefects}
+                setCharacterDefects={setCharacterDefects}
+              />
+            </AccordionSection>
+            <AccordionSection title="Exercise 3: Character Assets ">
+              <CharacterAssetsSection
+                characterAssets={characterAssets}
+                setCharacterAssets={setCharacterAssets}
+              />
+            </AccordionSection>
           </Accordion>
           <Stack
             width="100%"

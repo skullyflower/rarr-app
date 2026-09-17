@@ -50,7 +50,7 @@ function HomePage(): JSX.Element {
             </Stack>
 
             <Text fontWeight={'bold'}>{strings.footHeader}</Text>
-            <Heading>The Guided Inventories:</Heading>
+            <Heading>{strings.inventoriesHeader}</Heading>
             <HStack gap={4} wrap="wrap" justifyContent="center">
               <NavItem to="trouble" text="Trouble" />
               <NavItem to="drawn-to-trouble" text="Drawn to Trouble" />
@@ -62,7 +62,9 @@ function HomePage(): JSX.Element {
 
             <Text>{strings.footerText}</Text>
             <Text>
-              <Link to="/about">About RARR</Link>
+              <Link style={{ textDecoration: 'underline' }} to="/about">
+                About RARR
+              </Link>
             </Text>
           </Stack>
         </Box>

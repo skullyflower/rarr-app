@@ -48,7 +48,7 @@ const AccordionSection: React.FC<AccordionSectionProps> = ({ title, children }) 
           <AccordionIcon />
         </HStack>
       </AccordionButton>
-      <AccordionPanel>
+      <AccordionPanel bg={colorMode === 'dark' ? 'whiteAlpha.300' : 'whiteAlpha.800'}>
         <Card color={'inherit'} bg={colorMode === 'dark' ? 'pink.900' : 'gray.200'}>
           <CardBody>{children}</CardBody>
         </Card>

@@ -5,11 +5,21 @@ import ColorBox from '@renderer/components/layout/color-box'
 import strings from '@renderer/data/home.json'
 import theComics from '@renderer/scripts/comics.mjs'
 import { NavItem } from '@renderer/components/NavBar'
+import Splash from '@renderer/components/splash/splash'
+import { useEffect, useState } from 'react'
 
 function HomePage(): JSX.Element {
+  const [splashOpen, setSplashOpen] = useState(true)
+  useEffect(() => {
+    if (splashOpen) {
+      setTimeout(() => setSplashOpen(false), 5000)
+    }
+  }, [])
+
   return (
     <Stack gap={2}>
       <ColorBox>
+        <Splash isOpen={splashOpen} />
         <Heading as="h2" size="lg" textAlign="center" marginBottom={8}>
           {strings.title}
         </Heading>

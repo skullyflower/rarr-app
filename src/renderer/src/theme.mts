@@ -153,7 +153,7 @@ const defaultTheme = extendTheme(
       Heading: {
         baseStyle: (props: StyleFunctionProps) => ({
           color: props.colorMode === 'dark' ? 'purple.300' : 'purple.700',
-          weight: 'normal'
+          fontWeight: 500
         })
       },
       Badge: {

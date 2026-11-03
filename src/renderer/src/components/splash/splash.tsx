@@ -2,7 +2,7 @@ import { Image, Modal, ModalBody, ModalContent, ModalOverlay, useColorMode } fro
 import Problem from '@renderer/assets/04052026IThinkIHaveAProblem_358X339.png'
 import { useEffect, useState } from 'react'
 
-const Splash = (isOpen): JSX.Element => {
+const Splash = (isOpen: boolean): JSX.Element => {
   const { colorMode } = useColorMode()
   const [show, setShow] = useState(isOpen)
   function onClose(): void {
@@ -12,7 +12,7 @@ const Splash = (isOpen): JSX.Element => {
     if (show) {
       setTimeout(onClose, 4000)
     }
-  }, [])
+  }, [show])
 
   return (
     <Modal id="splashImage" isOpen={show} onClose={onClose} isCentered>

@@ -15,6 +15,7 @@ declare global {
       isLocked: () => Promise<boolean>
       hasLock: () => Promise<boolean>
       reset: () => Promise<boolean>
+      shareText: (text: string) => Promise<boolean>
       print: (fileName?: string) => Promise<boolean>
     }
   }

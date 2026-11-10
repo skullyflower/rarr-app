@@ -36,6 +36,9 @@ const api = {
   reset: (): Promise<boolean> => {
     return ipcRenderer.invoke('reset-log')
   },
+  shareText: (text: string): Promise<boolean> => {
+    return ipcRenderer.invoke('share-text', text)
+  },
   print: (fileName: string | undefined): Promise<boolean> => {
     return ipcRenderer.invoke('print-page', fileName)
   }

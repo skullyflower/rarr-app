@@ -1,6 +1,7 @@
 import { Box, Button, CloseButton, Heading, HStack, Stack } from '@chakra-ui/react'
 import SaveButton from '@renderer/components/buttons/save-button'
 import CopyButton from '@renderer/components/buttons/copy-button'
+import ShareButton from '@renderer/components/buttons/share-button'
 import PageCard from './layout/page-card'
 import ColorBox from './layout/color-box'
 import ReadyToLetGo from './form/ready-to-let-go'
@@ -36,6 +37,7 @@ function WhatYouWrote({
           </Heading>
           <HStack gap={4}>
             <CopyButton text={stringToWrite} />
+            <ShareButton text={stringToWrite} />
             {Boolean(window.api) && <SaveButton text={stringToWrite} bigbutton={true} />}
             <CloseButton onClick={reset} />
           </HStack>

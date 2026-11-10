@@ -4,6 +4,7 @@ import { resentmentFieldsToTypedSections } from './resentmentTypedSections'
 import { Box, Button, Heading, HStack, Stack } from '@chakra-ui/react'
 import SaveButton from '@renderer/components/buttons/save-button'
 import CopyButton from '@renderer/components/buttons/copy-button'
+import ShareButton from '@renderer/components/buttons/share-button'
 import PageCard from '@renderer/components/layout/page-card'
 import ColorBox from '@renderer/components/layout/color-box'
 
@@ -50,6 +51,7 @@ function ResentBeGone({
           </Heading>
           <HStack gap={4}>
             <CopyButton text={toCopy} />
+            <ShareButton text={toCopy} />
             {Boolean(window.api) && <SaveButton text={toCopy} bigbutton />}
           </HStack>
         </HStack>

@@ -6,7 +6,8 @@ import {
   BrowserWindow,
   ipcMain,
   nativeTheme,
-  safeStorage
+  safeStorage,
+  ShareMenu
 } from 'electron'
 
 import { join } from 'path'
@@ -173,6 +174,30 @@ ipcMain.handle('dark-mode:toggle', () => {
 
 ipcMain.handle('dark-mode:system', () => {
   nativeTheme.themeSource = 'system'
+})
+
+// mailto: bodies get unreliable past ~2000 characters (Windows in particular)
+const MAILTO_BODY_LIMIT = 1800
+
+ipcMain.handle('share-text', (event, text: string): boolean => {
+  if (!text) return false
+  if (process.platform === 'darwin') {
+    // Native macOS share sheet (Messages, Mail, AirDrop, Notes...)
+    new ShareMenu({ texts: [text] }).popup({
+      window: BrowserWindow.fromWebContents(event.sender) ?? undefined
+    })
+    return true
+  }
+  // Windows/Linux have no share sheet in Electron: open the default mail client instead.
+  let body = text
+  while (encodeURIComponent(body).length > MAILTO_BODY_LIMIT) {
+    body = body.slice(0, Math.floor(body.length * 0.9))
+  }
+  const truncated = body.length < text.length
+  const subject = encodeURIComponent('From my RARR recovery app')
+  const fullBody = truncated ? `${body}…\n\n(shortened - use Copy for the full text)` : body
+  shell.openExternal(`mailto:?subject=${subject}&body=${encodeURIComponent(fullBody)}`)
+  return true
 })
 
 ipcMain.handle('print-page', (_event, fileName) => {

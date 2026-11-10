@@ -6,6 +6,7 @@ declare global {
           readLog: (fileName: string) => Promise<string>
           writeLog: (text: string, fileName?: string) => Promise<boolean>
           print: (fileName?: string) => Promise<boolean>
+          shareText: (text: string) => Promise<boolean>
           deleteLog: (toDelete: string) => Promise<boolean>
           isLocked: () => Promise<boolean>
           hasLock: () => Promise<boolean>

@@ -11,9 +11,7 @@ import {
 import { useState } from 'react'
 import SaveButton from './buttons/save-button'
 import { EditIcon, CloseIcon } from '@chakra-ui/icons'
-import PrintButton from './buttons/print-button'
-import CopyButton from './buttons/copy-button'
-import DeleteButton from './buttons/delete-button'
+import ActionsMenu from './buttons/actions-menu'
 import { oneEntry } from '@renderer/pages/journal'
 
 interface SemiSafeContentProps {
@@ -55,9 +53,7 @@ function SemiSafeContent({ entry, afterdelete }: SemiSafeContentProps): JSX.Elem
         <HStack gap={2} justifyContent={'end'}>
           <EditableControls />
           <SaveButton text={text} fileName={fileName} disabled={rawContent === text} />
-          <CopyButton text={text} />
-          <PrintButton fileName={fileName} />
-          {fileName && afterdelete && <DeleteButton what={fileName} callback={afterdelete} />}
+          <ActionsMenu text={text} fileName={fileName} afterdelete={afterdelete} />
         </HStack>
       </Box>
       <EditablePreview />

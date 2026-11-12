@@ -1,4 +1,4 @@
-import { Accordion, Button, Link, Stack, Text } from '@chakra-ui/react'
+import { Accordion, Link, Stack, Text } from '@chakra-ui/react'
 import TraitsSection from './traits-section'
 import ChoiceSection from './choice-section'
 import ToolsUsedToday from './tools-today'
@@ -13,6 +13,7 @@ import { acaTenthFieldsToTypedSections } from './acaTenthTypedSections'
 import LaundryListSection from '@renderer/pages/spawn-of-trouble/laundry-list-section'
 import CollapsingText from '@renderer/components/layout/CollapsingText'
 import strings from '@renderer/data/aca-tenth.json'
+import BeFree from '@renderer/components/BeFree'
 
 function AcaTenthStep(): JSX.Element {
   const [letGo, setLetGo] = useState(false)
@@ -110,23 +111,7 @@ function AcaTenthStep(): JSX.Element {
               <AssetsSection praise={praise} setSetPraise={setPraise} />
             </AccordionSection>
           </Accordion>
-          <Stack
-            width="100%"
-            direction="row"
-            gap={4}
-            justifyContent="center"
-            position={'sticky'}
-            bottom={-2}
-          >
-            <Button
-              isDisabled={incomplete}
-              colorScheme="purple"
-              name="letGo"
-              onClick={() => setLetGo(true)}
-            >
-              Be Free!
-            </Button>
-          </Stack>
+          <BeFree isDisabled={incomplete} onClick={() => setLetGo(true)} />
         </Stack>
       </PageCard>
     </Stack>

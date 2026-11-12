@@ -39,7 +39,7 @@ const PageCard = ({
           )}
         </CardHeader>
       )}
-      <CardBody overflowY="auto" paddingTop={2}>
+      <CardBody overflowY="auto" paddingBlock={2}>
         {children}
       </CardBody>
     </Card>

@@ -20,6 +20,7 @@ import ResentBeGone from './resentment-be-gone'
 import PageCard from '@renderer/components/layout/page-card'
 import AccordionSection from '@renderer/components/layout/accordion-section'
 import CollapsingText from '@renderer/components/layout/CollapsingText'
+import BeeFree from '@renderer/components/BeFree'
 
 type ProgKey = keyof typeof affects
 
@@ -161,14 +162,15 @@ function ResentmentsForm(): JSX.Element {
             </FormControl>
           </AccordionSection>
           <Text textAlign={'center'}>Are you ready to let it go?</Text>
-          <Stack width="100%" direction="row" gap={4} justifyContent="center">
-            <Button isDisabled={incomplete} colorScheme="purple" name="letGo" onClick={letItGo}>
-              Be Free!
-            </Button>{' '}
-            <Button colorScheme="purple" onClick={neverLetItGo}>
-              NEVER!!
-            </Button>
-          </Stack>
+          <BeeFree
+            isDisabled={incomplete}
+            onClick={letItGo}
+            otherButton={
+              <Button colorScheme="purple" onClick={neverLetItGo}>
+                NEVER!!
+              </Button>
+            }
+          />
         </Accordion>
       </PageCard>
       <NeverLetGo isOpen={isNever} onClose={onNeverMind} />

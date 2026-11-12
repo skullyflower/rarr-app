@@ -1,4 +1,4 @@
-import { Accordion, Box, Button, Stack, Text } from '@chakra-ui/react'
+import { Accordion, Box, Stack, Text } from '@chakra-ui/react'
 import { useState } from 'react'
 import PageCard from '@renderer/components/layout/page-card'
 import AccordionSection from '@renderer/components/layout/accordion-section'
@@ -9,6 +9,7 @@ import { fearsFieldsToTypedSections } from './fearsTypedSections'
 import CollapsingText from '@renderer/components/layout/CollapsingText'
 import ListerInput from '@renderer/components/form/ListerInput'
 import fearText from '@renderer/data/fears.json'
+import BeFree from '@renderer/components/BeFree'
 
 function Fears(): JSX.Element {
   const [letGo, setLetGo] = useState(false)
@@ -64,22 +65,10 @@ function Fears(): JSX.Element {
               </AccordionSection>
             </Stack>
           </Accordion>
-          <Stack
-            width="100%"
-            direction="row"
-            justifyContent="center"
-            position={'sticky'}
-            bottom={-2}
-          >
-            <Button
-              isDisabled={fearsList.length === 0 && grateful.length === 0}
-              colorScheme="purple"
-              name="letGo"
-              onClick={() => setLetGo(true)}
-            >
-              Be Free!
-            </Button>
-          </Stack>
+          <BeFree
+            isDisabled={fearsList.length === 0 && grateful.length === 0}
+            onClick={() => setLetGo(true)}
+          />
         </Stack>
       </PageCard>
     </Stack>

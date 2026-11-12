@@ -1,4 +1,4 @@
-import { Accordion, Button, Link, Stack, Text } from '@chakra-ui/react'
+import { Accordion, Link, Stack, Text } from '@chakra-ui/react'
 import AccordionSection from '@renderer/components/layout/accordion-section'
 import PageCard from '@renderer/components/layout/page-card'
 import { useState } from 'react'
@@ -10,6 +10,7 @@ import strings from '@renderer/data/alanon-tenth.json'
 import QuestionsSection from '@renderer/components/shared-forms/QuestionsSection'
 import CharacterAssetsSection from '@renderer/components/shared-forms/CharacterAssetsSection'
 import CharacterDefectsSection from '@renderer/components/shared-forms/CharacterDefectsSection'
+import BeFree from '@renderer/components/BeFree'
 
 function AlanonTenthStep(): JSX.Element {
   const [letGo, setLetGo] = useState(false)
@@ -83,22 +84,7 @@ function AlanonTenthStep(): JSX.Element {
               />
             </AccordionSection>
           </Accordion>
-          <Stack
-            width="100%"
-            direction="row"
-            justifyContent="center"
-            position={'sticky'}
-            bottom={-2}
-          >
-            <Button
-              isDisabled={incomplete}
-              colorScheme="purple"
-              name="letGo"
-              onClick={() => setLetGo(true)}
-            >
-              Be Free!
-            </Button>
-          </Stack>
+          <BeFree isDisabled={incomplete} onClick={() => setLetGo(true)} />
         </Stack>
       </PageCard>
     </Stack>

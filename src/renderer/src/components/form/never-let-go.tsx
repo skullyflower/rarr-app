@@ -14,7 +14,7 @@ const NeverLetGo = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => void 
   const { colorMode } = useColorMode()
 
   return (
-    <Modal isOpen={isOpen} onClose={onClose}>
+    <Modal isOpen={isOpen} onClose={onClose} isCentered>
       <ModalOverlay>
         <ModalContent
           color={colorMode === 'dark' ? 'pink.300' : 'yellow.900'}

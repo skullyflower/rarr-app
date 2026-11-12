@@ -1,4 +1,4 @@
-import { Accordion, Button, Link, Stack, Text } from '@chakra-ui/react'
+import { Accordion, Link, Stack, Text } from '@chakra-ui/react'
 import AccordionSection from '@renderer/components/layout/accordion-section'
 import PageCard from '@renderer/components/layout/page-card'
 import { useState } from 'react'
@@ -9,6 +9,7 @@ import CollapsingText from '@renderer/components/layout/CollapsingText'
 import strings from '@renderer/data/aa-tenth.json'
 import CheckBoxAndText from '@renderer/components/form/CheckBoxAndText'
 import CheckboxGroupBox from '@renderer/components/form/CheckBoxGroupBox'
+import BeFree from '@renderer/components/BeFree'
 
 function AaTenthStep(): JSX.Element {
   const [letGo, setLetGo] = useState(false)
@@ -97,22 +98,7 @@ function AaTenthStep(): JSX.Element {
               </Stack>
             </AccordionSection>
           </Accordion>
-          <Stack
-            width="100%"
-            direction="row"
-            justifyContent="center"
-            position={'sticky'}
-            bottom={-2}
-          >
-            <Button
-              isDisabled={incomplete}
-              colorScheme="purple"
-              name="letGo"
-              onClick={() => setLetGo(true)}
-            >
-              Be Free!
-            </Button>
-          </Stack>
+          <BeFree isDisabled={incomplete} onClick={() => setLetGo(true)} />
         </Stack>
       </PageCard>
     </Stack>

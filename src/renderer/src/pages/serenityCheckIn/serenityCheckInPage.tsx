@@ -1,4 +1,4 @@
-import { Accordion, Box, Button, HStack, Stack, Text } from '@chakra-ui/react'
+import { Accordion, Box, HStack, Stack, Text } from '@chakra-ui/react'
 import { useState } from 'react'
 import PageCard from '@renderer/components/layout/page-card'
 import AccordionSection from '@renderer/components/layout/accordion-section'
@@ -8,6 +8,7 @@ import { createWhatYouWroteSections } from '@renderer/components/what-you-wrote/
 import { serenityFieldsToTypedSections } from './serenityCheckInTypedSections'
 import CollapsingText from '@renderer/components/layout/CollapsingText'
 import strings from '@renderer/data/serenity.json'
+import BeFree from '@renderer/components/BeFree'
 
 function SerenityCheckIn(): JSX.Element {
   const [letGo, setLetGo] = useState(false)
@@ -61,23 +62,7 @@ function SerenityCheckIn(): JSX.Element {
               <Text key={`pray-${i}`}>{line}</Text>
             ))}
           </Box>
-          <Stack
-            width="100%"
-            direction="row"
-            gap={4}
-            justifyContent="center"
-            position={'sticky'}
-            bottom={-2}
-          >
-            <Button
-              isDisabled={canCannotControl.length === 0}
-              colorScheme="purple"
-              name="letGo"
-              onClick={() => setLetGo(true)}
-            >
-              Be Free!
-            </Button>
-          </Stack>
+          <BeFree isDisabled={canCannotControl.length === 0} onClick={() => setLetGo(true)} />
         </Stack>
       </PageCard>
     </Stack>

@@ -6,11 +6,11 @@ const CollapsingText = ({ children }: { children: ReactElement }): JSX.Element =
   const handleToggle = (): void => setShow(!show)
 
   return (
-    <HStack gap={4} alignItems={'flex-end'}>
+    <HStack gap={4} alignItems={'flex-end'} position={'relative'}>
       <Collapse startingHeight={0} in={show}>
         {children}
       </Collapse>
-      <Box textAlign={'right'} flexGrow={2}>
+      <Box position={'absolute'} right={0}>
         <Button variant={'link'} size="sm" onClick={handleToggle}>
           {show ? 'Show Less' : 'More Info'}
         </Button>

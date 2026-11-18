@@ -14,11 +14,13 @@ import BeFree from '@renderer/components/BeFree'
 function Fears(): JSX.Element {
   const [letGo, setLetGo] = useState(false)
   const [fearsList, setFearsList] = useState<doubleListItem[]>([])
+  const [fearful, setFearful] = useState<string[]>([])
   const [grateful, setGrateful] = useState<string[]>([])
 
   const reset = (): void => {
     setLetGo(false)
     setFearsList([])
+    setFearful([])
     setGrateful([])
   }
 
@@ -26,7 +28,9 @@ function Fears(): JSX.Element {
     return (
       <WhatYouWrote
         reset={reset}
-        sections={createWhatYouWroteSections(fearsFieldsToTypedSections({ fearsList, grateful }))}
+        sections={createWhatYouWroteSections(
+          fearsFieldsToTypedSections({ fearsList, fearful, grateful })
+        )}
       />
     )
   }
@@ -52,16 +56,23 @@ function Fears(): JSX.Element {
           <Accordion allowToggle={true} allowMultiple={true} defaultIndex={0}>
             <Stack gap={2}>
               <AccordionSection title={fearText.accordionHeading}>
-                <DoubleListerInput
-                  list={fearsList}
-                  labels={[fearText.labelsText[0], fearText.labelsText[1]]}
-                  setList={setFearsList}
-                />
-                <ListerInput
-                  list={grateful}
-                  placeholder={fearText.placeholder}
-                  setList={setGrateful}
-                />
+                <Stack gap={2}>
+                  <DoubleListerInput
+                    list={fearsList}
+                    labels={[fearText.labelsText[0], fearText.labelsText[1]]}
+                    setList={setFearsList}
+                  />
+                  <ListerInput
+                    list={fearful}
+                    placeholder={fearText.placeholder_fears}
+                    setList={setFearful}
+                  />
+                  <ListerInput
+                    list={grateful}
+                    placeholder={fearText.placeholder}
+                    setList={setGrateful}
+                  />
+                </Stack>
               </AccordionSection>
             </Stack>
           </Accordion>

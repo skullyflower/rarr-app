@@ -23,6 +23,7 @@ export type TypedSection =
   | AffirmationBulletsSection
   | ControlPairsSection
   | FearPairsSection
+  | FearfulLinesSection
   | GratefulLinesSection
   | CharacterBulletSection
 
@@ -103,6 +104,12 @@ export type GratefulLinesSection = {
   lines: string[]
 }
 
+export type FearfulLinesSection = {
+  id: string
+  kind: 'fearfulLines'
+  lines: string[]
+}
+
 export type CharacterBulletSection = {
   id: string
   kind: 'characterBullets'
@@ -129,6 +136,8 @@ export function isTypedSectionEmpty(s: TypedSection): boolean {
     case 'fearPairs':
       return s.pairs.length === 0
     case 'gratefulLines':
+      return s.lines.length === 0
+    case 'fearfulLines':
       return s.lines.length === 0
     case 'characterBullets':
       return s.items.length === 0
@@ -187,6 +196,8 @@ export function buildTypedSectionCopy(s: TypedSection): string {
       return `Fears and Gratitudes for today:\n ${s.pairs
         .map((pair) => `\t• Fear: ${pair[0]}\n\t\tBut grateful: ${pair[1]}`)
         .join('\n\n')}`
+    case 'fearfulLines':
+      return `...and grateful:\n ${s.lines.map((fear) => `\t• ${fear}`).join('\n')}`
     case 'gratefulLines':
       return `...and grateful:\n ${s.lines.map((grat) => `\t• ${grat}`).join('\n')}`
     case 'characterBullets': {

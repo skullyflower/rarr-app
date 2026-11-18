@@ -3,6 +3,7 @@ import type { doubleListItem } from '@renderer/components/form/DoubleListerInput
 
 export type FearsFields = {
   fearsList: doubleListItem[]
+  fearful: string[]
   grateful: string[]
 }
 
@@ -13,6 +14,11 @@ export function fearsFieldsToTypedSections(p: FearsFields): TypedSection[] {
       kind: 'fearPairs',
       displayHeading: "Today's fears:",
       pairs: p.fearsList
+    },
+    {
+      id: 'fearful',
+      kind: 'fearfulLines',
+      lines: p.fearful
     },
     {
       id: 'grateful',

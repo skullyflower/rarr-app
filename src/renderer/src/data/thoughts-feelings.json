@@ -1,0 +1,900 @@
+{
+  "thoughts": [
+    {
+      "word": "Abandoned",
+      "feelings": [
+        "terrified",
+        "hurt",
+        "bewildered",
+        "sad",
+        "frightened",
+        "lonely"
+      ],
+      "needs": [
+        "nurturing",
+        "connection",
+        "belonging",
+        "support",
+        "caring"
+      ]
+    },
+    {
+      "word": "Abused",
+      "feelings": [
+        "frightened",
+        "confused"
+      ],
+      "needs": [
+        "caring",
+        "nurturing",
+        "support",
+        "emotional or physical well-being",
+        "consideration",
+        "mattering"
+      ]
+    },
+    {
+      "word": "Not accepted",
+      "feelings": [
+        "upset",
+        "scared",
+        "lonely"
+      ],
+      "needs": [
+        "acceptance",
+        "self-acceptance",
+        "inclusion",
+        "connection",
+        "community",
+        "belonging",
+        "contribution",
+        "peer respect"
+      ]
+    },
+    {
+      "word": "Attacked",
+      "feelings": [
+        "scared"
+      ],
+      "needs": [
+        "safety"
+      ]
+    },
+    {
+      "word": "Belittled",
+      "feelings": [
+        "hurt",
+        "tense",
+        "distressed"
+      ],
+      "needs": [
+        "respect",
+        "autonomy",
+        "visibility",
+        "understanding",
+        "acknowledgement",
+        "appreciation"
+      ]
+    },
+    {
+      "word": "Betrayed",
+      "feelings": [
+        "hurt",
+        "scared",
+        "disappointed"
+      ],
+      "needs": [
+        "trust",
+        "dependability",
+        "honesty",
+        "honour",
+        "commitment",
+        "clarity"
+      ]
+    },
+    {
+      "word": "Blamed",
+      "feelings": [
+        "scared",
+        "confused",
+        "bewildered",
+        "hurt"
+      ],
+      "needs": [
+        "accountability",
+        "causality",
+        "fairness",
+        "justice"
+      ]
+    },
+    {
+      "word": "Bullied",
+      "feelings": [
+        "scared"
+      ],
+      "needs": [
+        "autonomy",
+        "choice",
+        "safety",
+        "consideration"
+      ]
+    },
+    {
+      "word": "Caged/trapped",
+      "feelings": [
+        "scared",
+        "anxious"
+      ],
+      "needs": [
+        "autonomy",
+        "choice",
+        "freedom"
+      ]
+    },
+    {
+      "word": "Cheated",
+      "feelings": [
+        "hurt"
+      ],
+      "needs": [
+        "honesty",
+        "fairness",
+        "justice",
+        "trust",
+        "reliability"
+      ]
+    },
+    {
+      "word": "Coerced",
+      "feelings": [
+        "frustrated",
+        "frightened",
+        "thwarted",
+        "scared"
+      ],
+      "needs": [
+        "choice",
+        "autonomy",
+        "freedom",
+        "freedom to act",
+        "freedom to choose"
+      ]
+    },
+    {
+      "word": "Cornered",
+      "feelings": [
+        "scared",
+        "anxious",
+        "thwarted"
+      ],
+      "needs": [
+        "autonomy",
+        "freedom"
+      ]
+    },
+    {
+      "word": "Criticised",
+      "feelings": [
+        "in pain",
+        "scared",
+        "anxious",
+        "frustrated",
+        "humiliated",
+        "embarrassed"
+      ],
+      "needs": [
+        "understanding",
+        "acknowledgement",
+        "recognition",
+        "respect"
+      ]
+    },
+    {
+      "word": "Discounted/diminished",
+      "feelings": [
+        "hurt",
+        "angry",
+        "embarrassed",
+        "frustrated"
+      ],
+      "needs": [
+        "mattering",
+        "acknowledgement",
+        "inclusion",
+        "recognition",
+        "respect"
+      ]
+    },
+    {
+      "word": "Disliked",
+      "feelings": [
+        "sad",
+        "lonely",
+        "hurt",
+        "anxious"
+      ],
+      "needs": [
+        "connection",
+        "appreciation",
+        "understanding",
+        "acknowledgement",
+        "friendship",
+        "inclusion"
+      ]
+    },
+    {
+      "word": "Distrusted",
+      "feelings": [
+        "sad",
+        "frustrated"
+      ],
+      "needs": [
+        "trust",
+        "honesty"
+      ]
+    },
+    {
+      "word": "Dumped on",
+      "feelings": [
+        "angry",
+        "overwhelmed"
+      ],
+      "needs": [
+        "respect",
+        "consideration",
+        "peace"
+      ]
+    },
+    {
+      "word": "Excluded",
+      "feelings": [
+        "sad",
+        "lonely",
+        "anxious"
+      ],
+      "needs": [
+        "inclusion",
+        "belonging",
+        "community",
+        "connection"
+      ]
+    },
+    {
+      "word": "Harassed",
+      "feelings": [
+        "angry",
+        "frustrated",
+        "frightened",
+        "anxious"
+      ],
+      "needs": [
+        "respect",
+        "space",
+        "consideration",
+        "peace"
+      ]
+    },
+    {
+      "word": "Hassled",
+      "feelings": [
+        "irritated",
+        "distressed",
+        "angry",
+        "frustrated"
+      ],
+      "needs": [
+        "serenity",
+        "autonomy",
+        "calm",
+        "space"
+      ]
+    },
+    {
+      "word": "Ignored",
+      "feelings": [
+        "lonely",
+        "scared",
+        "hurt",
+        "sad",
+        "embarrassed"
+      ],
+      "needs": [
+        "connection",
+        "belonging",
+        "inclusion",
+        "community",
+        "participation",
+        "communication",
+        "to be heard"
+      ]
+    },
+    {
+      "word": "Insulted",
+      "feelings": [
+        "embarrassed",
+        "angry"
+      ],
+      "needs": [
+        "respect",
+        "consideration",
+        "acknowledgement",
+        "recognition"
+      ]
+    },
+    {
+      "word": "Interrupted",
+      "feelings": [
+        "frustrated",
+        "hurt"
+      ],
+      "needs": [
+        "respect",
+        "consideration",
+        "to be heard"
+      ]
+    },
+    {
+      "word": "Intimidated",
+      "feelings": [
+        "anxious",
+        "scared"
+      ],
+      "needs": [
+        "safety",
+        "equality",
+        "empowerment"
+      ]
+    },
+    {
+      "word": "Invalidated",
+      "feelings": [
+        "hurt",
+        "frustrated",
+        "angry"
+      ],
+      "needs": [
+        "appreciation",
+        "respect",
+        "acknowledgement",
+        "recognition"
+      ]
+    },
+    {
+      "word": "Invisible",
+      "feelings": [
+        "sad",
+        "lonely",
+        "scared"
+      ],
+      "needs": [
+        "to be seen and heard",
+        "inclusion",
+        "belonging",
+        "community"
+      ]
+    },
+    {
+      "word": "Left out",
+      "feelings": [
+        "sad",
+        "lonely",
+        "anxious"
+      ],
+      "needs": [
+        "inclusion",
+        "belonging",
+        "community",
+        "connection"
+      ]
+    },
+    {
+      "word": "Let down",
+      "feelings": [
+        "disappointed",
+        "frightened",
+        "sad"
+      ],
+      "needs": [
+        "consistency",
+        "trust",
+        "support",
+        "dependability"
+      ]
+    },
+    {
+      "word": "Manipulated",
+      "feelings": [
+        "scared",
+        "powerless",
+        "frustrated",
+        "thwarted"
+      ],
+      "needs": [
+        "autonomy",
+        "empowerment",
+        "trust",
+        "equality",
+        "freedom",
+        "free choice",
+        "connection",
+        "authenticity"
+      ]
+    },
+    {
+      "word": "Marginalised",
+      "feelings": [
+        "frustrated",
+        "sad",
+        "lonely",
+        "distressed"
+      ],
+      "needs": [
+        "inclusion",
+        "belonging",
+        "community",
+        "connection"
+      ]
+    },
+    {
+      "word": "Mistrusted",
+      "feelings": [
+        "sad",
+        "disappointed"
+      ],
+      "needs": [
+        "trust"
+      ]
+    },
+    {
+      "word": "Misunderstood",
+      "feelings": [
+        "frustrated",
+        "upset"
+      ],
+      "needs": [
+        "to be heard",
+        "understanding",
+        "clarity"
+      ]
+    },
+    {
+      "word": "Neglected",
+      "feelings": [
+        "lonely",
+        "scared",
+        "anxious"
+      ],
+      "needs": [
+        "connection",
+        "inclusion",
+        "participation",
+        "community",
+        "care",
+        "mattering",
+        "consideration"
+      ]
+    },
+    {
+      "word": "Overpowered",
+      "feelings": [
+        "helpless",
+        "confused",
+        "anxious"
+      ],
+      "needs": [
+        "equality",
+        "justice",
+        "autonomy",
+        "freedom"
+      ]
+    },
+    {
+      "word": "Overworked",
+      "feelings": [
+        "tired",
+        "frustrated",
+        "exhausted"
+      ],
+      "needs": [
+        "respect",
+        "consideration",
+        "rest",
+        "caring"
+      ]
+    },
+    {
+      "word": "Patronised",
+      "feelings": [
+        "frustrated",
+        "annoyed",
+        "stressed"
+      ],
+      "needs": [
+        "recognition",
+        "equality",
+        "equity",
+        "respect",
+        "mutuality"
+      ]
+    },
+    {
+      "word": "Pressured",
+      "feelings": [
+        "anxious",
+        "overwhelmed"
+      ],
+      "needs": [
+        "relaxation",
+        "clarity",
+        "space",
+        "consideration"
+      ]
+    },
+    {
+      "word": "Provoked",
+      "feelings": [
+        "frustrated",
+        "angry"
+      ],
+      "needs": [
+        "respect",
+        "consideration"
+      ]
+    },
+    {
+      "word": "Put down",
+      "feelings": [
+        "embarrassed",
+        "sad",
+        "annoyed"
+      ],
+      "needs": [
+        "respect",
+        "acknowledgement",
+        "understanding"
+      ]
+    },
+    {
+      "word": "Rejected",
+      "feelings": [
+        "hurt",
+        "scared",
+        "sad",
+        "disappointed"
+      ],
+      "needs": [
+        "belonging",
+        "inclusion",
+        "closeness",
+        "to be seen",
+        "acknowledgement",
+        "trust"
+      ]
+    },
+    {
+      "word": "Ripped off",
+      "feelings": [
+        "disappointed",
+        "angry"
+      ],
+      "needs": [
+        "consideration",
+        "justice",
+        "fairness",
+        "acknowledgement",
+        "recognition"
+      ]
+    },
+    {
+      "word": "Smothered",
+      "feelings": [
+        "frustrated",
+        "frightened",
+        "desperate"
+      ],
+      "needs": [
+        "space",
+        "freedom",
+        "autonomy",
+        "authenticity",
+        "self-expression"
+      ]
+    },
+    {
+      "word": "Taken for granted",
+      "feelings": [
+        "sad",
+        "hurt",
+        "angry",
+        "disappointed"
+      ],
+      "needs": [
+        "appreciation",
+        "acknowledgement",
+        "recognition",
+        "consideration"
+      ]
+    },
+    {
+      "word": "Threatened",
+      "feelings": [
+        "scared",
+        "frightened",
+        "alarmed",
+        "agitated",
+        "anxious"
+      ],
+      "needs": [
+        "safety",
+        "autonomy"
+      ]
+    },
+    {
+      "word": "Trampled",
+      "feelings": [
+        "frustrated",
+        "overwhelmed"
+      ],
+      "needs": [
+        "empowerment",
+        "connection",
+        "community",
+        "to be seen",
+        "consideration",
+        "equality",
+        "equity",
+        "respect",
+        "acknowledgement"
+      ]
+    },
+    {
+      "word": "Tricked",
+      "feelings": [
+        "embarrassed",
+        "resentful"
+      ],
+      "needs": [
+        "integrity",
+        "trust",
+        "honesty"
+      ]
+    },
+    {
+      "word": "Unappreciated",
+      "feelings": [
+        "sad",
+        "hurt",
+        "frustrated"
+      ],
+      "needs": [
+        "appreciation",
+        "respect",
+        "acknowledgement",
+        "consideration"
+      ]
+    },
+    {
+      "word": "Unheard",
+      "feelings": [
+        "sad",
+        "frustrated"
+      ],
+      "needs": [
+        "understanding",
+        "consideration",
+        "empathy"
+      ]
+    },
+    {
+      "word": "Unloved",
+      "feelings": [
+        "bewildered",
+        "sad",
+        "frustrated"
+      ],
+      "needs": [
+        "love",
+        "appreciation",
+        "empathy",
+        "connection",
+        "community"
+      ]
+    },
+    {
+      "word": "Unseen",
+      "feelings": [
+        "sad",
+        "anxious",
+        "frustrated"
+      ],
+      "needs": [
+        "acknowledgement",
+        "appreciation",
+        "visibility",
+        "empathy",
+        "understanding"
+      ]
+    },
+    {
+      "word": "Unsupported",
+      "feelings": [
+        "sad",
+        "hurt"
+      ],
+      "needs": [
+        "support",
+        "understanding",
+        "cooperation"
+      ]
+    },
+    {
+      "word": "Unwanted",
+      "feelings": [
+        "sad",
+        "anxious",
+        "frustrated"
+      ],
+      "needs": [
+        "belonging",
+        "inclusion",
+        "caring"
+      ]
+    },
+    {
+      "word": "Used",
+      "feelings": [
+        "sad",
+        "angry",
+        "resentful"
+      ],
+      "needs": [
+        "autonomy",
+        "equality",
+        "consideration",
+        "mutuality"
+      ]
+    },
+    {
+      "word": "Victimised",
+      "feelings": [
+        "frightened",
+        "helpless"
+      ],
+      "needs": [
+        "empowerment",
+        "mutuality",
+        "safety",
+        "justice"
+      ]
+    },
+    {
+      "word": "Violated",
+      "feelings": [
+        "sad",
+        "agitated",
+        "anxious"
+      ],
+      "needs": [
+        "privacy",
+        "safety",
+        "trust",
+        "space",
+        "respect"
+      ]
+    },
+    {
+      "word": "Wronged",
+      "feelings": [
+        "hurt",
+        "irritated",
+        "resentful"
+      ],
+      "needs": [
+        "respect",
+        "justice",
+        "trust",
+        "safety",
+        "fairness"
+      ]
+    }
+  ],
+  "feelings": [
+    "agitated",
+    "alarmed",
+    "angry",
+    "annoyed",
+    "anxious",
+    "bewildered",
+    "confused",
+    "desperate",
+    "disappointed",
+    "distressed",
+    "embarrassed",
+    "exhausted",
+    "frightened",
+    "frustrated",
+    "helpless",
+    "humiliated",
+    "hurt",
+    "in pain",
+    "irritated",
+    "lonely",
+    "overwhelmed",
+    "powerless",
+    "resentful",
+    "sad",
+    "scared",
+    "stressed",
+    "tense",
+    "terrified",
+    "thwarted",
+    "tired",
+    "upset"
+  ],
+  "needs": [
+    "acceptance",
+    "accountability",
+    "acknowledgement",
+    "appreciation",
+    "authenticity",
+    "autonomy",
+    "belonging",
+    "calm",
+    "care",
+    "caring",
+    "causality",
+    "choice",
+    "clarity",
+    "closeness",
+    "commitment",
+    "communication",
+    "community",
+    "connection",
+    "consideration",
+    "consistency",
+    "contribution",
+    "cooperation",
+    "dependability",
+    "emotional or physical well-being",
+    "empathy",
+    "empowerment",
+    "equality",
+    "equity",
+    "fairness",
+    "free choice",
+    "freedom",
+    "freedom to act",
+    "freedom to choose",
+    "friendship",
+    "honesty",
+    "honour",
+    "inclusion",
+    "integrity",
+    "justice",
+    "love",
+    "mattering",
+    "mutuality",
+    "nurturing",
+    "participation",
+    "peace",
+    "peer respect",
+    "privacy",
+    "recognition",
+    "relaxation",
+    "reliability",
+    "respect",
+    "rest",
+    "safety",
+    "self-acceptance",
+    "self-expression",
+    "serenity",
+    "space",
+    "support",
+    "to be heard",
+    "to be seen",
+    "to be seen and heard",
+    "trust",
+    "understanding",
+    "visibility"
+  ]
+}

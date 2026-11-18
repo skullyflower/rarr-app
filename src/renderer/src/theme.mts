@@ -193,7 +193,7 @@ const defaultTheme = extendTheme(
             boxShadow: 'none',
             outline: 'none',
             _placeholder: {
-              color: props.colorMode === 'dark' ? 'gray.600' : 'gray.50'
+              color: props.colorMode === 'dark' ? 'whiteAlpha.500' : 'blackAlpha.500'
             },
             _focus: {
               backgroundColor: props.colorMode === 'dark' ? inputBGDark : inputBGLight,
@@ -221,7 +221,7 @@ const defaultTheme = extendTheme(
           color: props.colorMode === 'dark' ? inputColorDark : inputColorLight,
           borderColor: props.colorMode === 'dark' ? borderColorDark : borderColorLight,
           _placeholder: {
-            color: props.colorMode === 'dark' ? 'gray.600' : 'gray.50'
+            color: props.colorMode === 'dark' ? 'whiteAlpha.500' : 'blackAlpha.500'
           },
           _focus: {
             outline: 'none',

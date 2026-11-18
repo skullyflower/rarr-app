@@ -39,13 +39,13 @@ const DoubleListerInput = ({ list, setList, labels }: DoubleListerInputProps): J
             <Input
               ref={inputRef}
               type="text"
-              placeholder={labels ? `Add a ${labels[0]}...` : 'Add a item...'}
+              placeholder={labels ? `${labels[0]}...` : 'Add an item...'}
               onChange={(e) => setOneItem(e.target.value)}
               value={oneItem}
             />
             <Input
               type="text"
-              placeholder={labels ? `Add a ${labels[1]}...` : 'Add a item...'}
+              placeholder={labels ? `${labels[1]}...` : 'Add an item...'}
               onChange={(e) => setTwoItem(e.target.value)}
               value={twoItem}
             />

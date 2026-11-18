@@ -6,7 +6,8 @@
     "Example: I'm afraid of dying alone. I'm grateful for my full healthy life."
   ],
   "subHeading": "Fear was \"an evil and corrosive thread\" weaving through our lives.",
-  "accordionHeading": "I'm afraid..., but grateful...",
-  "labelsText": ["I am afraid:", "but grateful:"],
-  "placeholder": "...and just grateful:"
+  "accordionHeading": "I'm afraid ..., but grateful ...",
+  "labelsText": ["I am afraid ", "but grateful "],
+  "placeholder_fears": "... and just afraid",
+  "placeholder": "... and just grateful"
 }

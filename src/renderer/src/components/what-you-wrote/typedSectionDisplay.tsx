@@ -136,6 +136,20 @@ function TypedSectionDisplay({ section: s }: { section: TypedSection }): JSX.Ele
           ))}
         </Box>
       )
+    case 'fearfulLines':
+      return (
+        <Box>
+          <Text>
+            <b>Fearful:</b>
+          </Text>
+          {s.lines.map((value, index) => (
+            <HStack key={`${s.id}-${index}`} justifyContent="space-between" gap={2} wrap="wrap">
+              <Text>{value}</Text>
+            </HStack>
+          ))}
+        </Box>
+      )
+
     case 'characterBullets':
       return (
         <Box>
